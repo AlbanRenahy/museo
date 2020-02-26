@@ -12,6 +12,13 @@ Fiche récap : https://github.com/O-clock-Alumni/fiches-recap/blob/master/gestio
 
 ## Home
 
+  - entree en tant que visiteur
+  - bouton me connecter
+  - bouton s'inscrire
+  - bouton de récupération de mot de passe
+  - bouton de contact (FAQ)
+
+
 | En tant que | Je veux | Afin de (si besoin/nécessaire) |
 |--|--|--|
 | visiteur | pouvoir acceder a la page d'accueil | de pouvoir m'inscrire |
@@ -41,9 +48,9 @@ Fiche récap : https://github.com/O-clock-Alumni/fiches-recap/blob/master/gestio
 
 | En tant que | Je veux | Afin de (si besoin/nécessaire) |
 |--|--|--|
-| visiteur | pouvoir acceder à un monument | de pouvoir `voir` les informations (limité) du monument |
-| utilisateur | pouvoir acceder à un monument | de pouvoir `voir` toutes les informations du monument et voir les commentaires |
-| utilisateur | pouvoir acceder à un monument | de pouvoir mettre un likes ou un dislikes sur le monument (Un seul par utilisateur) |
+| visiteur | pouvoir acceder à un monument | de pouvoir `voir` les informations (limitées) du monument |
+| utilisateur | pouvoir acceder à un monument | de pouvoir `voir` toutes les informations du monument |
+| utilisateur | pouvoir acceder à un monument | de pouvoir mettre un like ou un dislike sur le monument (Un seul par utilisateur) |
 
 
 ## UserProfile
@@ -54,7 +61,7 @@ Fiche récap : https://github.com/O-clock-Alumni/fiches-recap/blob/master/gestio
 | utilisateur | pouvoir acceder à son profil | de pouvoir `voir` toutes ses informations personnelles (nom, email, ect ect...) |
 | utilisateur | pouvoir acceder à son profil | de pouvoir `modifier` toutes ses informations personnelles (nom, email, ect ect...) |
 | utilisateur | pouvoir acceder à son profil | de pouvoir `ajouter` des informations personnelles manquantes et non obligatoire (photo, age, ect, ect) |
-| utilisateur | pouvoir acceder à son profil | de pouvoir `voir` tous les monuments rentrer personnellement sur l'application |
+| utilisateur | pouvoir acceder à son profil | de pouvoir `voir` tous les monuments rentrés personnellement sur l'application |
 | admin | pouvoir acceder au profil d'un utilisateur choisi | de pouvoir `voir` le bannir (avec l'ip) |
 
 

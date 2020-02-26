@@ -10,6 +10,8 @@ Table : Public visé (id, name, description) `Ex : Adulte, Famille, Enfance`
 
 Table : Region (id, name) `Ex : Bretagne, ect...`
 
+Table : statut: `Ex: ouvert, fermé`
+
 Table : Label (id, name) `Ex: Sites archéologiques, Châteaux, Patrimoine religieux, Ouvrage militaire, Demeures d’illustres, Monuments commémoratifs, Parcs et jardins, Autres`
 
 Table : Thematic (id, name) `Ex: Archéologie, Art, Beaux-Arts, Arts décoratifs, Histoire, Sciences, Histoire naturelle, Techniques, Ethnologie, Autres`

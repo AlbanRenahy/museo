@@ -1,18 +1,20 @@
 # Routes
 
-## Sprint 0
+## Front office
 
 | URL | HTTP Method | Controller | Method | Title | Content | Comment |
 |--|--|--|--|--|--|--|
-| `/` | `GET` | `ExampleController` | `example` | Lorem ipsum | Lorem ipsum | - |
+| `/` | `GET` |  |  |  |  | - |
 | `/inscription` |`POST` |  |--|--|--|--|
 | `/connexion` |`POST` |--|--|--|--|--|
 | `/map` |--|--|--|--|--|--|
 | `/about` |--|--|--|--|--|
 | `/contact` |--|--|--|--|--|--|
+| `/list` |--|--|--|--|--|--|
+| `/profil` |--|--|--|--|--|
 
 
-## Backoffice
+## Back office
 
 | URL | HTTP Method | Controller | Method | Title | Content | Access by Role |
 |--|--|--|--|--|--|--|
@@ -34,7 +36,7 @@
 | URL | HTTP Method | Controller | Method | Title | Content | Access by Role |
 |--|--|--|--|--|--|--|
 | `/api/monument/show/{id}` | `GET` | `ApiController` | `showMonument` | Retourne un monument en json | -- | -- |
-| `/api/monument/all` | `GET` | `ApiController` | `allMonument` | Retourne un monument en json | -- | -- |
+| `/api/monument/all` | `GET` | `ApiController` | `allMonument` | Retourne tous les monuments en json | -- | -- |
 
 <!-- > Pour un seul monument =>
 
