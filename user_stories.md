@@ -34,7 +34,6 @@ Fiche récap : https://github.com/O-clock-Alumni/fiches-recap/blob/master/gestio
 
 ## La Carte 
 
-
 | En tant que | Je veux | Afin de (si besoin/nécessaire) |
 |--|--|--|
 | visiteur | pouvoir acceder à la carte | de pouvoir voir tous les 'monuments' mis sur la carte |
@@ -45,7 +44,6 @@ Fiche récap : https://github.com/O-clock-Alumni/fiches-recap/blob/master/gestio
 
 ## MonumentPage ('page/card' d'un monument)
 
-
 | En tant que | Je veux | Afin de (si besoin/nécessaire) |
 |--|--|--|
 | visiteur | pouvoir acceder à un monument | de pouvoir `voir` les informations (limitées) du monument |
@@ -54,7 +52,6 @@ Fiche récap : https://github.com/O-clock-Alumni/fiches-recap/blob/master/gestio
 
 
 ## UserProfile
-
 
 | En tant que | Je veux | Afin de (si besoin/nécessaire) |
 |--|--|--|

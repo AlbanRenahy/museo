@@ -76,10 +76,11 @@ Suivant les lieux, l'âge visé est différent. Des visites plus au goût des ad
   - ajout de couleur de theme
   - carrousel d'images sur les fiches
   - proposition random de lieu à visiter
-
+  - pouvoir gérer les modifications de fiche par un autre utilisateur que le "créateur"
+  - versionning des fiches
 
 ## Arborescence de l'appli (montrer les workflows)
-- 
+- https://whimsical.com/He5Qu3uisBtPGnuUpV25zj
 
 ## Lister les users stories
 -  ( voir user_stories.md )
@@ -89,10 +90,7 @@ Suivant les lieux, l'âge visé est différent. Des visites plus au goût des ad
 
 ## Wireframes du projet
 
-Les WF sont des représentations graphiques des éléments de vos pages (pas des maquettes !)
-LÉGENDER un maximum les WF
-Pour le TP, chaque personne doit en avoir fait au moins un
-En bonus, vous pouvez faire des maquettes et une charte graphique
+- https://whimsical.com/Fk8hNtnxnhQZMZVKfgACQ
 
 ## Documents liés à la BDD
 
