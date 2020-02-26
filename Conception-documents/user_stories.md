@@ -37,8 +37,7 @@ Fiche récap : https://github.com/O-clock-Alumni/fiches-recap/blob/master/gestio
 | En tant que | Je veux | Afin de (si besoin/nécessaire) |
 |--|--|--|
 | visiteur | pouvoir acceder à la carte | de pouvoir voir tous les 'monuments' mis sur la carte |
-| utilisateur | pouvoir acceder à la carte | de pouvoir choisir parmi les filtres une "`Category`" de "`Monument`"|
-| utilisateur | pouvoir acceder à la carte | de pouvoir rechercher un monument grace à son nom | 
+| utilisateur | pouvoir acceder à la carte | de pouvoir consulter les fiches monuments sur mon point de vue|
 | utilisateur | pouvoir créer une fiche | de pouvoir renseigner les données sur un lieu |
 
 

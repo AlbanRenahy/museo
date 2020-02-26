@@ -3,7 +3,7 @@ MONUMENT: id, name, city, adress, createdAt, updatedAt, description, thématique
 CATEGORY: id, name, description, createdAt, updatedAt 
 TARGET AUDIENCE: id, name, description, createdAt, updatedAt 
 REGION: id, name, createdAt, updatedAt 
-LABEL: id, name, createdAt, updatedAt  
+<!--LABEL: id, name, createdAt, updatedAt-->  
 THEMATIC: id, name, createdAt, updatedAt 
 PERIODE: id, name, createdAt, updatedAt 
 USERS: id, username, firstname, lastname, email, createdAt, updatedAt 
@@ -20,14 +20,15 @@ ROLE: id, name, createdAt, updatedAt
 - updatedAt (TIMESTAMP)
 - online (BOOL)
 - available (BOOL)
-<!-- Relations -->
-- category_id (Relation: OneToMany)
-- region_id (Relation: OneToMany)
-- period_id (Relation: OneToMany)
-- thematic_id (Relation: ManyToMany)
-- label_id (Relation: ManyToMany)
-- targetaudience_id (Relation: OneToMany)
-- user_id (Relation: OneToMany)
+  
+       ### Relations
+        - category_id (Relation: OneToMany)
+        - region_id (Relation: OneToMany)
+        - period_id (Relation: OneToMany)
+        - thematic_id (Relation: ManyToMany)
+            <!-- label_id (Relation: ManyToMany)-->
+        - targetaudience_id (Relation: OneToMany)
+        - user_id (Relation: OneToMany)
 
 # Category
 
@@ -63,14 +64,14 @@ ROLE: id, name, createdAt, updatedAt
 - createdAt (TIMESTAMP)
 - updatedAt (TIMESTAMP)
 
-# Label
+<!--# Label
 
 - id (INT)
 - name (VARCHAR)
 - slug (VARCHAR)
 - createdAt (TIMESTAMP)
 - updatedAt (TIMESTAMP)
-
+-->
 # TargetAudience
 
 - id (INT)
@@ -103,13 +104,11 @@ ROLE: id, name, createdAt, updatedAt
 # MCD 
 
 USERS: id, username, firstname, lastname, email, createdAt, updatedAt
-HAVE, 01 ROLE, 1N USERS
+HAVE, 1N ROLE, 01 USERS
 ROLE: id, name, createdAt, updatedAt
 
 
 PERIODE: id, name, createdAt, updatedAt
-
-LABEL: id, name, createdAt, updatedAt
 
 TARGET AUDIENCE: id, name, description, createdAt, updatedAt
 
@@ -123,3 +122,5 @@ BELONGS, 01 CATEGORY,  01 MONUMENT
 
 CONTAINS, 01 THEMATIC, 01 MONUMENT
 THEMATIC: id, name, createdAt, updatedAt
+
+
