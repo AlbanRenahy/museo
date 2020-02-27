@@ -1,11 +1,9 @@
 import React from 'react';
 
 
-import WelcomeMap from '../WelcomeMap';
-
 const Welcome = () => (
   <div>
-    <WelcomeMap />
+    <h1>Hello World</h1>
   </div>
 );
 

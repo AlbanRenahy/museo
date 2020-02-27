@@ -3,13 +3,11 @@ import React from 'react';
 
 // == Import
 
-import Welcome from '../Welcome';
+import LeafletMap from '../LeafletMap';
 
 // == Composant
 const App = () => (
-  <div className="app">
-    <Welcome />
-  </div>
+  <LeafletMap />
 );
 
 // == Export

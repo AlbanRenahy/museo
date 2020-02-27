@@ -1,0 +1,34 @@
+import React from 'react';
+import {
+  Map as LeafletMap, TileLayer, Marker, Popup,
+} from 'react-leaflet';
+import './leafletmap.scss';
+
+// Création de la map avec React Leaflet
+
+const Leaflet = () => (
+  <LeafletMap
+    center={[48.864716, 2.349014]}
+    zoom={6}
+    maxZoom={14}
+    attributionControl
+    zoomControl={false}
+    doubleClickZoom={true}
+    scrollWheelZoom
+    dragging
+    animate
+    easeLinearity={0.35}
+  >
+    <TileLayer
+      url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png"
+    />
+
+    <Marker position={[48.864716, 2.349014]}>
+      <Popup>
+        <h1>Hello la team Museo !</h1>
+      </Popup>
+    </Marker>
+  </LeafletMap>
+);
+
+export default Leaflet;
