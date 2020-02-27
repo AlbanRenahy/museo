@@ -3,11 +3,11 @@ import React from 'react';
 
 // == Import
 
-import Signin from '../Signin';
+import Login from '../Login';
 
 // == Composant
 const App = () => (
-  <Signin />
+  <Login />
 );
 
 // == Export
