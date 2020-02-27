@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -71,6 +73,27 @@ class Monument
      * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="monument")
      */
     private $status;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Thematic", inversedBy="monument")
+     */
+    private $thematic;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Period", inversedBy="monument")
+     */
+    private $period;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Target", inversedBy="monument")
+     */
+    private $target;
+
+    public function __construct()
+    {
+        $this->thematic = new ArrayCollection();
+        $this->target = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -205,6 +228,70 @@ class Monument
     public function setStatus(?Status $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Thematic[]
+     */
+    public function getThematic(): Collection
+    {
+        return $this->thematic;
+    }
+
+    public function addThematic(Thematic $thematic): self
+    {
+        if (!$this->thematic->contains($thematic)) {
+            $this->thematic[] = $thematic;
+        }
+
+        return $this;
+    }
+
+    public function removeThematic(Thematic $thematic): self
+    {
+        if ($this->thematic->contains($thematic)) {
+            $this->thematic->removeElement($thematic);
+        }
+
+        return $this;
+    }
+
+    public function getPeriod(): ?Period
+    {
+        return $this->period;
+    }
+
+    public function setPeriod(?Period $period): self
+    {
+        $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Target[]
+     */
+    public function getTarget(): Collection
+    {
+        return $this->target;
+    }
+
+    public function addTarget(Target $target): self
+    {
+        if (!$this->target->contains($target)) {
+            $this->target[] = $target;
+        }
+
+        return $this;
+    }
+
+    public function removeTarget(Target $target): self
+    {
+        if ($this->target->contains($target)) {
+            $this->target->removeElement($target);
+        }
 
         return $this;
     }
