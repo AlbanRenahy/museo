@@ -2,15 +2,14 @@
 import React from 'react';
 
 // == Import
-import reactLogo from './react-logo.svg';
-import './styles.css';
+
+import Welcome from '../Welcome';
 
 // == Composant
 const App = () => (
-    <div className="app">
-      <img src={reactLogo} alt="react logo" />
-      <h1>Bienvenue sur Museo</h1>
-    </div>
+  <div className="app">
+    <Welcome />
+  </div>
 );
 
 // == Export
