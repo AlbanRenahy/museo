@@ -67,6 +67,11 @@ class Monument
      */
     private $region;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="monument")
+     */
+    private $status;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -188,6 +193,18 @@ class Monument
     public function setRegion(?Region $region): self
     {
         $this->region = $region;
+
+        return $this;
+    }
+
+    public function getStatus(): ?Status
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?Status $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
