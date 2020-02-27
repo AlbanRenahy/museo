@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+
+
+import WelcomeMap from '../WelcomeMap';
 
 const Welcome = () => (
   <div>
-    <h1>Bienvenue sur Museo</h1>
-  </div> 
+    <WelcomeMap />
+  </div>
 );
 
 export default Welcome;
