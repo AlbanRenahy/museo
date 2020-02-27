@@ -2,6 +2,7 @@
  * Import
  */
 import React from 'react';
+import { Link } from 'react-router-dom';
 /**
  * Local import
  */
@@ -18,7 +19,8 @@ const Signin = () => (
       <h1>Museo, page de connexion</h1>
       <form action="">
         <button type="submit">Me connecter</button>
-        <a href="#">Je souhaite m'inscrire</a>
+        <p><Link to="/signin">Je souhaite m'inscrire</Link></p>
+        <p><Link to="/map">Entrer sur la carte en visiteur</Link></p>
       </form>
     </div>
   </div>

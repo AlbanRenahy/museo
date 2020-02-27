@@ -9,8 +9,9 @@ import './leafletmap.scss';
 const Leaflet = () => (
   <LeafletMap
     center={[48.864716, 2.349014]}
-    zoom={6}
-    maxZoom={14}
+    zoom={14}
+    minZoom={3}
+    maxZoom={18}
     attributionControl
     zoomControl={false}
     doubleClickZoom={true}

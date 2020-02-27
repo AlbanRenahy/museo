@@ -1,3 +1,9 @@
+@import '../../assets/styles/vars.scss';
+
+body{
+    background-color: $background-color;
+}
+
 .login {
   
     &-center {
