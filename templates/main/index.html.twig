@@ -1,6 +1,38 @@
-{% include 'base.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Museo{% endblock %}
 
 {% block body %}
+    <h1>Liste des Monuments</h1>
 
-
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Nom</th>
+                <th>Ville</th>
+                <th>Adresse</th>
+                <th>Description</th>
+                <th>Thematiques</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for monument in monuments %}
+            <tr>
+                {# <td>{{ monument.id }}</td> #}
+                <td>{{ monument.name }}</td>
+                <td>{{ monument.city }}</td>
+                <td>{{ monument.adress }}</td>
+                <td>{{ monument.description }}</td>
+                <td>{{ monument.thematiques }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <div class="alert alert-warning">
+                    Aucun monument trouver
+                </div>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
