@@ -7,10 +7,10 @@ import './styles.css';
 
 // == Composant
 const App = () => (
-  <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <h1>Bienvenue sur Museo</h1>
-  </div>
+    <div className="app">
+      <img src={reactLogo} alt="react logo" />
+      <h1>Bienvenue sur Museo</h1>
+    </div>
 );
 
 // == Export
