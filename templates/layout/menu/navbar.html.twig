@@ -1,0 +1,13 @@
+<nav class="nav-museo">
+    <div class="nav-wrapper">
+      <a href="{{ path('home') }}" class="brand-logo">
+          <img src="{{ asset('assets/images/logo.svg') }}" alt="Museo" width="150" height="64">
+      </a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      
+      </ul>
+    </div>
+</nav>
+
+{% include "layout/menu/mobilenav.html.twig" %}
