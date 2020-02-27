@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Monument</h1>
 
-    {{ include('monument/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('monument/_form.html.twig', {'button_label': 'Mettre à jour les informations'}) }}
 
-    <a href="{{ path('monument_index') }}">back to list</a>
+    <a href="{{ path('monument_index') }}" class="btn btn-success">Revenir à la liste</a>
 
     {{ include('monument/_delete_form.html.twig') }}
 {% endblock %}

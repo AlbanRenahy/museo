@@ -1,51 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Monument index{% endblock %}
+{% block title %}Museo{% endblock %}
 
 {% block body %}
-    <h1>Monument index</h1>
+    <h1>Liste des Monuments</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>City</th>
-                <th>Adress</th>
+                {# <th>Id</th> #}
+                <th>Nom</th>
+                <th>Ville</th>
+                <th>Adresse</th>
                 <th>Description</th>
                 <th>Thematiques</th>
-                <th>Likes</th>
-                <th>Dislikes</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for monument in monuments %}
             <tr>
-                <td>{{ monument.id }}</td>
+                {# <td>{{ monument.id }}</td> #}
                 <td>{{ monument.name }}</td>
                 <td>{{ monument.city }}</td>
                 <td>{{ monument.adress }}</td>
                 <td>{{ monument.description }}</td>
                 <td>{{ monument.thematiques }}</td>
-                <td>{{ monument.likes }}</td>
-                <td>{{ monument.dislikes }}</td>
-                <td>{{ monument.createdAt ? monument.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ monument.updatedAt ? monument.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('monument_show', {'id': monument.id}) }}">show</a>
-                    <a href="{{ path('monument_edit', {'id': monument.id}) }}">edit</a>
+                    <a href="{{ path('monument_edit', {'id': monument.id}) }}" class="btn btn-success">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="11">no records found</td>
+                <div class="alert alert-warning">
+                    Aucun monument trouver
+                </div>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('monument_new') }}">Create new</a>
+    <a href="{{ path('monument_new') }}" class="btn btn-primary">Ajouter un monument</a>
 {% endblock %}

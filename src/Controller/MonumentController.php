@@ -49,16 +49,6 @@ class MonumentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="monument_show", methods={"GET"})
-     */
-    public function show(Monument $monument): Response
-    {
-        return $this->render('monument/show.html.twig', [
-            'monument' => $monument,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="monument_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Monument $monument): Response

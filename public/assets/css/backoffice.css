@@ -2,3 +2,35 @@
     background-color: #6A2C70;
     box-shadow: none;
 }
+
+.btn{
+    margin: 1rem;
+}
+
+.btn-primary{
+    background-color: #6A2C70;
+}
+
+.btn-success{
+    background-color: green;
+}
+
+.btn-danger{
+    background-color: red;
+}
+
+.dropdown-content{
+    top:64px !important;
+}
+
+.alert{
+    width: 100%;
+    background-color: #e4e4e4;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.alert-warning{
+    background-color: #F4CD41;
+    color:black;
+}
