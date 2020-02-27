@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Monument{% endblock %}
+
+{% block body %}
+    <h1>Monument</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ monument.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ monument.name }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ monument.city }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ monument.adress }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ monument.description }}</td>
+            </tr>
+            <tr>
+                <th>Thematiques</th>
+                <td>{{ monument.thematiques }}</td>
+            </tr>
+            <tr>
+                <th>Likes</th>
+                <td>{{ monument.likes }}</td>
+            </tr>
+            <tr>
+                <th>Dislikes</th>
+                <td>{{ monument.dislikes }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ monument.createdAt ? monument.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ monument.updatedAt ? monument.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('monument_index') }}">back to list</a>
+
+    <a href="{{ path('monument_edit', {'id': monument.id}) }}">edit</a>
+
+    {{ include('monument/_delete_form.html.twig') }}
+{% endblock %}

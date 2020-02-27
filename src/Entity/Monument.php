@@ -65,7 +65,6 @@ class Monument
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monument")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $region;
 
