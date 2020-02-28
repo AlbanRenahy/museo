@@ -25,9 +25,9 @@
                 <td>{{ monument.city }}</td>
                 <td>{{ monument.adress }}</td>
                 <td>{{ monument.description }}</td>
-                <td>{{ monument.thematiques }}</td>
+                <td><span class="badge">{{ monument.thematiques }}</span></td>
                 <td>
-                    <a href="{{ path('monument_edit', {'id': monument.id}) }}" class="btn btn-success">edit</a>
+                    <a href="{{ path('monument_edit', {'id': monument.id}) }}" class="btn btn-success"><i class="material-icons center">edit</i></a>
                 </td>
             </tr>
         {% else %}

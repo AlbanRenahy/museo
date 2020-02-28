@@ -36,9 +36,7 @@ class MonumentType extends AbstractType
             // ->add('thematiques')
             // ->add('likes')
             // ->add('dislikes')
-            // ->add('createdAt', DateType::class, [
-            //     'label' => 'Merci de completer avant'
-            // ])
+            // ->add('createdAt')
             // ->add('updatedAt')
             // ->add('region')
             // ->add('status')
