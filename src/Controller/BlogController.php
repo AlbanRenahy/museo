@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Blog;
 use App\Repository\BlogRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,8 +32,8 @@ class BlogController extends AbstractController
         return $this->render('blog/index.html.twig', compact('posts'));
     }
 
-    public function show()
+    public function show(Blog $blog)
     {
-        return $this->render('blog/show.html.twig');
+        return $this->render('blog/show.html.twig', compact('blog'));
     }
 }
