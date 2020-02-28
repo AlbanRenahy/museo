@@ -6,7 +6,7 @@ import France from 'src/styles/images/France-vector-map.svg';
 const WelcomeMap = () => (
   <div className="map">
     <div className="markers">
-      <img src={France} className="france" alt="FranceMap" />
+      <div className="francemap"><img src={France} className="france" alt="FranceMap" /></div>
       <span className="marker1" />
       <span className="marker2" />
       <span className="marker3" />
