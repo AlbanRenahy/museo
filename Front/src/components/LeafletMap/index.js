@@ -24,11 +24,6 @@ const Leaflet = () => (
       url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png"
     />
 
-    <Marker position={[48.864716, 2.349014]}>
-      <Popup>
-        <h1>Hello la team Museo !</h1>
-      </Popup>
-    </Marker>
   </LeafletMap>
 );
 

@@ -1,8 +1,16 @@
 .map{
     position: relative;
+    width: 50%;
+    margin-top: 3rem;
 }
+
+.francemap {
+    width: 80%;
+    margin: auto;
+}
+
 .markers{
-    margin-top:200px;
+    margin: auto;
 }
 .map span {
     position: absolute;
@@ -10,7 +18,7 @@
     height: 15px;
     border-radius: 50px;
     top: 50%;
-    left: 24em;
+    left: 25em;
     background-color:#fff;
 
     /* Highlight animation */
@@ -25,13 +33,13 @@
 }
 /* Same animation for different location */
 .map .marker2{
-    left: 10em;
-    top: 64%;
+    left: 13em;
+    top: 65%;
     animation-delay: .5s;
 }
 .map .marker3{
     left: 21em;
-    top: 80%;
+    top: 85%;
     animation-delay: 1s;
 }
 .map .marker4{
@@ -44,18 +52,4 @@
     top: 23%;
     animation-delay: .3s;
 }
-.stephaneBern{
-    width:150px;
-    margin: 5rem;
-    margin-left:250px;
-    animation: turn 5s linear 1s infinite running;
-}
-@keyframes turn {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+
