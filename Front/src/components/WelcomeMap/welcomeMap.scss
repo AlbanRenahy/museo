@@ -1,0 +1,61 @@
+.map{
+    position: relative;
+}
+.markers{
+    margin-top:200px;
+}
+.map span {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    top: 50%;
+    left: 24em;
+    background-color:#fff;
+
+    /* Highlight animation */
+    animation: highlight 1.5s linear infinite;
+
+}
+@keyframes highlight{
+    100%{
+        transform: scale(5);
+        opacity: 0;
+    }
+}
+/* Same animation for different location */
+.map .marker2{
+    left: 10em;
+    top: 64%;
+    animation-delay: .5s;
+}
+.map .marker3{
+    left: 21em;
+    top: 80%;
+    animation-delay: 1s;
+}
+.map .marker4{
+    left: 8em;
+    top: 26%;
+    animation-delay: .8s;
+}
+.map .marker5{
+    left: 18em;
+    top: 23%;
+    animation-delay: .3s;
+}
+.stephaneBern{
+    width:150px;
+    margin: 5rem;
+    margin-left:250px;
+    animation: turn 5s linear 1s infinite running;
+}
+@keyframes turn {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }

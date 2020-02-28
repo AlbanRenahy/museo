@@ -11,19 +11,18 @@ import LeafletMap from '../LeafletMap';
 const App = () => (
   <Switch>
     <Route
+      exact
+      path="/"
+      render={() => (
+        <Login />
+      )}
+    />
+    <Route
       path="/signin"
       render={() => (
         <Signin />
       )}
     />
-
-    <Route
-      path="/login"
-      render={() => (
-        <Login />
-      )}
-    />
-
 
     <Route
       path="/map"

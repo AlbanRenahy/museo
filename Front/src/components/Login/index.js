@@ -3,10 +3,10 @@
  */
 import React from 'react';
 import { Link } from 'react-router-dom';
-/**
- * Local import
- */
+
+
 // Composants
+import WelcomeMap from '../WelcomeMap';
 // Styles et assets
 import './login.scss';
 
@@ -15,6 +15,7 @@ import './login.scss';
  */
 const Signin = () => (
   <div className="login">
+    <WelcomeMap />
     <div className="login-center">
       <h1>Museo, page de connexion</h1>
       <form action="">

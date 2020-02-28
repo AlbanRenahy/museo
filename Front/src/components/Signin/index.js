@@ -3,10 +3,9 @@
  */
 import React from 'react';
 import { Link } from 'react-router-dom';
-/**
- * Local import
- */
+
 // Composants
+import WelcomeMap from '../WelcomeMap';
 // Styles et assets
 import './signin.scss';
 
@@ -15,11 +14,12 @@ import './signin.scss';
  */
 const Signin = () => (
   <div className="signin">
+    <WelcomeMap />
     <div className="signin-center">
       <h1>Museo, page d'inscription</h1>
       <form action="">
         <button type="submit">M'inscrire</button>
-        <a href="#"><Link to="/login">J'ai déjà mes identifiants</Link></a>
+        <a href="#"><Link to="/">J'ai déjà mes identifiants</Link></a>
       </form>
     </div>
   </div>
