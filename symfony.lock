@@ -90,6 +90,12 @@
     "egulias/email-validator": {
         "version": "2.1.17"
     },
+    "gregwar/captcha": {
+        "version": "v1.1.8"
+    },
+    "gregwar/captcha-bundle": {
+        "version": "v2.1.1"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
