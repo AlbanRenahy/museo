@@ -5,17 +5,14 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin/monument")
- */
-class MonumentController extends AbstractController
+class MainController extends AbstractController
 {
 
     /**
-     * @Route("/", name="admin.monument.index")
+     * @Route("/", name="home")
      */
     public function index()
     {
-        return $this->render('dashboard/monument/index.html.twig');
+        return $this->render('main/index.html.twig');
     }
 }
