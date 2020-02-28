@@ -5,6 +5,21 @@
 <div class="container mt-4">
     <a href="{{ path('home') }}" class="btn btn-primary">Voir le site</a>
     <h1>Accueil Dashboard</h1>
+    <div class="card">
+        <div class="card-header">
+          Gestions du site
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <a href="{{ path('admin.monument.index') }}">Gestion des Monuments</a>
+              <span class="badge badge-primary">0</span>
+            </li>
+            <li class="list-group-item">
+              <a href="{{ path('admin.blog.index') }}">Gestion des Articles</a>
+              <span class="badge badge-success">0</span>
+            </li>
+        </ul>
+      </div>
 </div>
 
 {% endblock %}
