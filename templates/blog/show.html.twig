@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h1>{{ blog.name }} <h5 class="text-muted">Article crée le : {{ blog.createdAt|date("d-M-Y") }}</h5></h1>
+        <p>{{ blog.content }}</p>
+
+        <pre>
+            {{ dump(blog) }}
+        </pre>
+    </div>
+
+{% endblock %}
