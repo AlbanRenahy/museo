@@ -1,7 +1,14 @@
+body {
+  // background-image: background-color rgba(251, 225, 146, 0.322), url("../../styles/images/BG-Login-Signin.png");
+  background-image: linear-gradient( rgba(251, 225, 146, 0.6),rgba(0, 0, 255, 0.5)),
+                  url("../../styles/images/BG-Login-Signin.png");
+                  
+}
 
 .home-container {
   background-position: center;
   background-size: cover;
+  height: 100vh;
   display: flex;
   padding: 3rem;
 }
@@ -28,6 +35,7 @@
 
 .login {
   width: 50%;
+  margin: auto;
 
     &-container {
       width: 60%;
@@ -47,7 +55,7 @@
       border-radius: 10px;
       flex-direction: column;
       padding: 2rem;
-      background-color: white;
+      background-color: rgba(251, 225, 146, 0.3);
       justify-content: space-between;
 
       p {
@@ -66,7 +74,7 @@
         }
       }
       .map-link {
-        margin-top: 2rem;
+        margin-top: 1rem;
         color: rgb(100, 43, 124);
         font-variant: small-caps;
         padding-bottom: 0;
@@ -101,7 +109,7 @@
       }
       
       button {
-        background-color: rgb(217, 140, 94);
+        background-color: rgb(100, 43, 124);
           color: white;
           font-weight: bolder;
           border-radius: 4px;
@@ -115,13 +123,13 @@
           font-variant: small-caps;
 
           &:hover {
-            background-color: rgb(100, 43, 124);
+            background-color:rgb(217, 140, 94);
           }
       }
 
       a {
         text-align: center;
-        margin-top: 15px;
+        margin-top: 10px;
       }
 
       

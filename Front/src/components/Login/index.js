@@ -20,7 +20,7 @@ import './login.scss';
  */
 const Login = () => (
   <div className="home-container" src={Background} >
-    <WelcomeMap />
+    {/* <WelcomeMap /> */}
     <div className="login">
       <div className="login-container">
         <img src={MuseoLogoBW} className="museo-logo" alt="Logo Museo" />
