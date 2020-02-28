@@ -88,6 +88,16 @@ class Monument
      */
     private $target;
 
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     */
+    private $latitude;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     */
+    private $longitude;
+
     public function __construct()
     {
         $this->thematic = new ArrayCollection();
@@ -291,6 +301,30 @@ class Monument
         if ($this->target->contains($target)) {
             $this->target->removeElement($target);
         }
+
+        return $this;
+    }
+
+    public function getLatitude(): ?string
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(?string $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?string
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?string $longitude): self
+    {
+        $this->longitude = $longitude;
 
         return $this;
     }
