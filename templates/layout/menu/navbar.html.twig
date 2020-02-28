@@ -5,6 +5,12 @@
       </a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {% if app.user %}
+          <li>Vous êtes connecter en tant que <strong>{{ app.user.username }}</strong></li>
+          <li><a href="{{ path('app_logout') }}" class="btn btn-secondary" style="margin:0 15px;">Deconnexion</a></li>
+        {% else %}
+          <li><a href="{{ path('app_login') }}" class="btn btn-secondary" style="margin:0 15px;">Connexion</a></li>
+        {% endif %}
         <li><a class="dropdown-trigger" href="#!" data-target="dropdown-monument"><i class="material-icons left">business</i>Gestion Monuments<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>    
     </div>
