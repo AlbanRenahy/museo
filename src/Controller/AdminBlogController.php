@@ -17,4 +17,5 @@ class AdminBlogController extends AbstractController
     {
         return $this->render('dashboard/blog/index.html.twig');
     }
+
 }
