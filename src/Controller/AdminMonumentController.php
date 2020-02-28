@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin/monument")
  */
-class MonumentController extends AbstractController
+class AdminMonumentController extends AbstractController
 {
 
     /**
