@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BlogRepository")
@@ -19,11 +20,16 @@ class Blog
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Le titre de l'article ne peut pas être vide")
+     * @Assert\Length(min=5, max=50)
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(
+     *      message = "Le contenu de l'article ne peut pas être vide"
+     * )
      */
     private $content;
 

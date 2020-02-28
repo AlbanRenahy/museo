@@ -3,16 +3,24 @@
 {% block body %}
 
 <div class="container mt-4">
-    <h1>Gestion des Articles</h1>
-    {{ dump(articles) }}
+
+    {% for label, messages in app.flashes(['warning', 'error', 'success']) %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <h1>Gestion des Articles</h1> 
+    
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col" >ID</th>
-                <th scope="col" >Titre de l'article</th>
-                <th scope="col" >Contenue de l'article</th>
-                <th scope="col" >Date création</th>
-                <th scope="col" >Actions</th>
+                <th scope="col">ID</th>
+                <th scope="col">Titre de l'article</th>
+                <th scope="col">Contenue de l'article</th>
+                <th scope="col">Date création</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -25,12 +33,13 @@
                 <th>
                     <a href="{{ path('admin.blog.edit', {id: article.id}) }}" class="btn btn-secondary">Editer</a>
                     <a href="{{ path('admin.blog.delete', {id: article.id}) }}" class="btn btn-danger">Supprimer</a>
-                    <a href="{{ path('blog.show', {slug: article.slug}) }}" class="btn btn-success">Voir l'article</a>
+                    <a href="{#{ path('blog.show', {slug: article.slug}) }#}" class="btn btn-success">Voir l'article</a>
                 </th>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    <span><a href="{{ path('admin.blog.new') }}" class="btn btn-primary">Ajouter un article</a></span>
 </div>
 
 {% endblock %}
