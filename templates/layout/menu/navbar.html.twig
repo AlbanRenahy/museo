@@ -1,16 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="{{ path('home') }}">Backoffice</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            {# <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                <a class="nav-link" href="#">Listes des monuments</a>
-                </li>
-            </ul> #}
-        </div>
+<nav class="nav-museo">
+    <div class="nav-wrapper">
+      <a href="{{ path('home') }}" class="brand-logo">
+          <img src="{{ asset('assets/images/logo.svg') }}" alt="Museo" width="150" height="64">
+      </a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown-monument"><i class="material-icons left">business</i>Gestion Monuments<i class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>    
     </div>
 </nav>
+
+<ul id="dropdown-monument" class="dropdown-content">
+  <li><a href="{{ path('monument_index') }}"><i class="material-icons left">list</i>Liste Monuments</a></li>
+  <li><a href="{{ path('monument_new') }}"><i class="material-icons left">post_add</i>Ajouter Monument</a></li>
+</ul>  
+
+{% include "layout/menu/mobilenav.html.twig" %}

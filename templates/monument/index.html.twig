@@ -14,6 +14,7 @@
                 <th>Adresse</th>
                 <th>Description</th>
                 <th>Thematiques</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,9 @@
                 <td>{{ monument.adress }}</td>
                 <td>{{ monument.description }}</td>
                 <td>{{ monument.thematiques }}</td>
+                <td>
+                    <a href="{{ path('monument_edit', {'id': monument.id}) }}" class="btn btn-success">edit</a>
+                </td>
             </tr>
         {% else %}
             <tr>
@@ -35,4 +39,6 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{ path('monument_new') }}" class="btn btn-primary">Ajouter un monument</a>
 {% endblock %}
