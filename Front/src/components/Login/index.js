@@ -10,7 +10,6 @@ import MuseoLogoBW from 'src/styles/images/logo_museo_couleur.png';
 import Background from 'src/styles/images/BG-Login-Signin.png';
 
 // Composants
-import WelcomeMap from '../WelcomeMap';
 
 // Styles et assets
 import './login.scss';

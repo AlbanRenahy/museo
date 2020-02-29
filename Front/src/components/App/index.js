@@ -1,6 +1,6 @@
 // == Import npm
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 // == Import
 import Signin from '../Signin';
@@ -14,9 +14,17 @@ const App = () => (
       exact
       path="/"
       render={() => (
+        <Redirect to="/login" />
+      )}
+    />
+
+    <Route
+      path="/login"
+      render={() => (
         <Login />
       )}
     />
+
     <Route
       path="/signin"
       render={() => (
