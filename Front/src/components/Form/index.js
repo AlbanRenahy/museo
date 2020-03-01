@@ -26,7 +26,8 @@ const Form = ({ children }) => {
       {children}
     </form>
   );
-}
+};
+
 
 /**
  * Export
