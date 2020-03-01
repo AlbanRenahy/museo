@@ -3,8 +3,9 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 // == Import
-import Signin from '../Signin';
-import Login from '../Login';
+import Welcome from 'src/containers/Welcome';
+import Signin from 'src/containers/Signin';
+import Login from 'src/containers/Login';
 import LeafletMap from '../LeafletMap';
 
 // == Composant
@@ -21,14 +22,18 @@ const App = () => (
     <Route
       path="/login"
       render={() => (
-        <Login />
+        <Welcome>
+          <Login />
+        </Welcome>
       )}
     />
 
     <Route
       path="/signin"
       render={() => (
-        <Signin />
+        <Welcome>
+          <Signin />
+        </Welcome>
       )}
     />
 

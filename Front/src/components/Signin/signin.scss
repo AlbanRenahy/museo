@@ -1,93 +1,20 @@
-@keyframes showLabel {
-  0% {
-    opacity: 0;
-    top: 0
-  }
 
-  100% {
-    opacity: 1;
-    top: -17px;
+.signin-container_names { // The two fields on the same row
+  display: flex;
+  justify-content: space-between;
+  
+  div { // each individual input div (Prénom, Nom)
+    width: 45%;
+    position: relative;
   }
 }
 
-.signin {
-  filter: brightness(1.05);
-  background-image: url("../../styles/images/BG-Login-Signin.png");
-  background: linear-gradient( rgba(251, 225, 146, 0.6),rgba(0, 0, 255, 0.5));
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  font-family: 'Open Sans', sans-serif;
 
-  &-container {
-    margin: 0;
-    position: absolute;
-    max-width: 400px;
-    min-width:300px;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-
-    &_subtitle {
-      font-variant: small-caps;
-      font-weight: bold;
-      text-align: center;
-      margin: 10px 0 50px 0;
-      color: rgb(100, 43, 124);
-      
-      span {
-        font-style: italic;
-      }
-    }
-
-    &_names {
-      display: flex;
-      justify-content: space-between;
-      
-      div {
-        width: 45%;
-        position: relative;
-      }
-    }
-    
-    div {
-      position: relative;
-      label {
-        position: absolute;
-        opacity: 0;
-        transition: 0.4s;
-        font-weight: bold;
-        font-size: .9em;
-        color: rgb(100, 43, 124);
-
-        &.open {
-          animation: 0.4s showLabel;
-          opacity: 1;
-          top: -17px;
-        }
-
-        &.focus {
-          color: rgb(204, 107, 51);
-        }
-      }
-    }
-
-    img {
-      width: 100%;
-    }
-
-      p {
-        font-variant: small-caps;
-        color: rgb(100, 43, 124);
-        font-weight: bold;
-        text-align: center;
-        margin-top: 20px;
-        &:hover {
-          color: rgb(204, 107, 51);
-        }
-      }
-    }
-  }
+a { // link "j'ai déja mes identifiants"
+  font-size:1.1rem;
+  font-variant: small-caps;
+  color: rgb(100, 43, 124);
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}

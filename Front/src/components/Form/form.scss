@@ -7,8 +7,9 @@ form {
   opacity: 0.7;
   justify-content: space-between;
 
-  button {
-    background-color: rgb(100, 43, 124);
+  .form-button {
+    font-variant: small-caps;
+    background-color: rgb(60, 43, 124);
     color: white;
     border-radius: 4px;
     padding: 10px;
@@ -16,6 +17,7 @@ form {
     font-family: "Open Sans", sans-serif;
     font-size: 1.3em;
     margin-top: 10px;
+    margin-bottom: 10px;
     transition: 0.4s;
     &:hover {
       background-color: rgb(204, 107, 51);
