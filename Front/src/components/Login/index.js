@@ -20,22 +20,16 @@ import './login.scss';
  * Code
  */
 const Login = ({
-  loginInput, passwordInput, changeLogin, changePassword, connectUser,
-}) => {
-  const handleConnectUser = (event) => {
-    event.preventDefault();
-    console.log('connectUser');
-    connectUser();
-  };
-  return (
-    <Form onSubmit={connectUser}>
+  loginInput, passwordInput, updateFormField,
+}) => (
+    <Form>
       <Input
         type="email"
         id="email"
         name="email"
         placeholder="Email*"
         value={loginInput}
-        onChangeFunction={changeLogin}
+        onChangeFunction={(input) => updateFormField('loginInput', input)}
       />
       <Input
         type="password"
@@ -43,7 +37,7 @@ const Login = ({
         name="password"
         placeholder="Mot de passe*"
         value={passwordInput}
-        onChangeFunction={changePassword}
+        onChangeFunction={(input) => updateFormField('passwordInput', input)}
       />
       <p className="lost-password">
         <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
@@ -53,7 +47,6 @@ const Login = ({
       <Link to="/map">Entrer sur la carte en visiteur</Link>
     </Form>
   );
-};
 
 Login.propTypes = {
   loginInput: PropTypes.oneOfType([
@@ -64,9 +57,7 @@ Login.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
-  changeLogin: PropTypes.func.isRequired,
-  changePassword: PropTypes.func.isRequired,
-  connectUser: PropTypes.func.isRequired,
+  updateFormField: PropTypes.func.isRequired,
 };
 
 

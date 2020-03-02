@@ -24,10 +24,7 @@ const Signin = ({
   loginInput,
   passwordInput,
   passConfirmInput,
-  changeUsername,
-  changeLogin,
-  changePassword,
-  changePassConfirm,
+  updateFormField,
 }) => (
   <Form>
     <Input
@@ -36,7 +33,7 @@ const Signin = ({
       name="username"
       placeholder="Pseudonyme*"
       value={usernameInput}
-      onChangeFunction={changeUsername}
+      onChangeFunction={(input) => updateFormField('usernameInput', input)}
     />
 
     <Input
@@ -45,7 +42,7 @@ const Signin = ({
       name="email"
       placeholder="Email*"
       value={loginInput}
-      onChangeFunction={changeLogin}
+      onChangeFunction={(input) => updateFormField('loginInput', input)}
     />
 
     <Input
@@ -54,7 +51,7 @@ const Signin = ({
       name="password"
       placeholder="Mot de passe*"
       value={passwordInput}
-      onChangeFunction={changePassword}
+      onChangeFunction={(input) => updateFormField('passwordInput', input)}
     />
 
     <Input
@@ -63,7 +60,7 @@ const Signin = ({
       name="password-confirm"
       placeholder="Confirmer votre mot de passe*"
       value={passConfirmInput}
-      onChangeFunction={changePassConfirm}
+      onChangeFunction={(input) => updateFormField('passConfirmInput', input)}
     />
 
     <button type="submit" className="form-button">M'inscrire</button>
@@ -79,10 +76,7 @@ Signin.propTypes = {
   loginInput: PropTypes.string.isRequired,
   passwordInput: PropTypes.string.isRequired,
   passConfirmInput: PropTypes.string.isRequired,
-  changeUsername: PropTypes.func.isRequired,
-  changeLogin: PropTypes.func.isRequired,
-  changePassword: PropTypes.func.isRequired,
-  changePassConfirm: PropTypes.func.isRequired,
+  updateFormField: PropTypes.func.isRequired,
 };
 
 /**
