@@ -40,7 +40,7 @@ class AdminBlogController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($blog);
             $entityManager->flush();
-            $this->addFlash('info', 'Article ajouté');
+            $this->addFlash('success', 'Article ajouté');
 
             return $this->redirectToRoute('admin.blog.index', ['id' => $blog->getId()]);
         }
