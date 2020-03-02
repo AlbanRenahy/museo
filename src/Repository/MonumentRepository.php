@@ -19,23 +19,14 @@ class MonumentRepository extends ServiceEntityRepository
         parent::__construct($registry, Monument::class);
     }
 
-    // /**
-    //  * @return Monument[] Returns an array of Monument objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function countMonuments()
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id)')
             ->getQuery()
-            ->getResult()
+            ->getSingleScalarResult()
         ;
     }
-    */
-
     /*
     public function findOneBySomeField($value): ?Monument
     {

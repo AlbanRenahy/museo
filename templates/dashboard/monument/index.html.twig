@@ -3,7 +3,72 @@
 {% block body %}
 
 <div class="container mt-4">
-    <h1>Gestion des Monuments</h1>
+
+    {% for label, messages in app.flashes(['warning', 'error', 'success', 'info']) %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    {% if monuments == null %}
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i> Aucun monument trouver
+            <br>
+            Si vous souhaitez en ajouter cliquer sur "Ajouter un monument"
+        </div>
+    {% else %}
+        <h1>Gestion des Monuments</h1> 
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nom du monument</th>
+                    <th scope="col">Ville</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Thématique</th>
+                    <th scope="col">Likes</th>
+                    <th scope="col">Dislikes</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Latitude</th>
+                    <th scope="col">Longitude</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for monument in monuments %}          
+                <tr>
+                    <th scope="row" >{{ monument.id }}</th>
+                    <td>{{ monument.name }}</td>
+                    <td>{{ monument.city }}</td>
+                    <td>{{ monument.adress }}</td>
+                    <td>{{ monument.description|slice(0, 50) }}...</td>
+                    <td>{{ monument.thematic }}</td>
+                    <td>{{ monument.likes }}</td>
+                    <td>{{ monument.dislikes }}</td>
+                    {% if monument.createdAt == null %}
+                        <td>Aucune date</td>
+                    {% else %}
+                        <td>{{ monument.createdAt|date("d/m/Y") }}</td>                
+                    {% endif %}
+                    <td>{{ monument.latitude }}</td>
+                    <td>{{ monument.longitude }}</td>
+                    <th>
+                        <div class="btn-group">
+                            <a href="{{ path('admin.monument.edit', {id: monument.id}) }}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                            <a href="{{ path('admin.monument.delete', {id: monument.id}) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    
+    <span><a href="{{ path('admin.monument.new') }}" class="btn btn-primary">Ajouter un monument <i class="fas fa-arrow-circle-right"></i></a></span>
 </div>
 
 {% endblock %}

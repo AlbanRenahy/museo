@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Blog;
 use App\Form\BlogType;
+use App\Repository\AuthorRepository;
 use App\Repository\BlogRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
