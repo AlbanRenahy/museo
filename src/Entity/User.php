@@ -31,6 +31,11 @@ class User
      */
     private $password;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Monument", inversedBy="user")
+     */
+    private $monument;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class User
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getMonument(): ?Monument
+    {
+        return $this->monument;
+    }
+
+    public function setMonument(?Monument $monument): self
+    {
+        $this->monument = $monument;
 
         return $this;
     }

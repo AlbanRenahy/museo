@@ -36,6 +36,11 @@ class Region
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Monument", inversedBy="region")
+     */
+    private $monument;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Region
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getMonument(): ?Monument
+    {
+        return $this->monument;
+    }
+
+    public function setMonument(?Monument $monument): self
+    {
+        $this->monument = $monument;
 
         return $this;
     }

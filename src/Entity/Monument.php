@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,11 +39,6 @@ class Monument
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $thematic;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $likes;
@@ -70,6 +67,40 @@ class Monument
      * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
      */
     private $longitude;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Region", mappedBy="monument")
+     */
+    private $region;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Period", mappedBy="monument")
+     */
+    private $period;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Thematic", inversedBy="monuments")
+     */
+    private $thematic;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Target", mappedBy="monument")
+     */
+    private $target;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="monument")
+     */
+    private $user;
+
+    public function __construct()
+    {
+        $this->region = new ArrayCollection();
+        $this->period = new ArrayCollection();
+        $this->thematic = new ArrayCollection();
+        $this->target = new ArrayCollection();
+        $this->user = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -204,6 +235,148 @@ class Monument
     public function setLongitude(?string $longitude): self
     {
         $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Region[]
+     */
+    public function getRegion(): Collection
+    {
+        return $this->region;
+    }
+
+    public function addRegion(Region $region): self
+    {
+        if (!$this->region->contains($region)) {
+            $this->region[] = $region;
+            $region->setMonument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRegion(Region $region): self
+    {
+        if ($this->region->contains($region)) {
+            $this->region->removeElement($region);
+            // set the owning side to null (unless already changed)
+            if ($region->getMonument() === $this) {
+                $region->setMonument(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Period[]
+     */
+    public function getPeriod(): Collection
+    {
+        return $this->period;
+    }
+
+    public function addPeriod(Period $period): self
+    {
+        if (!$this->period->contains($period)) {
+            $this->period[] = $period;
+            $period->setMonument($this);
+        }
+
+        return $this;
+    }
+
+    public function removePeriod(Period $period): self
+    {
+        if ($this->period->contains($period)) {
+            $this->period->removeElement($period);
+            // set the owning side to null (unless already changed)
+            if ($period->getMonument() === $this) {
+                $period->setMonument(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function addThematic(Thematic $thematic): self
+    {
+        if (!$this->thematic->contains($thematic)) {
+            $this->thematic[] = $thematic;
+        }
+
+        return $this;
+    }
+
+    public function removeThematic(Thematic $thematic): self
+    {
+        if ($this->thematic->contains($thematic)) {
+            $this->thematic->removeElement($thematic);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Target[]
+     */
+    public function getTarget(): Collection
+    {
+        return $this->target;
+    }
+
+    public function addTarget(Target $target): self
+    {
+        if (!$this->target->contains($target)) {
+            $this->target[] = $target;
+            $target->setMonument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTarget(Target $target): self
+    {
+        if ($this->target->contains($target)) {
+            $this->target->removeElement($target);
+            // set the owning side to null (unless already changed)
+            if ($target->getMonument() === $this) {
+                $target->setMonument(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUser(): Collection
+    {
+        return $this->user;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
+            $user->setMonument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->user->contains($user)) {
+            $this->user->removeElement($user);
+            // set the owning side to null (unless already changed)
+            if ($user->getMonument() === $this) {
+                $user->setMonument(null);
+            }
+        }
 
         return $this;
     }
