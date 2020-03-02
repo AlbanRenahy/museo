@@ -3,7 +3,7 @@
 {% block body %}
 
 <div class="container mt-4">
-    {# <a href="{{ path('home') }}" class="btn btn-primary">Voir le site</a> #}
+
     <h1>Accueil Dashboard</h1>
     {# Block pour les monuments #}
     <div class="row">
@@ -13,23 +13,34 @@
             Gestions Monument
             <br>Actuellement <strong>{{ countMonuments }}</strong> Monuments en base
           </a>
-          <a href="{{ path('admin.monument.index') }}" class="list-group-item list-group-item-action"><i class="fas fa-list-ul"></i> Voir la liste des monuments</a>
-          <a href="{{ path('admin.monument.new') }}" class="list-group-item list-group-item-action"><i class="fas fa-arrow-circle-right"></i> Ajouter un monument</a>
-          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true "><i class="fas fa-archway"></i> Voir les monuments</a>
-          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true "><i class="fas fa-map-signs"></i> Acceder à la carte en tant qu'Admin</a>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Purger l'API [BLOG]</a>
+          {# SI aucun monument en base alors indication #}
+          {% if countMonuments == 0 %}
+            <li class="list-group-item text-danger">Aucun monument en BDD, Cliquer sur "Ajouter un monument"</li>
+          {% else %}
+            <a href="{{ path('admin.monument.index') }}" class="list-group-item list-group-item-info list-group-item-action"><i class="fas fa-list-ul"></i> Voir la liste des monuments</a>
+          {% endif %}
+          <a href="{{ path('admin.monument.new') }}" class="list-group-item list-group-item-success list-group-item-action"><i class="fas fa-arrow-circle-right"></i> Ajouter un monument</a>
+          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true "><i class="fas fa-archway"></i> Voir les monuments <span class="text-danger">(Features pas encore disponible)</span></a>
+          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true "><i class="fas fa-map-signs"></i> Acceder à la carte en tant qu'Admin <span class="text-danger">(Features pas encore disponible)</span></a>
+          <li class="list-group-item list-group-item list-group-item-danger">Purger l'API [Monuments] (Impossible)</li>
         </div>
       </div>
+      {# Block pour le blog #}
       <div class="col-md-6 mt-4">
         <div class="list-group">
           <a href="#" class="list-group-item list-group-item-action active">
             Gestions Blog
             <br>Actuellement <strong>{{ countPosts }}</strong> Article sur le blog
           </a>
-          <a href="{{ path('admin.blog.index') }}" class="list-group-item list-group-item-action"><i class="fas fa-list-ul"></i> Voir la liste des articles</a>
-          <a href="{{ path('admin.blog.new') }}" class="list-group-item list-group-item-action"><i class="fas fa-arrow-circle-right"></i> Ajouter un article</a>
-          <a href="{{ path('blog.index') }}" class="list-group-item list-group-item-action"><i class="fas fa-th"></i> Voir le blog</a>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Purger l'API [BLOG]</a>
+          {# SI aucun monument en base alors indication #}
+          {% if countPosts == 0 %}
+            <li class="list-group-item text-danger">Aucun article en BDD, Cliquer sur "Ajouter un article"</li>
+          {% else %}
+            <a href="{{ path('admin.blog.index') }}" class="list-group-item list-group-item-info list-group-item-action"><i class="fas fa-list-ul"></i> Voir la liste des articles</a>
+          {% endif %}
+          <a href="{{ path('admin.blog.new') }}" class="list-group-item list-group-item-success list-group-item-action"><i class="fas fa-arrow-circle-right"></i> Ajouter un article</a>
+          <a href="{{ path('blog.index') }}" class="list-group-item list-group-item-success list-group-item-action"><i class="fas fa-th"></i> Voir le blog</a>
+          <li class="list-group-item list-group-item list-group-item-danger">Purger l'API [Blog] (Impossible)</li>
         </div>
       </div>
     </div>
