@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Blog;
 use App\Form\BlogType;
@@ -47,7 +47,7 @@ class AdminBlogController extends AbstractController
 
         return $this->render('dashboard/blog/new.html.twig', [
             'form' => $form->createView(),
-        ])
+        ]);
     }
 
     /**
