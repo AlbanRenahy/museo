@@ -4,6 +4,9 @@ import { CHANGE_LOGIN_INPUT, CHANGE_PASSWORD_INPUT } from '../actions/LoginActio
 const initialState = {
   loginInput: '',
   passwordInput: '',
+  passwordConfirmInput: '', // string
+  firstNameInput: '', // string
+  lastNameInput: '', // string
 };
 
 const reducerModele = (state = initialState, action = {}) => {
