@@ -21,32 +21,39 @@ import './login.scss';
  */
 const Login = ({
   loginInput, passwordInput, changeLogin, changePassword, connectUser,
-}) => (
-  <Form onSubmit={connectUser}>
-    <Input
-      type="email"
-      id="email"
-      name="email"
-      placeholder="Email*"
-      value={loginInput}
-      onChangeFunction={changeLogin}
-    />
-    <Input
-      type="password"
-      id="password"
-      name="password"
-      placeholder="Mot de passe*"
-      value={passwordInput}
-      onChangeFunction={changePassword}
-    />
-    <p className="lost-password">
-      <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
-    </p>
-    <button type="submit" className="inverted-colors form-button">Me connecter</button>
-    <Link to="/signin">Je souhaite m'inscrire</Link>
-    <Link to="/map">Entrer sur la carte en visiteur</Link>
-  </Form>
-);
+}) => {
+  const handleConnectUser = (event) => {
+    event.preventDefault();
+    console.log('connectUser');
+    connectUser();
+  };
+  return (
+    <Form onSubmit={connectUser}>
+      <Input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email*"
+        value={loginInput}
+        onChangeFunction={changeLogin}
+      />
+      <Input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Mot de passe*"
+        value={passwordInput}
+        onChangeFunction={changePassword}
+      />
+      <p className="lost-password">
+        <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
+      </p>
+      <button type="submit" className="inverted-colors form-button">Me connecter</button>
+      <Link to="/signin">Je souhaite m'inscrire</Link>
+      <Link to="/map">Entrer sur la carte en visiteur</Link>
+    </Form>
+  );
+};
 
 Login.propTypes = {
   loginInput: PropTypes.oneOfType([
