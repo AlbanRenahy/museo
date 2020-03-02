@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="container mt-4">
+
+    <h1>Edition d'un monument</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">Editer le monument</button>
+        <a href="{{ path('admin.monument.index') }}" class="btn btn-info">Revenir sur la liste</a>
+    {{ form_end(form) }}
+
+</div>
+
+{% endblock %}
