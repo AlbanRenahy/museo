@@ -3,14 +3,15 @@
  */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // images
 // import MuseoLogoBW from '../../styles/images/museo_logo.png';
-import MuseoLogoBW from 'src/styles/images/logo_museo_couleur.png';
-import Background from 'src/styles/images/BG-Login-Signin.png';
+
 
 // Composants
-import WelcomeMap from '../WelcomeMap';
+import Form from '../Form';
+import Input from '../Input';
 
 // Styles et assets
 import './login.scss';
@@ -18,32 +19,48 @@ import './login.scss';
 /*
  * Code
  */
-const Login = () => (
-  <div className="home-container" src={Background} >
-    {/* <WelcomeMap /> */}
-    <div className="login">
-      <div className="login-container">
-        <img src={MuseoLogoBW} className="museo-logo" alt="Logo Museo" />
-        <p className="login-container_subtitle">Application cartographique </p>
-        <p className="login-container_subtitle-2">pour vos monuments et musées favoris</p>
-        <form action="">
-          <div>
-            <input type="email" id="email" name="email" placeholder="Email" />
-          </div>
-          <div>
-            <input type="password" id="password" name="password" placeholder="Mot de passe" />
-          </div>
-          <p className="lost-password">
-            <a href="#">J'ai perdu mon mot de passe</a>
-          </p>
-          <button type="submit">ME CONNECTER</button>
-          <button type="button"><Link to="/signin">M'INSCRIRE</Link></button>
-          <p className="map-link"><Link to="/map">Entrer sur la carte en visiteur</Link></p>
-        </form>
-      </div>
-    </div>
-  </div>
+const Login = ({
+  loginInput, passwordInput, changeLogin, changePassword,
+}) => (
+  <Form>
+    <Input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Email*"
+      value={loginInput}
+      onChangeFunction={changeLogin}
+    />
+    <Input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Mot de passe*"
+      value={passwordInput}
+      onChangeFunction={changePassword}
+    />
+    <p className="lost-password">
+      <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
+    </p>
+    <button type="submit" className="inverted-colors form-button">Me connecter</button>
+    <Link to="/signin">Je souhaite m'inscrire</Link>
+    <Link to="/map">Entrer sur la carte en visiteur</Link>
+  </Form>
 );
+
+Login.propTypes = {
+  loginInput: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  passwordInput: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  changeLogin: PropTypes.func.isRequired,
+  changePassword: PropTypes.func.isRequired,
+};
+
 
 /**
  * Export

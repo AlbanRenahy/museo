@@ -1,16 +1,20 @@
-@import '../../assets/styles/vars.scss';
 
-body{
-    background-color: $background-color;
+.signin-container_names { // The two fields on the same row
+  display: flex;
+  justify-content: space-between;
+  
+  div { // each individual input div (Prénom, Nom)
+    width: 45%;
+    position: relative;
+  }
 }
 
 
-.signin {
-  
-     &-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  } 
+a { // link "j'ai déja mes identifiants"
+  font-size:1.1rem;
+  font-variant: small-caps;
+  color: rgb(100, 43, 124);
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}

@@ -1,143 +1,36 @@
-body {
-  // background-image: background-color rgba(251, 225, 146, 0.322), url("../../styles/images/BG-Login-Signin.png");
-  background-image: linear-gradient( rgba(251, 225, 146, 0.6),rgba(0, 0, 255, 0.5)),
-                  url("../../styles/images/BG-Login-Signin.png");
-                  
+p {
+  font-size: 0.8em;
+  text-align: center;
+  padding-top: .8em;
+  padding-bottom: .5em;
+  &.lost-password {
+    font-variant: small-caps;
+    text-align: left;
+    color: rgb(100, 43, 124);
+    margin-top: -.6em;
+  }
+  &.identification-message {
+    transform: translateY(-20px);
+  }
 }
 
-.home-container {
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  padding: 3rem;
-}
-
-
-.login-container_subtitle {
-  font-style:italic;
-  color: rgb(100, 43, 124);
-  font-size: 15px;
-  text-align:center;
-  font-variant: small-caps;
-  margin-bottom: 6px;
-}
-
-.login-container_subtitle-2 {
-  font-style:italic;
-  color: rgb(100, 43, 124);
-  font-size: 15px;
-  text-align:center;
-  font-variant: small-caps;
+#password {
   margin-bottom: 10px;
 }
 
+.lost-password{
+  font-size: 0.95em;
+}
 
-.login {
-  width: 50%;
-  margin: auto;
-
-    &-container {
-      width: 60%;
-      margin: auto;
-    }
-
-    div {
-      position: relative;
-      label {
-        position: absolute;
-        font-weight: bold;
-      }
-    }
-    
-    form {
-      display:flex;
-      border-radius: 10px;
-      flex-direction: column;
-      padding: 2rem;
-      background-color: rgba(251, 225, 146, 0.3);
-      justify-content: space-between;
-
-      p {
-        font-size: 0.8em;
-        text-align: center;
-        padding-top: .3em;
-        padding-bottom: 1.8em;
-        &.lost-password {
-          text-align: center;
-          color: rgb(100, 43, 124);
-          margin-top: -.6em;
-          font-variant: small-caps;
-        }
-        &.lost-password:hover{
-          font-weight: bold;
-        }
-      }
-      .map-link {
-        margin-top: 1rem;
-        color: rgb(100, 43, 124);
-        font-variant: small-caps;
-        padding-bottom: 0;
-     
-        &:hover {
-          font-weight: bold;
-        }
-      }
-      input {
-        margin-bottom: 20px;
-        padding: 10px;
-        border-radius: 4px;
-        border: 2px solid rgba(191, 191, 191, 0.5);
-        font-size: 1.2em;
-        width: 100%;
-        &:focus {
-          border-color: rgb(100, 43, 124);
-        }
-        &::placeholder {
-          color: rgba(191, 191, 191, 1);
-          font-variant: small-caps;
-        }
-        &.focus {
-          border: 2px solid rgb(217, 140, 94);
-          
-          
-
-          &::placeholder {
-            opacity: 0;
-          }
-        }
-      }
-      
-      button {
-        background-color: rgb(100, 43, 124);
-          color: white;
-          font-weight: bolder;
-          border-radius: 4px;
-          padding: 12px;
-          border: none;
-          font-family: 'Open Sans', sans-serif;
-          font-size: 1.3em;
-          margin-top: 7px;
-          margin-bottom: 8px;
-          font-size: 13px;
-          font-variant: small-caps;
-
-          &:hover {
-            background-color:rgb(217, 140, 94);
-          }
-      }
-
-      a {
-        text-align: center;
-        margin-top: 10px;
-      }
-
-      
-    }
-
-
-.museo-logo {
-      width:50%;
-      margin-left: 25%;
+button.inverted-colors {
+  color: #fff;
+  background-color: rgb(60, 43, 124);
+  &:hover {
+    background-color: rgb(204, 107, 51);
   }
- } 
+}
+
+a:hover {
+  color: #B83B5E;
+  cursor: pointer;
+}
