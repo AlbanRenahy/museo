@@ -3,6 +3,13 @@
 {% block body %}
 
 <div class="container mt-4">
+    {% for label, messages in app.flashes(['warning', 'error', 'success', 'info']) %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
     <h1>Accueil du site</h1>
     <a href="{{ path('blog.index') }}">Voir le blog</a>
 </div>
