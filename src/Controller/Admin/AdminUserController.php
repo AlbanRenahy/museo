@@ -73,17 +73,17 @@ class AdminUserController extends AbstractController
         ]);
     }
 
-    // /**
-    //  * @Route("/{id}/delete", name="admin.user.delete")
-    //  */
-    // public function delete($id): Response
-    // {
-    //    $em = $this->getDoctrine()->getManager();
-    //    $obj = $em->getRepository(Blog::class)->find($id);
-    //    $em->remove($obj);
-    //    $em->flush();
-    //    $this->addFlash('success', 'Article bien supprimé');
-    //    return $this->redirectToRoute('admin.user.index');
-    // }
+    /**
+     * @Route("/{id}/delete", name="admin.user.delete")
+     */
+    public function delete($id): Response
+    {
+       $em = $this->getDoctrine()->getManager();
+       $obj = $em->getRepository(User::class)->find($id);
+       $em->remove($obj);
+       $em->flush();
+       $this->addFlash('info', 'Utilisateur bien supprimé');
+       return $this->redirectToRoute('admin.user.index');
+    }
 
 }
