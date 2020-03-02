@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +32,16 @@ class Thematic
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Monument", mappedBy="thematic")
+     */
+    private $monuments;
+
+    public function __construct()
+    {
+        $this->monuments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -68,6 +80,34 @@ class Thematic
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Monument[]
+     */
+    public function getMonuments(): Collection
+    {
+        return $this->monuments;
+    }
+
+    public function addMonument(Monument $monument): self
+    {
+        if (!$this->monuments->contains($monument)) {
+            $this->monuments[] = $monument;
+            $monument->addThematic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMonument(Monument $monument): self
+    {
+        if ($this->monuments->contains($monument)) {
+            $this->monuments->removeElement($monument);
+            $monument->removeThematic($this);
+        }
 
         return $this;
     }
