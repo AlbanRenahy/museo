@@ -10,16 +10,14 @@ import {
   changeLoginInput,
   changePasswordInput,
   changePassConfirmInput,
-  changeFirstNameInput,
-  changeLastNameInput,
+  changeUsernameInput,
 } from '../actions/LoginActions';
 
 const mapStateToProps = (state) => ({
   loginInput: state.loginInput,
   passwordInput: state.passwordInput,
   passConfirmInput: state.passConfirmInput,
-  firstNameInput: state.firstNameInput,
-  lastNameInput: state.lastNameInput,
+  usernameInput: state.usernameInput,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -32,11 +30,8 @@ const mapDispatchToProps = (dispatch) => ({
   changePassConfirm: (value) => {
     dispatch(changePassConfirmInput(value));
   },
-  changeFirstName: (value) => {
-    dispatch(changeFirstNameInput(value));
-  },
-  changeLastName: (value) => {
-    dispatch(changeLastNameInput(value));
+  changeUsername: (value) => {
+    dispatch(changeUsernameInput(value));
   },
 });
 

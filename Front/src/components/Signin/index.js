@@ -20,37 +20,24 @@ import './signin.scss';
  * Code
  */
 const Signin = ({
-  firstNameInput,
-  lastNameInput,
+  usernameInput,
   loginInput,
   passwordInput,
   passConfirmInput,
-  changeFirstName,
-  changeLastName,
+  changeUsername,
   changeLogin,
   changePassword,
   changePassConfirm,
 }) => (
   <Form>
-    <div className="signin-container_names">
-      <Input
-        type="text"
-        id="last-name"
-        name="last-name"
-        placeholder="Nom*"
-        value={lastNameInput}
-        onChangeFunction={changeLastName}
-      />
-
-      <Input
-        type="text"
-        id="first-name"
-        name="first-name"
-        placeholder="Prénom*"
-        value={firstNameInput}
-        onChangeFunction={changeFirstName}
-      />
-    </div>
+    <Input
+      type="text"
+      id="username"
+      name="username"
+      placeholder="Pseudonyme*"
+      value={usernameInput}
+      onChangeFunction={changeUsername}
+    />
 
     <Input
       type="email"
@@ -88,13 +75,11 @@ const Signin = ({
 
 Signin.propTypes = {
   // FORM FIELDS
-  firstNameInput: PropTypes.string.isRequired,
-  lastNameInput: PropTypes.string.isRequired,
+  usernameInput: PropTypes.string.isRequired,
   loginInput: PropTypes.string.isRequired,
   passwordInput: PropTypes.string.isRequired,
   passConfirmInput: PropTypes.string.isRequired,
-  changeFirstName: PropTypes.func.isRequired,
-  changeLastName: PropTypes.func.isRequired,
+  changeUsername: PropTypes.func.isRequired,
   changeLogin: PropTypes.func.isRequired,
   changePassword: PropTypes.func.isRequired,
   changePassConfirm: PropTypes.func.isRequired,

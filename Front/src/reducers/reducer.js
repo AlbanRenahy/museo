@@ -1,8 +1,7 @@
 import {
   CHANGE_LOGIN_INPUT,
   CHANGE_PASSWORD_INPUT,
-  CHANGE_LASTNAME_INPUT,
-  CHANGE_FIRSTNAME_INPUT,
+  CHANGE_USERNAME_INPUT,
   CHANGE_PASSCONFIRM_INPUT,
 } from '../actions/LoginActions';
 
@@ -11,8 +10,7 @@ const initialState = {
   loginInput: '',
   passwordInput: '',
   passConfirmInput: '', // string
-  firstNameInput: '', // string
-  lastNameInput: '', // string
+  usernameInput: '', // string
 };
 
 const reducerModele = (state = initialState, action = {}) => {
@@ -32,15 +30,10 @@ const reducerModele = (state = initialState, action = {}) => {
         ...state,
         passConfirmInput: action.value,
       };
-    case CHANGE_FIRSTNAME_INPUT:
+    case CHANGE_USERNAME_INPUT:
       return {
         ...state,
-        firstNameInput: action.value,
-      };
-    case CHANGE_LASTNAME_INPUT:
-      return {
-        ...state,
-        lastNameInput: action.value,
+        usernameInput: action.value,
       };
     default:
       return state;
