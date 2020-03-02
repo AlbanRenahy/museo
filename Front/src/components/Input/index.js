@@ -14,6 +14,9 @@ const Input = ({
   const handleChange = (event) => {
     onChangeFunction(event.target.value);
   };
+  const handleBlur = (event) => {
+    event.target.classList.remove('open');
+  };
 
   return (
     <div>
@@ -25,6 +28,7 @@ const Input = ({
         onFocus={handleFocus}
         value={value}
         onChange={handleChange}
+        onBlur={handleBlur}
       />
       <label htmlFor={id}>{placeholder}</label>
     </div>

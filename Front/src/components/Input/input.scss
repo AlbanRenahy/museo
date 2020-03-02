@@ -3,6 +3,7 @@ div { // Input containing div
 }
 
 input {
+  margin-top: 5px;
   margin-bottom: 20px;
   padding: 10px;
   border-radius: 4px;
@@ -11,12 +12,13 @@ input {
   transition: 0.2s;
   width: 100%;
   & + label {
+    font-variant: small-caps;
     position: absolute;
     display: inline-block;
     left: 0;
     opacity: 0;
     font-weight: bold;
-    font-size: .7em;
+    font-size: 0.9em;
     color: rgb(100, 43, 124);
   }
   &::placeholder {
@@ -25,7 +27,7 @@ input {
   &:focus {
     border: 2px solid rgb(100, 43, 124);
     & + label { // The label when input focused
-      color: rgb(217, 140, 94);
+      color: #B83B5E;
       transform: translateY(-13px);
       opacity: 1;
       transition-duration: .4s;
@@ -48,6 +50,16 @@ input {
 
   100% {
     opacity: 1;
-    // top: -17px;
+  }
+}
+
+@keyframes removeLabel {
+  100% {
+    opacity: 1;
+  }
+
+  0% {
+    opacity: 0;
+    top: 1;
   }
 }

@@ -21,23 +21,23 @@ import './login.scss';
 const Login = () => (
   <Form>
     <Input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email*"
-          />
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Email*"
+    />
     <Input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Mot de passe*"
-          />
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Mot de passe*"
+    />
     <p className="lost-password">
-            <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
-          </p>
+      <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
+    </p>
     <button type="submit" className="inverted-colors form-button">Me connecter</button>
     <Link to="/signin">Je souhaite m'inscrire</Link>
-    <Link to="/map">Entrer en simple visite</Link>
+    <Link to="/map">Entrer sur la carte en visiteur</Link>
   </Form>
 );
 
