@@ -13,7 +13,6 @@ const userMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(response.data);
-          store.dispatch(saveUsername);
         })
         .then((error) => {
           console.warn(error);

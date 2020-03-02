@@ -20,9 +20,9 @@ import './login.scss';
  * Code
  */
 const Login = ({
-  loginInput, passwordInput, changeLogin, changePassword,
+  loginInput, passwordInput, changeLogin, changePassword, connectUser,
 }) => (
-  <Form>
+  <Form onSubmit={connectUser}>
     <Input
       type="email"
       id="email"
@@ -59,6 +59,7 @@ Login.propTypes = {
   ]).isRequired,
   changeLogin: PropTypes.func.isRequired,
   changePassword: PropTypes.func.isRequired,
+  connectUser: PropTypes.func.isRequired,
 };
 
 
