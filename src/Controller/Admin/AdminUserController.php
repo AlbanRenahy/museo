@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Form\UserType;
+use App\Form\UserEditType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,28 +51,27 @@ class AdminUserController extends AbstractController
         ]);
     }
 
-    // /**
-    //  * @Route("/{id}/edit", name="admin.user.edit", methods="GET|POST")
-    //  */
-    // public function edit(Blog $blog, Request $request)
-    // {
-    //     $form = $this->createForm(BlogType::class, $blog);
-    //     $form->handleRequest($request);
+    /**
+     * @Route("/{id}/edit", name="admin.user.edit", methods="GET|POST")
+     */
+    public function edit(User $user, Request $request)
+    {
+        $form = $this->createForm(UserEditType::class, $user);
+        $form->handleRequest($request);
 
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $blog->setUpdatedAt(new \DateTime());
-    //         $entityManager = $this->getDoctrine()->getManager();
-    //         $entityManager->persist($blog);
-    //         $entityManager->flush();
-    //         $this->addFlash('success', 'Article modifié');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            $this->addFlash('success', 'Utilisateur modifié');
             
-    //         return $this->redirectToRoute('admin.user.index', ['id' => $blog->getId()]);
-    //     }
+            return $this->redirectToRoute('admin.user.index', ['id' => $user->getId()]);
+        }
 
-    //     return $this->render('dashboard/user/edit.html.twig', [
-    //         'form' => $form->createView(),
-    //     ]);
-    // }
+        return $this->render('dashboard/user/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 
     // /**
     //  * @Route("/{id}/delete", name="admin.user.delete")

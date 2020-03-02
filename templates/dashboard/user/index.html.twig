@@ -47,7 +47,7 @@
                     {% endif %}
                     <th>
                         <div class="btn-group">
-                            <a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                            <a href="{{ path('admin.user.edit', {id: user.id}) }}" class="btn btn-primary"><i class="far fa-edit"></i></a>
                             <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                         </div>
                     </th>
