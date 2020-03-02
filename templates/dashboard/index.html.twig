@@ -5,7 +5,9 @@
 <div class="container mt-4">
 
     <h1>Accueil Dashboard</h1>
-    {# Block pour les monuments #}
+
+    
+    {# Block pour les monuments & blog #}
     <div class="row">
       <div class="col-md-6 mt-4">
         <div class="list-group">
@@ -44,6 +46,34 @@
         </div>
       </div>
     </div>
+    
+    {# Block pour les utilisateurs & roles #}
+    <div class="row">
+      <div class="col-md-6 mt-4">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active">
+            Gestions Utilisateurs
+            <br>Actuellement <strong>{{ countUsers }}</strong> Utilisateurs sur l'application
+          </a>
+          {# SI aucun monument en base alors indication #}
+          <a href="{{ path('admin.user.index') }}" class="list-group-item list-group-item-info list-group-item-action"><i class="fas fa-list-ul"></i> Voir la liste des utlisateurs</a>
+          <a href="{{ path('admin.user.new') }}" class="list-group-item list-group-item-success list-group-item-action"><i class="fas fa-arrow-circle-right"></i> Ajouter un utilisateur</a>
+          <li class="list-group-item list-group-item list-group-item-danger">Purger l'API [User] (Impossible)</li>
+        </div>
+      </div>
+      <div class="col-md-6 mt-4">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active">
+            Gestions des Rôles
+          </a>
+          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true "><i class="fas fa-ban"></i> Acceder à la liste des roles <span class="text-danger">(Features pas encore disponible)</span></a>
+          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true "><i class="fas fa-ban"></i> Ajouter des roles <span class="text-danger">(Features pas encore disponible)</span></a>
+          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true "><i class="fas fa-ban"></i> Modifier les access control <span class="text-danger">(Features pas encore disponible)</span></a>
+          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true "><i class="fas fa-ban"></i> Modifier les roles courant <span class="text-danger">(Features pas encore disponible)</span></a>
+        </div>
+      </div>
+    </div>
+
 </div>
 
 {% endblock %}
