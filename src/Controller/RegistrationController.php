@@ -35,7 +35,7 @@ class RegistrationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            $this->addFlash('success', 'Votre inscription à bien fonctionner, vous êtes déjà connecter');
+            $this->addFlash('success', 'Votre inscription à bien fonctionner, vous êtes connecter');
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
                 $request,

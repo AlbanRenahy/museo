@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container mt-4">
+
+    {% for label, messages in app.flashes(['warning', 'error', 'success', 'info']) %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    {% if users == null %}
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i> Aucun utilisateurs trouver
+            <br>
+            Si vous souhaitez en ajouter cliquer sur "Ajouter un utilisateur"
+        </div>
+    {% else %}
+        <h1>Gestion des Utilisateur</h1> 
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}          
+                <tr>
+                    <th scope="row" >{{ user.id }}</th>
+                    <td>{{ user.username }}</td>
+                    {% if user.firstname == null %}
+                        <td>N/R</td>
+                    {% else %}
+                    <td>{{ user.firstname }}</td>
+                    {% endif %}
+                    {% if user.lastname == null %}
+                        <td>N/R</td>
+                    {% else %}
+                    <td>{{ user.lastname }}</td>
+                    {% endif %}
+                    <th>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                            <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    
+    <span><a href="{{ path('admin.user.new') }}" class="btn btn-primary">Ajouter un utilisateur <i class="fas fa-arrow-circle-right"></i></a></span>
+</div>
+
+{% endblock %}
