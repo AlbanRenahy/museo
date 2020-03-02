@@ -5,21 +5,69 @@
 <div class="container mt-4">
     {# <a href="{{ path('home') }}" class="btn btn-primary">Voir le site</a> #}
     <h1>Accueil Dashboard</h1>
-    <div class="card">
-        <div class="card-header">
-          Gestions du site
+    {# Block pour les monuments #}
+    <div class="row">
+      <div class="col-md-6 mt-4">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active">
+            Gestions Monument
+            <br>Actuellement <strong>{{ countMonuments }}</strong> Monuments en base
+          </a>
+          <a href="{{ path('admin.monument.index') }}" class="list-group-item list-group-item-action">Voir la liste des monuments</a>
+          <a href="{{ path('admin.monument.new') }}" class="list-group-item list-group-item-action">Ajouter un monument</a>
+          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true ">Voir les monuments</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Purger l'API [BLOG]</a>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <a href="{{ path('admin.monument.index') }}">Gestion des Monuments</a>
-              <span class="badge badge-info">{{ countMonuments }}</span>
-            </li>
-            <li class="list-group-item">
-              <a href="{{ path('admin.blog.index') }}">Gestion des Articles</a>
-              <span class="badge badge-success">{{ countPosts }}</span>
-            </li>
-        </ul>
       </div>
+      <div class="col-md-6 mt-4">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active">
+            Gestions Blog
+            <br>Actuellement <strong>{{ countPosts }}</strong> Article sur le blog
+          </a>
+          <a href="{{ path('admin.blog.index') }}" class="list-group-item list-group-item-action">Voir la liste des articles</a>
+          <a href="{{ path('admin.blog.new') }}" class="list-group-item list-group-item-action">Ajouter un article</a>
+          <a href="{{ path('blog.index') }}" class="list-group-item list-group-item-action">Voir le blog</a>
+          <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Purger l'API [BLOG]</a>
+        </div>
+      </div>
+    </div>
+
+    {# <div class="row">
+      <div class="col-md-6 mt-4">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active">
+            Gestions API Monument
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">Actions 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Actions 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Actions 1</a>
+        </div>
+      </div>
+      <div class="col-md-6 mt-4">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active">
+            Gestions API Blog
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">Actions 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Actions 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Actions 1</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mt-4">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action active">
+            Gestions Analytics
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">Actions 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Actions 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Actions 1</a>
+        </div>
+      </div>
+    </div> #}
 </div>
 
 {% endblock %}
