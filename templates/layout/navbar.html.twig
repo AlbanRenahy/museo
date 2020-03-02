@@ -1,8 +1,12 @@
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ path('admin.index') }}">Museo</a>
     <form class="form-inline">
-        <a href="{{ path('home') }}" class="btn btn-secondary ml-2">Connexion</a>
-        <a href="{{ path('home') }}" class="btn btn-secondary ml-2">Inscription</a>
-        <a href="{{ path('admin.index') }}" class="btn btn-secondary ml-2">Backoffice</a>
+        {% if app.user %}
+            <span class="text-white">Vous êtes connecter en tant que <strong>{{ app.user.username }}</strong> <a href="{{ path('app_logout') }}" class="btn btn-danger">Deconnexion</a></span>
+            <a href="{{ path('admin.index') }}" class="btn btn-secondary ml-2">Backoffice</a>
+        {% else %}
+            <a href="{{ path('app_login') }}" class="btn btn-secondary ml-2">Connexion</a>
+            <a href="{{ path('app_register') }}" class="btn btn-secondary ml-2">Inscription</a>
+        {% endif %}
     </form>
 </nav>
