@@ -74,17 +74,16 @@ class AdminBlogController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/delete", name="admin.blog.delete", methods="DELETE")
+     * @Route("/{id}/delete", name="admin.blog.delete")
      */
-    public function delete(Request $request, Blog $blog): Response
+    public function delete($id): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$blog->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($blog);
-            $entityManager->flush();
-        }
-        
-        return $this->redirectToRoute('admin.blog.index');
+       $em = $this->getDoctrine()->getManager();
+       $obj = $em->getRepository(Blog::class)->find($id);
+       $em->remove($obj);
+       $em->flush();
+       $this->addFlash('success', 'Article bien supprimé');
+       return $this->redirectToRoute('admin.blog.index');
     }
 
 }
