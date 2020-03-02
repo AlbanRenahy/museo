@@ -52,6 +52,30 @@ class AdminMonumentController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/edit", name="admin.monument.edit", methods="GET|POST")
+     */
+    public function edit(Monument $monument, Request $request)
+    {
+        $form = $this->createForm(MonumentType::class, $monument);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $blog->setUpdatedAt(new \DateTime());
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($monument);
+            $entityManager->flush();
+            $this->addFlash('success', 'Monument modifié');
+            
+            return $this->redirectToRoute('admin.blog.index', ['id' => $monument->getId()]);
+        }
+
+        return $this->render('dashboard/monument/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    /**
      * @Route("/{id}/delete", name="admin.monument.delete")
      */
     public function delete($id): Response

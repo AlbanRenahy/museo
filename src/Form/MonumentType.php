@@ -17,13 +17,13 @@ class MonumentType extends AbstractType
             ->add('city')
             ->add('adress')
             ->add('description')
-            ->add('thematic')
+            // ->add('thematic')
             // ->add('likes')
             // ->add('dislikes')
             // ->add('createdAt')
             // ->add('updatedAt')
-            ->add('latitude', NumberType::class)
-            ->add('longitude', NumberType::class)
+            // ->add('latitude', NumberType::class)
+            // ->add('longitude', NumberType::class)
         ;
     }
 
