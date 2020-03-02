@@ -40,6 +40,11 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  onChangeFunction: PropTypes.func.isRequired,
 };
 
 /**
