@@ -88,11 +88,6 @@ class Monument
      */
     private $target;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="monument")
-     */
-    private $user;
-
     public function __construct()
     {
         $this->region = new ArrayCollection();
