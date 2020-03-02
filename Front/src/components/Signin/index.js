@@ -20,7 +20,16 @@ import './signin.scss';
  * Code
  */
 const Signin = ({
-  firstNameInput, lastNameInput, loginInput, passwordInput, passConfirmInput,
+  firstNameInput,
+  lastNameInput,
+  loginInput,
+  passwordInput,
+  passConfirmInput,
+  changeFirstName,
+  changeLastName,
+  changeLogin,
+  changePassword,
+  changePassConfirm,
 }) => (
   <Form>
     <div className="signin-container_names">
@@ -30,6 +39,7 @@ const Signin = ({
         name="last-name"
         placeholder="Nom*"
         value={lastNameInput}
+        onChangeFunction={changeLastName}
       />
 
       <Input
@@ -38,6 +48,7 @@ const Signin = ({
         name="first-name"
         placeholder="Prénom*"
         value={firstNameInput}
+        onChangeFunction={changeFirstName}
       />
     </div>
 
@@ -47,6 +58,7 @@ const Signin = ({
       name="email"
       placeholder="Email*"
       value={loginInput}
+      onChangeFunction={changeLogin}
     />
 
     <Input
@@ -55,6 +67,7 @@ const Signin = ({
       name="password"
       placeholder="Mot de passe*"
       value={passwordInput}
+      onChangeFunction={changePassword}
     />
 
     <Input
@@ -63,6 +76,7 @@ const Signin = ({
       name="password-confirm"
       placeholder="Confirmer votre mot de passe*"
       value={passConfirmInput}
+      onChangeFunction={changePassConfirm}
     />
 
     <button type="submit" className="form-button">M'inscrire</button>
@@ -79,6 +93,11 @@ Signin.propTypes = {
   loginInput: PropTypes.string.isRequired,
   passwordInput: PropTypes.string.isRequired,
   passConfirmInput: PropTypes.string.isRequired,
+  changeFirstName: PropTypes.func.isRequired,
+  changeLastName: PropTypes.func.isRequired,
+  changeLogin: PropTypes.func.isRequired,
+  changePassword: PropTypes.func.isRequired,
+  changePassConfirm: PropTypes.func.isRequired,
 };
 
 /**
