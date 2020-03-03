@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MonumentRepository")
@@ -13,41 +15,56 @@ class Monument
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("monument")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Groups("monument")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Groups("monument")
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Groups("monument")
      */
     private $adress;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Groups("monument")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Groups("monument")
      */
     private $thematic;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank()
+     * @Groups("monument")
      */
     private $likes;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank()
+     * @Groups("monument")
      */
     private $dislikes;
 
@@ -63,11 +80,13 @@ class Monument
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     * @Groups("monument")
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     * @Groups("monument")
      */
     private $longitude;
 
