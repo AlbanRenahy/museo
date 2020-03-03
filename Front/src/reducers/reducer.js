@@ -12,6 +12,7 @@ const initialState = {
   userLastname: null,
   userPicture: null,
   userPseudo: '',
+};
 
 const reducerModele = (state = initialState, action = {}) => {
   switch (action.type) {
