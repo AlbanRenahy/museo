@@ -12,6 +12,15 @@
 
 ```php
 /api/users/add (METHOD = POST)
+
+Fields : 
+- id
+- email
+- password
+- firstname (can be null)
+- lastname (can be null)
+- picture (can be null, link)
+- pseudo (can be null)
 ```
 
 > Pour recuperer un utilisateur : 
@@ -26,7 +35,7 @@
 /api/users/edit/{id} (METHOD = PUT)
 ```
 
-> Pour recuperer tous les utilisateurs : 
+> Pour supprimer un utilisateur : 
 
 ```php
 /api/users/delete/{id} (METHOD = DELETE)
