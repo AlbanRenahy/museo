@@ -124,4 +124,15 @@ class ApiUserController extends AbstractController
         return new Response('Fail', 404);
     }
 
+    /**
+     * @Route("/delete/{id}", name="delete", methods="DELETE")
+     */
+    public function delete(User $user)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($user);
+        $entityManager->flush();
+        return new Response('Delete OK');
+    }
+
 }
