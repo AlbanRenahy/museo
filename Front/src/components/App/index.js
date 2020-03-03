@@ -23,6 +23,7 @@ const App = () => (
   //   )}
   // </div>
   <Switch>
+    {/* Route loading à enlever par la suite */}
     <Route
       exact
       path="/loading"
