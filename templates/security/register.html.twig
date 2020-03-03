@@ -13,6 +13,7 @@
                 {{ form_row(registrationForm.lastname) }}
                 {{ form_row(registrationForm.agreeTerms) }}
                 <button class="btn btn-secondary">S'enrengister</button>
+                <a href="{{ path('rgpd') }}" class="btn btn-info">Lire les CGU</a>
             </div>
         </div>
     {{ form_end(registrationForm) }}

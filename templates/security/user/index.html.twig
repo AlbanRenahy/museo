@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h1>Mon profile</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus iste ipsa, dolore illum temporibus nesciunt sequi modi cumque consequuntur vel quae alias aut maiores quis accusamus voluptate cupiditate, vitae quos.</p>
+        <h5>E-Mail : {{ app.user.username }}</h5>
+        <h5>Prénom : {{ app.user.firstname }}</h5>
+        <h5>Nom : {{ app.user.lastname }}</h5>
+        <h5>Uploader une pp : (PAS ENCORE DISPO)</h5>
+    </div>
+
+{% endblock %}

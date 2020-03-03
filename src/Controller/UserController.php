@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -13,11 +14,11 @@ class UserController extends AbstractController
 {
 
     /**
-     * @Route("/profile", name="user.profile.index")
+     * @Route("/profile/{id}", name="user.profile.index")
      */
-    public function index(User $user)
+    public function index(User $user): Response
     {
-        // TODO: Load User by ID
+        return $this->render('security/user/index.html.twig');
     }
 
     /**
