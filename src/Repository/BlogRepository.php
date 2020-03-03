@@ -28,29 +28,17 @@ class BlogRepository extends ServiceEntityRepository
         ;
     }
 
-    
-    // public function findByExampleField($value)
-    // {
-    //     return $this->createQueryBuilder('b')
-    //         ->andWhere('b.exampleField = :val')
-    //         ->setParameter('val', $value)
-    //         ->orderBy('b.id', 'ASC')
-    //         ->setMaxResults(10)
-    //         ->getQuery()
-    //         ->getResult()
-    //     ;
-    // }
-    
-
-    /*
-    public function findOneBySomeField($value): ?Blog
+    /**
+     * @return User[]
+     */
+    public function apiFindAll(): array
     {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $qb = $this->createQueryBuilder('a')
+            ->select('a.id', 'a.name', 'a.content')
+            ->orderBy('a.id', 'DESC');
+        
+        $query = $qb->getQuery();
+
+        return $query->execute();
     }
-    */
 }
