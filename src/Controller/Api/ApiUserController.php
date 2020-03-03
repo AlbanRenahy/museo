@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 /**
- * @Route("/api/user", name="api.user.")
+ * @Route("/api/users", name="api.users.")
  */
 class ApiUserController extends AbstractController
 {
@@ -22,15 +22,7 @@ class ApiUserController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index()
-    {
-        # code...
-    }
-
-    /**
-     * @Route("/list", name="list", methods="GET")
-     */
-    public function list(UserRepository $userRepository)
+    public function index(UserRepository $userRepository)
     {
         $users = $userRepository->apiFindAll();
         $encoders = [new JsonEncoder()];
@@ -46,7 +38,6 @@ class ApiUserController extends AbstractController
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
-
     }
 
     /**
