@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 /**
- * @Route("/api/user", name="api_user_")
+ * @Route("/api/user", name="api.user.")
  */
 class ApiUserController extends AbstractController
 {
