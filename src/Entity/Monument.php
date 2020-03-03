@@ -345,34 +345,34 @@ class Monument
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUser(): Collection
-    {
-        return $this->user;
-    }
+    // /**
+    //  * @return Collection|User[]
+    //  */
+    // public function getUser(): Collection
+    // {
+    //     return $this->user;
+    // }
 
-    public function addUser(User $user): self
-    {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-            $user->setMonument($this);
-        }
+    // public function addUser(User $user): self
+    // {
+    //     if (!$this->user->contains($user)) {
+    //         $this->user[] = $user;
+    //         $user->setMonument($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeUser(User $user): self
-    {
-        if ($this->user->contains($user)) {
-            $this->user->removeElement($user);
-            // set the owning side to null (unless already changed)
-            if ($user->getMonument() === $this) {
-                $user->setMonument(null);
-            }
-        }
+    // public function removeUser(User $user): self
+    // {
+    //     if ($this->user->contains($user)) {
+    //         $this->user->removeElement($user);
+    //         // set the owning side to null (unless already changed)
+    //         if ($user->getMonument() === $this) {
+    //             $user->setMonument(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

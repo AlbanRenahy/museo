@@ -51,7 +51,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function apiFindAll(): array
     {
         $qb = $this->createQueryBuilder('u')
-            ->select('u.id', 'u.firstname', 'u.lastname')
+            ->select('u.id', 'u.email', 'u.pseudo', 'u.firstname', 'u.lastname')
             ->orderBy('u.id', 'DESC');
         
         $query = $qb->getQuery();
