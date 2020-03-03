@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MonumentRepository")
@@ -20,31 +22,37 @@ class Monument
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("monument")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("monument")
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("monument")
      */
     private $adress;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("monument")
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("monument")
      */
     private $likes;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("monument")
      */
     private $dislikes;
 
@@ -60,31 +68,37 @@ class Monument
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     * @Groups("monument")
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     * @Groups("monument")
      */
     private $longitude;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Region", mappedBy="monument")
+     * @Groups("monument")
      */
     private $region;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Period", mappedBy="monument")
+     * @Groups("monument")
      */
     private $period;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Thematic", inversedBy="monuments")
+     * @Groups("monument")
      */
-    private $thematic;
+    //private $thematic;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Target", mappedBy="monument")
+     * @Groups("monument")
      */
     private $target;
 
