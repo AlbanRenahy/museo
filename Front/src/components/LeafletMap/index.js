@@ -23,8 +23,13 @@ const Leaflet = () => (
     <TileLayer
       url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png"
     />
+      <Marker position={[48.864716, 2.349014]}>
+        <Popup>
+          Je suis un pop up à Paris
+        </Popup>
+      </Marker>
 
-  </LeafletMap>
+    </LeafletMap>
 );
 
 export default Leaflet;

@@ -12,6 +12,8 @@ const initialState = {
   userLastname: null,
   userPicture: null,
   userPseudo: '',
+  isDataFormOpen: false, // bool qui indique si le formulaire de renseignement de données est ouvert ou non
+  clickedAdress: '', // String contenant l'adresse d'où a cliqué l'utilisateur
 };
 
 const reducerModele = (state = initialState, action = {}) => {
