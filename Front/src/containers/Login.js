@@ -17,6 +17,9 @@ const mapDispatchToProps = dispatch => ({
   updateFormField: (fieldName, input) => {
     dispatch(updateFormField(fieldName, input));
   },
+  connectUser: () => {
+    dispatch(connectUser());
+  },
 });
 
 export default connect(
