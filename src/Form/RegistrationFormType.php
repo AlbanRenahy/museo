@@ -22,6 +22,7 @@ class RegistrationFormType extends AbstractType
         ->add('email', EmailType::class)
         ->add('firstname', TextType::class)
         ->add('lastname', TextType::class)
+        ->add('pseudo', TextType::class)
         ->add('plainPassword', PasswordType::class, [
             'mapped' => false,
             'constraints' => [
