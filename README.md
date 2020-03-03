@@ -39,7 +39,20 @@ Fields :
 
 ```php
 /api/users/delete/{id} (METHOD = DELETE)
+
+```
+# API Blog : 
+
+
+> Pour recuperer tous les articles : 
+
+```php
+/api/articles (METHOD = GET)
 ```
 
+> Pour recuperer un article avec son ID : 
 
+```php
+/api/articles/show/{id} (METHOD = GET)
+```
 
