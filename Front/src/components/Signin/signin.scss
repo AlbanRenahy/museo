@@ -1,15 +1,4 @@
 
-.signin-container_names { // The two fields on the same row
-  display: flex;
-  justify-content: space-between;
-  
-  div { // each individual input div (Prénom, Nom)
-    width: 45%;
-    position: relative;
-  }
-}
-
-
 a { // link "j'ai déja mes identifiants"
   font-size:1.1rem;
   font-variant: small-caps;

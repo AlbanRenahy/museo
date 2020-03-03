@@ -16,13 +16,8 @@ import './form.scss';
  * Code
  */
 const Form = ({ children }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('form submitted');
-  };
-
-  return (
-    <form action="" onSubmit={handleSubmit}>
+   return (
+    <form action="">
       {children}
     </form>
   );

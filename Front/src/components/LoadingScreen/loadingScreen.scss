@@ -1,0 +1,73 @@
+.container{
+  max-width: 100vw;
+}
+.bird{
+
+    background-image: url("../../styles/images/bird-cells.svg");
+    background-size: auto 100%;
+    height:125px;
+    width:86px;
+    animation-name: fly;
+    animation-duration: 1s;
+    animation-timing-function:steps(10);
+    animation-iteration-count: infinite;
+  }
+  
+  
+  .bird-cont{
+    position: relative;
+    animation-name: birdFly;
+    animation-duration: 7s;
+    animation-timing-function:linear;
+    animation-iteration-count: infinite;
+  
+  }
+  
+  .bird-cont2{
+      position: relative;
+      animation-name: birdFly;
+      animation-duration: 6.2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    
+    }
+    .bird-cont3{
+      position: relative;
+      animation-name: birdFly;
+      animation-duration: 4.2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    
+    }
+    .bird-cont4{
+      top:10%;
+      position: absolute;
+      animation-name: birdFly;
+      animation-duration: 8.2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    
+    }
+  
+    /* animation for bird flying through all the page width */
+  @keyframes birdFly {
+  
+    0% {transform: translateX(-40vw) translateY(0vh);}
+    10% {transform: translateX(-30vw) translateY(02vh);}
+    20% {transform: translateX(-20vw) translateY(05vh);}
+    30% {transform: translateX(-10vw) translateY(04vh);}
+    40% {transform: translateX(0vw) translateY(0vh);}
+    50% {transform: translateX(10vw) translateY(02vh);}
+    60% {transform: translateX(20vw) translateY(04vh);}
+    70% {transform: translateX(30vw) translateY(0vh);}
+    80% {transform: translateX(40vw) translateY(02vh);}
+    90% {transform: translateX(60vw) translateY(04vh);}
+    100% {transform: translateX(80vw) translateY(0vh);}
+  
+  }
+  
+  /* animation for flying action */
+  @keyframes fly {
+    from{background-position: 900px;}
+    to{background-position: 0px;}
+  }
