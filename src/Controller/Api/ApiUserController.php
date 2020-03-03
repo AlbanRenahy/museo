@@ -2,8 +2,11 @@
 
 namespace App\Controller\Api;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
+use Normalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -29,7 +32,7 @@ class ApiUserController extends AbstractController
      */
     public function list(UserRepository $userRepository)
     {
-        $users = $userRepository->findAll();
+        $users = $userRepository->apiFindAll();
         $encoders = [new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
@@ -44,6 +47,81 @@ class ApiUserController extends AbstractController
 
         return $response;
 
+    }
+
+    /**
+     * @Route("/show/{id}", name="show", methods="GET")
+     */
+    public function show(User $user)
+    {
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonContent = $serializer->serialize($user, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]);
+        $response = new Response($jsonContent);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+    /**
+     * @Route("/add", name="add", methods="POST")
+     */
+    public function add(Request $request)
+    {
+        if($request->isXmlHttpRequest()) {
+            // On instancie un nouvel article
+            $user = new User();
+    
+            // On décode les données envoyées
+            $data = json_decode($request->getContent());
+    
+            // On hydrate l'objet
+            $user->setEmail($data->email);
+            $user->setPassword($data->password);
+            $user->setFirstname($data->firstname);
+            $user->setLastname($data->lastname);
+            $user->setRoles(['ROLE_USER']);
+            // $user = $this->getDoctrine()->getRepository(User::class)->findOneBy($id);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            // On retourne la confirmation
+            return new Response('ok', 201);
+        }
+        return new Response('Failed', 404);
+    }
+
+    /**
+     * @Route("/edit/{id}", name="edit", methods="PUT")
+     */
+    public function edit(?User $user, Request $request)
+    {
+        if($request->isXmlHttpRequest()) {
+            $data = json_decode($request->getContent());
+            $code = 200;
+
+            if(!$user){
+                $user = new User();
+                $code = 201;
+            }
+
+            $user->setEmail($data->email);
+            $user->setPassword($data->password);
+            $user->setFirstname($data->firstname);
+            $user->setLastname($data->lastname);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return new Response('ok', $code);
+        }
+
+        return new Response('Fail', 404);
     }
 
 }
