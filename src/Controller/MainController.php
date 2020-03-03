@@ -15,4 +15,13 @@ class MainController extends AbstractController
     {
         return $this->render('main/index.html.twig');
     }
+
+    /**
+     * @Route("/cgu", name="rgpd")
+     */
+    public function rgpd()
+    {
+        return $this->render('main/terms/cgu.html.twig');
+    }
+
 }
