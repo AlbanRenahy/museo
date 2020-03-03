@@ -3,11 +3,13 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 // == Import
-import LoadingScreen from 'src/components/LoadingScreen';
 import Welcome from 'src/containers/Welcome';
 import Signin from 'src/containers/Signin';
 import Login from 'src/containers/Login';
+
+import LoadingScreen from 'src/components/LoadingScreen';
 import LeafletMap from '../LeafletMap';
+import NotFound from '../NotFound';
 
 // == Composant
 const App = () => (
@@ -62,6 +64,8 @@ const App = () => (
         <LeafletMap />
       )}
     />
+
+    <Route component={NotFound} />
   </Switch>
 );
 
