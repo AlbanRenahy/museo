@@ -25,8 +25,9 @@ const Signin = ({
   passwordInput,
   passConfirmInput,
   updateFormField,
+  signin,
 }) => (
-  <Form>
+  <Form onSubmit={signin}>
     <Input
       type="text"
       id="username"
@@ -76,7 +77,9 @@ Signin.propTypes = {
   loginInput: PropTypes.string.isRequired,
   passwordInput: PropTypes.string.isRequired,
   passConfirmInput: PropTypes.string.isRequired,
+  // FUNCTIONS
   updateFormField: PropTypes.func.isRequired,
+  signin: PropTypes.func.isRequired,
 };
 
 /**

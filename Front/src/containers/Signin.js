@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Signin from 'src/components/Signin';
 
 // Action Creators
-import { updateFormField } from '../actions/LoginActions';
+import { updateFormField, signin } from '../actions/LoginActions';
 
 const mapStateToProps = (state) => ({
   loginInput: state.loginInput,
@@ -18,6 +18,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   updateFormField: (fieldName, input) => {
     dispatch(updateFormField(fieldName, input));
+  },
+  signin: () => {
+    dispatch(signin());
   },
 });
 
