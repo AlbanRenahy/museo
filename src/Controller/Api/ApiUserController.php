@@ -36,7 +36,7 @@ class ApiUserController extends AbstractController
 
         $response = new Response($jsonContent);
         $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
+        // $response->headers->set('Access-Control-Allow-Origin', '*');
         // $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE'); 
 
         return $response;
@@ -57,7 +57,7 @@ class ApiUserController extends AbstractController
         ]);
         $response = new Response($jsonContent);
         $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
+        // $response->headers->set('Access-Control-Allow-Origin', '*');
         return $response;
     }
 
