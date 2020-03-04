@@ -3,26 +3,26 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import Login from 'src/components/Login';
+import Contact from 'src/components/Contact';
 
 // Action Creators
-import { updateFormField, connectUser } from '../actions/LoginActions';
+import { updateFormField, sendMessage } from '../actions/LoginActions';
 
 const mapStateToProps = (state) => ({
-  loginInput: state.loginInput,
-  passwordInput: state.passwordInput,
+  emailInput: state.emailInput,
+  messageInput: state.messageInput,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateFormField: (fieldName, input) => {
     dispatch(updateFormField(fieldName, input));
   },
-  connectUser: () => {
-    dispatch(connectUser());
+  sendMessage: () => {
+    dispatch(sendMessage());
   },
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Login);
+)(Contact);
