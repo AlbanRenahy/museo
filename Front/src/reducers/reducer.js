@@ -1,4 +1,4 @@
-import { UPDATE_FORM_FIELD, OPEN_DATA_FORM, CLOSE_DATA_FORM, CONNECT_USER, SEND_MESSAGE, SIGNIN } from '../actions/LoginActions';
+import { UPDATE_FORM_FIELD, OPEN_DATA_FORM, CLOSE_DATA_FORM, CONNECT_USER, SEND_MESSAGE, SIGNIN, STORE_TOKEN } from '../actions/LoginActions';
 
 
 const initialState = {
@@ -19,6 +19,9 @@ const initialState = {
   nameInput: '',
   addressInput: '',
   description: '',
+  token: '', // string,
+  refreshToken: '',
+  isConnected: false,
 };
 
 const reducerModele = (state = initialState, action = {}) => {
@@ -40,6 +43,13 @@ const reducerModele = (state = initialState, action = {}) => {
       };
     case CONNECT_USER:
       return state;
+    case STORE_TOKEN:
+      return {
+        ...state,
+        token: action.token,
+        refreshToken: action.refreshToken,
+        isConnected: true,
+      };
     case SEND_MESSAGE:
       return state;
     case SIGNIN:
