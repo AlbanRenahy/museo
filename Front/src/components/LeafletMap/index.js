@@ -13,7 +13,7 @@ const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument}) => 
     console.log(e.latlng);
   };
     openDataForm(e.latlng);
-  }
+
 
   return (
     <>
