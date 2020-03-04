@@ -28,7 +28,6 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
-      
     case SEND_MESSAGE:
       axios.get('http://54.91.98.36/projet-museo/public/api/users/', {
       })
@@ -40,14 +39,13 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
-
     case SIGNIN:
       next(action);
       axios
         .post('http://54.91.98.36/projet-museo/public/api/users/add', {
-          pseudo: store.getState().usernameInput,
           email: store.getState().userEmail,
           password: store.getState().passwordInput,
+          pseudo: store.getState().usernameInput,
         })
         .then((response) => {
           console.log(response.data);
@@ -57,7 +55,6 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
-      
     default:
       next(action);
   }
