@@ -9,7 +9,6 @@ import Welcome from 'src/components/Welcome';
 
 const mapStateToProps = (state) => ({
   welcomeView: state.welcomeView,
-
 });
 
 const mapDispatchToProps = (dispatch) => ({});

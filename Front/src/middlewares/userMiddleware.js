@@ -13,7 +13,6 @@ const userMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log('on a reçu la réponse : ', response);
-
           // je veux indiquer au store le pseudo de l'utilisateur, pour qu'il le stocke
           // je dispatch au store l'action SAVE_NICKNAME
           store.dispatch(saveConnectedUser(response));

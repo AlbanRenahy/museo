@@ -60,6 +60,15 @@ const App = () => (
     />
 
     <Route
+      path="/contact"
+      render={() => (
+        <Welcome>
+          <Contact />
+        </Welcome>
+      )}
+    />
+
+    <Route
       path="/map"
       render={() => (
         <LeafletMap />
