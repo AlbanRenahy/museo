@@ -40,7 +40,7 @@ const Contact = ({
       onChangeFunction={(input) => updateFormField('messageInput', input)}
     />
     <button type="submit" className="inverted-colors form-button">Envoyer mon message</button>
-    <Link to="/map">Retour à la page d'accueil</Link>
+    <Link to="/">Retour à la page d'accueil</Link>
   </Form>
 );
 

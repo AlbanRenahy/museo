@@ -1,5 +1,6 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
+import { Link } from 'react-router-dom';
 
 import './burgerNav.scss';
 
@@ -13,9 +14,9 @@ const BurgerNav = () => (
 
       <ul className="navigation">
         <li>Mon profil</li>
-        <li>Contact</li>
+        <li><Link to="/contact">Contact</Link></li>
         <li>A propos</li>
-        <li>Connexion</li>
+        <li><Link to="/signin">Connexion</Link></li>
       </ul>
     </Popup>
   </div>
