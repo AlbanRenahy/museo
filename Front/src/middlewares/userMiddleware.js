@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CONNECT_USER } from 'src/actions/LoginActions';
+import { CONNECT_USER, SEND_MESSAGE } from 'src/actions/LoginActions';
 
 const userMiddleware = (store) => (next) => (action) => {
   console.log('on a intercepté une action dans le middleware: ', action);
@@ -21,6 +21,17 @@ const userMiddleware = (store) => (next) => (action) => {
           // dispatch, React ne sera pas au courant qu'il y a eu une modification
           // et donc pas de mise à jour de l'interface
           // store.getState().nickname = response.data;
+        })
+        .catch((error) => {
+          console.log('erreur :', error.response);
+        });
+      next(action);
+      break;
+    case SEND_MESSAGE:
+      axios.get('http://54.91.98.36/projet-museo/public/api/users/', {
+      })
+        .then((response) => {
+          console.log('message envoyé : ', response);
         })
         .catch((error) => {
           console.log('erreur :', error.response);
