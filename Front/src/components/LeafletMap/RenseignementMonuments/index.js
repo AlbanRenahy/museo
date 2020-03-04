@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import Input from "../../Input";
 import TextArea from "../../TextArea";
-import AppareilPhoto from "../../../styles/images/photo-camera.svg";
+import AppareilPhoto from "../../../styles/images/photo-camera.png";
 
 import "./renseignement.scss";
 
