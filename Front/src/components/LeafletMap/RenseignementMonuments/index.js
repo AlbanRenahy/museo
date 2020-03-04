@@ -1,16 +1,27 @@
 /* eslint-disable jsx-a11y/label-has-for */
 
-import React from "react";
-import Input from "../../Input";
-import AppareilPhoto from "../../../styles/images/photo-camera.svg";
+import React from 'react';
+import Input from '../../Input';
+import AppareilPhoto from '../../../styles/images/photo-camera.svg';
 
-import "./renseignement.scss";
+import './renseignement.scss';
 
-const RenseignementMonuments = ({}) => {
+const RenseignementMonuments = ({ isDataFormOpen, closeDataForm, addMonument }) => {
+  const handleCloseDataForm = (e) => {
+    e.preventDefault();
+    console.log('Dataform closed');
+    closeDataForm();
+  };
+
+  const handleAddMonument = (e) => {
+    e.preventDefault();
+    console.log('monument added');
+    addMonument();
+  };
   return (
-    <div className="renseignement-monuments">
+    <div className={isDataFormOpen ? 'renseignement-donnees open' : 'renseignement-donnees'}>
       <div className="renseignement-monuments_relative">
-        <a href="" className="renseignement-monuments_close">
+        <a href="" className="renseignement-monuments_close" onClick={handleCloseDataForm}>
           Fermer
         </a>
         <img
@@ -32,7 +43,7 @@ const RenseignementMonuments = ({}) => {
             </div>
 
             <Input
-              type="text"
+              type="text-area"
               id="description"
               name="description"
               placeholder="Description"
@@ -77,7 +88,7 @@ const RenseignementMonuments = ({}) => {
             </div>
           </div>
           <div className="renseignement-monuments_submit">
-            <button type="submit" className="form-button">
+            <button type="submit" className="form-button" onClick={handleAddMonument}>
               Ajouter
             </button>
           </div>
