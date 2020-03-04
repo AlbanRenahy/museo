@@ -75,6 +75,7 @@ class ApiUserController extends AbstractController
     
             // On hydrate l'objet
             $user->setEmail($data->email);
+            $user->setPseudo($data->pseudo);
             $user->setPassword($data->password);
             $user->setFirstname($data->firstname);
             $user->setLastname($data->lastname);
