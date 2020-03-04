@@ -17,7 +17,7 @@ const RenseignementMonuments = ({
   descriptionInput,
   updateFormField,
 }) => {
-  const handleCloseDataForm = e => {
+  const handleCloseDataForm = (e) => {
     e.preventDefault();
     console.log("Dataform closed");
     closeDataForm();

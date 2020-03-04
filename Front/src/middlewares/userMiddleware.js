@@ -37,7 +37,7 @@ const userMiddleware = (store) => (next) => (action) => {
       next(action);
       axios
         .post('http://54.91.98.36/projet-museo/public/api/users/add', {
-          email: store.getState().userEmail,
+          email: store.getState().loginInput,
           password: store.getState().passwordInput,
           pseudo: store.getState().usernameInput,
         })
