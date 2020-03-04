@@ -12,6 +12,7 @@ import "./renseignement.scss";
 const RenseignementMonuments = ({
   isDataFormOpen,
   closeDataForm,
+  submitMonument,
   nameInput,
   addressInput,
   descriptionInput,
@@ -23,9 +24,10 @@ const RenseignementMonuments = ({
     closeDataForm();
   };
 
-  const handleAddMonument = e => {
+  const handleSubmitMonument = e => {
     e.preventDefault();
-    console.log("monument added");
+    console.log("submitting monument");
+    submitMonument();
   };
   return (
     <div
@@ -120,7 +122,7 @@ const RenseignementMonuments = ({
             <button
               type="submit"
               className="form-button"
-              onClick={handleAddMonument}
+              onClick={handleSubmitMonument}
             >
               Ajouter
             </button>
@@ -138,6 +140,7 @@ RenseignementMonuments.propTypes = {
   nameInput: PropTypes.string.isRequired,
   descriptionInput: PropTypes.string.isRequired,
   updateFormField: PropTypes.func.isRequired,
+  submitMonument: PropTypes.func.isRequired,
 };
 
 export default RenseignementMonuments;

@@ -1,29 +1,25 @@
-import { UPDATE_FORM_FIELD, OPEN_DATA_FORM, CLOSE_DATA_FORM, CONNECT_USER, SEND_MESSAGE, SIGNIN, STORE_TOKEN } from '../actions/LoginActions';
+import { UPDATE_FORM_FIELD, OPEN_DATA_FORM, CLOSE_DATA_FORM, CONNECT_USER, SEND_MESSAGE, SIGNIN, STORE_TOKEN, SUBMIT_MONUMENT } from '../actions/LoginActions';
 
 
 const initialState = {
-  loginInput: '',
-  passwordInput: '',
-  passConfirmInput: '', // string
-  usernameInput: '', // string
-  emailInput: '',
-  messageInput: '',
-  userId: '', // id
-  userEmail: '',
+  loginInput: '', // correspond à l'email dans login et signin
+  passwordInput: '', // correspond au password dans login et signin
+  passConfirmInput: '', // correspond à la confirmation de mot de passe dans signin
+  usernameInput: '', // correspond au pseudo dans signin
+  emailInput: '', // correspond à l'eamil dans contact
+  messageInput: '', // correspond au message dans contact
   userFirstname: null,
   userLastname: null,
-  userPicture: null,
-  userPseudo: '',
   isDataFormOpen: false, // bool qui indique si le formulaire de renseignement de données est ouvert ou non
-  clickedAdress: '', // String contenant l'adresse d'où a cliqué l'utilisateur
+  clickedAddress: '', // String contenant l'adresse d'où a cliqué l'utilisateur
   clickedLat: '', // gère la lattitude
   clickedLng: '', // gère la longitude
-  nameInput: '',
-  addressInput: '',
-  description: '',
-  token: '', // string,
-  refreshToken: '',
-  isConnected: false,
+  nameInput: '', // nom d'un monument dans le Form
+  addressInput: '', // adresse d'un monument dans le form
+  description: '', // description d'un monument dans le form
+  token: '', // va contenir le token de session
+  refreshToken: '', // va rafraichir le token pour se déconnecter de la session
+  isConnected: false, // par défaut, connection sur false
 };
 
 const reducerModele = (state = initialState, action = {}) => {
@@ -55,6 +51,8 @@ const reducerModele = (state = initialState, action = {}) => {
     case SEND_MESSAGE:
       return state;
     case SIGNIN:
+      return state;
+    case SUBMIT_MONUMENT:
       return state;
     default:
       return state;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CONNECT_USER, SEND_MESSAGE, SIGNIN, storeToken } from 'src/actions/LoginActions';
+import { CONNECT_USER, SEND_MESSAGE, SIGNIN, storeToken, SUBMIT_MONUMENT } from 'src/actions/LoginActions';
 
 const userMiddleware = (store) => (next) => (action) => {
   console.log('on a intercepté une action dans le middleware: ', action);
@@ -49,6 +49,23 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
+      case SUBMIT_MONUMENT:
+        next(action);
+        axios.post('', {
+          latitude: store.getState().clickedLat,
+          longitude: store.getState().clickedLng,
+          adresse: store.getState().clickedAddress,
+          certified: false,
+          delivered: true,
+        },
+        )
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+        break;
     default:
       next(action);
   }

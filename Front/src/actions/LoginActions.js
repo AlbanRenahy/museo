@@ -8,6 +8,7 @@ export const CONNECT_USER = 'CONNECT_USER'; // Api connection with username && p
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SIGNIN = 'SIGNIN';
 export const STORE_TOKEN = 'STORE_TOKEN';
+export const SUBMIT_MONUMENT = 'SUBMIT_MONUMENT';
 
 /**
  * Action Creators
@@ -44,4 +45,7 @@ export const sendMessage = () => ({
 
 export const signin = () => ({
   type: SIGNIN,
+});
+export const submitMonument = () => ({
+  type: SUBMIT_MONUMENT,
 });

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
- import { updateFormField, closeDataForm } from 'src/actions/LoginActions';
+ import { updateFormField, closeDataForm, submitMonument } from 'src/actions/LoginActions';
 
  /**
  * Local import
@@ -24,8 +24,8 @@ import RenseignementMonuments from '../components/LeafletMap/RenseignementMonume
   updateFormField: (fieldName, input) => {
     dispatch(updateFormField(fieldName, input));
   },
-  addMonument: () => {
-
+  submitMonument: () => {
+    dispatch(submitMonument());
   },
 });
 
