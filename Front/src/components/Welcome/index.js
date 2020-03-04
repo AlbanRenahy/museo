@@ -13,6 +13,7 @@ import Config from '../../../particlesJS-config.json';
 
 import MuseoLogo from 'src/styles/images/logo_museo_couleur.png';
 import Background from 'src/styles/images/BG-Login-Signin.png';
+import BurgerNav from 'src/components/BurgerNav';
 // Styles et assets
 import './welcome.scss';
 
@@ -21,21 +22,20 @@ import './welcome.scss';
  */
 const Welcome = ({ children }) => (
   <div
-  className="welcome"
-  style={{
-    backgroundImage: `url(${Background})`,
-  }}
+    className="welcome"
+    style={{
+      backgroundImage: `url(${Background})`,
+    }}
   >
     <div className="welcome">
-  <Particles params={Config} />
-    <div className="welcome-container">
-      <img src={MuseoLogo} alt="Museo" />
-      <p className="welcome-container_subtitle">L'application cartographique pour vos monuments et musées favoris </p>
-
-      {children}
-
+      <BurgerNav />
+      <Particles params={Config} />
+      <div className="welcome-container">
+        <img src={MuseoLogo} alt="Museo" />
+        <p className="welcome-container_subtitle">L'application cartographique pour vos monuments et musées favoris </p>
+        {children}
+      </div>
     </div>
-  </div>
   </div>
 );
 

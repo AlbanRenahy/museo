@@ -11,7 +11,7 @@ const Leaflet = () => {
 
   const handleRightClick = (e) => {
     console.log(e.latlng);
-  }
+  };
 
   return (
     <>
