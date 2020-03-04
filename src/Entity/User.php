@@ -3,8 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -16,11 +17,13 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("user")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups("user")
      */
     private $email;
 
@@ -37,11 +40,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("user")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("user")
      */
     private $lastname;
 
@@ -52,8 +57,10 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Groups("user")
      */
     private $pseudo;
+
 
     public function getId(): ?int
     {
@@ -187,4 +194,5 @@ class User implements UserInterface
 
         return $this;
     }
+    
 }

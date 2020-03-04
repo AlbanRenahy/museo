@@ -48,6 +48,7 @@ class AdminUserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+            
             $this->addFlash('success', 'Utilisateur bien ajouté par le dashboard');
 
             return $this->redirectToRoute('admin.user.index', ['id' => $user->getId()]);
