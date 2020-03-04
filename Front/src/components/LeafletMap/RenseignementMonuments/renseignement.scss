@@ -1,87 +1,105 @@
 #root {
+  position: relative;
+}
+
+.renseignement-donnees {
+  z-index: 10000;
+  position: absolute;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 10px;
+  top: 50%; /* poussé de la moitié de hauteur du référent */
+  left: -600px;
+  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
+  transition: 0.4s;
+
+  &_relative {
     position: relative;
   }
-  
-  .renseignement-monuments {
-    z-index: 10000;
-    position: fixed;
-    max-width: 320px;
-    background-color: white;
-    border-radius: 10px;
-    top: 50%; /* poussé de la moitié de hauteur du référent */
-    right: 30px;
-    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
-    -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
-    transition: 0.4s;
-  
-    &_relative {
-      position: relative;
-    }
-  
-    &.open {
-      left: 0;
-    }
-  
-    form {
-      padding: 20px 20px 0 20px;
-      border-top: 1px solid rgba(191, 191, 191, 0.5);
-      border-bottom: 1px solid rgba(191, 191, 191, 0.5);
-    }
 
+  &.open {
+    left: 10px;
+  }
+
+  form {
+    border-top: 1px solid rgba(191, 191, 191, 0.5);
+  }
+
+  select {
+    margin-bottom: 30px;
+    padding: 7px;
+    border-radius: 4px;
+    border: 2px solid rgba(191, 191, 191, 0.5);
+    font-size: 1.1em;
+    transition: 0.2s;
+    width: 100%;
+  }
+
+   select.select-style {
+    background-color:white;
+    padding-top:6px;
+    padding-bottom:6.5px;
+  }
+
+  &_inputs {
+    padding: 20px 20px 0 20px;
     input {
-        font-size:1em;
-        margin-bottom:22px;
+      padding: 7px;
+      ::placeholder{
+        font-size: .9em;
       }
+    }
+  }
 
-      select {
-        margin-bottom: 30px;
-        padding: 7px;
-        border-radius: 4px;
-        border: 2px solid rgba(191, 191, 191, 0.5);
-        font-size: 1.1em;
-        transition: 0.2s;
-        width: 100%;
-      }
+  &_appareil {
+    width: 50px;
+    margin: 20px auto;
+    display: block;
+  }
 
-      select.select-style {
-        background-color:white;
-        padding-top:6px;
-        padding-bottom:6.5px;
-      }
+  &_primary-infos {
+    display: flex;
+    justify-content: space-between;
+    input {
+      width: 100% !important;
+    }
+    :nth-child(1) {
+      width: 70%;
+    }
 
-      .renseignement-monuments_secondary-infos {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        .input-container {
-          width: 100%;
-          padding-bottom: 10px;
-        }
-      }
-  
-    &_appareil {
-      width: 50px;
-      margin: 20px auto;
+    :nth-child(2) {
+      width: 25%;
+    }
+  }
+
+  &_share, &_close {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: .7em;
+    color: black;
+    margin: 0 auto;
+    display: block;
+    margin: 10px 0;
+    transition: 0.2s;
+  }
+
+  &_close {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+  }
+
+  &_submit {
+    padding: 20px 0;
+    border-top: 1px solid rgba(191, 191, 191, 0.5);
+    border-bottom: 1px solid rgba(191, 191, 191, 0.5);
+    button {
+      width: 90%;
+      margin: 0 auto;
       display: block;
     }
-  
-    &_primary-infos {
-      display: flex;
-      justify-content: space-between;
-    }
-  
-    &_close {
-        color:#fff;
-        position: absolute;
-        top: 0px;
-        right: 20px;
-        padding: 7px;
-        background-color: rgb(60, 43, 124);
-        border-radius: 4px;
-        &:hover {
-            background-color: rgb(204, 107, 51);
-          }
-      }
   }
+}

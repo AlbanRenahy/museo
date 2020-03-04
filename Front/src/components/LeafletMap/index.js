@@ -7,15 +7,16 @@ import './leafletmap.scss';
 
 // Création de la map avec React Leaflet
 
-const Leaflet = () => {
+const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument}) => {
 
   const handleRightClick = (e) => {
     console.log(e.latlng);
+    openDataForm(e.latlng);
   }
 
   return (
     <>
-      <RenseignementMonuments />
+      <RenseignementMonuments isDataFormOpen={isDataFormOpen} closeDataForm={closeDataForm} addBuilding={addMonument} />
       <LeafletMap
         center={[48.864716, 2.349014]}
         zoom={6}

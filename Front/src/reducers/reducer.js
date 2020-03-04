@@ -1,4 +1,4 @@
-import { UPDATE_FORM_FIELD, CONNECT_USER, SIGNIN } from '../actions/LoginActions';
+import { UPDATE_FORM_FIELD, OPEN_DATA_FORM, CLOSE_DATA_FORM, CONNECT_USER, SIGNIN } from '../actions/LoginActions';
 
 
 const initialState = {
@@ -12,6 +12,8 @@ const initialState = {
   userLastname: null,
   userPicture: null,
   userPseudo: '',
+  isDataFormOpen: false, // bool qui indique si le formulaire de renseignement de données est ouvert ou non
+  clickedAdress: '', // String contenant l'adresse d'où a cliqué l'utilisateur
 };
 
 const reducerModele = (state = initialState, action = {}) => {
@@ -20,6 +22,16 @@ const reducerModele = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.fieldName]: action.input,
+      };
+      case OPEN_DATA_FORM:
+      return {
+        ...state,
+        isDataFormOpen: true,
+      };
+    case CLOSE_DATA_FORM:
+      return {
+        ...state,
+        isDataFormOpen: false,
       };
     case CONNECT_USER:
       return state;
