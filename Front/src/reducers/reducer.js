@@ -1,4 +1,4 @@
-import { UPDATE_FORM_FIELD, CONNECT_USER } from '../actions/LoginActions';
+import { UPDATE_FORM_FIELD, CONNECT_USER, SIGNIN } from '../actions/LoginActions';
 
 
 const initialState = {
@@ -22,6 +22,8 @@ const reducerModele = (state = initialState, action = {}) => {
         [action.fieldName]: action.input,
       };
     case CONNECT_USER:
+      return state;
+    case SIGNIN:
       return state;
     default:
       return state;
