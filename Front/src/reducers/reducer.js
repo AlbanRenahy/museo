@@ -1,4 +1,4 @@
-import { UPDATE_FORM_FIELD, CONNECT_USER, SEND_MESSAGE } from '../actions/LoginActions';
+import { UPDATE_FORM_FIELD, CONNECT_USER, SEND_MESSAGE , SIGNIN } from '../actions/LoginActions';
 
 
 const initialState = {
@@ -26,6 +26,8 @@ const reducerModele = (state = initialState, action = {}) => {
     case CONNECT_USER:
       return state;
     case SEND_MESSAGE:
+      return state;
+    case SIGNIN:
       return state;
     default:
       return state;
