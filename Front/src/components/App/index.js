@@ -8,11 +8,9 @@ import Signin from 'src/containers/Signin';
 import Login from 'src/containers/Login';
 import LeafletMap from 'src/containers/Leaflet';
 import Contact from 'src/containers/Contact';
-
-
-
+import About from 'src/components/About';
 import LoadingScreen from 'src/components/LoadingScreen';
-import NotFound from '../NotFound';
+import NotFound from 'src/components/NotFound';
 
 
 // == Composant
@@ -69,6 +67,13 @@ const App = () => (
         <Welcome>
           <Contact />
         </Welcome>
+      )}
+    />
+
+    <Route
+      path="/about"
+      render={() => (
+        <About />
       )}
     />
 
