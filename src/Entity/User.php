@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -24,6 +25,9 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Groups("user")
+     * @Assert\NotBlank(message = "Le champ ne peut pas être vide")
+     * @Assert\Length(min=3, max=255)
+     * @Assert\Email(message = "L'email {{ value }} n'est pas un email valide")
      */
     private $email;
 
@@ -35,6 +39,8 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message = "Le champ ne peut pas être vide")
+     * @Assert\Length(min=3, max=255)
      */
     private $password;
 

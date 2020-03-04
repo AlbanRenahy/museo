@@ -4,17 +4,14 @@ namespace App\Controller\Api;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Validator\Validation;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Exception\NotEncodableValueException;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @Route("/api/users", name="api.users.")
@@ -41,17 +38,34 @@ class ApiUserController extends AbstractController
     /**
      * @Route("/add", name="add", methods="POST")
      */
-    public function add(Request $request)
+    public function add(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator)
     {
-        
+        $jsonContent = $request->getContent();
+
+        try {
+            $user = $serializer->deserialize($jsonContent, User::class, 'json');
+            $errors = $validator->validate($user);
+            if(count($errors) > 0) {
+                return $this->json($errors, 400);
+            }
+            $em->persist($user);
+            $em->flush();
+        } catch(NotEncodableValueException $e) {
+            return $this->json([
+                'status' => 400,
+                'message' => $e->getMessage()
+            ], 400);
+        }
+
+        return $this->json($user, 201, [], ['groups' => 'user']);
     }
 
     /**
      * @Route("/edit/{id}", name="edit", methods="PUT")
      */
-    public function edit(?User $user, Request $request): Response
+    public function edit(?User $user, Request $request)
     {
-        
+        // TODO: Edit
     }
 
     /**
