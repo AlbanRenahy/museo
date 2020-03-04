@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,9 +39,14 @@ class Region
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Monument", inversedBy="region")
+     * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="region")
      */
-    private $monument;
+    private $monuments;
+
+    public function __construct()
+    {
+        $this->monuments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -94,14 +101,33 @@ class Region
         return $this;
     }
 
-    public function getMonument(): ?Monument
+    /**
+     * @return Collection|Monument[]
+     */
+    public function getMonuments(): Collection
     {
-        return $this->monument;
+        return $this->monuments;
     }
 
-    public function setMonument(?Monument $monument): self
+    public function addMonument(Monument $monument): self
     {
-        $this->monument = $monument;
+        if (!$this->monuments->contains($monument)) {
+            $this->monuments[] = $monument;
+            $monument->setRegion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMonument(Monument $monument): self
+    {
+        if ($this->monuments->contains($monument)) {
+            $this->monuments->removeElement($monument);
+            // set the owning side to null (unless already changed)
+            if ($monument->getRegion() === $this) {
+                $monument->setRegion(null);
+            }
+        }
 
         return $this;
     }

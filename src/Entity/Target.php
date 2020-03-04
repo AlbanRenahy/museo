@@ -22,24 +22,19 @@ class Target
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Description;
+    private $description;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $CreatedAt;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Monument", inversedBy="target")
-     */
-    private $monument;
 
     public function getId(): ?int
     {
@@ -60,24 +55,24 @@ class Target
 
     public function getDescription(): ?string
     {
-        return $this->Description;
+        return $this->description;
     }
 
-    public function setDescription(?string $Description): self
+    public function setDescription(?string $description): self
     {
-        $this->Description = $Description;
+        $this->description = $description;
 
         return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->CreatedAt;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $CreatedAt): self
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
-        $this->CreatedAt = $CreatedAt;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -90,18 +85,6 @@ class Target
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    public function getMonument(): ?Monument
-    {
-        return $this->monument;
-    }
-
-    public function setMonument(?Monument $monument): self
-    {
-        $this->monument = $monument;
 
         return $this;
     }

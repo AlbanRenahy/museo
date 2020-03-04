@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200302154644 extends AbstractMigration
+final class Version20200304212351 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,9 @@ final class Version20200302154644 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user ADD firstname VARCHAR(255) NOT NULL, ADD lastname VARCHAR(255) NOT NULL, ADD picture VARCHAR(255) DEFAULT NULL, ADD register_at DATETIME NOT NULL, ADD username VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE monument ADD status_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE monument ADD CONSTRAINT FK_7BB882836BF700BD FOREIGN KEY (status_id) REFERENCES status (id)');
+        $this->addSql('CREATE INDEX IDX_7BB882836BF700BD ON monument (status_id)');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +32,8 @@ final class Version20200302154644 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user DROP firstname, DROP lastname, DROP picture, DROP register_at, DROP username');
+        $this->addSql('ALTER TABLE monument DROP FOREIGN KEY FK_7BB882836BF700BD');
+        $this->addSql('DROP INDEX IDX_7BB882836BF700BD ON monument');
+        $this->addSql('ALTER TABLE monument DROP status_id');
     }
 }
