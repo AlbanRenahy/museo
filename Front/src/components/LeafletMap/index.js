@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Map as LeafletMap, TileLayer, Marker, Popup,
 } from 'react-leaflet';
-import RenseignementMonuments from './RenseignementMonuments';
+import RenseignementMonuments from '../../containers/RenseignementMonuments';
 import './leafletmap.scss';
 
 // Création de la map avec React Leaflet

@@ -8,8 +8,6 @@ export const CONNECT_USER = 'CONNECT_USER';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SIGNIN = 'SIGNIN';
 
-
-
 /**
  * Action Creators
  */
