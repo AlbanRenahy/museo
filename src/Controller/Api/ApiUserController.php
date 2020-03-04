@@ -37,6 +37,7 @@ class ApiUserController extends AbstractController
         $response = new Response($jsonContent);
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE'); 
 
         return $response;
     }
@@ -63,7 +64,7 @@ class ApiUserController extends AbstractController
     /**
      * @Route("/add", name="add", methods="POST")
      */
-    public function add(Request $request)
+    public function add(Request $request): Response
     {
         if($request->isXmlHttpRequest()) {
             // On instancie un nouvel article
@@ -82,6 +83,8 @@ class ApiUserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+            $response->headers->set('Content-Type', 'application/json');
+            $response->headers->set('Access-Control-Allow-Origin', '*');
             // On retourne la confirmation
             return new Response('ok', 201);
         }
@@ -91,7 +94,7 @@ class ApiUserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", methods="PUT")
      */
-    public function edit(?User $user, Request $request)
+    public function edit(?User $user, Request $request): Response
     {
         if($request->isXmlHttpRequest()) {
             $data = json_decode($request->getContent());
@@ -110,7 +113,8 @@ class ApiUserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-
+            $response->headers->set('Content-Type', 'application/json');
+            $response->headers->set('Access-Control-Allow-Origin', '*');
             return new Response('ok', $code);
         }
 
