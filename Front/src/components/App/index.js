@@ -12,7 +12,7 @@ import Contact from 'src/containers/Contact';
 
 
 import LoadingScreen from 'src/components/LoadingScreen';
-import NotFound from '../NotFound';
+import NotFound from 'src/components/NotFound';
 
 
 // == Composant
