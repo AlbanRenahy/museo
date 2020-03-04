@@ -1,0 +1,20 @@
+#Burgernav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.popup {
+    color:purple;
+    font-size: 25px;
+    font-style:bold;
+    font-variant-caps: small-caps;
+    margin: 3rem;
+}
+
+.popup-content{
+    color:purple;
+    font-size: 20px;
+    font-style:bold;
+    font-variant-caps: small-caps;
+    max-width: 120px;
+}

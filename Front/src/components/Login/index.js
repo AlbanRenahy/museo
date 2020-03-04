@@ -22,7 +22,7 @@ import './login.scss';
 const Login = ({
   loginInput, passwordInput, updateFormField, connectUser,
 }) => (
-    <Form onSubmit={connectUser}>
+   <Form onSubmit={connectUser}>
       <Input
         type="email"
         id="email"
