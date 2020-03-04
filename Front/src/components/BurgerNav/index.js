@@ -7,7 +7,7 @@ import './burgerNav.scss';
 const BurgerNav = () => (
   <div id="Burgernav">
     <Popup
-      trigger={<button type="button" className="popup"> Icône </button>}
+      trigger={<button type="button" className="popup" />}
       position="bottom"
       closeOnDocumentClick
     >

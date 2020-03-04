@@ -43,7 +43,7 @@ const Login = ({
       <p className="lost-password">
         <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
       </p>
-      <button type="submit" className="inverted-colors form-button">Me connecter</button>
+      <button type="submit" className="inverted-colors form-button">ME CONNECTER</button>
       <Link to="/signin">Je souhaite m'inscrire</Link>
       <Link to="/map">Entrer sur la carte en visiteur</Link>
     </Form>

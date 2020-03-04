@@ -1,14 +1,19 @@
 #Burgernav {
-    display: flex;
-    justify-content: flex-end;
+    z-index: 2;
+    position: fixed;
+    margin-left: 89vw;
 }
 
 .popup {
-    color:purple;
-    font-size: 25px;
-    font-style:bold;
-    font-variant-caps: small-caps;
+    background-image: url("../../styles/images/menu.svg");
+    width: 95px;
+    height: 95px;
     margin: 3rem;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 10px; 
+    border-radius: 100%;
+    border: none;
 }
 
 .popup-content{

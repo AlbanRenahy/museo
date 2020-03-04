@@ -9,6 +9,7 @@ import Login from 'src/containers/Login';
 import LeafletMap from 'src/containers/Leaflet';
 import Contact from 'src/containers/Contact';
 import About from 'src/components/About';
+import Profil from 'src/components/Profil';
 import LoadingScreen from 'src/components/LoadingScreen';
 import NotFound from 'src/components/NotFound';
 
@@ -81,6 +82,13 @@ const App = () => (
       path="/map"
       render={() => (
         <LeafletMap />
+      )}
+    />
+
+    <Route
+      path="/profil"
+      render={() => (
+          <Profil />
       )}
     />
 
