@@ -29,6 +29,15 @@ const Signin = ({
 }) => (
   <Form onSubmit={signin}>
     <Input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Email*"
+      value={loginInput}
+      onChangeFunction={(input) => updateFormField('loginInput', input)}
+    />
+    
+    <Input
       type="text"
       id="username"
       name="username"
@@ -37,14 +46,6 @@ const Signin = ({
       onChangeFunction={(input) => updateFormField('usernameInput', input)}
     />
 
-    <Input
-      type="email"
-      id="email"
-      name="email"
-      placeholder="Email*"
-      value={loginInput}
-      onChangeFunction={(input) => updateFormField('loginInput', input)}
-    />
 
     <Input
       type="password"

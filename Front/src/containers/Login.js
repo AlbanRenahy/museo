@@ -11,6 +11,7 @@ import { updateFormField, connectUser } from '../actions/LoginActions';
 const mapStateToProps = (state) => ({
   loginInput: state.loginInput,
   passwordInput: state.passwordInput,
+  isConnected: state.isConnected,
 });
 
 const mapDispatchToProps = (dispatch) => ({
