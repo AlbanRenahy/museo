@@ -1,27 +1,46 @@
 /* eslint-disable jsx-a11y/label-has-for */
 
-import React from 'react';
-import Input from '../../Input';
-import AppareilPhoto from '../../../styles/images/photo-camera.svg';
+import React from "react";
+import PropTypes from 'prop-types';
 
-import './renseignement.scss';
+import Input from "../../Input";
+import TextArea from "../../TextArea";
+import AppareilPhoto from "../../../styles/images/photo-camera.png";
 
-const RenseignementMonuments = ({ isDataFormOpen, closeDataForm, addMonument }) => {
+import "./renseignement.scss";
+
+const RenseignementMonuments = ({
+  isDataFormOpen,
+  closeDataForm,
+  nameInput,
+  addressInput,
+  descriptionInput,
+  updateFormField,
+}) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
-    console.log('Dataform closed');
+    console.log("Dataform closed");
     closeDataForm();
   };
 
-  const handleAddMonument = (e) => {
+  const handleAddMonument = e => {
     e.preventDefault();
-    console.log('monument added');
-    addMonument();
+    console.log("monument added");
   };
   return (
-    <div className={isDataFormOpen ? 'renseignement-donnees open' : 'renseignement-donnees'}>
+    <div
+      className={
+        isDataFormOpen
+          ? "renseignement-monuments open"
+          : "renseignement-monuments"
+      }
+    >
       <div className="renseignement-monuments_relative">
-        <a href="" className="renseignement-monuments_close" onClick={handleCloseDataForm}>
+        <a
+          href=""
+          className="renseignement-monuments_close"
+          onClick={handleCloseDataForm}
+        >
           Fermer
         </a>
         <img
@@ -31,22 +50,32 @@ const RenseignementMonuments = ({ isDataFormOpen, closeDataForm, addMonument }) 
         />
         <form action="">
           <div className="renseignement-monuments_inputs">
-            <div className="renseignement-monuments_primary-infos">
-              <Input type="text" id="name" name="name" placeholder="Nom" />
-
-              <Input
-                type="text"
-                id="adress"
-                name="adress"
-                placeholder="Adresse"
-              />
-            </div>
+            <Input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Nom"
+              value={nameInput}
+              onChangeFunction={input => updateFormField('nameInput', input)}
+            />
 
             <Input
-              type="text-area"
+              type="text"
+              id="adress"
+              name="adress"
+              placeholder="Adresse"
+              value={addressInput}
+              onChangeFunction={input => updateFormField('addressInput', input)}
+            />
+
+            <TextArea
+              type="text"
+              rows="5"
               id="description"
               name="description"
               placeholder="Description"
+              value={descriptionInput}
+              onChangeFunction={input => updateFormField('descriptionInput', input)}
             />
             <div className="renseignement-monuments_secondary-infos">
               <div className="input-container">
@@ -88,7 +117,11 @@ const RenseignementMonuments = ({ isDataFormOpen, closeDataForm, addMonument }) 
             </div>
           </div>
           <div className="renseignement-monuments_submit">
-            <button type="submit" className="form-button" onClick={handleAddMonument}>
+            <button
+              type="submit"
+              className="form-button"
+              onClick={handleAddMonument}
+            >
               Ajouter
             </button>
           </div>
@@ -96,6 +129,15 @@ const RenseignementMonuments = ({ isDataFormOpen, closeDataForm, addMonument }) 
       </div>
     </div>
   );
+};
+
+RenseignementMonuments.propTypes = {
+  isDataFormOpen: PropTypes.bool.isRequired,
+  closeDataForm: PropTypes.func.isRequired,
+  addressInput: PropTypes.string.isRequired,
+  nameInput: PropTypes.string.isRequired,
+  descriptionInput: PropTypes.string.isRequired,
+  updateFormField: PropTypes.func.isRequired,
 };
 
 export default RenseignementMonuments;

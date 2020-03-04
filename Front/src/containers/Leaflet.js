@@ -17,11 +17,11 @@ const mapDispatchToProps = dispatch => ({
   openDataForm: (position) => {
     dispatch(openDataForm(position));
   },
-  closeDataForm: () => {
-    dispatch(closeDataForm());
-  },
   updateFormField: (fieldName, input) => {
     dispatch(updateFormField(fieldName, input));
+  },
+  closeDataForm: () => {
+    dispatch(closeDataForm());
   },
   addMonument: () => {
 

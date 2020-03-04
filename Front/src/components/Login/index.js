@@ -2,7 +2,7 @@
  * Import
  */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // images
@@ -20,9 +20,10 @@ import './login.scss';
  * Code
  */
 const Login = ({
-  loginInput, passwordInput, updateFormField, connectUser,
+  loginInput, passwordInput, updateFormField, connectUser, isConnected,
 }) => (
    <Form onSubmit={connectUser}>
+     {isConnected && <Redirect to="/map" />}
       <Input
         type="email"
         id="email"
@@ -59,6 +60,7 @@ Login.propTypes = {
   ]).isRequired,
   updateFormField: PropTypes.func.isRequired,
   connectUser: PropTypes.func.isRequired,
+  isConnected: PropTypes.bool.isRequired,
 };
 
 

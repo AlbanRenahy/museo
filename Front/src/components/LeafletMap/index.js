@@ -2,17 +2,35 @@ import React from 'react';
 import {
   Map as LeafletMap, TileLayer, Marker, Popup,
 } from 'react-leaflet';
-import RenseignementMonuments from './RenseignementMonuments';
+import L from 'leaflet';
+import RenseignementMonuments from '../../containers/RenseignementMonuments';
 import './leafletmap.scss';
+
+
+// pour utiliser des punaises
+import pins from '../../styles/images/pinorange.png';
+import pins2 from '../../styles/images/pins.png';
 
 // Création de la map avec React Leaflet
 
-const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument}) => {
+const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument, updateFormField }) => {
 
   const handleRightClick = (e) => {
     console.log(e.latlng);
+    updateFormField('clickedLat', e.latlng.lat);
+    updateFormField('clickedLng', e.latlng.lng);
     openDataForm(e.latlng);
   };
+  const myPin = L.icon({
+    iconUrl: `${pins}`,
+    iconSize: [40, 40], // size of the icon
+    // shadowSize:   [50, 64], // size of the shadow
+  });
+  const myPin2 = L.icon({
+    iconUrl: `${pins2}`,
+    iconSize: [40, 40], // size of the icon
+    // shadowSize:   [50, 64], // size of the shadow
+  });
 
 
   return (
@@ -20,8 +38,8 @@ const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument}) => 
       <RenseignementMonuments isDataFormOpen={isDataFormOpen} closeDataForm={closeDataForm} addBuilding={addMonument} />
       <LeafletMap
         center={[48.864716, 2.349014]}
-        zoom={6}
-        maxZoom={18}
+        zoom={12}
+        maxZoom={19}
         attributionControl
         zoomControl={false}
         doubleClickZoom={false}
@@ -34,9 +52,20 @@ const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument}) => 
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         />
-        <Marker position={[48.864716, 2.349014]}>
+        <Marker
+          position={[48.864716, 2.349014]}
+          icon={myPin2}
+        >
           <Popup>
             Je suis un pop up à Paris
+          </Popup>
+        </Marker>
+        <Marker
+          position={[49.985289726555855, 2.649164199829102]}
+          icon={myPin}
+        >
+          <Popup>
+            Bonjour, je suis une punaise !
           </Popup>
         </Marker>
       </LeafletMap>
