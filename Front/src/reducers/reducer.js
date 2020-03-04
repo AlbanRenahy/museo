@@ -1,4 +1,4 @@
-
+import { UPDATE_FORM_FIELD, OPEN_DATA_FORM, CLOSE_DATA_FORM, CONNECT_USER, SEND_MESSAGE, SIGNIN } from '../actions/LoginActions';
 
 
 const initialState = {
@@ -25,7 +25,7 @@ const reducerModele = (state = initialState, action = {}) => {
         ...state,
         [action.fieldName]: action.input,
       };
-      case OPEN_DATA_FORM:
+    case OPEN_DATA_FORM:
       return {
         ...state,
         isDataFormOpen: true,
