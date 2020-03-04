@@ -8,7 +8,8 @@ import './leafletmap.scss';
 
 
 // pour utiliser des punaises
-import pins from '../../styles/images/pins.png';
+import pins from '../../styles/images/pinorange.png';
+import pins2 from '../../styles/images/pins.png';
 
 // Création de la map avec React Leaflet
 
@@ -22,10 +23,14 @@ const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument, upda
   };
   const myPin = L.icon({
     iconUrl: `${pins}`,
-    iconSize:     [40, 40], // size of the icon
+    iconSize: [40, 40], // size of the icon
     // shadowSize:   [50, 64], // size of the shadow
   });
-
+  const myPin2 = L.icon({
+    iconUrl: `${pins2}`,
+    iconSize: [40, 40], // size of the icon
+    // shadowSize:   [50, 64], // size of the shadow
+  });
 
 
   return (
@@ -49,7 +54,7 @@ const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument, upda
         />
         <Marker
           position={[48.864716, 2.349014]}
-          icon={myPin}
+          icon={myPin2}
         >
           <Popup>
             Je suis un pop up à Paris
