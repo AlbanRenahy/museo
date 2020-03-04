@@ -6,10 +6,12 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Welcome from 'src/containers/Welcome';
 import Signin from 'src/containers/Signin';
 import Login from 'src/containers/Login';
+import LeafletMap from 'src/containers/Leaflet';
+import Contact from 'src/containers/Contact';
+
 
 
 import LoadingScreen from 'src/components/LoadingScreen';
-import LeafletMap from '../LeafletMap';
 import NotFound from '../NotFound';
 
 
