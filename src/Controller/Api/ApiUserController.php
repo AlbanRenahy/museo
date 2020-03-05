@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Firewall\UsernamePasswordJsonAuthenticationListener;
 use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -45,7 +46,6 @@ class ApiUserController extends AbstractController
 
         try {
             $user = $serializer->deserialize($jsonContent, User::class, 'json');
-            // $user->setPassword($passwordEncoder->encodePassword($user, $jsonContent->get('password')->getData());
             $errors = $validator->validate($user);
             if(count($errors) > 0) {
                 return $this->json($errors, 400);
