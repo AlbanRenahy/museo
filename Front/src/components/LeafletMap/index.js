@@ -2,8 +2,9 @@ import React from 'react';
 import {
   Map as LeafletMap, TileLayer, Marker, Popup,
 } from 'react-leaflet';
-import L from 'leaflet';
 import PropTypes from 'prop-types';
+import L from 'leaflet';
+import Menu from '../../containers/Menu';
 import RenseignementMonuments from '../../containers/RenseignementMonuments';
 import './leafletmap.scss';
 
@@ -52,6 +53,7 @@ const Leaflet = ({
 
   return (
     <>
+      <Menu />
       <RenseignementMonuments
         isDataFormOpen={isDataFormOpen}
         closeDataForm={closeDataForm}
