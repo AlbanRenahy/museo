@@ -4,7 +4,7 @@ import axios from 'axios';
 import {
   OPEN_DATA_FORM,
   openDataFormResponse,
-} from 'src/actions/LoginActions';
+} from 'src/actions/mapActions';
 
 // eslint-disable-next-line consistent-return
 const extApiMiddleware = (store) => (next) => (action) => {

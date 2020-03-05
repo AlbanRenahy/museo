@@ -20,7 +20,7 @@ import './login.scss';
  * Code
  */
 const Login = ({
-  email, password, updateFormField, connectUser, isConnected,
+  email, password, updateUserformField, connectUser, isConnected,
 }) => (
   <Form onSubmit={connectUser}>
     {isConnected && <Redirect to="/map" />}
@@ -30,7 +30,7 @@ const Login = ({
       name="email"
       placeholder="Email*"
       value={email}
-      onChangeFunction={(input) => updateFormField('email', input)}
+      onChangeFunction={(input) => updateUserformField('email', input)}
     />
     <Input
       type="password"
@@ -38,7 +38,7 @@ const Login = ({
       name="mot de passe"
       placeholder="Mot de passe*"
       value={password}
-      onChangeFunction={(input) => updateFormField('password', input)}
+      onChangeFunction={(input) => updateUserformField('password', input)}
     />
     <p className="lost-password">
       <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
@@ -58,7 +58,7 @@ Login.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
-  updateFormField: PropTypes.func.isRequired,
+  updateUserformField: PropTypes.func.isRequired,
   connectUser: PropTypes.func.isRequired,
   isConnected: PropTypes.bool.isRequired,
 };

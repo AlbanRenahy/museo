@@ -21,12 +21,12 @@ const Leaflet = ({
   isDataFormOpen,
   closeDataForm,
   addMonument,
-  updateFormField,
+  updateMapformField,
 }) => {
   const handleRightClick = (e) => {
     console.log(e.latlng);
-    updateFormField('clickedLat', e.latlng.lat);
-    updateFormField('clickedLng', e.latlng.lng);
+    updateMapformField('clickedLat', e.latlng.lat);
+    updateMapformField('clickedLng', e.latlng.lng);
     openDataForm(e.latlng);
   };
   const myPin = L.icon({
@@ -117,7 +117,7 @@ Leaflet.propTypes = {
   isDataFormOpen: PropTypes.bool.isRequired,
   closeDataForm: PropTypes.func.isRequired,
   addMonument: PropTypes.func.isRequired,
-  updateFormField: PropTypes.func.isRequired,
+  updateMapformField: PropTypes.func.isRequired,
 };
 
 export default Leaflet;

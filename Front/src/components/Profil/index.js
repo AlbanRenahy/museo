@@ -17,7 +17,7 @@ const Profil = ({
   username,
   email,
   password,
-  updateFormField,
+  updateUserformField,
   updateUser,
 }) => (
   <div
@@ -44,7 +44,7 @@ const Profil = ({
                 name="pseudonyme"
                 placeholder={username}
                 value={username}
-                onChangeFunction={(input) => updateFormField('username', input)}
+                onChangeFunction={(input) => updateUserformField('username', input)}
               />
             </p>
 
@@ -56,7 +56,7 @@ const Profil = ({
                 name="email"
                 placeholder={email}
                 value={email}
-                onChangeFunction={(input) => updateFormField('email', input)}
+                onChangeFunction={(input) => updateUserformField('email', input)}
               />
             </p>
 
@@ -68,7 +68,7 @@ const Profil = ({
                 name="mot de passe"
                 placeholder={password}
                 value={password}
-                onChangeFunction={(input) => updateFormField('password', input)}
+                onChangeFunction={(input) => updateUserformField('password', input)}
               />
             </p>
             <button type="submit" className="profil-update inverted-colors form-button">Enregistrer</button>
@@ -84,7 +84,7 @@ Profil.propTypes = {
   username: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  updateFormField: PropTypes.func.isRequired,
+  updateUserformField: PropTypes.func.isRequired,
   updateUser: PropTypes.func.isRequired,
 };
 
