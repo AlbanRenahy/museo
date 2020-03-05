@@ -40,7 +40,7 @@ const Signin = ({
     <Input
       type="text"
       id="username"
-      name="username"
+      name="pseudonyme"
       placeholder="Pseudonyme*"
       value={username}
       onChangeFunction={(input) => updateFormField('username', input)}
@@ -50,7 +50,7 @@ const Signin = ({
     <Input
       type="password"
       id="password"
-      name="password"
+      name="mot de passe"
       placeholder="Mot de passe*"
       value={password}
       onChangeFunction={(input) => updateFormField('password', input)}
@@ -59,7 +59,7 @@ const Signin = ({
     <Input
       type="password"
       id="password-confirm"
-      name="password-confirm"
+      name="confirmer votre mot de passe"
       placeholder="Confirmer votre mot de passe*"
       value={passConfirm}
       onChangeFunction={(input) => updateFormField('passConfirm', input)}
