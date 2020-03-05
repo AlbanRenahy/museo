@@ -5,7 +5,7 @@ import {
 import L from 'leaflet';
 import PropTypes from 'prop-types';
 import RenseignementMonuments from '../../containers/RenseignementMonuments';
-import Menu from './Menu';
+import Menu from '../../containers/Menu';
 import './leafletmap.scss';
 
 
