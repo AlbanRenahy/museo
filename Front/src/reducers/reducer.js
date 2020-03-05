@@ -8,6 +8,7 @@ import {
   STORE_TOKEN,
   SUBMIT_MONUMENT,
   CLOSE_ALL_MODALS,
+  OPEN_DATA_FORM_RESPONSE,
 } from '../actions/LoginActions';
 
 
@@ -60,6 +61,13 @@ const reducerModele = (state = initialState, action = {}) => {
         ...state,
         isDataFormOpen: false,
         // Les futurs modals à fermer
+      };
+    case OPEN_DATA_FORM_RESPONSE:
+      // eslint-disable-next-line camelcase
+      const { display_name } = action.data;
+      return {
+        ...state,
+        address: display_name,
       };
     case CONNECT_USER:
       return state;

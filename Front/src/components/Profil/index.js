@@ -12,7 +12,7 @@ import Input from 'src/components/Input';
 import './profil.scss';
 
 
-const Profil = () => (
+const Profil = ({  }) => (
   <div
     className="profil"
     style={{
