@@ -60,16 +60,14 @@ const RenseignementMonuments = ({
               value={name}
               onChangeFunction={(input) => updateFormField('name', input)}
             />
-
-            <Input
-              type="text"
-              id="adress"
-              name="adress"
-              placeholder="Adresse"
-              value={address}
-              onChangeFunction={(input) => updateFormField('address', input)}
-            />
-
+              <Input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="Adresse"
+                value={address}
+                onChangeFunction={(input) => updateFormField('address', input)}
+              />
             <TextArea
               type="text"
               rows="5"
@@ -135,6 +133,7 @@ const RenseignementMonuments = ({
 
 RenseignementMonuments.propTypes = {
   isDataFormOpen: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
   closeDataForm: PropTypes.func.isRequired,
   address: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

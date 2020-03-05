@@ -3,6 +3,7 @@
  */
 export const UPDATE_FORM_FIELD = 'UPDATE_FORM_FIELD';
 export const OPEN_DATA_FORM = 'OPEN_DATA_FORM';
+export const OPEN_DATA_FORM_RESPONSE = 'OPEN_DATA_FORM_RESPONSE';
 export const CLOSE_DATA_FORM = 'CLOSE_DATA_FORM';
 export const CONNECT_USER = 'CONNECT_USER'; // Api connection with username && password
 export const SEND_MESSAGE = 'SEND_MESSAGE';
@@ -25,6 +26,11 @@ export const updateFormField = (fieldName, input) => ({
 export const openDataForm = (position) => ({
   type: OPEN_DATA_FORM,
   position,
+});
+
+export const openDataFormResponse = data => ({
+  type: OPEN_DATA_FORM_RESPONSE,
+  data,
 });
 
 export const closeDataForm = () => ({

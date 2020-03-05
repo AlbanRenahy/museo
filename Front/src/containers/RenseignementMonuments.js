@@ -13,7 +13,7 @@ import RenseignementMonuments from '../components/LeafletMap/RenseignementMonume
 const mapStateToProps = (state) => ({
   isDataFormOpen: state.isDataFormOpen,
   name: state.name,
-  adress: state.adress,
+  address: state.address,
   description: state.description,
 });
 
