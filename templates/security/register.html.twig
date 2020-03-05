@@ -8,9 +8,11 @@
         <div class="row">
             <div class="col-12 col-md-12">
                 {{ form_row(registrationForm.email) }}
-                {{ form_row(registrationForm.plainPassword) }}
                 {{ form_row(registrationForm.firstname) }}
                 {{ form_row(registrationForm.lastname) }}
+                {{ form_row(registrationForm.pseudo) }}
+                {{ form_row(registrationForm.password.first) }}
+                {{ form_row(registrationForm.password.second) }}
                 {{ form_row(registrationForm.agreeTerms) }}
                 <button class="btn btn-secondary">S'enrengister</button>
                 <a href="{{ path('rgpd') }}" class="btn btn-info">Lire les CGU</a>
