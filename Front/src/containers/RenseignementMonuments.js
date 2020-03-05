@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { updateFormField, closeDataForm, submitMonument } from 'src/actions/LoginActions';
+import { updateMapformField, closeDataForm, submitMonument } from 'src/actions/mapActions';
 
 /**
  * Local import
@@ -11,18 +11,18 @@ import RenseignementMonuments from '../components/LeafletMap/RenseignementMonume
 // Action Creators
 
 const mapStateToProps = (state) => ({
-  isDataFormOpen: state.isDataFormOpen,
-  name: state.name,
-  address: state.address,
-  description: state.description,
+  isDataFormOpen: state.map.isDataFormOpen,
+  name: state.map.name,
+  address: state.map.address,
+  description: state.map.description,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   closeDataForm: () => {
     dispatch(closeDataForm());
   },
-  updateFormField: (fieldName, input) => {
-    dispatch(updateFormField(fieldName, input));
+  updateMapformField: (fieldName, input) => {
+    dispatch(updateMapformField(fieldName, input));
   },
   submitMonument: () => {
     dispatch(submitMonument());

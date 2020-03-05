@@ -6,16 +6,16 @@ import { connect } from 'react-redux';
 import Contact from 'src/components/Contact';
 
 // Action Creators
-import { updateFormField, sendMessage } from '../actions/LoginActions';
+import { updateUserformField, sendMessage } from 'src/actions/userActions';
 
 const mapStateToProps = (state) => ({
-  emailInput: state.emailInput,
-  messageInput: state.messageInput,
+  email: state.user.email,
+  message: state.user.message,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateFormField: (fieldName, input) => {
-    dispatch(updateFormField(fieldName, input));
+  updateUserformField: (fieldName, input) => {
+    dispatch(updateUserformField(fieldName, input));
   },
   sendMessage: () => {
     dispatch(sendMessage());

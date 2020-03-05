@@ -2,7 +2,7 @@
  * Import
  */
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Bern from '../../styles/images/stephaneBern.jpg';
 import BG from '../../styles/images/BG-Login-Signin.png';
 

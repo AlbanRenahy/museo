@@ -16,7 +16,7 @@ const RenseignementMonuments = ({
   name,
   address,
   description,
-  updateFormField,
+  updateMapformField,
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
@@ -58,16 +58,16 @@ const RenseignementMonuments = ({
               name="name"
               placeholder="Nom"
               value={name}
-              onChangeFunction={(input) => updateFormField('name', input)}
+              onChangeFunction={(input) => updateMapformField('name', input)}
             />
-              <Input
-                type="text"
-                id="address"
-                name="address"
-                placeholder="Adresse"
-                value={address}
-                onChangeFunction={(input) => updateFormField('address', input)}
-              />
+            <Input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Adresse"
+              value={address}
+              onChangeFunction={(input) => updateMapformField('address', input)}
+            />
             <TextArea
               type="text"
               rows="5"
@@ -75,7 +75,7 @@ const RenseignementMonuments = ({
               name="description"
               placeholder="Description"
               value={description}
-              onChangeFunction={(input) => updateFormField('description', input)}
+              onChangeFunction={(input) => updateMapformField('description', input)}
             />
             <div className="renseignement-monuments_secondary-infos">
               <div className="input-container">
@@ -138,7 +138,7 @@ RenseignementMonuments.propTypes = {
   address: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  updateFormField: PropTypes.func.isRequired,
+  updateMapformField: PropTypes.func.isRequired,
   submitMonument: PropTypes.func.isRequired,
 };
 

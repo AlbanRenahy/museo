@@ -4,7 +4,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Particles from 'react-particles-js';
-import Config from '../../../particlesJS-config.json';
 
 /**
  * Local import
@@ -14,6 +13,9 @@ import Config from '../../../particlesJS-config.json';
 import MuseoLogo from 'src/styles/images/logo_museo_couleur.png';
 import Background from 'src/styles/images/BG-Login-Signin.png';
 import BurgerNav from 'src/components/BurgerNav';
+
+import Config from '../../../particlesJS-config.json';
+
 // Styles et assets
 import './welcome.scss';
 

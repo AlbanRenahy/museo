@@ -8,22 +8,22 @@ import LeafletMap from 'src/components/LeafletMap';
 
 // Action Creators
 import {
-  updateFormField,
+  updateMapformField,
   openDataForm,
   closeDataForm,
   closeAllModals,
-} from 'src/actions/LoginActions';
+} from 'src/actions/mapActions';
 
 const mapStateToProps = (state) => ({
-  isDataFormOpen: state.isDataFormOpen,
+  isDataFormOpen: state.map.isDataFormOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   openDataForm: (position) => {
     dispatch(openDataForm(position));
   },
-  updateFormField: (fieldName, input) => {
-    dispatch(updateFormField(fieldName, input));
+  updateMapformField: (fieldName, input) => {
+    dispatch(updateMapformField(fieldName, input));
   },
   closeDataForm: () => {
     dispatch(closeDataForm());

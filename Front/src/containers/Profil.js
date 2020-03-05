@@ -6,17 +6,17 @@ import { connect } from 'react-redux';
 import Profil from 'src/components/Profil';
 
 // Action Creators
-import { updateFormField, updateUser } from '../actions/LoginActions';
+import { updateUserformField, updateUser } from '../actions/userActions';
 
 const mapStateToProps = (state) => ({
-  username: state.username,
-  email: state.email,
-  password: state.password,
+  username: state.user.username,
+  email: state.user.email,
+  password: state.user.password,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateFormField: (fieldName, input) => {
-    dispatch(updateFormField(fieldName, input));
+  updateUserformField: (fieldName, input) => {
+    dispatch(updateUserformField(fieldName, input));
   },
   updateUser: () => {
     dispatch(updateUser());
