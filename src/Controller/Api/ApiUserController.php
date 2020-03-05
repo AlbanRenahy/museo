@@ -24,11 +24,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class ApiUserController extends AbstractController
 {
 
-    public function getTokenUser(UserInterface $user, JWTTokenManagerInterface $JWTManager)
-    {
-        return new JsonResponse(['token' => $JWTManager->create($user)]);
-    }
-
     /**
      * @Route("/", name="index", methods="GET")
      */
