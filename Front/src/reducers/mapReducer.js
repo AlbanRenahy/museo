@@ -15,6 +15,9 @@ const initialState = {
   address: '', // adresse d'un monument dans le form
   description: '', // description d'un monument dans le form
 
+  // ************MANAGEMENT OF THE MENU********/
+  searchInput: '', // string
+
   clickedLat: '', // gère la lattitude
   clickedLng: '', // gère la longitude
 
