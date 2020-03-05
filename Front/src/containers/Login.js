@@ -9,8 +9,8 @@ import Login from 'src/components/Login';
 import { updateFormField, connectUser } from '../actions/LoginActions';
 
 const mapStateToProps = (state) => ({
-  loginInput: state.loginInput,
-  passwordInput: state.passwordInput,
+  email: state.email,
+  password: state.password,
   isConnected: state.isConnected,
 });
 

@@ -13,9 +13,9 @@ const RenseignementMonuments = ({
   isDataFormOpen,
   closeDataForm,
   submitMonument,
-  nameInput,
-  addressInput,
-  descriptionInput,
+  name,
+  address,
+  description,
   updateFormField,
 }) => {
   const handleCloseDataForm = (e) => {
@@ -57,8 +57,8 @@ const RenseignementMonuments = ({
               id="name"
               name="name"
               placeholder="Nom"
-              value={nameInput}
-              onChangeFunction={input => updateFormField('nameInput', input)}
+              value={name}
+              onChangeFunction={input => updateFormField('name', input)}
             />
 
             <Input
@@ -66,8 +66,8 @@ const RenseignementMonuments = ({
               id="adress"
               name="adress"
               placeholder="Adresse"
-              value={addressInput}
-              onChangeFunction={input => updateFormField('addressInput', input)}
+              value={address}
+              onChangeFunction={input => updateFormField('address', input)}
             />
 
             <TextArea
@@ -76,8 +76,8 @@ const RenseignementMonuments = ({
               id="description"
               name="description"
               placeholder="Description"
-              value={descriptionInput}
-              onChangeFunction={input => updateFormField('descriptionInput', input)}
+              value={description}
+              onChangeFunction={input => updateFormField('description', input)}
             />
             <div className="renseignement-monuments_secondary-infos">
               <div className="input-container">
@@ -136,9 +136,9 @@ const RenseignementMonuments = ({
 RenseignementMonuments.propTypes = {
   isDataFormOpen: PropTypes.bool.isRequired,
   closeDataForm: PropTypes.func.isRequired,
-  addressInput: PropTypes.string.isRequired,
-  nameInput: PropTypes.string.isRequired,
-  descriptionInput: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   updateFormField: PropTypes.func.isRequired,
   submitMonument: PropTypes.func.isRequired,
 };

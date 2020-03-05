@@ -9,10 +9,10 @@ import Signin from 'src/components/Signin';
 import { updateFormField, signin } from '../actions/LoginActions';
 
 const mapStateToProps = (state) => ({
-  loginInput: state.loginInput,
-  passwordInput: state.passwordInput,
-  passConfirmInput: state.passConfirmInput,
-  usernameInput: state.usernameInput,
+  email: state.email,
+  password: state.password,
+  passConfirm: state.passConfirm,
+  username: state.username,
 });
 
 const mapDispatchToProps = (dispatch) => ({

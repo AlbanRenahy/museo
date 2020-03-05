@@ -18,7 +18,7 @@ import './contact.scss';
  * Code
  */
 const Contact = ({
-  emailInput, messageInput, updateFormField, sendMessage,
+  email, message, updateFormField, sendMessage,
 }) => (
   <Form onSubmit={sendMessage}>
     <p className="contact-title">Contactez nous !</p>
@@ -27,8 +27,8 @@ const Contact = ({
       id="email"
       name="email"
       placeholder="Email*"
-      value={emailInput}
-      onChangeFunction={(input) => updateFormField('emailInput', input)}
+      value={email}
+      onChangeFunction={(input) => updateFormField('email', input)}
     />
     <TextArea
       type="text"
@@ -36,8 +36,8 @@ const Contact = ({
       id="message"
       name="message"
       placeholder="Votre message*"
-      value={messageInput}
-      onChangeFunction={(input) => updateFormField('messageInput', input)}
+      value={message}
+      onChangeFunction={(input) => updateFormField('message', input)}
     />
     <button type="submit" className="inverted-colors form-button">Envoyer mon message</button>
     <Link to="/">Retour à la page d'accueil</Link>
@@ -45,8 +45,8 @@ const Contact = ({
 );
 
 Contact.propTypes = {
-  emailInput: PropTypes.string.isRequired,
-  messageInput: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   updateFormField: PropTypes.func.isRequired,
   sendMessage: PropTypes.func.isRequired,
 };

@@ -20,10 +20,10 @@ import './signin.scss';
  * Code
  */
 const Signin = ({
-  usernameInput,
-  loginInput,
-  passwordInput,
-  passConfirmInput,
+  username,
+  email,
+  password,
+  passConfirm,
   updateFormField,
   signin,
 }) => (
@@ -33,8 +33,8 @@ const Signin = ({
       id="email"
       name="email"
       placeholder="Email*"
-      value={loginInput}
-      onChangeFunction={(input) => updateFormField('loginInput', input)}
+      value={email}
+      onChangeFunction={(input) => updateFormField('email', input)}
     />
     
     <Input
@@ -42,8 +42,8 @@ const Signin = ({
       id="username"
       name="username"
       placeholder="Pseudonyme*"
-      value={usernameInput}
-      onChangeFunction={(input) => updateFormField('usernameInput', input)}
+      value={username}
+      onChangeFunction={(input) => updateFormField('username', input)}
     />
 
 
@@ -52,8 +52,8 @@ const Signin = ({
       id="password"
       name="password"
       placeholder="Mot de passe*"
-      value={passwordInput}
-      onChangeFunction={(input) => updateFormField('passwordInput', input)}
+      value={password}
+      onChangeFunction={(input) => updateFormField('password', input)}
     />
 
     <Input
@@ -61,8 +61,8 @@ const Signin = ({
       id="password-confirm"
       name="password-confirm"
       placeholder="Confirmer votre mot de passe*"
-      value={passConfirmInput}
-      onChangeFunction={(input) => updateFormField('passConfirmInput', input)}
+      value={passConfirm}
+      onChangeFunction={(input) => updateFormField('passConfirm', input)}
     />
 
     <button type="submit" className="form-button">M'inscrire</button>
@@ -74,10 +74,10 @@ const Signin = ({
 
 Signin.propTypes = {
   // FORM FIELDS
-  usernameInput: PropTypes.string.isRequired,
-  loginInput: PropTypes.string.isRequired,
-  passwordInput: PropTypes.string.isRequired,
-  passConfirmInput: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  passConfirm: PropTypes.string.isRequired,
   // FUNCTIONS
   updateFormField: PropTypes.func.isRequired,
   signin: PropTypes.func.isRequired,

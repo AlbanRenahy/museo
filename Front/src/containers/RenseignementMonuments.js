@@ -12,9 +12,9 @@ import RenseignementMonuments from '../components/LeafletMap/RenseignementMonume
 
  const mapStateToProps = state => ({
   isDataFormOpen: state.isDataFormOpen,
-  nameInput: state.nameInput,
-  adressInput: state.adressInput,
-  descriptionInput: state.descriptionInput,
+  name: state.name,
+  adress: state.adress,
+  description: state.description,
 });
 
  const mapDispatchToProps = dispatch => ({
