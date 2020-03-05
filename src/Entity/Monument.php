@@ -91,16 +91,19 @@ class Monument
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments")
+     * @Groups("monument")
      */
     private $region;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Thematic", inversedBy="monuments")
+     * @Groups("monument")
      */
     private $thematic;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="monuments")
+     * @Groups("monument")
      */
     private $status;
 
