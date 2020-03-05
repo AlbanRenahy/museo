@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -38,12 +39,13 @@ class ApiUserController extends AbstractController
     /**
      * @Route("/add", name="add", methods="POST")
      */
-    public function add(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator)
+    public function add(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator, UserPasswordEncoderInterface $passwordEncoder)
     {
         $jsonContent = $request->getContent();
 
         try {
             $user = $serializer->deserialize($jsonContent, User::class, 'json');
+            // $user->setPassword($passwordEncoder->encodePassword($user, $jsonContent->get('password')->getData());
             $errors = $validator->validate($user);
             if(count($errors) > 0) {
                 return $this->json($errors, 400);
