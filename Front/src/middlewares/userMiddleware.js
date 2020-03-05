@@ -58,8 +58,6 @@ const userMiddleware = (store) => (next) => (action) => {
         latitude: store.getState().clickedLat,
         longitude: store.getState().clickedLng,
         adresse: store.getState().clickedAddress,
-        certified: false,
-        delivered: true,
       })
         .then((response) => {
           console.log(response.data);
