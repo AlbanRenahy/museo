@@ -7,7 +7,7 @@
     font-family: 'Open Sans', sans-serif;
 
     &-logo {
-        max-width: 200px;
+        max-width: 300px;
         min-width: 150px;
         margin: auto;      
     
@@ -22,15 +22,15 @@
     }
 
     &-image {
-        max-width: 200px;
+        max-width: 300px;
         min-width: 150px;
         margin: auto;
     }
 
     h3 {
-        color:purple;
+        color: rgb(100, 43, 124);
         text-align: center;
-        margin-left: 350px;
+        margin-bottom: 1rem;
         width: 500px;
         font-size: 30px;
         font-variant:small-caps;
@@ -40,27 +40,35 @@
     .profil-user {
         margin-top: 30px;
         width: 600px;
-        margin-left: 416px;
+        margin: auto;
         margin-top: 30px;
         margin-top: 30px;
         justify-content: space-between;
-
+        
+        .pencil::before {   
+            content: '';   
+            display: inline-block;   
+            height: 30px;   
+            width: 30px;    
+            background-size: 30px;   
+            background-image: url('../../styles/images/pencil.svg'); 
+            background-repeat: no-repeat;   
+            margin-right: 20px;
+            background-position: center center;
+        }
         .pencil {
-            list-style: url('../../styles/images/pencil.svg');
-            max-width: 50px;
+            max-width: 50%;
+            display: flex;
+            margin-left: 21%;
+            align-items: center;
+        }
+        .profil-input {
+            margin-bottom: 0;
         }
     
-        &-email {
-            margin-bottom: 10px;
-        } 
-
-        &-pseudo {
-        
-            margin-bottom: 10px;
-        }
-
-        &-editpass{
-            margin-bottom: 30px;
+        .profil-update {
+            margin: 1rem auto 2rem;
+            max-width: 50%;
         }
     
     }

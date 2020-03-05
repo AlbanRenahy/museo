@@ -35,7 +35,7 @@ const Login = ({
     <Input
       type="password"
       id="password"
-      name="password"
+      name="mot de passe"
       placeholder="Mot de passe*"
       value={password}
       onChangeFunction={(input) => updateFormField('password', input)}
