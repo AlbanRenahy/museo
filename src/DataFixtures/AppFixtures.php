@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
             $monument->setCity('city '.$i);
             $monument->setAdress('adress '.$i);
             $monument->setDescription('description' .$i);
-            $monument->setThematic('thematiques' .$i);
+            //$monument->setThematic('thematiques' .$i);
             $manager->persist($monument);
         }
 

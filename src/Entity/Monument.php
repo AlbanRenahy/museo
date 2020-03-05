@@ -85,6 +85,7 @@ class Monument
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Period", inversedBy="monuments")
+     * @Groups("monument")
      */
     private $period;
 
