@@ -49,6 +49,9 @@ class ApiUserController extends AbstractController
 
         try {
             $user = $serializer->deserialize($jsonContent, User::class, 'json');
+            $plainPassword = $user->getPassword();
+            $encoded = $passwordEncoder->encodePassword($user, $plainPassword);
+            $user->setPassword($encoded);
             $errors = $validator->validate($user);
             if(count($errors) > 0) {
                 return $this->json($errors, 400);
