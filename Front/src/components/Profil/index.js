@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 
 import MuseoLogo from 'src/styles/images/logo_museo_couleur.png';
@@ -8,11 +9,17 @@ import Background from 'src/styles/images/BG-Login-Signin.png';
 import BurgerNav from 'src/components/BurgerNav';
 import Form from 'src/components/Form';
 import Input from 'src/components/Input';
-//import Pencil from 'src/styles/images/pencil.svg';
+
 import './profil.scss';
 
 
-const Profil = () => (
+const Profil = ({
+  username,
+  email,
+  password,
+  updateFormField,
+  updateUser,
+}) => (
   <div
     className="profil"
     style={{
@@ -26,45 +33,59 @@ const Profil = () => (
         <p className="profil-logo_subtitle">L'application cartographique pour vos monuments et musées favoris </p>
       </div>
       <div className="profil-content">
-        <h3>Bienvenue sur votre profil</h3>
         <div className="profil-user">
-          <Form>
-            <Input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email*"
-              value={email}
-              onChangeFunction={(input) => updateFormField('email', input)}
-            />
-            <Input
-              type="username"
-              id="username"
-              name="username"
-              placeholder="Username"
-              value={username}
-              onChangeFunction={(input) => updateFormField('username', input)}
-            />
+          <Form onSubmit={updateUser}>
+            <h3>Bienvenue sur votre profil</h3>
+            <p className="pencil profil-user-pseudo">
+              <Input
+                className="profil-input"
+                type="username"
+                id="username"
+                name="pseudonyme"
+                placeholder={username}
+                value={username}
+                onChangeFunction={(input) => updateFormField('username', input)}
+              />
+            </p>
 
-            <Input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-              value={password}
-              onChangeFunction={(input) => updateFormField('password', input)}
-            />
+            <p className="pencil profil-user-email">
+              <Input
+                className="profil-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder={email}
+                value={email}
+                onChangeFunction={(input) => updateFormField('email', input)}
+              />
+            </p>
+
+            <p className="pencil profil-user-editpass">
+              <Input
+                className="profil-input"
+                type="password"
+                id="password"
+                name="mot de passe"
+                placeholder={password}
+                value={password}
+                onChangeFunction={(input) => updateFormField('password', input)}
+              />
+            </p>
+            <button type="submit" className="profil-update inverted-colors form-button">Enregistrer</button>
+            <p className="home-link"><Link to="/">Retour à la page d'accueil</Link></p>
           </Form>
-          <ul>
-            <li className="pencil profil-user-email">Email</li>
-            <li className="pencil profil-user-pseudo">Pseudo</li>
-            <li className="pencil profil-user-editpass">Modifier votre mot de passe</li>
-          </ul>
         </div>
-        <p className="home-link"><Link to="/">Retour à la page d'accueil</Link></p>
       </div>
     </div>
   </div>
 );
+
+Profil.propTypes = {
+  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  updateFormField: PropTypes.func.isRequired,
+  updateUser: PropTypes.func.isRequired,
+};
 
 export default Profil;

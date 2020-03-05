@@ -10,6 +10,7 @@ export const SIGNIN = 'SIGNIN';
 export const STORE_TOKEN = 'STORE_TOKEN';
 export const SUBMIT_MONUMENT = 'SUBMIT_MONUMENT';
 export const CLOSE_ALL_MODALS = 'CLOSE_ALL_MODALS';
+export const UPDATE_USER = 'UPDATE_USER';
 
 /**
  * Action Creators
@@ -32,6 +33,10 @@ export const closeDataForm = () => ({
 
 export const connectUser = () => ({
   type: CONNECT_USER,
+});
+
+export const updateUser = () => ({
+  type: UPDATE_USER,
 });
 
 export const storeToken = (token, refreshToken) => ({

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import './input.scss';
 
 const Input = ({
-  type, id, name, placeholder, value, onChangeFunction,
+  className, type, id, name, placeholder, value, onChangeFunction,
 }) => {
   const handleFocus = (event) => {
     event.target.classList.add('open');
@@ -21,6 +21,7 @@ const Input = ({
   return (
     <div>
       <input
+        className={className}
         type={type}
         id={id}
         name={name}
@@ -30,12 +31,13 @@ const Input = ({
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      <label htmlFor={id}>{placeholder}</label>
+      <label htmlFor={id}>{name}</label>
     </div>
   );
 };
 
 Input.propTypes = {
+  className: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
