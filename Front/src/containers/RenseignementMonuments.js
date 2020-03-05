@@ -1,23 +1,23 @@
 import { connect } from 'react-redux';
 
- import { updateFormField, closeDataForm, submitMonument } from 'src/actions/LoginActions';
+import { updateFormField, closeDataForm, submitMonument } from 'src/actions/LoginActions';
 
- /**
+/**
  * Local import
  */
 import RenseignementMonuments from '../components/LeafletMap/RenseignementMonuments';
 
 
- // Action Creators
+// Action Creators
 
- const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isDataFormOpen: state.isDataFormOpen,
   name: state.name,
   adress: state.adress,
   description: state.description,
 });
 
- const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   closeDataForm: () => {
     dispatch(closeDataForm());
   },
@@ -29,7 +29,7 @@ import RenseignementMonuments from '../components/LeafletMap/RenseignementMonume
   },
 });
 
- export default connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(RenseignementMonuments);

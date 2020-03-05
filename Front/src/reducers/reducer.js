@@ -7,12 +7,13 @@ import {
   SIGNIN,
   STORE_TOKEN,
   SUBMIT_MONUMENT,
+  CLOSE_ALL_MODALS,
 } from '../actions/LoginActions';
 
 
 const initialState = {
 
-  // ******* LOGIN FIELDS / SIGNIN FORM******/ 
+  // ******* LOGIN FIELDS / SIGNIN FORM******/
   password: '', // correspond au password dans login et signin
   passConfirm: '', // correspond à la confirmation de mot de passe dans signin
   username: '', // correspond au pseudo dans signin
@@ -22,7 +23,7 @@ const initialState = {
   userLastname: null,
 
 
-  // ******* MANAGEMENT OF MODAL FORM ******/ 
+  // ******* MANAGEMENT OF MODAL FORM ******/
   isDataFormOpen: false, // bool qui indique si le formulaire de renseignement de données est ouvert
   clickedAddress: '', // String contenant l'adresse d'où a cliqué l'utilisateur
   name: '', // nom d'un monument dans le form
@@ -31,7 +32,7 @@ const initialState = {
 
   clickedLat: '', // gère la lattitude
   clickedLng: '', // gère la longitude
-  
+
   token: '', // va contenir le token de session
   refreshToken: '', // va rafraichir le token pour se déconnecter de la session
   isConnected: false, // par défaut, connection sur false
@@ -53,6 +54,12 @@ const reducerModele = (state = initialState, action = {}) => {
       return {
         ...state,
         isDataFormOpen: false,
+      };
+    case CLOSE_ALL_MODALS:
+      return {
+        ...state,
+        isDataFormOpen: false,
+        // Les futurs modals à fermer
       };
     case CONNECT_USER:
       return state;

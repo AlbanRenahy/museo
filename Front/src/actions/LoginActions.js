@@ -9,6 +9,7 @@ export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SIGNIN = 'SIGNIN';
 export const STORE_TOKEN = 'STORE_TOKEN';
 export const SUBMIT_MONUMENT = 'SUBMIT_MONUMENT';
+export const CLOSE_ALL_MODALS = 'CLOSE_ALL_MODALS';
 
 /**
  * Action Creators
@@ -25,7 +26,7 @@ export const openDataForm = (position) => ({
   position,
 });
 
- export const closeDataForm = () => ({
+export const closeDataForm = () => ({
   type: CLOSE_DATA_FORM,
 });
 
@@ -48,4 +49,7 @@ export const signin = () => ({
 });
 export const submitMonument = () => ({
   type: SUBMIT_MONUMENT,
+});
+export const closeAllModals = () => ({
+  type: CLOSE_ALL_MODALS,
 });

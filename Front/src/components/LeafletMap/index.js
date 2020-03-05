@@ -3,6 +3,7 @@ import {
   Map as LeafletMap, TileLayer, Marker, Popup,
 } from 'react-leaflet';
 import L from 'leaflet';
+import PropTypes from 'prop-types';
 import RenseignementMonuments from '../../containers/RenseignementMonuments';
 import './leafletmap.scss';
 
@@ -14,8 +15,14 @@ import pinsPurple from '../../styles/images/pinpurple.png';
 import pinsPink from '../../styles/images/pinpink.png';
 // Création de la map avec React Leaflet
 
-const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument, updateFormField }) => {
-
+const Leaflet = ({
+  openDataForm,
+  closeAllModals,
+  isDataFormOpen,
+  closeDataForm,
+  addMonument,
+  updateFormField,
+}) => {
   const handleRightClick = (e) => {
     console.log(e.latlng);
     updateFormField('clickedLat', e.latlng.lat);
@@ -43,11 +50,13 @@ const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument, upda
     // shadowSize:   [50, 64], // size of the shadow
   });
 
-
-
   return (
     <>
-      <RenseignementMonuments isDataFormOpen={isDataFormOpen} closeDataForm={closeDataForm} addBuilding={addMonument} />
+      <RenseignementMonuments
+        isDataFormOpen={isDataFormOpen}
+        closeDataForm={closeDataForm}
+        addBuilding={addMonument}
+      />
       <LeafletMap
         center={[48.864716, 2.349014]}
         zoom={12}
@@ -60,6 +69,7 @@ const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument, upda
         animate
         easeLinearity={0.35}
         onContextmenu={handleRightClick}
+        onClick={closeAllModals}
       >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -99,6 +109,15 @@ const Leaflet = ({openDataForm, isDataFormOpen, closeDataForm, addMonument, upda
       </LeafletMap>
     </>
   );
+};
+
+Leaflet.propTypes = {
+  openDataForm: PropTypes.func.isRequired,
+  closeAllModals: PropTypes.func.isRequired,
+  isDataFormOpen: PropTypes.bool.isRequired,
+  closeDataForm: PropTypes.func.isRequired,
+  addMonument: PropTypes.func.isRequired,
+  updateFormField: PropTypes.func.isRequired,
 };
 
 export default Leaflet;

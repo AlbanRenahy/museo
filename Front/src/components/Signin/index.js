@@ -36,7 +36,7 @@ const Signin = ({
       value={email}
       onChangeFunction={(input) => updateFormField('email', input)}
     />
-    
+
     <Input
       type="text"
       id="username"

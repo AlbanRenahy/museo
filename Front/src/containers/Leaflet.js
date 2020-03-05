@@ -7,13 +7,18 @@ import { connect } from 'react-redux';
 import LeafletMap from 'src/components/LeafletMap';
 
 // Action Creators
-import { updateFormField, openDataForm, closeDataForm } from 'src/actions/LoginActions';
+import {
+  updateFormField,
+  openDataForm,
+  closeDataForm,
+  closeAllModals,
+} from 'src/actions/LoginActions';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isDataFormOpen: state.isDataFormOpen,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   openDataForm: (position) => {
     dispatch(openDataForm(position));
   },
@@ -22,6 +27,9 @@ const mapDispatchToProps = dispatch => ({
   },
   closeDataForm: () => {
     dispatch(closeDataForm());
+  },
+  closeAllModals: () => {
+    dispatch(closeAllModals());
   },
   addMonument: () => {
 

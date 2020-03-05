@@ -22,32 +22,32 @@ import './login.scss';
 const Login = ({
   email, password, updateFormField, connectUser, isConnected,
 }) => (
-   <Form onSubmit={connectUser}>
-     {isConnected && <Redirect to="/map" />}
-      <Input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Email*"
-        value={email}
-        onChangeFunction={(input) => updateFormField('email', input)}
-      />
-      <Input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Mot de passe*"
-        value={password}
-        onChangeFunction={(input) => updateFormField('password', input)}
-      />
-      <p className="lost-password">
-        <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
-      </p>
-      <button type="submit" className="inverted-colors form-button">ME CONNECTER</button>
-      <Link to="/signin">Je souhaite m'inscrire</Link>
-      <Link to="/map">Entrer sur la carte en visiteur</Link>
-    </Form>
-  );
+  <Form onSubmit={connectUser}>
+    {isConnected && <Redirect to="/map" />}
+    <Input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Email*"
+      value={email}
+      onChangeFunction={(input) => updateFormField('email', input)}
+    />
+    <Input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Mot de passe*"
+      value={password}
+      onChangeFunction={(input) => updateFormField('password', input)}
+    />
+    <p className="lost-password">
+      <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
+    </p>
+    <button type="submit" className="inverted-colors form-button">ME CONNECTER</button>
+    <Link to="/signin">Je souhaite m'inscrire</Link>
+    <Link to="/map">Entrer sur la carte en visiteur</Link>
+  </Form>
+);
 
 Login.propTypes = {
   email: PropTypes.oneOfType([

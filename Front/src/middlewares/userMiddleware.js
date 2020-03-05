@@ -4,7 +4,6 @@ import {
   CONNECT_USER,
   SEND_MESSAGE,
   SIGNIN,
-  storeToken,
   SUBMIT_MONUMENT,
 } from 'src/actions/LoginActions';
 
@@ -20,8 +19,6 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           console.log(response.data);
-          const { token, refresh_token: refreshToken } = response.data;
-          store.dispatch(storeToken(token, refreshToken));
         })
         .catch((error) => {
           console.log('erreur :', error.response);

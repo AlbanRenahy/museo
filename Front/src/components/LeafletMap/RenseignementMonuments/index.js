@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-for */
 
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import Input from "../../Input";
-import TextArea from "../../TextArea";
-import AppareilPhoto from "../../../styles/images/photo-camera.png";
+import Input from '../../Input';
+import TextArea from '../../TextArea';
+import AppareilPhoto from '../../../styles/images/photo-camera.png';
 
-import "./renseignement.scss";
+import './renseignement.scss';
 
 const RenseignementMonuments = ({
   isDataFormOpen,
@@ -20,21 +20,21 @@ const RenseignementMonuments = ({
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
-    console.log("Dataform closed");
+    console.log('Dataform closed');
     closeDataForm();
   };
 
-  const handleSubmitMonument = e => {
+  const handleSubmitMonument = (e) => {
     e.preventDefault();
-    console.log("submitting monument");
+    console.log('submitting monument');
     submitMonument();
   };
   return (
     <div
       className={
         isDataFormOpen
-          ? "renseignement-monuments open"
-          : "renseignement-monuments"
+          ? 'renseignement-monuments open'
+          : 'renseignement-monuments'
       }
     >
       <div className="renseignement-monuments_relative">
@@ -58,7 +58,7 @@ const RenseignementMonuments = ({
               name="name"
               placeholder="Nom"
               value={name}
-              onChangeFunction={input => updateFormField('name', input)}
+              onChangeFunction={(input) => updateFormField('name', input)}
             />
 
             <Input
@@ -67,7 +67,7 @@ const RenseignementMonuments = ({
               name="adress"
               placeholder="Adresse"
               value={address}
-              onChangeFunction={input => updateFormField('address', input)}
+              onChangeFunction={(input) => updateFormField('address', input)}
             />
 
             <TextArea
@@ -77,7 +77,7 @@ const RenseignementMonuments = ({
               name="description"
               placeholder="Description"
               value={description}
-              onChangeFunction={input => updateFormField('description', input)}
+              onChangeFunction={(input) => updateFormField('description', input)}
             />
             <div className="renseignement-monuments_secondary-infos">
               <div className="input-container">
