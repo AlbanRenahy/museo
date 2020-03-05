@@ -107,9 +107,16 @@ class Monument
      */
     private $status;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Target", inversedBy="monuments")
+     * @Groups("monument")
+     */
+    private $target;
+
     public function __construct()
     {
         $this->thematic = new ArrayCollection();
+        $this->target = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -307,6 +314,32 @@ class Monument
     public function setStatus(?Status $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Target[]
+     */
+    public function getTarget(): Collection
+    {
+        return $this->target;
+    }
+
+    public function addTarget(Target $target): self
+    {
+        if (!$this->target->contains($target)) {
+            $this->target[] = $target;
+        }
+
+        return $this;
+    }
+
+    public function removeTarget(Target $target): self
+    {
+        if ($this->target->contains($target)) {
+            $this->target->removeElement($target);
+        }
 
         return $this;
     }
