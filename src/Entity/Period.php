@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PeriodRepository")
@@ -18,6 +21,7 @@ class Period
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("monument")
      */
     private $name;
 
@@ -32,9 +36,15 @@ class Period
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Monument", inversedBy="period")
+     * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="period")
+
      */
-    private $monument;
+    private $monuments;
+
+    public function __construct()
+    {
+        $this->monuments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -77,14 +87,33 @@ class Period
         return $this;
     }
 
-    public function getMonument(): ?Monument
+    /**
+     * @return Collection|Monument[]
+     */
+    public function getMonuments(): Collection
     {
-        return $this->monument;
+        return $this->monuments;
     }
 
-    public function setMonument(?Monument $monument): self
+    public function addMonument(Monument $monument): self
     {
-        $this->monument = $monument;
+        if (!$this->monuments->contains($monument)) {
+            $this->monuments[] = $monument;
+            $monument->setPeriod($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMonument(Monument $monument): self
+    {
+        if ($this->monuments->contains($monument)) {
+            $this->monuments->removeElement($monument);
+            // set the owning side to null (unless already changed)
+            if ($monument->getPeriod() === $this) {
+                $monument->setPeriod(null);
+            }
+        }
 
         return $this;
     }

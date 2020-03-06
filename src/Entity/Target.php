@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,14 +24,14 @@ class Target
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Description;
+    private $description;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $CreatedAt;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -37,9 +39,14 @@ class Target
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Monument", inversedBy="target")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Monument", mappedBy="target")
      */
-    private $monument;
+    private $monuments;
+
+    public function __construct()
+    {
+        $this->monuments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,24 +67,24 @@ class Target
 
     public function getDescription(): ?string
     {
-        return $this->Description;
+        return $this->description;
     }
 
-    public function setDescription(?string $Description): self
+    public function setDescription(?string $description): self
     {
-        $this->Description = $Description;
+        $this->description = $description;
 
         return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->CreatedAt;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $CreatedAt): self
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
-        $this->CreatedAt = $CreatedAt;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -94,14 +101,30 @@ class Target
         return $this;
     }
 
-    public function getMonument(): ?Monument
+    /**
+     * @return Collection|Monument[]
+     */
+    public function getMonuments(): Collection
     {
-        return $this->monument;
+        return $this->monuments;
     }
 
-    public function setMonument(?Monument $monument): self
+    public function addMonument(Monument $monument): self
     {
-        $this->monument = $monument;
+        if (!$this->monuments->contains($monument)) {
+            $this->monuments[] = $monument;
+            $monument->addTarget($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMonument(Monument $monument): self
+    {
+        if ($this->monuments->contains($monument)) {
+            $this->monuments->removeElement($monument);
+            $monument->removeTarget($this);
+        }
 
         return $this;
     }

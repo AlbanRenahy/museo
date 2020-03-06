@@ -19,9 +19,9 @@ class AppFixtures extends Fixture
             $monument = new Monument();
             $monument->setName('monument '.$i);
             $monument->setCity('city '.$i);
-            $monument->setAdress('adress '.$i);
+            $monument->setAddress('address '.$i);
             $monument->setDescription('description' .$i);
-            $monument->setThematic('thematiques' .$i);
+            //$monument->setThematic('thematiques' .$i);
             $manager->persist($monument);
         }
 

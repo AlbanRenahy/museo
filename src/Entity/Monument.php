@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MonumentRepository")
@@ -20,31 +21,37 @@ class Monument
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("monument")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("monument")
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("monument")
      */
-    private $adress;
+    private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("monument")
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("monument")
      */
     private $likes;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("monument")
      */
     private $dislikes;
 
@@ -59,42 +66,57 @@ class Monument
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=10, nullable=true)
+     * @Groups("monument")
      */
     private $latitude;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=10, nullable=true)
+     * @Groups("monument")
      */
     private $longitude;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Region", mappedBy="monument")
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("monument")
      */
-    private $region;
+    private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Period", mappedBy="monument")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Period", inversedBy="monuments")
+     * @Groups("monument")
      */
     private $period;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments")
+     * @Groups("monument")
+     */
+    private $region;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Thematic", inversedBy="monuments")
+     * @Groups("monument")
      */
     private $thematic;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Target", mappedBy="monument")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="monuments")
+     * @Groups("monument")
+     */
+    private $status;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Target", inversedBy="monuments")
+     * @Groups("monument")
      */
     private $target;
 
     public function __construct()
     {
-        $this->region = new ArrayCollection();
-        $this->period = new ArrayCollection();
         $this->thematic = new ArrayCollection();
         $this->target = new ArrayCollection();
-        $this->user = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -126,14 +148,14 @@ class Monument
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getAddress(): ?string
     {
-        return $this->adress;
+        return $this->address;
     }
 
-    public function setAdress(string $adress): self
+    public function setAddress(string $address): self
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }
@@ -146,18 +168,6 @@ class Monument
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getThematic(): ?string
-    {
-        return $this->thematic;
-    }
-
-    public function setThematic(string $thematic): self
-    {
-        $this->thematic = $thematic;
 
         return $this;
     }
@@ -234,66 +244,48 @@ class Monument
         return $this;
     }
 
-    /**
-     * @return Collection|Region[]
-     */
-    public function getRegion(): Collection
+    public function getImage(): ?string
     {
-        return $this->region;
+        return $this->image;
     }
 
-    public function addRegion(Region $region): self
+    public function setImage(?string $image): self
     {
-        if (!$this->region->contains($region)) {
-            $this->region[] = $region;
-            $region->setMonument($this);
-        }
+        $this->image = $image;
 
         return $this;
     }
 
-    public function removeRegion(Region $region): self
-    {
-        if ($this->region->contains($region)) {
-            $this->region->removeElement($region);
-            // set the owning side to null (unless already changed)
-            if ($region->getMonument() === $this) {
-                $region->setMonument(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Period[]
-     */
-    public function getPeriod(): Collection
+    public function getPeriod(): ?Period
     {
         return $this->period;
     }
 
-    public function addPeriod(Period $period): self
+    public function setPeriod(?Period $period): self
     {
-        if (!$this->period->contains($period)) {
-            $this->period[] = $period;
-            $period->setMonument($this);
-        }
+        $this->period = $period;
 
         return $this;
     }
 
-    public function removePeriod(Period $period): self
+    public function getRegion(): ?Region
     {
-        if ($this->period->contains($period)) {
-            $this->period->removeElement($period);
-            // set the owning side to null (unless already changed)
-            if ($period->getMonument() === $this) {
-                $period->setMonument(null);
-            }
-        }
+        return $this->region;
+    }
+
+    public function setRegion(?Region $region): self
+    {
+        $this->region = $region;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Thematic[]
+     */
+    public function getThematic(): Collection
+    {
+        return $this->thematic;
     }
 
     public function addThematic(Thematic $thematic): self
@@ -314,6 +306,18 @@ class Monument
         return $this;
     }
 
+    public function getStatus(): ?Status
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?Status $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Target[]
      */
@@ -326,7 +330,6 @@ class Monument
     {
         if (!$this->target->contains($target)) {
             $this->target[] = $target;
-            $target->setMonument($this);
         }
 
         return $this;
@@ -336,43 +339,8 @@ class Monument
     {
         if ($this->target->contains($target)) {
             $this->target->removeElement($target);
-            // set the owning side to null (unless already changed)
-            if ($target->getMonument() === $this) {
-                $target->setMonument(null);
-            }
         }
 
         return $this;
     }
-
-    // /**
-    //  * @return Collection|User[]
-    //  */
-    // public function getUser(): Collection
-    // {
-    //     return $this->user;
-    // }
-
-    // public function addUser(User $user): self
-    // {
-    //     if (!$this->user->contains($user)) {
-    //         $this->user[] = $user;
-    //         $user->setMonument($this);
-    //     }
-
-    //     return $this;
-    // }
-
-    // public function removeUser(User $user): self
-    // {
-    //     if ($this->user->contains($user)) {
-    //         $this->user->removeElement($user);
-    //         // set the owning side to null (unless already changed)
-    //         if ($user->getMonument() === $this) {
-    //             $user->setMonument(null);
-    //         }
-    //     }
-
-    //     return $this;
-    // }
 }
