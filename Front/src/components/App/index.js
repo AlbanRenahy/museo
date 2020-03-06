@@ -95,9 +95,11 @@ const App = () => (
     />
 
     <Route
-      path="/finalizeRegistrer"
+      path="/register"
       render={() => (
-        <FinalizeRegister />
+        <Welcome>
+          <FinalizeRegister />
+        </Welcome>
       )}
     />
 
