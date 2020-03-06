@@ -25,4 +25,17 @@ class ApiMonumentController extends AbstractController
 
         return new Response ($monumentsJson, Response::HTTP_OK, ['Content-Type' => 'application/json']);
     }
+
+    /**
+     * @Route("/api/monuments/{id}", name="api_monuments_get_id", methods={"GET"})
+     */
+    
+    public function readQuestion($id, MonumentRepository $monumentRepository)
+    {
+        // On va chercher le monument
+        $monument = $monumentRepository->find($id);
+
+        // On les retourne, encodées en JSON sur le group "monument"
+        return $this->json($monument, Response::HTTP_OK, [], ['groups' => 'monument']);
+    }
 }
