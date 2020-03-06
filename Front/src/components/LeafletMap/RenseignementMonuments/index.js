@@ -133,7 +133,6 @@ const RenseignementMonuments = ({
 
 RenseignementMonuments.propTypes = {
   isDataFormOpen: PropTypes.bool.isRequired,
-  loading: PropTypes.bool.isRequired,
   closeDataForm: PropTypes.func.isRequired,
   address: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

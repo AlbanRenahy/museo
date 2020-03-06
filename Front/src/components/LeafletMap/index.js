@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import L from 'leaflet';
 import Menu from '../../containers/Menu';
 import RenseignementMonuments from '../../containers/RenseignementMonuments';
+import DisplayMonument from '../../components/LeafletMap/DisplayMonument';
 import './leafletmap.scss';
 
 
@@ -60,6 +61,7 @@ class Leaflet extends React.Component {
     return (
       <>
         <Menu />
+        <DisplayMonument/>
         <RenseignementMonuments />
         <LeafletMap
           center={[48.864716, 2.349014]}
