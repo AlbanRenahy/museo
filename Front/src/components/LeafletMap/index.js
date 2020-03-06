@@ -63,6 +63,7 @@ const Leaflet = ({
         center={[48.864716, 2.349014]}
         zoom={12}
         maxZoom={19}
+        minZoom={6}
         attributionControl
         zoomControl={false}
         doubleClickZoom={false}

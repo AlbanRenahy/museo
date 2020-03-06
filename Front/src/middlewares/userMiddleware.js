@@ -2,13 +2,15 @@ import axios from 'axios';
 
 import { CONNECT_USER, SIGNIN, SEND_MESSAGE } from 'src/actions/userActions';
 
+const museoApi = 'http://54.91.98.36/back/projet-museo/public/api';
+
 const userMiddleware = (store) => (next) => (action) => {
   console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
     case CONNECT_USER:
       console.log("on va faire l'appel Axios");
       axios
-        .post('http://54.91.98.36/back/projet-museo/public/api/users/', {
+        .post(`${museoApi}/users/`, {
           email: store.getState().user.email,
           password: store.getState().user.password,
         })
@@ -21,7 +23,7 @@ const userMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     case SEND_MESSAGE:
-      axios.get('http://54.91.98.36/back/projet-museo/public/api/users/', {
+      axios.get(`${museoApi}/users/`, {
       })
         .then((response) => {
           console.log('message envoyé : ', response);
@@ -34,7 +36,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case SIGNIN:
       next(action);
       axios
-        .post('http://54.91.98.36/back/projet-museo/public/api/users/add', {
+        .post(`${museoApi}/users/add`, {
           email: store.getState().user.email,
           password: store.getState().user.password,
           pseudo: store.getState().user.username,
