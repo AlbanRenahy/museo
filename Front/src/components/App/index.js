@@ -12,6 +12,8 @@ import About from 'src/components/About';
 import Profil from 'src/containers/Profil';
 import LoadingScreen from 'src/components/LoadingScreen';
 import NotFound from 'src/components/NotFound';
+import FinalizeRegister from 'src/components/FinalizeRegister'
+
 
 
 // == Composant
@@ -89,6 +91,13 @@ const App = () => (
       path="/profil"
       render={() => (
         <Profil />
+      )}
+    />
+
+    <Route
+      path="/finalizeRegistrer"
+      render={() => (
+        <FinalizeRegister />
       )}
     />
 
