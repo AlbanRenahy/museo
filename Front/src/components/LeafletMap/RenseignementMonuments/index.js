@@ -11,17 +11,17 @@ import './renseignement.scss';
 
 const RenseignementMonuments = ({
   isDataFormOpen,
-  closeDataForm,
   submitMonument,
   name,
   address,
   description,
   updateMapformField,
+  closeAllModals,
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
     console.log('Dataform closed');
-    closeDataForm();
+    closeAllModals();
   };
 
   const handleSubmitMonument = (e) => {
@@ -133,7 +133,7 @@ const RenseignementMonuments = ({
 
 RenseignementMonuments.propTypes = {
   isDataFormOpen: PropTypes.bool.isRequired,
-  closeDataForm: PropTypes.func.isRequired,
+  closeAllModals: PropTypes.func.isRequired,
   address: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import L from 'leaflet';
 import Menu from '../../containers/Menu';
 import RenseignementMonuments from '../../containers/RenseignementMonuments';
-import DisplayMonument from '../../components/LeafletMap/DisplayMonument';
+import DisplayMonument from '../../containers/DisplayMonument';
 import './leafletmap.scss';
 
 
@@ -50,19 +50,28 @@ class Leaflet extends React.Component {
   });
 
   handleRightClick = (e) => {
-    const { updateMapformField, openDataForm } = this.props;
+    const { updateMapformField, openDataForm, closeAllModals } = this.props;
     updateMapformField('clickedLat', e.latlng.lat);
     updateMapformField('clickedLng', e.latlng.lng);
+    closeAllModals();
     openDataForm(e.latlng);
   };
+
+  handleClickMarker = () => {
+    const { openDisplayMonument, closeAllModals } = this.props;
+    console.log('marker clicked');
+    closeAllModals();
+    openDisplayMonument();
+  }
+
 
   render() {
     const { closeAllModals } = this.props;
     return (
       <>
         <Menu />
-        <DisplayMonument/>
         <RenseignementMonuments />
+        <DisplayMonument />
         <LeafletMap
           center={[48.864716, 2.349014]}
           zoom={12}
@@ -84,6 +93,7 @@ class Leaflet extends React.Component {
           <Marker
             position={[48.864716, 2.349014]}
             icon={this.myPin}
+            onClick={this.handleClickMarker}
           >
             <Popup>
               Je suis un pop up à Paris
@@ -92,6 +102,7 @@ class Leaflet extends React.Component {
           <Marker
             position={[49.985289726555855, 2.649164199829102]}
             icon={this.myPinOrange}
+            onClick={this.handleClickMarker}
           >
             <Popup>
               Bonjour, je suis une punaise !
@@ -100,6 +111,7 @@ class Leaflet extends React.Component {
           <Marker
             position={[48.59068837960679, -1.674041748046875]}
             icon={this.myPinPurple}
+            onClick={this.handleClickMarker}
           >
             <Popup>
               Bonjour, je suis une punaise !
@@ -123,6 +135,7 @@ Leaflet.propTypes = {
   openDataForm: PropTypes.func.isRequired,
   closeAllModals: PropTypes.func.isRequired,
   updateMapformField: PropTypes.func.isRequired,
+  openDisplayMonument: PropTypes.func.isRequired,
 };
 
 export default Leaflet;

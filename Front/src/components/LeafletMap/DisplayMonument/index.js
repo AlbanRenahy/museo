@@ -2,23 +2,23 @@
 /* eslint-disable jsx-a11y/label-has-for */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
 
 import './DisplayMonument.scss';
 import mainPicture from '../../../styles/images/louvre.jpg';
 
-const DisplayDatasSidebar = () => {
-  // const handleCloseDataForm = (e) => {
-  //   e.preventDefault();
-  //   console.log('Dataform closed');
-  //   closeDataForm();
-  // };
+const DisplayMonument = ({ isDisplayMonumentOpen, closeAllModals }) => {
+  const handleCloseDataForm = (e) => {
+    e.preventDefault();
+    console.log('Dataform closed');
+    closeAllModals();
+  };
 
-  
 
   return (
-    <div id="DisplayDatasSidebar">
-      <div className="display-donnees">
+    <div id="DisplayMonument">
+      <div className={isDisplayMonumentOpen ? 'display-donnees open' : 'display-donnees'}>
         <div className="dysplay-donnees_relative">
           <header>
             <div
@@ -27,6 +27,7 @@ const DisplayDatasSidebar = () => {
                 backgroundImage: `url(${mainPicture})`,
               }}
             />
+            <a href="#" className="renseignement-donnees_close" onClick={handleCloseDataForm}>Fermer</a>
             <div className="header-info">
               <h2 className="header-info-name">Musée du Louvre</h2>
               <h3 className="header-info-address">Rue de Rivoli, 75001 Paris</h3>
@@ -84,8 +85,9 @@ const DisplayDatasSidebar = () => {
   );
 };
 
-// DisplayDatasSidebar.propTypes = {
-//   closeDataForm: PropTypes.func.isRequired,
-// };
+DisplayMonument.propTypes = {
+  closeAllModals: PropTypes.func.isRequired,
+  isDisplayMonumentOpen: PropTypes.func.isRequired,
+};
 
-export default DisplayDatasSidebar;
+export default DisplayMonument;

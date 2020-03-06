@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { updateMapformField, closeDataForm, submitMonument } from 'src/actions/mapActions';
+import { updateMapformField, closeAllModals, submitMonument } from 'src/actions/mapActions';
 
 /**
  * Local import
@@ -18,8 +18,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closeDataForm: () => {
-    dispatch(closeDataForm());
+  closeAllModals: () => {
+    dispatch(closeAllModals());
   },
   updateMapformField: (fieldName, input) => {
     dispatch(updateMapformField(fieldName, input));

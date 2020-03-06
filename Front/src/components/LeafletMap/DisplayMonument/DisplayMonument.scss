@@ -1,4 +1,4 @@
-#DisplayDatasSidebar {
+#DisplayMonument {
 
     .invisible-desktop {
    display:none;
@@ -11,7 +11,8 @@
    background-color: white;
    border-radius: 10px;
    top: 50%; /* poussé de la moitié de hauteur du référent */
-   left: 5px;
+   left: -600px;
+   transform: translateY(-50%); /* -50% tiré de la moitié de sa propre hauteur */
    transform: translateY(5%); /* -50% tiré de la moitié de sa propre hauteur */
    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
    transition: 0.28s;
@@ -22,7 +23,7 @@
        }
 
         &.open {
-           left: 5px;
+            left: 10px;
        }
 
     }

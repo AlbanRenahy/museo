@@ -10,8 +10,8 @@ import LeafletMap from 'src/components/LeafletMap';
 import {
   updateMapformField,
   openDataForm,
-  closeDataForm,
   closeAllModals,
+  openDisplayMonument,
 } from 'src/actions/mapActions';
 
 const mapStateToProps = (state) => ({
@@ -25,14 +25,13 @@ const mapDispatchToProps = (dispatch) => ({
   updateMapformField: (fieldName, input) => {
     dispatch(updateMapformField(fieldName, input));
   },
-  closeDataForm: () => {
-    dispatch(closeDataForm());
-  },
   closeAllModals: () => {
     dispatch(closeAllModals());
   },
   addMonument: () => {
-
+  },
+  openDisplayMonument: () => {
+    dispatch(openDisplayMonument());
   },
 });
 
