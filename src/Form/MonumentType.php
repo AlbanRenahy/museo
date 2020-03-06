@@ -15,7 +15,7 @@ class MonumentType extends AbstractType
         $builder
             ->add('name')
             ->add('city')
-            ->add('adress')
+            ->add('address')
             ->add('description')
             // ->add('thematic')
             // ->add('likes')

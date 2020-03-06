@@ -35,7 +35,7 @@ class Monument
      * @ORM\Column(type="string", length=255)
      * @Groups("monument")
      */
-    private $adress;
+    private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -148,14 +148,14 @@ class Monument
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getAddress(): ?string
     {
-        return $this->adress;
+        return $this->address;
     }
 
-    public function setAdress(string $adress): self
+    public function setAddress(string $address): self
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }
