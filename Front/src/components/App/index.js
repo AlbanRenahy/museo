@@ -76,7 +76,9 @@ const App = () => (
     <Route
       path="/about"
       render={() => (
-        <About />
+        <Welcome>
+          <About />
+        </Welcome>
       )}
     />
 

@@ -20,9 +20,10 @@ import './contact.scss';
 const Contact = ({
   email, message, updateUserformField, sendMessage,
 }) => (
-  <Form onSubmit={sendMessage}>
+  <Form onSubmit={sendMessage} className="contact-form">
     <p className="contact-title">Contactez nous !</p>
     <Input
+      className="email-input"
       type="email"
       id="email"
       name="email"
@@ -39,8 +40,8 @@ const Contact = ({
       value={message}
       onChangeFunction={(input) => updateUserformField('message', input)}
     />
-    <button type="submit" className="inverted-colors form-button">Envoyer mon message</button>
-    <Link to="/">Retour à la page d'accueil</Link>
+    <button type="submit" className="inverted-colors form-button">ENVOYER MON MESSAGE</button>
+    <Link className="login-link" to="/">Retour à la page d'accueil</Link>
   </Form>
 );
 

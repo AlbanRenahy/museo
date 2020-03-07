@@ -71,7 +71,7 @@ const Signin = ({
 
     <button type="submit" className="form-button">M'INSCRIRE</button>
 
-    <p className="map-link"><Link to="/login">J'ai déjà mes identifiants</Link></p>
+    <p className="login-link"><Link to="/login">J'ai déjà mes identifiants</Link></p>
   </Form>
 
 );
