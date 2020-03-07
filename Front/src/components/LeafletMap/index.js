@@ -70,29 +70,34 @@ class Leaflet extends React.Component {
     const { closeAllModals } = this.props;
     const {
       coords, isGeolocationEnabled,
+      center, zoom, userLocalized, updateMapformField,
     } = this.props;
     const defaultCenter = coords ? [coords.latitude, coords.longitude] : [46.7248003746672, 2.9003906250000004];
     console.log(this.props);
+    if (isGeolocationEnabled && coords && !userLocalized) {
+      // eslint-disable-next-line no-unused-expressions
+      updateMapformField('center', [coords.latitude, coords.longitude]);
+      updateMapformField('userLocalized', true);
+      updateMapformField('zoom', 13);
+    }
     return (
       <>
         <Menu />
         <RenseignementMonuments />
         <DisplayMonument />
         <LeafletMap
-          center={isGeolocationEnabled ? defaultCenter : [
-            coords.latitude,
-            coords.longitude,
-          ]}
-          // center={defaultCenter}
-          zoom={12}
+          center={center}
+          zoom={zoom}
           maxZoom={19}
-          minZoom={6}
+          minZoom={3}
+          setView
           attributionControl
           zoomControl={false}
-          doubleClickZoom={false}
+          doubleClickZoom
           scrollWheelZoom
           dragging
           animate
+          infinite
           easeLinearity={0.35}
           onContextmenu={this.handleRightClick}
           onClick={closeAllModals}

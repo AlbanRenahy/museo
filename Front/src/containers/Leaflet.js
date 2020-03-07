@@ -16,6 +16,9 @@ import {
 
 const mapStateToProps = (state) => ({
   isDataFormOpen: state.map.isDataFormOpen,
+  center: state.map.center,
+  zoom: state.map.zoom,
+  userLocalized: state.map.userLocalized,
 });
 
 const mapDispatchToProps = (dispatch) => ({
