@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Map as LeafletMap, TileLayer, Marker, Popup,
+  Map as LeafletMap, TileLayer, Marker, Popup, Circle,
 } from 'react-leaflet';
 import { geolocated } from 'react-geolocated';
 import PropTypes from 'prop-types';
@@ -68,9 +68,11 @@ class Leaflet extends React.Component {
 
   render() {
     const { closeAllModals } = this.props;
-    const { coords, isGeolocationAvailable, isGeolocationEnabled, positionError } = this.props;
+    const {
+      coords, isGeolocationEnabled,
+    } = this.props;
     const defaultCenter = coords ? [coords.latitude, coords.longitude] : [46.7248003746672, 2.9003906250000004];
-    console.log(coords);
+    console.log(this.props);
     return (
       <>
         <Menu />
@@ -133,11 +135,21 @@ class Leaflet extends React.Component {
               Bonjour, je suis une punaise !
             </Popup>
           </Marker>
-          {isGeolocationEnabled && (
-            <Marker
-              position={defaultCenter}
-              icon={this.myPin}
-            />
+          {coords !== null && (
+            <>
+              <Circle
+                center={[coords.latitude, coords.longitude]}
+                radius={coords.accuracy / 2}
+                color="purple"
+                fillColor="purple"
+              />
+              <Circle
+                center={[coords.latitude, coords.longitude]}
+                radius={0.1}
+                color="purple"
+                fillColor="purple"
+              />
+            </>
           )}
         </LeafletMap>
       </>
@@ -150,6 +162,8 @@ Leaflet.propTypes = {
   closeAllModals: PropTypes.func.isRequired,
   updateMapformField: PropTypes.func.isRequired,
   openDisplayMonument: PropTypes.func.isRequired,
+  coords: PropTypes.object.isRequired,
+  isGeolocationEnabled: PropTypes.bool.isRequired,
 };
 
 export default geolocated({
