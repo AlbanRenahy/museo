@@ -2,8 +2,8 @@ div {
   position: relative;
 }
 input {
-  margin-top: 0.3rem;
-  margin-bottom: 1rem;
+  margin-top: 0.9rem;
+  margin-bottom: 0.9rem;
   padding: 0.6rem;
   border-radius: 4px;
   border: 2px solid rgba(191, 191, 191, 0.5);
@@ -33,7 +33,7 @@ input {
       border: 2px solid rgb(100, 43, 124);
       & + label { // The label when input focused
         color: #B83B5E;
-        transform: translateY(-13px);
+        transform: translateY(-6px);
         opacity: 1;
         transition-duration: .4s;
 
@@ -47,7 +47,7 @@ input {
       }
     }
     .open + label {  // The label when input class = open
-      transform: translateY(-13px);
+      transform: translateY(-6px);
       opacity: 1;
     }
 }

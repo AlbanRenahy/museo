@@ -21,7 +21,7 @@ const Contact = ({
   email, message, updateUserformField, sendMessage,
 }) => (
   <Form onSubmit={sendMessage} className="contact-form">
-    <p className="contact-title">Contactez nous !</p>
+    <h1 className="contact-title">Contactez nous !</h1>
     <Input
       className="email-input"
       type="email"

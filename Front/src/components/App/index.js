@@ -92,7 +92,9 @@ const App = () => (
     <Route
       path="/profil"
       render={() => (
-        <Profil />
+        <Welcome>
+          <Profil />
+        </Welcome>
       )}
     />
 
