@@ -7,6 +7,7 @@ import {
   OPEN_DISPLAY_MONUMENT,
   AUTO_COMPLETE_RESULTS,
   OPEN_AUTO_COMPLETE,
+  CENTER_BY_ADDRESS,
 } from '../actions/mapActions';
 
 const initialState = {
@@ -17,6 +18,11 @@ const initialState = {
   name: '', // nom d'un monument dans le form
   address: '', // adresse d'un monument dans le form
   description: '', // description d'un monument dans le form
+
+  // *********MANAGEMENT OF THE GEOLOCALIZATION*********/
+  center: [46.7248003746672, 2.9003906250000004], // Center of the map
+  zoom: 6, // level of zoom
+  userLocalized: false,
 
   // ************MANAGEMENT OF THE MENU********/
   searchInput: '', // string
@@ -74,6 +80,11 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isAutocompleteOpen: true,
+      };
+    case CENTER_BY_ADDRESS:
+      return {
+        ...state,
+        center: action.position,
       };
     case SUBMIT_MONUMENT:
       return state;

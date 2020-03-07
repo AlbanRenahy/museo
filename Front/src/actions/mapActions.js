@@ -10,6 +10,8 @@ export const CLOSE_ALL_MODALS = 'CLOSE_ALL_MODALS';
 export const AUTO_COMPLETE = 'AUTO_COMPLETE';
 export const AUTO_COMPLETE_RESULTS = 'AUTO_COMPLETE_RESULTS';
 export const OPEN_AUTO_COMPLETE = 'OPEN_AUTO_COMPLETE';
+export const FOUND_ADDRESS = 'FOUND_ADDRESS';
+export const CENTER_BY_ADDRESS = 'CENTER_BY_ADDRESS';
 /**
  * Action Creators
  */
@@ -48,4 +50,11 @@ export const autoCompleteResults = address => ({
 
 export const openAutocomplete = () => ({
   type: OPEN_AUTO_COMPLETE,
+});
+export const foundAddress = () => ({
+  type: FOUND_ADDRESS,
+});
+export const centerByAddress = (position) => ({
+  type: CENTER_BY_ADDRESS,
+  position,
 });

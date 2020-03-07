@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Menu from 'src/components/LeafletMap/Menu';
 
-import { updateMapformField, autoComplete } from 'src/actions/mapActions';
+import { updateMapformField, autoComplete, closeAllModals } from 'src/actions/mapActions';
 
 const mapStateToProps = (state) => ({
   searchInput: state.map.searchInput,
@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   autoComplete: (value) => {
     dispatch(autoComplete(value));
+  },
+  closeAllModals: () => {
+    dispatch(closeAllModals());
   },
 });
 

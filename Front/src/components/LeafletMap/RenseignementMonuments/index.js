@@ -17,6 +17,7 @@ const RenseignementMonuments = ({
   description,
   updateMapformField,
   closeAllModals,
+  foundAddress,
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
@@ -28,6 +29,10 @@ const RenseignementMonuments = ({
     e.preventDefault();
     console.log('submitting monument');
     submitMonument();
+  };
+
+  const handleBlur = (e) => {
+    foundAddress();
   };
   return (
     <div
@@ -66,6 +71,7 @@ const RenseignementMonuments = ({
               name="address"
               placeholder="Adresse"
               value={address}
+              onBlur={handleBlur}
               onChangeFunction={(input) => updateMapformField('address', input)}
             />
             <TextArea
@@ -139,6 +145,7 @@ RenseignementMonuments.propTypes = {
   description: PropTypes.string.isRequired,
   updateMapformField: PropTypes.func.isRequired,
   submitMonument: PropTypes.func.isRequired,
+  foundAddress: PropTypes.func.isRequired,
 };
 
 export default RenseignementMonuments;

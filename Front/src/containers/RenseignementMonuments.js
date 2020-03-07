@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { updateMapformField, closeAllModals, submitMonument } from 'src/actions/mapActions';
+import { updateMapformField, closeAllModals, submitMonument, foundAddress } from 'src/actions/mapActions';
 
 /**
  * Local import
@@ -26,6 +26,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   submitMonument: () => {
     dispatch(submitMonument());
+  },
+  foundAddress: () => {
+    dispatch(foundAddress());
   },
 });
 

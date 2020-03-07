@@ -21,7 +21,7 @@ const TopMenu = ({
       </Menu.Menu>
 
       <Menu.Menu position="right">
-      <div className="ui right aligned category search item">
+        <div className="ui right aligned category search item">
           <div className={`ui transparent icon input ${searchInput && 'not-empty'}`}>
             <div className="input-container">
               <input
@@ -48,7 +48,7 @@ const TopMenu = ({
           </div>
           <div className={isAutocompleteOpen ? 'results transition visible' : 'results transition'}>
             {
-              autoCompleteResults.map(address => (
+              autoCompleteResults.map((address) => (
                 <p key={address.properties.id} className="result" onClick={handleSearch([address.geometry.coordinates[1], address.geometry.coordinates[0]])}><span className="city">{address.properties.name}</span>, {address.properties.context}</p>
               ))
             }
