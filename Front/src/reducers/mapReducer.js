@@ -5,6 +5,8 @@ import {
   CLOSE_ALL_MODALS,
   OPEN_DATA_FORM_RESPONSE,
   OPEN_DISPLAY_MONUMENT,
+  AUTO_COMPLETE_RESULTS,
+  OPEN_AUTO_COMPLETE,
 } from '../actions/mapActions';
 
 const initialState = {
@@ -25,6 +27,10 @@ const initialState = {
   token: '', // va contenir le token de session
   refreshToken: '', // va rafraichir le token pour se déconnecter de la session
   isConnected: false, // par défaut, connection sur false
+
+  // Autocomplete results
+  autoCompleteResults: [],
+  isAutocompleteOpen: false,
 };
 
 const mapReducer = (state = initialState, action = {}) => {
@@ -44,6 +50,7 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         isDataFormOpen: false,
         isDisplayMonumentOpen: false,
+        isAutocompleteOpen: false,
         // Les futurs modals à fermer
       };
     case OPEN_DISPLAY_MONUMENT:
@@ -57,6 +64,16 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         address: display_name,
+      };
+    case AUTO_COMPLETE_RESULTS:
+      return {
+        ...state,
+        autoCompleteResults: action.address,
+      };
+    case OPEN_AUTO_COMPLETE:
+      return {
+        ...state,
+        isAutocompleteOpen: true,
       };
     case SUBMIT_MONUMENT:
       return state;

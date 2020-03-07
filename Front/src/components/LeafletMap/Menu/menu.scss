@@ -7,20 +7,15 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  // background-color: rgba($color: $beige, $alpha: 0.5);
   padding: 0 1em;
-  // .menu {
-  //     background-color: rgba($color: $beige, $alpha: 0.3);
-  //     border: none;
-  //     display: flex;
-  //     flex-direction: row;
-  //     justify-content: space-between;
 
-   //     // &.right.menu {
-  //     //     margin-left: 0 !important;
+  .result {
+    text-align: center;
+    .city {
+        font-weight: bold;
+    }
+}
 
-   //     // }
-  // }
   .ui.button {
       background-color: #ffffff;
       color: purple;

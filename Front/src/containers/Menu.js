@@ -2,15 +2,20 @@ import { connect } from 'react-redux';
 
 import Menu from 'src/components/LeafletMap/Menu';
 
-import { updateMapformField } from 'src/actions/mapActions';
+import { updateMapformField, autoComplete } from 'src/actions/mapActions';
 
 const mapStateToProps = (state) => ({
-  searchInput: state.searchInput,
+  searchInput: state.map.searchInput,
+  autoCompleteResults: state.map.autoCompleteResults,
+  isAutocompleteOpen: state.map.isAutocompleteOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateMapformField: (fieldName, input) => {
     dispatch(updateMapformField(fieldName, input));
+  },
+  autoComplete: (value) => {
+    dispatch(autoComplete(value));
   },
 });
 

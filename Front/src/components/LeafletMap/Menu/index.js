@@ -1,52 +1,82 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Dropdown, Button } from 'semantic-ui-react';
-import Input from '../../Input';
 
 import './menu.scss';
 
-const TopMenu = ({searchInput, updateMapformField}) => (
-  <div id="menu">
-    {/* <Menu attached='top' borderless secondary> */}
-    <Menu.Menu>
-      <Button.Group>
-        <Button active>Carte</Button>
-        <Button className="no-border-left">Monuments</Button>
-      </Button.Group>
-    </Menu.Menu>
+const TopMenu = ({
+  searchInput, updateMapformField, closeAllModals, autoComplete, autoCompleteResults, isAutocompleteOpen,
+}) => {
+  const handleSearch = () => (e) => {
+    updateMapformField('searchInput', e.target.textContent);
+  };
+  return (
+    <div id="menu">
+      {/* <Menu attached='top' borderless secondary> */}
+      <Menu.Menu>
+        <Button.Group>
+          <Button active>Carte</Button>
+          <Button className="no-border-left">Monuments</Button>
+        </Button.Group>
+      </Menu.Menu>
 
-    <Menu.Menu position="right">
+      <Menu.Menu position="right">
       <div className="ui right aligned category search item">
-        <div className="ui transparent icon input">
-          <Input
-            className="prompt"
-            type="text"
-            placeholder="Recherche"
-            value={searchInput}
-            onChangeFunction={(input) => updateMapformField('searchInput', input)}
-          />
-          <i className="search link icon" />
+          <div className={`ui transparent icon input ${searchInput && 'not-empty'}`}>
+            <div className="input-container">
+              <input
+                className="input"
+                type="text"
+                value={searchInput}
+                id="search-input"
+                name="search-input"
+                placeholder="Rechercher une adresse"
+                onChange={(e) => {
+                  autoComplete(e.target.value);
+                }}
+                onFocus={(event) => {
+                  event.target.classList.add('open');
+                }}
+              />
+            </div>
+            <i
+              className="search link icon"
+              onClick={() => {
+                closeAllModals();
+              }}
+            />
+          </div>
+          <div className={isAutocompleteOpen ? 'results transition visible' : 'results transition'}>
+            {
+              autoCompleteResults.map(address => (
+                <p key={address.properties.id} className="result" onClick={handleSearch([address.geometry.coordinates[1], address.geometry.coordinates[0]])}><span className="city">{address.properties.name}</span>, {address.properties.context}</p>
+              ))
+            }
+          </div>
         </div>
-        <div className="results" />
-      </div>
-    </Menu.Menu>
+      </Menu.Menu>
 
 
-    <Dropdown item icon="bars" simple>
-      <Dropdown.Menu>
-        <Dropdown.Item>Déconnexion</Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item>Mon compte</Dropdown.Item>
-        <Dropdown.Item>Mon profil</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-    {/* </Menu> */}
-  </div>
-);
+      <Dropdown item icon="bars" simple>
+        <Dropdown.Menu>
+          <Dropdown.Item>Déconnexion</Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item>Mon compte</Dropdown.Item>
+          <Dropdown.Item>Mon profil</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      {/* </Menu> */}
+    </div>
+  );
+};
 
 TopMenu.propTypes = {
   searchInput: PropTypes.string.isRequired,
   updateMapformField: PropTypes.func.isRequired,
+  autoComplete: PropTypes.func.isRequired,
+  autoCompleteResults: PropTypes.array.isRequired,
+  isAutocompleteOpen: PropTypes.bool.isRequired,
+  closeAllModals: PropTypes.func.isRequired,
 };
 
 export default TopMenu;

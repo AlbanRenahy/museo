@@ -4,6 +4,10 @@ import axios from 'axios';
 import {
   OPEN_DATA_FORM,
   openDataFormResponse,
+  AUTO_COMPLETE,
+  autoCompleteResults,
+  openAutocomplete,
+  updateMapformField,
 } from 'src/actions/mapActions';
 
 // eslint-disable-next-line consistent-return
@@ -19,6 +23,24 @@ const extApiMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
+      break;
+    case AUTO_COMPLETE:
+      store.dispatch(updateMapformField('searchInput', action.value));
+      if (action.value !== '') {
+        axios.get(`https://api-adresse.data.gouv.fr/search/?q=${store.getState().map.searchInput}&limit=4&autocomplete=1`)
+          .then((response) => {
+            const address = response.data.features;
+            console.log(address);
+            store.dispatch(autoCompleteResults(address));
+            store.dispatch(openAutocomplete());
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      else {
+        store.dispatch(autoCompleteResults([]));
+      }
       break;
     default:
       return next(action);
