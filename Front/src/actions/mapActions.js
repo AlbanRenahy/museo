@@ -13,6 +13,7 @@ export const OPEN_AUTO_COMPLETE = 'OPEN_AUTO_COMPLETE';
 export const FIND_ADDRESS = 'FIND_ADDRESS';
 export const CENTER_BY_ADDRESS = 'CENTER_BY_ADDRESS';
 export const FIND_ADDRESS_SEARCH = 'FIND_ADDRESS_SEARCH';
+export const TOGGLE_MENU = 'TOGGLE_MENU';
 /**
  * Action Creators
  */
@@ -61,4 +62,7 @@ export const centerByAddress = (position) => ({
 });
 export const findAddressSearch = () => ({
   type: FIND_ADDRESS_SEARCH,
+});
+export const toggleMenu = () => ({
+  type: TOGGLE_MENU,
 });
