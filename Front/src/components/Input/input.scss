@@ -1,7 +1,6 @@
-div { // Input containing div
+div {
   position: relative;
 }
-
 input {
   margin-top: 5px;
   margin-bottom: 20px;
@@ -11,35 +10,46 @@ input {
   font-size: 1.2em;
   transition: 0.2s;
   width: 100%;
-  & + label {
-    font-variant: small-caps;
-    position: absolute;
-    display: inline-block;
-    left: 0;
-    opacity: 0;
-    font-weight: bold;
-    font-size: 0.9em;
-    color: rgb(100, 43, 124);
-  }
-  &::placeholder {
-    color: rgba(191, 191, 191, 1);
-  }
-  &:focus {
-    border: 2px solid rgb(100, 43, 124);
-    & + label { // The label when input focused
-      color: #B83B5E;
+
+  @media screen and (max-width: 425px)
+      {
+        font-size: 0.9em;
+      }
+
+    & + label {
+      font-variant: small-caps;
+      position: absolute;
+      display: inline-block;
+      left: 0;
+      opacity: 0;
+      font-weight: bold;
+      font-size: 0.9em;
+      color: rgb(100, 43, 124);
+    }
+    &::placeholder {
+      color: rgba(191, 191, 191, 1);
+    }
+    &:focus {
+      border: 2px solid rgb(100, 43, 124);
+      & + label { // The label when input focused
+        color: #B83B5E;
+        transform: translateY(-13px);
+        opacity: 1;
+        transition-duration: .4s;
+
+        @media screen and (max-width: 425px)
+          {
+            font-size: 0.8em;
+          }
+      }
+      &::placeholder {  // The placeholder when input focused
+        opacity: 0;
+      }
+    }
+    .open + label {  // The label when input class = open
       transform: translateY(-13px);
       opacity: 1;
-      transition-duration: .4s;
     }
-    &::placeholder {  // The placeholder when input focused
-      opacity: 0;
-    }
-  }
-  &.open + label {  // The label when input class = open
-    transform: translateY(-13px);
-    opacity: 1;
-  }
 }
 
 @keyframes showLabel {

@@ -27,8 +27,9 @@ const Signin = ({
   updateUserformField,
   signin,
 }) => (
-  <Form onSubmit={signin}>
+  <Form onSubmit={signin} className="signin-form">
     <Input
+      className="email-input"
       type="email"
       id="email"
       name="email"
@@ -38,6 +39,7 @@ const Signin = ({
     />
 
     <Input
+      className="username-input"
       type="text"
       id="username"
       name="pseudonyme"
@@ -48,6 +50,7 @@ const Signin = ({
 
 
     <Input
+      className="password-input"
       type="password"
       id="password"
       name="mot de passe"
@@ -57,6 +60,7 @@ const Signin = ({
     />
 
     <Input
+      className="passconfirm-input"
       type="password"
       id="password-confirm"
       name="confirmer votre mot de passe"
@@ -65,7 +69,7 @@ const Signin = ({
       onChangeFunction={(input) => updateUserformField('passConfirm', input)}
     />
 
-    <button type="submit" className="form-button">M'inscrire</button>
+    <button type="submit" className="form-button">M'INSCRIRE</button>
 
     <p className="map-link"><Link to="/login">J'ai déjà mes identifiants</Link></p>
   </Form>

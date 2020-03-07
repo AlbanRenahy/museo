@@ -22,9 +22,10 @@ import './login.scss';
 const Login = ({
   email, password, updateUserformField, connectUser, isConnected,
 }) => (
-  <Form onSubmit={connectUser}>
+  <Form onSubmit={connectUser} className="login-form">
     {isConnected && <Redirect to="/map" />}
     <Input
+      className="email-input"
       type="email"
       id="email"
       name="email"
@@ -33,6 +34,7 @@ const Login = ({
       onChangeFunction={(input) => updateUserformField('email', input)}
     />
     <Input
+      className="password-input"
       type="password"
       id="password"
       name="mot de passe"
@@ -43,9 +45,9 @@ const Login = ({
     <p className="lost-password">
       <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
     </p>
-    <button type="submit" className="inverted-colors form-button">ME CONNECTER</button>
-    <Link to="/signin">Je souhaite m'inscrire</Link>
-    <Link to="/map">Entrer sur la carte en visiteur</Link>
+    <button type="submit" className="form-button">ME CONNECTER</button>
+    <Link className="signin-link" to="/signin">Je souhaite m'inscrire</Link>
+    <Link className="map-link" to="/map">Entrer sur la carte en visiteur</Link>
   </Form>
 );
 
