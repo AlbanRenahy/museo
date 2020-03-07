@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Map as LeafletMap, TileLayer, Marker, Popup,
 } from 'react-leaflet';
+import { geolocated } from 'react-geolocated';
 import PropTypes from 'prop-types';
 import L from 'leaflet';
 import Menu from '../../containers/Menu';
@@ -67,13 +68,20 @@ class Leaflet extends React.Component {
 
   render() {
     const { closeAllModals } = this.props;
+    const { coords, isGeolocationAvailable, isGeolocationEnabled, positionError } = this.props;
+    const defaultCenter = coords ? [coords.latitude, coords.longitude] : [46.7248003746672, 2.9003906250000004];
+    console.log(coords);
     return (
       <>
         <Menu />
         <RenseignementMonuments />
         <DisplayMonument />
         <LeafletMap
-          center={[48.864716, 2.349014]}
+          center={isGeolocationEnabled ? defaultCenter : [
+            coords.latitude,
+            coords.longitude,
+          ]}
+          // center={defaultCenter}
           zoom={12}
           maxZoom={19}
           minZoom={6}
@@ -125,6 +133,12 @@ class Leaflet extends React.Component {
               Bonjour, je suis une punaise !
             </Popup>
           </Marker>
+          {isGeolocationEnabled && (
+            <Marker
+              position={defaultCenter}
+              icon={this.myPin}
+            />
+          )}
         </LeafletMap>
       </>
     );
@@ -138,4 +152,10 @@ Leaflet.propTypes = {
   openDisplayMonument: PropTypes.func.isRequired,
 };
 
-export default Leaflet;
+export default geolocated({
+  positionOptions: {
+    enableHighAccuracy: true,
+  },
+  userDecisionTimeout: null,
+  watchPosition: true,
+})(Leaflet);
