@@ -5,10 +5,11 @@ import { Menu, Dropdown, Button } from 'semantic-ui-react';
 import './menu.scss';
 
 const TopMenu = ({
-  searchInput, updateMapformField, closeAllModals, autoComplete, autoCompleteResults, isAutocompleteOpen,
+  searchInput, updateMapformField, closeAllModals, autoComplete, autoCompleteResults, centerByAddress, isAutocompleteOpen, findAddressSearch
 }) => {
-  const handleSearch = () => (e) => {
+  const handleSearch = (position) => (e) => {
     updateMapformField('searchInput', e.target.textContent);
+    centerByAddress(position);
   };
   return (
     <div id="menu">
@@ -31,6 +32,12 @@ const TopMenu = ({
                 id="search-input"
                 name="search-input"
                 placeholder="Rechercher une adresse"
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    closeAllModals();
+                    findAddressSearch();
+                  }
+                }}
                 onChange={(e) => {
                   autoComplete(e.target.value);
                 }}
@@ -43,6 +50,7 @@ const TopMenu = ({
               className="search link icon"
               onClick={() => {
                 closeAllModals();
+                findAddressSearch();
               }}
             />
           </div>

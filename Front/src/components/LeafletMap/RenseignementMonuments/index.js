@@ -17,7 +17,7 @@ const RenseignementMonuments = ({
   description,
   updateMapformField,
   closeAllModals,
-  foundAddress,
+  findAddress,
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ const RenseignementMonuments = ({
   };
 
   const handleBlur = (e) => {
-    foundAddress();
+    findAddress();
   };
   return (
     <div
@@ -145,7 +145,7 @@ RenseignementMonuments.propTypes = {
   description: PropTypes.string.isRequired,
   updateMapformField: PropTypes.func.isRequired,
   submitMonument: PropTypes.func.isRequired,
-  foundAddress: PropTypes.func.isRequired,
+  findAddress: PropTypes.func.isRequired,
 };
 
 export default RenseignementMonuments;

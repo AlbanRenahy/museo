@@ -85,6 +85,7 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         center: action.position,
+        zoom: 14,
       };
     case SUBMIT_MONUMENT:
       return state;
