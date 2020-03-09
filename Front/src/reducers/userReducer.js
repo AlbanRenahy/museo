@@ -4,10 +4,13 @@ import {
   SIGNIN,
   STORE_TOKEN,
   SEND_MESSAGE,
+  OPEN_CONFIRM_DELETE_USER,
+  CLOSE_CONFIRM_DELETE_USER,
   DISCONNECT_USER,
   CONNECTING_ERROR,
   SIGNIN_ERRORS,
   REDIRECT_TO_LOGIN,
+
 } from '../actions/userActions';
 
 const initialState = {
@@ -19,6 +22,7 @@ const initialState = {
   userFirstname: null,
   userLastname: null,
   message: '', // correspond au message dans contact
+  displayConfirmDeleteUser: false,
   token: '', // string,
   refreshToken: '',
   isConnected: false,
@@ -77,6 +81,16 @@ const userReducer = (state = initialState, action = {}) => {
       };
     case SEND_MESSAGE:
       return state;
+    case OPEN_CONFIRM_DELETE_USER:
+      return {
+        ...state,
+        displayConfirmDeleteUser: true,
+      };      
+    case CLOSE_CONFIRM_DELETE_USER:
+      return {
+        ...state,
+        displayConfirmDeleteUser: false,
+      };
     default:
       return state;
   }

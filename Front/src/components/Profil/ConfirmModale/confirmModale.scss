@@ -1,0 +1,82 @@
+.confirm-modale {
+  .shadow-layer {
+    z-index: 3;
+    background-color: grey;
+    opacity: 0.9;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .modale-content {
+    position: float;
+    background-color: rgba(251, 225, 146, 0.6);
+    border-radius: 10px;
+    padding: 1em;
+    width: 30%;
+    height: 25%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .close-modale {
+    width: 1.3rem;
+    padding: 0.2rem;;
+    align-self: flex-end;
+    color:  #B83B5E;
+    font-size: 0.8rem;
+    border: 1px solid  #B83B5E;
+
+    &:hover {
+      color: #fff;
+      background-color: #B83B5E;
+    }
+  }
+
+  .modale-text {
+    color: rgb(59, 25, 73);
+    text-align: center;
+  }
+  .confirm-delete {
+    width: 60%;
+    font-size: 1.5rem;
+    font-variant: small-caps;
+    color: #fff;
+    background-color: #B83B5E;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    margin: 0.5rem auto;
+    padding: 0.2rem;
+
+    @media screen and (max-width: 1023px)
+      {
+        font-size: 0.7rem;
+        padding: 0.1rem;
+      }
+
+    &:hover {
+    background-color: rgb(204, 2, 2);
+    cursor: pointer;
+    }
+  }
+
+  .cancel-delete {
+    background: none;
+    border: none;
+    color: rgb(100, 43, 124);
+    font-variant: small-caps;
+    font-weight: bold;
+
+    &:hover {
+      color: #B83B5E;
+      cursor: pointer;
+      }
+  }
+}

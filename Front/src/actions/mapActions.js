@@ -40,12 +40,12 @@ export const submitMonument = () => ({
 export const closeAllModals = () => ({
   type: CLOSE_ALL_MODALS,
 });
-export const autoComplete = value => ({
+export const autoComplete = (value) => ({
   type: AUTO_COMPLETE,
   value,
 });
 
-export const autoCompleteResults = address => ({
+export const autoCompleteResults = (address) => ({
   type: AUTO_COMPLETE_RESULTS,
   address,
 });
