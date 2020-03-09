@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,16 +30,15 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/api/login", name="login_front", methods="POST")
+     * @Route(name="api_login", path="/api/login_check")
+     * @return JsonResponse
      */
-    public function login_front(Request $req)
+    public function api_login(): JsonResponse
     {
         $user = $this->getUser();
-
-        return $this->json([
-            'email' => $user->getEmail(),
-            'password' => $user->getPassword(),
-            'roles' => $user->getRoles(),
+        return new Response([
+            'email' => $user->getUsername(),
+            'roles' => $user->getRoles();
         ]);
     }
 
