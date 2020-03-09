@@ -5,6 +5,7 @@ import {
   STORE_TOKEN,
   SEND_MESSAGE,
   DISCONNECT_USER,
+  CONNECTING_ERROR,
 } from '../actions/userActions';
 
 const initialState = {
@@ -48,6 +49,12 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...initialState,
         loginMessage: 'Vous avez bien été déconnecté(e)',
+      };
+    case CONNECTING_ERROR:
+      return {
+        ...state,
+        loginMessage: action.message,
+        loginStatus: 'not-connected',
       };
     case SIGNIN:
       return state;

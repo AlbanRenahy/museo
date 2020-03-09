@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CONNECT_USER, SIGNIN, SEND_MESSAGE, storeToken } from 'src/actions/userActions';
+import { CONNECT_USER, SIGNIN, SEND_MESSAGE, storeToken, connectingError, } from 'src/actions/userActions';
 
 const museoApi = 'http://54.91.98.36/back/projet-museo/public/api';
 
@@ -20,7 +20,9 @@ const userMiddleware = (store) => (next) => (action) => {
           store.dispatch(storeToken(token, refreshToken));
         })
         .catch((error) => {
-          console.log('erreur :', error.response);
+          console.log('erreur :', error.response.data.code);
+          const message = (error.response.data.code === 401 ? 'Identifiant ou mot de passe invalide' : 'Une erreur est survenue, veuillez essayer à nouveau');
+          store.dispatch(connectingError(message));
         });
       next(action);
       break;

@@ -8,6 +8,7 @@ export const UPDATE_USER = 'UPDATE_USER';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SIGNIN = 'SIGNIN';
 export const DISCONNECT_USER = 'DISCONNECT_USER';
+export const CONNECTING_ERROR = 'CONNECTING_ERROR';
 /**
  * Action Creators
  */
@@ -40,4 +41,8 @@ export const sendMessage = () => ({
 });
 export const disconnect = () => ({
   type: DISCONNECT_USER,
+});
+export const connectingError = (message) => ({
+  type: CONNECTING_ERROR,
+  message,
 });
