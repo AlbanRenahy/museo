@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Monument
 {
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
