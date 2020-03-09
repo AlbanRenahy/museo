@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -60,6 +62,31 @@ class Monument
      * @ORM\Column(type="decimal", precision=10, scale=8)
      */
     private $longitude;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments")
+     */
+    private $region;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="monuments")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Period", inversedBy="monuments")
+     */
+    private $period;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Target", inversedBy="monuments")
+     */
+    private $target;
+
+    public function __construct()
+    {
+        $this->period = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -170,6 +197,68 @@ class Monument
     public function setLongitude(string $longitude): self
     {
         $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getRegion(): ?Region
+    {
+        return $this->region;
+    }
+
+    public function setRegion(?Region $region): self
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Period[]
+     */
+    public function getPeriod(): Collection
+    {
+        return $this->period;
+    }
+
+    public function addPeriod(Period $period): self
+    {
+        if (!$this->period->contains($period)) {
+            $this->period[] = $period;
+        }
+
+        return $this;
+    }
+
+    public function removePeriod(Period $period): self
+    {
+        if ($this->period->contains($period)) {
+            $this->period->removeElement($period);
+        }
+
+        return $this;
+    }
+
+    public function getTarget(): ?Target
+    {
+        return $this->target;
+    }
+
+    public function setTarget(?Target $target): self
+    {
+        $this->target = $target;
 
         return $this;
     }
