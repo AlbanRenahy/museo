@@ -3,11 +3,14 @@
  */
 export const UPDATE_USERFORM_FIELD = 'UPDATE_USERFORM_FIELD';
 export const CONNECT_USER = 'CONNECT_USER'; // Api connection with username && password
-export const SIGNIN = 'SIGNIN';
+export const CONNECTING_ERROR = 'CONNECTING_ERROR';
 export const STORE_TOKEN = 'STORE_TOKEN';
 export const UPDATE_USER = 'UPDATE_USER';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
-
+export const SIGNIN = 'SIGNIN';
+export const SIGNIN_ERRORS = 'SIGNIN_ERRORS';
+export const DISCONNECT_USER = 'DISCONNECT_USER';
+export const REDIRECT_TO_LOGIN = 'REDIRECT_TO_LOGIN';
 /**
  * Action Creators
  */
@@ -37,4 +40,18 @@ export const signin = () => ({
 
 export const sendMessage = () => ({
   type: SEND_MESSAGE,
+});
+export const disconnect = () => ({
+  type: DISCONNECT_USER,
+});
+export const connectingError = (message) => ({
+  type: CONNECTING_ERROR,
+  message,
+});
+export const signinErrors = (errors) => ({
+  type: SIGNIN_ERRORS,
+  errors,
+});
+export const redirectToLogin = () => ({
+  type: REDIRECT_TO_LOGIN,
 });

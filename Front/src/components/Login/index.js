@@ -20,10 +20,11 @@ import './login.scss';
  * Code
  */
 const Login = ({
-  email, password, updateUserformField, connectUser, isConnected,
+  email, password, updateUserformField, connectUser, isConnected, loginMessage, loginStatus,
 }) => (
   <Form onSubmit={connectUser} className="login-form">
     {isConnected && <Redirect to="/map" />}
+    <p className={`identification-message ${loginStatus}`}>{loginMessage}</p>
     <Input
       className="email-input"
       type="email"
@@ -63,6 +64,8 @@ Login.propTypes = {
   updateUserformField: PropTypes.func.isRequired,
   connectUser: PropTypes.func.isRequired,
   isConnected: PropTypes.bool.isRequired,
+  loginMessage: PropTypes.string.isRequired,
+  loginStatus: PropTypes.string.isRequired,
 };
 
 
