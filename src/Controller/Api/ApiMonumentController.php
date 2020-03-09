@@ -96,4 +96,16 @@ class ApiMonumentController extends AbstractController
         // 201 + Redirection vers movies/123
         return $this->redirectToRoute('api_monuments', ['id' => $monument->getId()], Response::HTTP_CREATED);
     }
+
+    /**
+     * @Route("/api/monuments/delete/{id}", name="delete", methods="DELETE")
+     */
+
+    public function delete(Monument $monument)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($monument);
+        $entityManager->flush();
+        return new Response('Vous avez bien supprimer le monument', 200, []);
+    }
 }
