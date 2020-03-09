@@ -19,10 +19,10 @@ class ApiMonumentController extends AbstractController
     public function getMonuments(MonumentRepository $monumentRepository, SerializerInterface $serializer)
     {
         //récupération des monuments
-        $monuments = $monumentRepository->findAll();
+        // $monuments = $monumentRepository->findAll();
+        // $monumentsJson = $serializer->serialize($monuments, 'json', ['groups' => 'monument']);
+        // return new Response ($monumentsJson, Response::HTTP_OK, ['Content-Type' => 'application/json']);
 
-        $monumentsJson = $serializer->serialize($monuments, 'json', ['groups' => 'monument']);
-
-        return new Response ($monumentsJson, Response::HTTP_OK, ['Content-Type' => 'application/json']);
+        return $this->json($monumentRepository->findAll(), 200, [], ['groups' => 'monument']);
     }
 }
