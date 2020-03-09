@@ -27,9 +27,9 @@ class Monument
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("monument")
+     * 
      */
-    private $city;
+    //private $city;
 
     /**
      * @ORM\Column(type="string", length=255)
