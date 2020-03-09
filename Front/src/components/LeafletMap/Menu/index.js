@@ -1,15 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Menu, Dropdown, Button } from 'semantic-ui-react';
 
 import './menu.scss';
+import './burger.scss';
 
 const TopMenu = ({
-  searchInput, updateMapformField, closeAllModals, autoComplete, autoCompleteResults, centerByAddress, isAutocompleteOpen, findAddressSearch
+  searchInput, updateMapformField, closeAllModals, autoComplete, autoCompleteResults, centerByAddress, isAutocompleteOpen, findAddressSearch,
+  isMenuOpen, toggleMenu,
 }) => {
   const handleSearch = (position) => (e) => {
     updateMapformField('searchInput', e.target.textContent);
     centerByAddress(position);
+  };
+
+  const handleMenuClick = () => {
+    console.log('clicked');
+    closeAllModals();
+    toggleMenu();
   };
   return (
     <div id="menu">
@@ -65,15 +74,20 @@ const TopMenu = ({
       </Menu.Menu>
 
 
-      <Dropdown item icon="bars" simple>
-        <Dropdown.Menu>
+      <button onClick={handleMenuClick} className={isMenuOpen ? 'hamburger hamburger--elastic is-active' : 'hamburger hamburger--elastic'} type="button">
+        <span className="hamburger-box">
+          <span className="hamburger-inner" />
+        </span>
+      </button>
+      <nav className={isMenuOpen ? 'content-menu open' : 'content-menu'}>
+        <ul>
           <Dropdown.Item>Déconnexion</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item>Mon compte</Dropdown.Item>
-          <Dropdown.Item>Mon profil</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-      {/* </Menu> */}
+          <Dropdown.Item><Link to="/login">Connexion</Link></Dropdown.Item>
+          <Dropdown.Item><Link to="/profil">Mon compte</Link></Dropdown.Item>
+          <Dropdown.Item><Link to="/about">A propos</Link></Dropdown.Item>
+          <Dropdown.Item><Link to="/contact">Contact</Link></Dropdown.Item>
+        </ul>
+      </nav>
     </div>
   );
 };
@@ -85,6 +99,8 @@ TopMenu.propTypes = {
   autoCompleteResults: PropTypes.array.isRequired,
   isAutocompleteOpen: PropTypes.bool.isRequired,
   closeAllModals: PropTypes.func.isRequired,
+  isMenuOpen: PropTypes.bool.isRequired,
+  toggleMenu: PropTypes.func.isRequired,
 };
 
 export default TopMenu;

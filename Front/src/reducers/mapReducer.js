@@ -8,11 +8,13 @@ import {
   AUTO_COMPLETE_RESULTS,
   OPEN_AUTO_COMPLETE,
   CENTER_BY_ADDRESS,
+  TOGGLE_MENU,
 } from '../actions/mapActions';
 
 const initialState = {
   // ******* MANAGEMENT OF MODAL FORM ******/
   isDataFormOpen: false, // bool qui indique si le formulaire de renseignement de données est ouvert
+  isMenuOpen: false,
   isDisplayMonumentOpen: false, // bool qui toggle l'ouverture de displayMonument
   clickedAddress: '', // String contenant l'adresse d'où a cliqué l'utilisateur
   name: '', // nom d'un monument dans le form
@@ -86,6 +88,11 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         center: action.position,
         zoom: 14,
+      };
+    case TOGGLE_MENU:
+      return {
+        ...state,
+        isMenuOpen: !state.isMenuOpen,
       };
     case SUBMIT_MONUMENT:
       return state;

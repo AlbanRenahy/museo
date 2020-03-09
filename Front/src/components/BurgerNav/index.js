@@ -13,7 +13,7 @@ const BurgerNav = () => (
       closeOnDocumentClick
     >
       <ul className="navigation">
-        <li><Link to="/profil">Mon profil</Link></li>
+        <li><Link to="/profil">Mon compte</Link></li>
         <li><Link to="/contact">Contact</Link></li>
         <li><Link to="/about">A propos</Link></li>
         <li><Link to="/login">Connexion</Link></li>
