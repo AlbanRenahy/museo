@@ -9,10 +9,9 @@ const BurgerNav = () => (
     <Popup
       // eslint-disable-next-line jsx-a11y/control-has-associated-label
       trigger={<button type="button" className="popup" />}
-      position="bottom"
+      position="bottom center"
       closeOnDocumentClick
     >
-
       <ul className="navigation">
         <li><Link to="/profil">Mon profil</Link></li>
         <li><Link to="/contact">Contact</Link></li>

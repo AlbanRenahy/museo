@@ -12,6 +12,7 @@ const initialState = {
   passConfirm: '', // correspond à la confirmation de mot de passe dans signin
   username: '', // correspond au pseudo dans signin
   email: '', // correspond aux input pour l'email
+  isConnected: false,
   userFirstname: null,
   userLastname: null,
   message: '', // correspond au message dans contact

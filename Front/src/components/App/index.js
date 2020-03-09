@@ -76,7 +76,9 @@ const App = () => (
     <Route
       path="/about"
       render={() => (
-        <About />
+        <Welcome>
+          <About />
+        </Welcome>
       )}
     />
 
@@ -90,7 +92,9 @@ const App = () => (
     <Route
       path="/profil"
       render={() => (
-        <Profil />
+        <Welcome>
+          <Profil />
+        </Welcome>
       )}
     />
 
