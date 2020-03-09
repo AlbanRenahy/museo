@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
   password: state.user.password,
   passConfirm: state.user.passConfirm,
   username: state.user.username,
+  signinErrors: state.user.signinErrors,
 });
 
 const mapDispatchToProps = (dispatch) => ({

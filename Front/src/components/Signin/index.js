@@ -26,54 +26,63 @@ const Signin = ({
   passConfirm,
   updateUserformField,
   signin,
+  signinErrors,
 }) => (
-  <Form onSubmit={signin} className="signin-form">
-    <Input
-      className="email-input"
-      type="email"
-      id="email"
-      name="email"
-      placeholder="Email*"
-      value={email}
-      onChangeFunction={(input) => updateUserformField('email', input)}
-    />
+  <>
+    <div className={signinErrors.length > 0 ? 'panel-error open' : 'panel-error'}>
+      {
+        signinErrors.map((error) => (
+          <p className="current-error" key={error}>{error}</p>
+        ))
+      }
+    </div>
+    <Form onSubmit={signin} className="signin-form">
+      <Input
+        className="email-input"
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email*"
+        value={email}
+        onChangeFunction={(input) => updateUserformField('email', input)}
+      />
 
-    <Input
-      className="username-input"
-      type="text"
-      id="username"
-      name="pseudonyme"
-      placeholder="Pseudonyme*"
-      value={username}
-      onChangeFunction={(input) => updateUserformField('username', input)}
-    />
+      <Input
+        className="username-input"
+        type="text"
+        id="username"
+        name="pseudonyme"
+        placeholder="Pseudonyme*"
+        value={username}
+        onChangeFunction={(input) => updateUserformField('username', input)}
+      />
 
 
-    <Input
-      className="password-input"
-      type="password"
-      id="password"
-      name="mot de passe"
-      placeholder="Mot de passe*"
-      value={password}
-      onChangeFunction={(input) => updateUserformField('password', input)}
-    />
+      <Input
+        className="password-input"
+        type="password"
+        id="password"
+        name="mot de passe"
+        placeholder="Mot de passe*"
+        value={password}
+        onChangeFunction={(input) => updateUserformField('password', input)}
+      />
 
-    <Input
-      className="passconfirm-input"
-      type="password"
-      id="password-confirm"
-      name="confirmer votre mot de passe"
-      placeholder="Confirmer votre mot de passe*"
-      value={passConfirm}
-      onChangeFunction={(input) => updateUserformField('passConfirm', input)}
-    />
+      <Input
+        className="passconfirm-input"
+        type="password"
+        id="password-confirm"
+        name="confirmer votre mot de passe"
+        placeholder="Confirmer votre mot de passe*"
+        value={passConfirm}
+        onChangeFunction={(input) => updateUserformField('passConfirm', input)}
+      />
 
-    <button type="submit" className="form-button">M'INSCRIRE</button>
+      <button type="submit" className="form-button">M'INSCRIRE</button>
 
-    <p className="login-link"><Link to="/login">J'ai déjà mes identifiants</Link></p>
-  </Form>
-
+      <p className="login-link"><Link to="/login">J'ai déjà mes identifiants</Link></p>
+    </Form>
+  </>
 );
 
 Signin.propTypes = {
@@ -85,6 +94,9 @@ Signin.propTypes = {
   // FUNCTIONS
   updateUserformField: PropTypes.func.isRequired,
   signin: PropTypes.func.isRequired,
+  signinErrors: PropTypes.arrayOf(
+    PropTypes.string,
+  ).isRequired,
 };
 
 /**

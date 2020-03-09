@@ -6,6 +6,7 @@ import {
   SEND_MESSAGE,
   DISCONNECT_USER,
   CONNECTING_ERROR,
+  SIGNIN_ERRORS,
 } from '../actions/userActions';
 
 const initialState = {
@@ -22,6 +23,7 @@ const initialState = {
   isConnected: false,
   loginMessage: 'Vous devez vous identifier pour modifier museo',
   loginStatus: 'not-connected',
+  signinErrors: [],
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -58,6 +60,11 @@ const userReducer = (state = initialState, action = {}) => {
       };
     case SIGNIN:
       return state;
+    case SIGNIN_ERRORS:
+      return {
+        ...state,
+        signinErrors: action.errors,
+      };
     case SEND_MESSAGE:
       return state;
     default:

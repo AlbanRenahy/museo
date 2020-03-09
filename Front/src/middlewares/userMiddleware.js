@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CONNECT_USER, SIGNIN, SEND_MESSAGE, storeToken, connectingError, } from 'src/actions/userActions';
+import { CONNECT_USER, SIGNIN, SEND_MESSAGE, storeToken, connectingError, signinErrors } from 'src/actions/userActions';
 
 const museoApi = 'http://54.91.98.36/back/projet-museo/public/api';
 
@@ -47,6 +47,7 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           console.log(response.data);
+          store.dispatch(signinErrors(response.data));
         })
         .catch((error) => {
           console.log(error.message);
