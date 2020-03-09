@@ -42,7 +42,7 @@ class ApiMonumentController extends AbstractController
     /**
      * POST Create monument
      * 
-     * @Route("/api/monuments", methods={"POST"})
+     * @Route("/api/monuments/add", methods={"POST"})
      */
     public function post(Request $request, SerializerInterface $serializer, ValidatorInterface $validator)
     {
@@ -86,7 +86,7 @@ class ApiMonumentController extends AbstractController
         $em->flush();
 
         // 201 + Redirection vers movies/123
-        return $this->redirectToRoute('api_monument_one', ['id' => $monument->getId()], Response::HTTP_CREATED);
+        return $this->redirectToRoute('api_monuments', ['id' => $monument->getId()], Response::HTTP_CREATED);
     }
 
 
