@@ -32,10 +32,6 @@ const initialState = {
   clickedLat: '', // gère la lattitude
   clickedLng: '', // gère la longitude
 
-  token: '', // va contenir le token de session
-  refreshToken: '', // va rafraichir le token pour se déconnecter de la session
-  isConnected: false, // par défaut, connection sur false
-
   // Autocomplete results
   autoCompleteResults: [],
   isAutocompleteOpen: false,

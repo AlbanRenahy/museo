@@ -4,6 +4,7 @@ import {
   SIGNIN,
   STORE_TOKEN,
   SEND_MESSAGE,
+  DISCONNECT_USER,
 } from '../actions/userActions';
 
 const initialState = {
@@ -18,6 +19,8 @@ const initialState = {
   token: '', // string,
   refreshToken: '',
   isConnected: false,
+  loginMessage: 'Vous devez vous identifier pour modifier museo',
+  loginStatus: 'not-connected',
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -28,13 +31,23 @@ const userReducer = (state = initialState, action = {}) => {
         [action.fieldName]: action.input,
       };
     case CONNECT_USER:
-      return state;
+      return {
+        ...state,
+        loginMessage: 'Connexion en cours',
+        loginStatus: 'connecting',
+      };
     case STORE_TOKEN:
       return {
         ...state,
         token: action.token,
         refreshToken: action.refreshToken,
         isConnected: true,
+        loginMessage: 'Vous êtes connecté(e)',
+      };
+    case DISCONNECT_USER:
+      return {
+        ...initialState,
+        loginMessage: 'Vous avez bien été déconnecté(e)',
       };
     case SIGNIN:
       return state;

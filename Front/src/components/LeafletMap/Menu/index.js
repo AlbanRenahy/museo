@@ -8,7 +8,7 @@ import './burger.scss';
 
 const TopMenu = ({
   searchInput, updateMapformField, closeAllModals, autoComplete, autoCompleteResults, centerByAddress, isAutocompleteOpen, findAddressSearch,
-  isMenuOpen, toggleMenu,
+  isMenuOpen, toggleMenu, isConnected, disconnect,
 }) => {
   const handleSearch = (position) => (e) => {
     updateMapformField('searchInput', e.target.textContent);
@@ -81,9 +81,9 @@ const TopMenu = ({
       </button>
       <nav className={isMenuOpen ? 'content-menu open' : 'content-menu'}>
         <ul>
-          <Dropdown.Item>Déconnexion</Dropdown.Item>
-          <Dropdown.Item><Link to="/login">Connexion</Link></Dropdown.Item>
-          <Dropdown.Item><Link to="/profil">Mon compte</Link></Dropdown.Item>
+          {isConnected && <Dropdown.Item onClick={disconnect}>Déconnexion</Dropdown.Item>}
+          {!isConnected && <Dropdown.Item>Connexion</Dropdown.Item>}
+          {isConnected && <Dropdown.Item>Mon compte</Dropdown.Item>}
           <Dropdown.Item><Link to="/about">A propos</Link></Dropdown.Item>
           <Dropdown.Item><Link to="/contact">Contact</Link></Dropdown.Item>
         </ul>
@@ -101,6 +101,10 @@ TopMenu.propTypes = {
   closeAllModals: PropTypes.func.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
   toggleMenu: PropTypes.func.isRequired,
+  centerByAddress: PropTypes.func.isRequired,
+  findAddressSearch: PropTypes.func.isRequired,
+  isConnected: PropTypes.bool.isRequired,
+  disconnect: PropTypes.func.isRequired,
 };
 
 export default TopMenu;

@@ -7,6 +7,7 @@ export const STORE_TOKEN = 'STORE_TOKEN';
 export const UPDATE_USER = 'UPDATE_USER';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SIGNIN = 'SIGNIN';
+export const DISCONNECT_USER = 'DISCONNECT_USER';
 /**
  * Action Creators
  */
@@ -36,4 +37,7 @@ export const signin = () => ({
 
 export const sendMessage = () => ({
   type: SEND_MESSAGE,
+});
+export const disconnect = () => ({
+  type: DISCONNECT_USER,
 });
