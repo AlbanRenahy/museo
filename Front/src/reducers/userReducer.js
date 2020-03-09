@@ -7,6 +7,7 @@ import {
   DISCONNECT_USER,
   CONNECTING_ERROR,
   SIGNIN_ERRORS,
+  REDIRECT_TO_LOGIN,
 } from '../actions/userActions';
 
 const initialState = {
@@ -23,7 +24,10 @@ const initialState = {
   isConnected: false,
   loginMessage: 'Vous devez vous identifier pour modifier museo',
   loginStatus: 'not-connected',
+
+  // ************ERRORS*******/
   signinErrors: [],
+  redirectToLogin: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -46,6 +50,7 @@ const userReducer = (state = initialState, action = {}) => {
         refreshToken: action.refreshToken,
         isConnected: true,
         loginMessage: 'Vous êtes connecté(e)',
+        redirectToLogin: false,
       };
     case DISCONNECT_USER:
       return {
@@ -64,6 +69,11 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         signinErrors: action.errors,
+      };
+    case REDIRECT_TO_LOGIN:
+      return {
+        ...state,
+        redirectToLogin: !state.redirectToLogin,
       };
     case SEND_MESSAGE:
       return state;

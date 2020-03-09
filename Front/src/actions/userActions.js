@@ -10,6 +10,7 @@ export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SIGNIN = 'SIGNIN';
 export const SIGNIN_ERRORS = 'SIGNIN_ERRORS';
 export const DISCONNECT_USER = 'DISCONNECT_USER';
+export const REDIRECT_TO_LOGIN = 'REDIRECT_TO_LOGIN';
 /**
  * Action Creators
  */
@@ -50,4 +51,7 @@ export const connectingError = (message) => ({
 export const signinErrors = (errors) => ({
   type: SIGNIN_ERRORS,
   errors,
+});
+export const redirectToLogin = () => ({
+  type: REDIRECT_TO_LOGIN,
 });

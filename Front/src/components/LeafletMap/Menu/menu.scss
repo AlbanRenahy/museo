@@ -15,7 +15,7 @@
 }
 
  .content-menu {
-    background-color: rgb(226, 198, 220);
+    background-color: rgba(251, 225, 146, 0.5);
     width: 200px;
     height: 100vh;
     position: absolute;
@@ -24,16 +24,21 @@
     transition: 0.4s;
     z-index: 9;
     ul {
+        display: flex;
+        flex-direction: column;
         margin-left: 10px;
         margin-top: 100px;
-        .item {
+        a {
+            text-decoration: none;
             font-weight: bold;
+            text-align: left;
             font-size: 1.1em;
-            margin: 2em 0;
+            margin: 15px 0;
             transition: 0.4s;
+            color: purple !important;
             &:hover {
                 cursor: pointer;
-                color: purple;
+                color: rgb(91, 77, 152) !important;
             }
         }
     }
@@ -81,15 +86,6 @@
   .search.link.icon {
       // top: 10px;
       right: 10px;
-  }
-  .ui.item.dropdown {
-      margin-right: 100px;
-      font-size: 1.9em;
-      // background-color: $orange;
-      color: rgb(100, 43, 124);
-      height: 100%;
-      width: 3em;
-
   }
   .menu.transition { // i.e. dropdown menu
       border: none;
