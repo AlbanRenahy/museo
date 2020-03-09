@@ -3,11 +3,10 @@
  */
 export const UPDATE_USERFORM_FIELD = 'UPDATE_USERFORM_FIELD';
 export const CONNECT_USER = 'CONNECT_USER'; // Api connection with username && password
-export const SIGNIN = 'SIGNIN';
 export const STORE_TOKEN = 'STORE_TOKEN';
 export const UPDATE_USER = 'UPDATE_USER';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
-
+export const SIGNIN = 'SIGNIN';
 /**
  * Action Creators
  */
