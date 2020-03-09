@@ -4,6 +4,8 @@ import {
   SIGNIN,
   STORE_TOKEN,
   SEND_MESSAGE,
+  OPEN_CONFIRM_DELETE_USER,
+  CLOSE_CONFIRM_DELETE_USER,
 } from '../actions/userActions';
 
 const initialState = {
@@ -16,6 +18,7 @@ const initialState = {
   userFirstname: null,
   userLastname: null,
   message: '', // correspond au message dans contact
+  displayConfirmDeleteUser: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -38,6 +41,16 @@ const userReducer = (state = initialState, action = {}) => {
       return state;
     case SEND_MESSAGE:
       return state;
+    case OPEN_CONFIRM_DELETE_USER:
+      return {
+        ...state,
+        displayConfirmDeleteUser: true,
+      };
+    case CLOSE_CONFIRM_DELETE_USER:
+      return {
+        ...state,
+        displayConfirmDeleteUser: false,
+      };
     default:
       return state;
   }

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import Form from 'src/components/Form';
 import Input from 'src/components/Input';
+import ConfirmModale from './ConfirmModale';
 
 import './profil.scss';
 
@@ -16,7 +17,11 @@ const Profil = ({
   password,
   updateUserformField,
   updateUser,
+  displayConfirmDeleteUser,
+  OpenConfirmDeleteUser,
+  CloseConfirmDeleteUser,
 }) => (
+  <>
   <Form onSubmit={updateUser} className="profil-form">
     <h1 className="profil-title">Bienvenue sur votre profil</h1>
     <div className="profil-field">
@@ -56,8 +61,11 @@ const Profil = ({
     </div>
 
     <button type="submit" className="profil-update inverted-colors form-button">ENREGISTRER</button>
-    <p className="login-link"><Link to="/">Retour à la page d'accueil</Link></p>
+    <button type="button" className="delete-profil" onClick={OpenConfirmDeleteUser}>Supprimer mon compte</button>
+    <Link to="/" className="login-link">Retour à la page d'accueil</Link>
   </Form>
+  {displayConfirmDeleteUser && <ConfirmModale closeModale={CloseConfirmDeleteUser} />}
+  </>
 );
 
 Profil.propTypes = {
@@ -66,6 +74,9 @@ Profil.propTypes = {
   password: PropTypes.string.isRequired,
   updateUserformField: PropTypes.func.isRequired,
   updateUser: PropTypes.func.isRequired,
+  displayConfirmDeleteUser: PropTypes.bool.isRequired,
+  OpenConfirmDeleteUser: PropTypes.func.isRequired,
+  CloseConfirmDeleteUser: PropTypes.func.isRequired,
 };
 
 export default Profil;
