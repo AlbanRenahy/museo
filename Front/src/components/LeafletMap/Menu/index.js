@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, NavLink } from 'react-router-dom';
 import { Menu, Dropdown, Button } from 'semantic-ui-react';
 
 import './menu.scss';
@@ -8,7 +8,7 @@ import './burger.scss';
 
 const TopMenu = ({
   searchInput, updateMapformField, closeAllModals, autoComplete, autoCompleteResults, centerByAddress, isAutocompleteOpen, findAddressSearch,
-  isMenuOpen, toggleMenu,
+  isMenuOpen, toggleMenu, isConnected, disconnect, redirectToLogin
 }) => {
   const handleSearch = (position) => (e) => {
     updateMapformField('searchInput', e.target.textContent);
@@ -22,7 +22,7 @@ const TopMenu = ({
   };
   return (
     <div id="menu">
-      {/* <Menu attached='top' borderless secondary> */}
+      {redirectToLogin && <Redirect to="/login/" />}
       <Menu.Menu>
         <Button.Group>
           <Button active>Carte</Button>
@@ -81,11 +81,11 @@ const TopMenu = ({
       </button>
       <nav className={isMenuOpen ? 'content-menu open' : 'content-menu'}>
         <ul>
-          <Dropdown.Item>Déconnexion</Dropdown.Item>
-          <Dropdown.Item><Link to="/login">Connexion</Link></Dropdown.Item>
-          <Dropdown.Item><Link to="/profil">Mon compte</Link></Dropdown.Item>
-          <Dropdown.Item><Link to="/about">A propos</Link></Dropdown.Item>
-          <Dropdown.Item><Link to="/contact">Contact</Link></Dropdown.Item>
+          {isConnected && <NavLink onClick={disconnect} to="/login">Déconnexion</NavLink>}
+          {!isConnected && <NavLink to="/login">Connexion</NavLink>}
+          {isConnected && <NavLink to="/profil">Mon compte</NavLink>}
+          <NavLink to="/about">A propos</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
         </ul>
       </nav>
     </div>
@@ -101,6 +101,11 @@ TopMenu.propTypes = {
   closeAllModals: PropTypes.func.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
   toggleMenu: PropTypes.func.isRequired,
+  centerByAddress: PropTypes.func.isRequired,
+  findAddressSearch: PropTypes.func.isRequired,
+  isConnected: PropTypes.bool.isRequired,
+  disconnect: PropTypes.func.isRequired,
+  redirectToLogin: PropTypes.bool.isRequired,
 };
 
 export default TopMenu;

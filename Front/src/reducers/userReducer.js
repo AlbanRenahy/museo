@@ -6,6 +6,11 @@ import {
   SEND_MESSAGE,
   OPEN_CONFIRM_DELETE_USER,
   CLOSE_CONFIRM_DELETE_USER,
+  DISCONNECT_USER,
+  CONNECTING_ERROR,
+  SIGNIN_ERRORS,
+  REDIRECT_TO_LOGIN,
+
 } from '../actions/userActions';
 
 const initialState = {
@@ -14,11 +19,19 @@ const initialState = {
   passConfirm: '', // correspond à la confirmation de mot de passe dans signin
   username: '', // correspond au pseudo dans signin
   email: '', // correspond aux input pour l'email
-  isConnected: false,
   userFirstname: null,
   userLastname: null,
   message: '', // correspond au message dans contact
   displayConfirmDeleteUser: false,
+  token: '', // string,
+  refreshToken: '',
+  isConnected: false,
+  loginMessage: 'Vous devez vous identifier pour modifier museo',
+  loginStatus: 'not-connected',
+
+  // ************ERRORS*******/
+  signinErrors: [],
+  redirectToLogin: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -29,23 +42,50 @@ const userReducer = (state = initialState, action = {}) => {
         [action.fieldName]: action.input,
       };
     case CONNECT_USER:
-      return state;
+      return {
+        ...state,
+        loginMessage: 'Connexion en cours',
+        loginStatus: 'connecting',
+      };
     case STORE_TOKEN:
       return {
         ...state,
         token: action.token,
         refreshToken: action.refreshToken,
         isConnected: true,
+        loginMessage: 'Vous êtes connecté(e)',
+        redirectToLogin: false,
+      };
+    case DISCONNECT_USER:
+      return {
+        ...initialState,
+        loginMessage: 'Vous avez bien été déconnecté(e)',
+      };
+    case CONNECTING_ERROR:
+      return {
+        ...state,
+        loginMessage: action.message,
+        loginStatus: 'not-connected',
       };
     case SIGNIN:
       return state;
+    case SIGNIN_ERRORS:
+      return {
+        ...state,
+        signinErrors: action.errors,
+      };
+    case REDIRECT_TO_LOGIN:
+      return {
+        ...state,
+        redirectToLogin: !state.redirectToLogin,
+      };
     case SEND_MESSAGE:
       return state;
     case OPEN_CONFIRM_DELETE_USER:
       return {
         ...state,
         displayConfirmDeleteUser: true,
-      };
+      };      
     case CLOSE_CONFIRM_DELETE_USER:
       return {
         ...state,
