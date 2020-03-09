@@ -47,62 +47,6 @@ class ApiMonumentController extends AbstractController
         return $this->json($monument, Response::HTTP_OK, [], ['groups' => 'monument']);
     }
 
-        /**
-     * POST Create monument
-     * 
-     * //@Route("/api/monument", methods={"POST"})
-     */
-    /*
-    public function postMonument(
-        Request $request, 
-        ValidatorInterface $validator,
-        UserRepository $userRepository,
-        MonumentRepository $monumentRepository,
-        DenormalizerInterface $denormalizer
-    )
-    {
-       
-        // On décode le contenu JSON sou forme d'objet
-        $content = json_decode($request->getContent());
-
-        // dd($content);
-
-        // On "dénormalise" l'obet en entité
-        $monument = $denormalizer->denormalize($content->monument, Monument::class);
-
-        // On valide l'entité
-        $errors = $validator->validate($monument);
-        // Erreurs ?
-        if (count($errors) !== 0) {
-            $jsonErrors = [];
-            foreach ($errors as $error) {
-                $jsonErrors[] = [
-                    'field' => $error->getPropertyPath(),
-                    'message' => $error->getMessage(),
-                ];
-            }
-            
-            return $this->json($jsonErrors, Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
-                
-        // On va chercher le user dont l'id a été transmis
-        $user = $userRepository->find($content->user->id);
-        // On l'associe à la question
-        $monument->setUser($user);
-        
-        
-    
-   
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($monument);
-        $em->flush();
-
-        // 201 + Redirection vers monument/123
-        return $this->redirectToRoute('api_monument_get_id', ['id' => $monument->getId()], Response::HTTP_CREATED);
-    
-}
-} */
-
     /**
      * POST Create monument
      * 
@@ -150,8 +94,6 @@ class ApiMonumentController extends AbstractController
         $em->flush();
 
         // 201 + Redirection vers movies/123
-        return $this->redirectToRoute('api_monument_one', ['id' => $monument->getId()], Response::HTTP_CREATED);
+        return $this->redirectToRoute('api_monuments', ['id' => $monument->getId()], Response::HTTP_CREATED);
     }
-
-
 }
