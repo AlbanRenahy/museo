@@ -7,7 +7,7 @@ import {
 const museoApi = 'http://54.91.98.36/back/projet-museo/public/api';
 
 const mapMiddleware = (store) => (next) => (action) => {
-  console.log('on a intercepté une action dans le middleware: ', action);
+  // console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
     case SUBMIT_MONUMENT:
       next(action);
@@ -24,10 +24,10 @@ const mapMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
         })
         .catch((error) => {
-          console.log(error.message);
+          // console.log(error.message);
         });
       break;
     default:

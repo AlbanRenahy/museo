@@ -26,7 +26,7 @@ const initialState = {
   token: '', // string,
   refreshToken: '',
   isConnected: false,
-  loginMessage: 'Vous devez vous identifier pour modifier museo',
+  loginMessage: '',
   loginStatus: 'not-connected',
 
   // ************ERRORS*******/
@@ -44,7 +44,7 @@ const userReducer = (state = initialState, action = {}) => {
     case CONNECT_USER:
       return {
         ...state,
-        loginMessage: 'Connexion en cours',
+        loginMessage: 'Connexion en cours...',
         loginStatus: 'connecting',
       };
     case STORE_TOKEN:

@@ -1,5 +1,17 @@
+
+
 .main {
   margin-top: 2%;
+  width: 100vw;
+}
+.tchou-tchou {
+  width: 100vw;
+
+  @media screen and (max-width: 425px)
+      {
+        margin-top: 50%;
+        width: 200vw;
+      }
 }
 
 .st0 {
@@ -195,6 +207,14 @@
   }
 }
 
+.notFound-menu {
+  margin-top: 4rem !important;
+}
+
 .notFound {
   font-variant: small-caps;
+}
+
+.notFound-login-link:hover {
+  color: #fff !important;
 }

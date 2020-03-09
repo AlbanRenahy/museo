@@ -13,6 +13,17 @@
         margin: 1rem auto;
       }
 
+  .identification-message {
+    font-style: italic;
+    color: #B83B5E;
+    font-size: 0.9rem;
+
+    @media screen and (max-width: 425px)
+      {
+        font-size: 0.6rem;
+      }
+  }
+
   .password-input {
       margin-bottom: 10px;
     }

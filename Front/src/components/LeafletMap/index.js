@@ -60,7 +60,7 @@ class Leaflet extends React.Component {
 
   handleClickMarker = () => {
     const { openDisplayMonument, closeAllModals } = this.props;
-    console.log('marker clicked');
+    // console.log('marker clicked');
     closeAllModals();
     openDisplayMonument();
   }
@@ -73,7 +73,7 @@ class Leaflet extends React.Component {
       center, zoom, userLocalized, updateMapformField,
     } = this.props;
     const defaultCenter = coords ? [coords.latitude, coords.longitude] : [46.7248003746672, 2.9003906250000004];
-    console.log(this.props);
+    // console.log(this.props);
     if (isGeolocationEnabled && coords && !userLocalized) {
       // eslint-disable-next-line no-unused-expressions
       updateMapformField('center', [coords.latitude, coords.longitude]);
@@ -83,8 +83,8 @@ class Leaflet extends React.Component {
     return (
       <>
         <Menu />
-        <RenseignementMonuments />
         <DisplayMonument />
+        <RenseignementMonuments />
         <LeafletMap
           center={center}
           zoom={zoom}
@@ -109,37 +109,21 @@ class Leaflet extends React.Component {
             position={[48.864716, 2.349014]}
             icon={this.myPin}
             onClick={this.handleClickMarker}
-          >
-            <Popup>
-              Je suis un pop up à Paris
-            </Popup>
-          </Marker>
+          />
           <Marker
             position={[49.985289726555855, 2.649164199829102]}
             icon={this.myPinOrange}
             onClick={this.handleClickMarker}
-          >
-            <Popup>
-              Bonjour, je suis une punaise !
-            </Popup>
-          </Marker>
+          />
           <Marker
             position={[48.59068837960679, -1.674041748046875]}
             icon={this.myPinPurple}
             onClick={this.handleClickMarker}
-          >
-            <Popup>
-              Bonjour, je suis une punaise !
-            </Popup>
-          </Marker>
+          />
           <Marker
             position={[44.8242212653786, -0.608367919921875]}
             icon={this.myPinPink}
-          >
-            <Popup>
-              Bonjour, je suis une punaise !
-            </Popup>
-          </Marker>
+          />
           {coords !== null && (
             <>
               <Circle

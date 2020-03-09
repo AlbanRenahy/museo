@@ -64,7 +64,7 @@ const Profil = ({
     <button type="button" className="delete-profil" onClick={OpenConfirmDeleteUser}>Supprimer mon compte</button>
     <Link to="/" className="login-link">Retour à la page d'accueil</Link>
   </Form>
-  {displayConfirmDeleteUser && <ConfirmModale closeModale={CloseConfirmDeleteUser} />}
+    {displayConfirmDeleteUser && <ConfirmModale closeModale={CloseConfirmDeleteUser} />}
   </>
 );
 

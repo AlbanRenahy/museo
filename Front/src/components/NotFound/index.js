@@ -13,13 +13,13 @@ import './notfound.scss';
 
 const App = () => (
   <div className="main">
-    <div>
+    <div className="tchou-tchou">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 355">
         <g id="ocean">
           <path id="sky" className="st0" d="M0 0h1000v203.1H0z" />
           <linearGradient id="water_1_" gradientUnits="userSpaceOnUse" x1="500" y1="354" x2="500" y2="200.667">
-            <stop offset="0" stop-color="#fff"/>
-            <stop offset="1" stop-color="#b3dcdf"/>
+            <stop offset="0" stopColor="#fff" />
+            <stop offset="1" stopColor="#b3dcdf" />
           </linearGradient>
           <path id="water" fill="url(#water_1_)" d="M0 200.7h1000V354H0z" />
           <path id="land" className="st0" d="M0 273.4h1000V354H0z" />
@@ -39,7 +39,7 @@ const App = () => (
           <path className="st2" d="M39.8 282.4h-3L30 307.6h3z" />
           <path className="st2" d="M49.8 282.4h-3L40 307.6h3z" />
           <path className="st2" d="M59.8 282.4h-3L50 307.6h3z" />
-          <path className="st2" d="M69.8 282.4h-3L60 307.6h3z" />   
+          <path className="st2" d="M69.8 282.4h-3L60 307.6h3z" />
           <path className="st2" d="M79.8 282.4h-3L70 307.6h3z" />
           <path className="st2" d="M89.8 282.4h-3L80 307.6h3z" />
           <path className="st2" d="M99.8 282.4h-3L90 307.6h3z" />
@@ -296,11 +296,11 @@ const App = () => (
       </svg>
       <div>
 
-        <Grid>
+        <Grid className="notFound-menu">
           <Grid.Column textAlign="center">
             <Button.Group size="big" inverted color="violet">
               <Button className="notFound">
-                <p className="login-link"><Link to="/">Retour à la page d'accueil</Link></p>
+                <Link to="/" className="notFound-login-link">Retour à la page d'accueil</Link>
               </Button>
               <Button.Or text="ou" color="green" />
               <Button className="notFound">Continuer à admirer cette belle 404 !</Button>

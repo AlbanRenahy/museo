@@ -10,7 +10,7 @@ import DisplayMonument from 'src/components/LeafletMap/DisplayMonument';
 
 
 const mapStateToProps = (state) => ({
-  isDisplayMonumentOpen: state.isDisplayMonumentOpen,
+  isDisplayMonumentOpen: state.map.isDisplayMonumentOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
