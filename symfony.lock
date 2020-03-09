@@ -108,6 +108,9 @@
     "exsyst/swagger": {
         "version": "v0.4.1"
     },
+    "firebase/php-jwt": {
+        "version": "v5.1.0"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
