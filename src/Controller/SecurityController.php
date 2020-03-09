@@ -36,10 +36,9 @@ class SecurityController extends AbstractController
     public function api_login(): JsonResponse
     {
         $user = $this->getUser();
-        return new Response([
-            'email' => $user->getUsername(),
-            'roles' => $user->getRoles();
-        ]);
+        $user->getUsername();
+        $user->getRoles();
+        return new Response($user);
     }
 
     /**
