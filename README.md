@@ -56,3 +56,34 @@ Fields :
 /api/articles/show/{id} (METHOD = GET)
 ```
 
+# API Monuments : 
+
+> Pour recuperer tous les monuments : 
+
+```php
+/api/monuments (METHOD = GET)
+```
+
+> Pour ajouter un monument  : 
+
+```php
+/api/monuments/add (METHOD = POST)
+
+Fields : 
+- id
+- name
+- city
+- address
+- description
+- likes (can be null)
+- dislikes (can be null)
+- latitude (can be null)
+- longitude (can be null)
+- image (can be null)
+```
+
+> Pour recuperer un monument : 
+
+```php
+/api/monuments/{id} (METHOD = GET)
+```

@@ -8,6 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+// use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+// use Doctrine\ORM\EntityManager;
+// use Doctrine\ORM\EntityManagerInterface;
+// use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -35,7 +39,7 @@ class ApiMonumentController extends AbstractController
     /**
      * POST Create monument
      * 
-     * @Route("/api/monuments", methods={"POST"})
+     * @Route("/api/monuments/add", methods={"POST"})
      */
     public function post(Request $request, SerializerInterface $serializer, ValidatorInterface $validator)
     {
@@ -79,8 +83,18 @@ class ApiMonumentController extends AbstractController
         $em->flush();
 
         // 201 + Redirection vers movies/123
-        return $this->redirectToRoute('api_monument_one', ['id' => $monument->getId()], Response::HTTP_CREATED);
+        return $this->redirectToRoute('api_monuments', ['id' => $monument->getId()], Response::HTTP_CREATED);
     }
 
+    /**
+     * @Route("/api/monuments/delete/{id}", name="delete", methods="DELETE")
+     */
 
+    public function delete(Monument $monument)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($monument);
+        $entityManager->flush();
+        return new Response('Vous avez bien supprimer le monument', 200, []);
+    }
 }
