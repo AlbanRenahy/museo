@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,21 +34,43 @@ class Monument
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le Monument doit avoir obligatoirement un nom")
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 150,
+     *      minMessage = "Le nom du monument doit faire au minimum {{ limit }} caractéres",
+     *      maxMessage = "Le nom du monument doit faire au maximum {{ limit }} caractéres",
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Le Monument doit avoir obligatoirement un nom")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le Monument doit avoir obligatoirement une adresse")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 250,
+     *      minMessage = "L'adresse du monument doit faire au minimum {{ limit }} caractéres",
+     *      maxMessage = "L'adresse' du monument doit faire au maximum {{ limit }} caractéres",
+     * )
      */
     private $adress;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le Monument doit avoir obligatoirement une ville")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 150,
+     *      minMessage = "La ville du monument doit faire au minimum {{ limit }} caractéres",
+     *      maxMessage = "La ville du monument doit faire au maximum {{ limit }} caractéres",
+     * )
      */
     private $city;
 
