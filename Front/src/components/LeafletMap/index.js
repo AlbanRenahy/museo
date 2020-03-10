@@ -111,11 +111,6 @@ class Leaflet extends React.Component {
             onClick={this.handleClickMarker}
           />
           <Marker
-            position={[49.985289726555855, 2.649164199829102]}
-            icon={this.myPinOrange}
-            onClick={this.handleClickMarker}
-          />
-          <Marker
             position={[48.59068837960679, -1.674041748046875]}
             icon={this.myPinPurple}
             onClick={this.handleClickMarker}
