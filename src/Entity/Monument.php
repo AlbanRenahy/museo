@@ -63,14 +63,7 @@ class Monument
     private $adress;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Le Monument doit avoir obligatoirement une ville")
-     * @Assert\Length(
-     *      min = 3,
-     *      max = 150,
-     *      minMessage = "La ville du monument doit faire au minimum {{ limit }} caractéres",
-     *      maxMessage = "La ville du monument doit faire au maximum {{ limit }} caractéres",
-     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $city;
 
