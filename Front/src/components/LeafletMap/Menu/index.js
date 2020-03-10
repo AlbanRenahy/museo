@@ -8,7 +8,7 @@ import './burger.scss';
 
 const TopMenu = ({
   searchInput, updateMapformField, closeAllModals, autoComplete, autoCompleteResults, centerByAddress, isAutocompleteOpen, findAddressSearch,
-  isMenuOpen, toggleMenu, isConnected, disconnect, redirectToLogin
+  isMenuOpen, toggleMenu, isConnected, disconnect, redirectToLogin,
 }) => {
   const handleSearch = (position) => (e) => {
     updateMapformField('searchInput', e.target.textContent);
@@ -25,8 +25,20 @@ const TopMenu = ({
       {redirectToLogin && <Redirect to="/login/" />}
       <Menu.Menu>
         <Button.Group>
-          <Button active>Carte</Button>
-          <Button className="no-border-left">Monuments</Button>
+          <Button
+            active
+            as={Link}
+            to="/map"
+          >
+            Carte
+          </Button>
+          <Button
+            as={Link}
+            to="/liste"
+            className="no-border-left"
+          >
+            Monuments
+          </Button>
         </Button.Group>
       </Menu.Menu>
 

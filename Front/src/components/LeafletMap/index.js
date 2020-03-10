@@ -146,8 +146,12 @@ Leaflet.propTypes = {
   closeAllModals: PropTypes.func.isRequired,
   updateMapformField: PropTypes.func.isRequired,
   openDisplayMonument: PropTypes.func.isRequired,
-  coords: PropTypes.object.isRequired,
+  coords: PropTypes.object,
   isGeolocationEnabled: PropTypes.bool.isRequired,
+};
+
+Leaflet.defaultProps = {
+  coords: null,
 };
 
 export default geolocated({
