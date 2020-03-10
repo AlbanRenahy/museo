@@ -18,6 +18,12 @@ class Monument
         return $this->name;
     }
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->period = new ArrayCollection();
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -61,12 +67,12 @@ class Monument
     private $available;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=8)
+     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
      */
     private $latitude;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=8)
+     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
      */
     private $longitude;
 
@@ -89,11 +95,6 @@ class Monument
      * @ORM\ManyToOne(targetEntity="App\Entity\Target", inversedBy="monuments")
      */
     private $target;
-
-    public function __construct()
-    {
-        $this->period = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
