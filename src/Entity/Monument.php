@@ -60,7 +60,7 @@ class Monument
      *      maxMessage = "L'adresse' du monument doit faire au maximum {{ limit }} caractéres",
      * )
      */
-    private $adress;
+    private $address;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -283,6 +283,26 @@ class Monument
     public function setTarget(?Target $target): self
     {
         $this->target = $target;
+
+        return $this;
+    }
+
+    /**
+     * Get min = 2,
+     */ 
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set min = 2,
+     *
+     * @return  self
+     */ 
+    public function setAddress($address)
+    {
+        $this->address = $address;
 
         return $this;
     }
