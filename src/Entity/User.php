@@ -10,7 +10,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ApiResource
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
+ * @UniqueEntity(fields={"email"}, message="L'email existe déjà")
+ * @UniqueEntity(fields={"username"}, message="Le pseudo existe déjà")
  */
 class User implements UserInterface
 {
