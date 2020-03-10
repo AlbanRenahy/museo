@@ -43,7 +43,9 @@ const userMiddleware = (store) => (next) => (action) => {
         .post(`${museoApi}/users`, {
           email: store.getState().user.email,
           password: store.getState().user.password,
-          pseudo: store.getState().user.username,
+          username: store.getState().user.username,
+          createdAt: new Date(),
+          isActive: true,
         })
         .then((response) => {
           // console.log(response.data);
