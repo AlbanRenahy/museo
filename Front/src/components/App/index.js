@@ -12,9 +12,8 @@ import About from 'src/components/About';
 import Profil from 'src/containers/Profil';
 import LoadingScreen from 'src/components/LoadingScreen';
 import NotFound from 'src/components/NotFound';
-import FinalizeRegister from 'src/components/FinalizeRegister'
-
-
+import FinalizeRegister from 'src/components/FinalizeRegister';
+import Liste from '../../components/LeafletMap/Liste';
 
 // == Composant
 const App = () => (
@@ -87,6 +86,14 @@ const App = () => (
       render={() => (
         <LeafletMap />
       )}
+    />
+
+    <Route
+      exact
+      path="/liste"
+      render={() => (
+    <Liste />
+  )}
     />
 
     <Route

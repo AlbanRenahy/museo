@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { CONNECT_USER, SIGNIN, SEND_MESSAGE, storeToken, connectingError, signinErrors, redirectToLogin } from 'src/actions/userActions';
 
-const museoApi = 'http://54.91.98.36/back/projet-museo/public/api';
+const museoApi = 'http://54.91.98.36/projet-museo/public/api';
 
 const userMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);
@@ -40,7 +40,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case SIGNIN:
       next(action);
       axios
-        .post(`${museoApi}/users/add`, {
+        .post(`${museoApi}/users`, {
           email: store.getState().user.email,
           password: store.getState().user.password,
           pseudo: store.getState().user.username,
