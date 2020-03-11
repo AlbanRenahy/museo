@@ -106,11 +106,6 @@ const mapReducer = (state = initialState, action = {}) => {
       };
     case SUBMIT_MONUMENT:
       return state;
-    case SET_THEMATICS:
-      return {
-        ...state,
-        thematics: action.thematics,
-      };
     default:
       return state;
   }

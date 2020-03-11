@@ -85,7 +85,7 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         displayConfirmDeleteUser: true,
-      };      
+      };
     case CLOSE_CONFIRM_DELETE_USER:
       return {
         ...state,
