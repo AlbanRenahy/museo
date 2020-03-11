@@ -50,6 +50,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .sidebar{
+    top: 0;
     width: 5rem;
     height: 100vh;
     position: fixed;
@@ -108,16 +109,6 @@ body::-webkit-scrollbar-thumb{
     background-color: var(--bg-secondary-color);
     color: #fff;
     transition: background-color 200ms ease;
-}
-
-/* Petit écran */
-@media only screen and (max-width: 600px) {
-
-}
-
-/* Grand écran */
-@media only screen and (min-width: 600px) {
-
 }
 
 .container{
