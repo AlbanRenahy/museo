@@ -118,11 +118,6 @@ class Monument
      */
     private $target;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Option", inversedBy="monuments")
-     */
-    // private $options;
-
     public function getId(): ?int
     {
         return $this->id;
