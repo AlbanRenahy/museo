@@ -55,7 +55,7 @@ const RenseignementMonuments = ({
     const readFile = () => {
       const reader = new FileReader();
       reader.addEventListener('load', () => {
-        updatemapFormField('fileInput', reader.result);
+        updateMapformField('fileInput', reader.result);
       });
       reader.readAsDataURL(e.target.files[0]);
     };
@@ -77,6 +77,7 @@ const RenseignementMonuments = ({
       }
     >
       <div className="renseignement-monuments_relative">
+        <div className="renseignement-monuments_files">
         <a
           href="#"
           className="renseignement-monuments_close"
@@ -84,7 +85,6 @@ const RenseignementMonuments = ({
         >
           Fermer
         </a>
-        <div className="renseignement-monuments_files">
           <label htmlFor="picture-monument"><img src={AppareilPhoto} alt="Appareil" className="renseignement-monuments_appareil" /></label>
           <input type="file" id="picture-monument" className="inputfile" onChange={handleFileChange} accept="image/*" />
           <List>
