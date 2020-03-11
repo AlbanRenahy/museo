@@ -15,6 +15,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Option
 {
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+    
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
