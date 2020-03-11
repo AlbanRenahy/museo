@@ -4,6 +4,7 @@ import {
   SUBMIT_MONUMENT,
   CLOSE_ALL_MODALS,
   OPEN_DATA_FORM_RESPONSE,
+  OPEN_DATA_FORM_BUTTON,
   OPEN_DISPLAY_MONUMENT,
   AUTO_COMPLETE_RESULTS,
   OPEN_AUTO_COMPLETE,
@@ -100,6 +101,12 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         address: display_name,
+      };
+    case OPEN_DATA_FORM_BUTTON:
+      return {
+        ...state,
+        isDataFormOpen: true,
+        addressInput: '',
       };
     case AUTO_COMPLETE_RESULTS:
       return {

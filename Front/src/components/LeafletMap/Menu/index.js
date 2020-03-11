@@ -89,7 +89,7 @@ const TopMenu = ({
         circular
         onClick={isConnected
           ? () => {
-            closeAllModals(); openDataForm(false);
+            closeAllModals(); openDataForm(true);
           }
           : () => {
             closeAllModals(); redirect();
