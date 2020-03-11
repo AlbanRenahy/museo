@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Monument;
+use App\Form\MonumentType;
 use App\Repository\MonumentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,19 +26,26 @@ class AdminMonumentController extends AbstractController
     }
 
     /**
-     * @Route("/add", name="add")
-     */
-    public function add(Request $req)
-    {
-
-    }
-
-    /**
      * @Route("/edit/{id}", name="edit")
      */
     public function edit(Monument $monument, Request $req)
     {
-        // TODO: Make form for edit :)
+        $form = $this->createForm(MonumentType::class, $monument);
+        $form->handleRequest($req);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($monument);
+            $entityManager->flush();
+            $this->addFlash('success', 'Vous avez modifiez le monument');
+
+            return $this->redirectToRoute('dashboard.monument.index', ['id' => $monument->getId()]);
+        }
+
+
+        return $this->render('dashboard/monument/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
