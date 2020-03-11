@@ -19,32 +19,10 @@ class TargetRepository extends ServiceEntityRepository
         parent::__construct($registry, Target::class);
     }
 
-    // /**
-    //  * @return Target[] Returns an array of Target objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function countByEntry()
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $qb = $this->createQueryBuilder('t');
+        $qb->select($qb->expr()->count('t'));
+        return (int) $qb->getQuery()->getSingleScalarResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Target
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

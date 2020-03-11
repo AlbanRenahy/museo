@@ -19,32 +19,11 @@ class PeriodRepository extends ServiceEntityRepository
         parent::__construct($registry, Period::class);
     }
 
-    // /**
-    //  * @return Period[] Returns an array of Period objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function countByEntry()
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $qb = $this->createQueryBuilder('p');
+        $qb->select($qb->expr()->count('p'));
+        return (int) $qb->getQuery()->getSingleScalarResult();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Period
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

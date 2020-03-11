@@ -8,3 +8,33 @@
         </div>
     </div>
 </div>
+<div class="col-12 col-md-4 mt-4">
+  <div class="card text-center">
+      <div class="card-body">
+        <h1 class="card-title">Actuellement</h1>
+        <h1 class="display-4"><span class="badge badge-primary">{{ countRegions }}</span></h1>
+        <h1 class="card-title">Régions</h1>
+        <a href="{{ path('dashboard.monument.index') }}" class="btn btn-primary">Acceder à la liste</a>
+      </div>
+  </div>
+</div>
+<div class="col-12 col-md-4 mt-4">
+  <div class="card text-center">
+      <div class="card-body">
+        <h1 class="card-title">Actuellement</h1>
+        <h1 class="display-4"><span class="badge badge-secondary">{{ countPeriods }}</span></h1>
+        <h1 class="card-title">Périodes</h1>
+        <a href="{{ path('dashboard.monument.index') }}" class="btn btn-secondary">Acceder à la liste</a>
+      </div>
+  </div>
+</div>
+<div class="col-12 col-md-4 mt-4">
+  <div class="card text-center">
+      <div class="card-body">
+        <h1 class="card-title">Actuellement</h1>
+        <h1 class="display-4"><span class="badge badge-warning">{{ countTargets }}</span></h1>
+        <h1 class="card-title">Publique visées</h1>
+        <a href="{{ path('dashboard.monument.index') }}" class="btn btn-warning">Acceder à la liste</a>
+      </div>
+  </div>
+</div>

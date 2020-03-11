@@ -149,6 +149,19 @@ body::-webkit-scrollbar-thumb{
   background-color: rgb(255, 123, 0);
 }
 
+/* ? Class to bootstrap modify */
+
+.card{
+    border-radius: 30px !important;
+    -webkit-box-shadow: 0px 0px 59px -28px rgba(102,73,184,1);
+    -moz-box-shadow: 0px 0px 59px -28px rgba(102,73,184,1);
+    box-shadow: 0px 0px 59px -28px rgba(102,73,184,1);
+}
+
+.btn{
+    border-radius: 20px !important;
+}
+
 /* ! Media Queries */
 
 @media screen and (max-width: 770px) {

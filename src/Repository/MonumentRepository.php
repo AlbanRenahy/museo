@@ -21,8 +21,8 @@ class MonumentRepository extends ServiceEntityRepository
 
     public function countByEntry()
     {
-        $qb = $this->createQueryBuilder('e');
-        $qb->select($qb->expr()->count('e'));
+        $qb = $this->createQueryBuilder('m');
+        $qb->select($qb->expr()->count('m'));
         return (int) $qb->getQuery()->getSingleScalarResult();
     }
 }
