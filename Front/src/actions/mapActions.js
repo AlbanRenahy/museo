@@ -14,9 +14,13 @@ export const FIND_ADDRESS = 'FIND_ADDRESS';
 export const CENTER_BY_ADDRESS = 'CENTER_BY_ADDRESS';
 export const FIND_ADDRESS_SEARCH = 'FIND_ADDRESS_SEARCH';
 export const TOGGLE_MENU = 'TOGGLE_MENU';
+export const SET_THEMATICS = 'SET_THEMATICS';
 export const GET_THEMATICS = 'GET_THEMATICS';
+export const SET_REGIONS = 'SET_REGIONS';
 export const GET_REGIONS = 'GET_REGIONS';
+export const SET_PERIODS = 'SET_PERIODS';
 export const GET_PERIODS = 'GET_PERIODS';
+export const SET_TARGETS = 'SET_TARGETS';
 export const GET_TARGETS = 'GET_TARGETS';
 /**
  * Action Creators
@@ -70,14 +74,30 @@ export const findAddressSearch = () => ({
 export const toggleMenu = () => ({
   type: TOGGLE_MENU,
 });
+export const setThematics = (Thematics) => ({
+  type: SET_THEMATICS,
+  Thematics,
+});
 export const getThematics = () => ({
   type: GET_THEMATICS,
+});
+export const setRegions = (Regions) => ({
+  type: SET_REGIONS,
+  Regions,
 });
 export const getRegions = () => ({
   type: GET_REGIONS,
 });
+export const setPeriods = (Periods) => ({
+  type: SET_PERIODS,
+  Periods,
+});
 export const getPeriods = () => ({
   type: GET_PERIODS,
+});
+export const setTargets = (Targets) => ({
+  type: SET_TARGETS,
+  Targets,
 });
 export const getTargets = () => ({
   type: GET_TARGETS,

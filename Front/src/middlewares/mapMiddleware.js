@@ -3,9 +3,13 @@ import axios from 'axios';
 import {
   SUBMIT_MONUMENT,
   GET_THEMATICS,
+  setThematics,
   GET_REGIONS,
+  setRegions,
   GET_PERIODS,
+  setPeriods,
   GET_TARGETS,
+  setTargets,
 } from 'src/actions/mapActions';
 
 const museoApi = 'http://54.91.98.36/projet-museo/public/api';
@@ -39,35 +43,40 @@ const mapMiddleware = (store) => (next) => (action) => {
     case GET_THEMATICS:
       axios.get(`${museoApi}/categories`)
         .then((response) => {
-          console.log(message.data);
+          console.log(response.data);
+          store.dispatch(setThematics(response.data));
         })
         .catch((error) => {
           console.log(error.message);
         });
+      break;
     case GET_REGIONS:
       axios.get(`${museoApi}/regions`)
         .then((response) => {
-          console.log(message.data);
+          store.dispatch(setRegions(response.data));
         })
         .catch((error) => {
           console.log(error.message);
         });
+      break;
     case GET_PERIODS:
       axios.get(`${museoApi}/periods`)
         .then((response) => {
-          console.log(message.data);
+          store.dispatch(setPeriods(response.data));
         })
         .catch((error) => {
           console.log(error.message);
         });
+      break;
     case GET_TARGETS:
       axios.get(`${museoApi}/targets`)
         .then((response) => {
-          console.log(message.data);
+          store.dispatch(setTargets(response.data));
         })
         .catch((error) => {
           console.log(error.message);
         });
+      break;
     default:
       next(action);
   }
