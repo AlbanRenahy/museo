@@ -28,6 +28,8 @@ body::-webkit-scrollbar-thumb{
     background-color: var(--bg-secondary-color-scrollbar);
 }
 
+/* Sidebar */
+
 .logo{
     font-weight: bold;
     text-transform: uppercase;
@@ -78,6 +80,14 @@ body::-webkit-scrollbar-thumb{
 }
 
 .sidebar-item{
+    transition: 200ms ease;
+    filter: blur(0.05em);
+    width: 100%;
+}
+
+.sidebar-item:hover{
+    transition: 200ms ease;
+    filter: blur(0);
     width: 100%;
 }
 
@@ -126,6 +136,8 @@ body::-webkit-scrollbar-thumb{
     height: 30px;
     margin-left: 1.5rem;
 }
+
+/* Class for Main */
 
 .wrapper{
     margin-left: 5rem;
