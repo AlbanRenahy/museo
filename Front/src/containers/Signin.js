@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
   passConfirm: state.user.passConfirm,
   username: state.user.username,
   signinErrors: state.user.signinErrors,
+  signinIsValid: state.user.signinIsValid,
 });
 
 const mapDispatchToProps = (dispatch) => ({
