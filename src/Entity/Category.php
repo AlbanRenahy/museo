@@ -21,6 +21,12 @@ class Category
         return $this->name;
     }
     
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->monuments = new ArrayCollection();
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -53,10 +59,6 @@ class Category
      */
     private $monuments;
 
-    public function __construct()
-    {
-        $this->monuments = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {

@@ -55,6 +55,7 @@ class Region
 
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->monuments = new ArrayCollection();
     }
 

@@ -69,6 +69,11 @@ class User implements UserInterface
         return $this->id;
     }
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
     /**
      * A visual identifier that represents this user.
      *
