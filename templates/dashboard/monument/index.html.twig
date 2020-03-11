@@ -9,14 +9,20 @@
 <div class="wrapper">
     {% include 'layout/message.html.twig' %}
     <main class="container-fluid">
-        <div class="row">
-        <h3>Liste des Monuments</h3>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut vel reprehenderit quo accusamus eveniet, vitae accusantium, ducimus, tenetur ratione maxime voluptatibus mollitia fugit odit ipsum corrupti? Fugit, nulla soluta.
-        </p>
-        
-        {% include 'dashboard/monument/_table.html.twig' %}
-        </div>
+            <h3>Liste des Monuments</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut vel reprehenderit quo accusamus eveniet, vitae accusantium, ducimus, tenetur ratione maxime voluptatibus mollitia fugit odit ipsum corrupti? Fugit, nulla soluta.
+            </p>
+            {% if monuments == null %}
+                <div class="alert alert-danger" role="alert">
+                    <h4>Aucun monuments en base de données</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa nulla ipsam sed laborum in nemo dolor nostrum voluptatum eveniet id laboriosam beatae enim iusto dolore nihil facilis, sequi reprehenderit.</p>
+                </div>
+            {% else %}   
+                <div class="row">
+                    {% include 'dashboard/monument/_table.html.twig' %}  
+                </div>
+            {% endif %}
     </main>
 </div>
 {% endblock %}
