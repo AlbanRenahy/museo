@@ -54,7 +54,6 @@ class Leaflet extends React.Component {
     const { getThematics } = this.props;
 
     getThematics();
-    closeMenu();
   }
 
   handleRightClick = (e) => {
