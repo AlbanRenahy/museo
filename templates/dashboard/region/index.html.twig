@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Accueil Dashboard' %}
+
+{% block body %}
+
+{% include 'layout/sidebar.html.twig' %}
+
+<div class="wrapper">
+    {% include 'layout/message.html.twig' %}
+    <main class="container-fluid">
+            <h3>Liste des Régions</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut vel reprehenderit quo accusamus eveniet, vitae accusantium, ducimus, tenetur ratione maxime voluptatibus mollitia fugit odit ipsum corrupti? Fugit, nulla soluta.
+            </p>
+            {% if regions == null %}
+                <div class="alert alert-danger" role="alert">
+                    <h4>Aucune régions en base de données</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa nulla ipsam sed laborum in nemo dolor nostrum voluptatum eveniet id laboriosam beatae enim iusto dolore nihil facilis, sequi reprehenderit.</p>
+                </div>
+            {% else %}   
+                <div class="row">
+                    {% include 'dashboard/region/_table.html.twig' %}  
+                </div>
+            {% endif %}
+    </main>
+</div>
+{% endblock %}
