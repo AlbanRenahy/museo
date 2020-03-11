@@ -43,7 +43,7 @@ const mapMiddleware = (store) => (next) => (action) => {
     case GET_THEMATICS:
       axios.get(`${museoApi}/categories`)
         .then((response) => {
-          console.log(response.data);
+          console.log(response.data.hydra[0]);
           store.dispatch(setThematics(response.data));
         })
         .catch((error) => {
