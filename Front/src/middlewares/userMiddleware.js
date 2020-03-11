@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CONNECT_USER, SIGNIN, SEND_MESSAGE, storeToken, connectingError, signinErrors } from 'src/actions/userActions';
+import { CONNECT_USER, SIGNIN, SEND_MESSAGE, storeToken, connectingError, signinErrors, updateUserformField } from 'src/actions/userActions';
 
 const museoApi = 'http://54.91.98.36/projet-museo/public/api';
 
@@ -10,14 +10,16 @@ const userMiddleware = (store) => (next) => (action) => {
     case CONNECT_USER:
       // console.log("on va faire l'appel Axios");
       axios
-        .post(`${museoApi}/users/`, {
-          email: store.getState().user.email,
+        .post('http://54.91.98.36/projet-museo/public/authentication_token', {
+          username: store.getState().user.username,
           password: store.getState().user.password,
         })
         .then((response) => {
-          // console.log(response.data);
           const { token, refresh_token: refreshToken } = response.data;
           store.dispatch(storeToken(token, refreshToken));
+          store.dispatch(updateUserformField('isConnected', true));
+          store.dispatch(updateUserformField('loginMessage', 'Vous êtes connecté(e)'));
+          store.dispatch(updateUserformField('loginStatus', 'connected'));
         })
         .catch((error) => {
           // console.log('erreur :', error.response.data.code);

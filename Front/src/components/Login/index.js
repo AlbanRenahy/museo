@@ -20,19 +20,19 @@ import './login.scss';
  * Code
  */
 const Login = ({
-  email, password, updateUserformField, connectUser, isConnected, loginMessage, loginStatus,
+  username, password, updateUserformField, connectUser, isConnected, loginMessage, loginStatus,
 }) => (
   <Form onSubmit={connectUser} className="login-form">
     {isConnected && <Redirect to="/map" />}
     <p className={`identification-message ${loginStatus}`}>{loginMessage}</p>
     <Input
       className="email-input"
-      type="email"
+      type="text"
       id="email"
-      name="email"
-      placeholder="Email*"
-      value={email}
-      onChangeFunction={(input) => updateUserformField('email', input)}
+      name="Nom d'utilisateur"
+      placeholder="Nom d'utilisateur*"
+      value={username}
+      onChangeFunction={(input) => updateUserformField('username', input)}
     />
     <Input
       className="password-input"
@@ -53,7 +53,7 @@ const Login = ({
 );
 
 Login.propTypes = {
-  email: PropTypes.oneOfType([
+  username: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
