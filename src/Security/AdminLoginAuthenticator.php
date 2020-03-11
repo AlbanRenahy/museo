@@ -94,7 +94,7 @@ class AdminLoginAuthenticator extends AbstractFormLoginAuthenticator implements 
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('easyadmin'));
+        return new RedirectResponse($this->urlGenerator->generate('dashboard.index'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
