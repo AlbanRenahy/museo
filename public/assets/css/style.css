@@ -1,0 +1,40 @@
+:root{
+    /* Colors for Scrollbar */
+    --bg-primary-color-scrollbar:#1e1e25;
+    --bg-secondary-color-scrollbar:#6649b8;
+    /* Colors */
+    --bg-white-color:#fff;
+    --bg-primary-color:#6A2C70;
+    --bg-secondary-color:#B83B5E;
+}
+
+body{
+    font-style: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-white-color);
+}
+
+body::-webkit-scrollbar{
+    width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track{
+    background-color: var(--bg-primary-color-scrollbar);
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: var(--bg-secondary-color-scrollbar);
+}
+
+.sidebar{
+    width: 5rem;
+    height: 100vh;
+    position: fixed;
+    background-color: var(--bg-primary-color);
+}
+
+.container{
+    margin-left: 5rem;
+    padding: 1rem;
+}
