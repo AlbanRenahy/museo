@@ -24,12 +24,12 @@ const mapMiddleware = (store) => (next) => (action) => {
         longitude: store.getState().map.clickedLng,
         address: store.getState().map.address,
         name: store.getState().map.name,
-        picture: store.getState().map.fileInput ? store.getState().map.fileInput : null,
-        categories: store.getState().map.thematic ? store.getState().map.thematic : null,
-        regions: store.getState().map.region ? store.getState().map.region : null,
-        periods: store.getState().map.period ? store.getState().map.period : null,
-        targets: store.getState().map.target ? store.getState().map.target : null,
-        description: store.getState().map.description ? store.getState().map.description : null,
+        // picture: store.getState().map.fileInput ? store.getState().map.fileInput : null,
+        // categories: store.getState().map.thematic ? store.getState().map.thematic : null,
+        // regions: store.getState().map.region ? store.getState().map.region : null,
+        // periods: store.getState().map.period ? store.getState().map.period : null,
+        // targets: store.getState().map.target ? store.getState().map.target : null,
+        description: store.getState().map.description,
         available: true,
         createdAt: new Date(),
       })
@@ -43,8 +43,8 @@ const mapMiddleware = (store) => (next) => (action) => {
     case GET_THEMATICS:
       axios.get(`${museoApi}/categories`)
         .then((response) => {
-          console.log(response.data.hydra[0]);
-          store.dispatch(setThematics(response.data));
+          console.log(response.data['hydra:member']);
+          store.dispatch(setThematics(response.data['hydra:member']));
         })
         .catch((error) => {
           console.log(error.message);
@@ -53,7 +53,8 @@ const mapMiddleware = (store) => (next) => (action) => {
     case GET_REGIONS:
       axios.get(`${museoApi}/regions`)
         .then((response) => {
-          store.dispatch(setRegions(response.data));
+          // console.log(response.data['hydra:member']);
+          store.dispatch(setRegions(response.data['hydra:member']));
         })
         .catch((error) => {
           console.log(error.message);
@@ -62,7 +63,8 @@ const mapMiddleware = (store) => (next) => (action) => {
     case GET_PERIODS:
       axios.get(`${museoApi}/periods`)
         .then((response) => {
-          store.dispatch(setPeriods(response.data));
+          // console.log(response.data['hydra:member']);
+          store.dispatch(setPeriods(response.data['hydra:member']));
         })
         .catch((error) => {
           console.log(error.message);
@@ -71,7 +73,8 @@ const mapMiddleware = (store) => (next) => (action) => {
     case GET_TARGETS:
       axios.get(`${museoApi}/targets`)
         .then((response) => {
-          store.dispatch(setTargets(response.data));
+          // console.log(response.data['hydra:member']);
+          store.dispatch(setTargets(response.data['hydra:member']));
         })
         .catch((error) => {
           console.log(error.message);

@@ -5,6 +5,7 @@ export const UPDATE_USERFORM_FIELD = 'UPDATE_USERFORM_FIELD';
 export const CONNECT_USER = 'CONNECT_USER'; // Api connection with username && password
 export const CONNECTING_ERROR = 'CONNECTING_ERROR';
 export const STORE_TOKEN = 'STORE_TOKEN';
+export const STORE_REFRESH_TOKEN = 'STORE_REFRESH_TOKEN';
 export const UPDATE_USER = 'UPDATE_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
@@ -36,9 +37,13 @@ export const deleteUser = () => ({
   type: DELETE_USER,
 });
 
-export const storeToken = (token, refreshToken) => ({
+export const storeToken = (token) => ({
   type: STORE_TOKEN,
   token,
+});
+
+export const storeRefreshToken = (refreshToken) => ({
+  type: STORE_REFRESH_TOKEN,
   refreshToken,
 });
 

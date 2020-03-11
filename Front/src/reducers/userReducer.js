@@ -3,6 +3,7 @@ import {
   CONNECT_USER,
   SIGNIN,
   STORE_TOKEN,
+  STORE_REFRESH_TOKEN,
   SEND_MESSAGE,
   OPEN_CONFIRM_DELETE_USER,
   CLOSE_CONFIRM_DELETE_USER,
@@ -51,10 +52,14 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         token: action.token,
-        refreshToken: action.refreshToken,
         isConnected: true,
         loginMessage: 'Vous êtes connecté(e)',
-        redirectToLogin: false,
+      };
+    case STORE_REFRESH_TOKEN:
+      return {
+        ...state,
+        refreshToken: action.refreshToken,
+        isConnected: true,
       };
     case DISCONNECT_USER:
       return {

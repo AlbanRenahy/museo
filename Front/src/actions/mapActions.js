@@ -74,30 +74,30 @@ export const findAddressSearch = () => ({
 export const toggleMenu = () => ({
   type: TOGGLE_MENU,
 });
-export const setThematics = (Thematics) => ({
+export const setThematics = (thematics) => ({
   type: SET_THEMATICS,
-  Thematics,
+  thematics,
 });
 export const getThematics = () => ({
   type: GET_THEMATICS,
 });
-export const setRegions = (Regions) => ({
+export const setRegions = (regions) => ({
   type: SET_REGIONS,
-  Regions,
+  regions,
 });
 export const getRegions = () => ({
   type: GET_REGIONS,
 });
-export const setPeriods = (Periods) => ({
+export const setPeriods = (periods) => ({
   type: SET_PERIODS,
-  Periods,
+  periods,
 });
 export const getPeriods = () => ({
   type: GET_PERIODS,
 });
-export const setTargets = (Targets) => ({
+export const setTargets = (targets) => ({
   type: SET_TARGETS,
-  Targets,
+  targets,
 });
 export const getTargets = () => ({
   type: GET_TARGETS,

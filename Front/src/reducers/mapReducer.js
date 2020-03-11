@@ -9,6 +9,10 @@ import {
   OPEN_AUTO_COMPLETE,
   CENTER_BY_ADDRESS,
   TOGGLE_MENU,
+  SET_THEMATICS,
+  SET_REGIONS,
+  SET_PERIODS,
+  SET_TARGETS,
 } from '../actions/mapActions';
 
 const initialState = {
@@ -37,7 +41,7 @@ const initialState = {
   clickedLng: '', // gère la longitude
   fileInput: '', // Fichier converti prêt à être envoyé
   fileText: '', // Nom du fichier
-  
+
   // Datas component did mount
   thematics: [],
   periods: [],
@@ -98,6 +102,26 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         center: action.position,
         zoom: 14,
+      };
+    case SET_THEMATICS:
+      return {
+        ...state,
+        thematics: action.thematics,
+      };
+    case SET_REGIONS:
+      return {
+        ...state,
+        regions: action.regions,
+      };
+    case SET_PERIODS:
+      return {
+        ...state,
+        periods: action.periods,
+      };
+    case SET_TARGETS:
+      return {
+        ...state,
+        targets: action.targets,
       };
     case TOGGLE_MENU:
       return {
