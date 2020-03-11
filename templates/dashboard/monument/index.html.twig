@@ -8,9 +8,15 @@
 
 <div class="wrapper">
     <main class="container-fluid">
+        <div class="row">
         <h3>Liste des Monuments</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut vel reprehenderit quo accusamus eveniet, vitae accusantium, ducimus, tenetur ratione maxime voluptatibus mollitia fugit odit ipsum corrupti? Fugit, nulla soluta.</p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut vel reprehenderit quo accusamus eveniet, vitae accusantium, ducimus, tenetur ratione maxime voluptatibus mollitia fugit odit ipsum corrupti? Fugit, nulla soluta.
+            <a href="#" class="btn btn-success">Ajouter un monument</a>
+        </p>
+        
         {% include 'dashboard/monument/_table.html.twig' %}
+        </div>
     </main>
 </div>
 {% endblock %}
