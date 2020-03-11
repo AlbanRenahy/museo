@@ -15,6 +15,10 @@ const mapStateToProps = (state) => ({
   name: state.map.name,
   address: state.map.address,
   description: state.map.description,
+  thematics: state.map.thematics,
+  periods: state.map.periods,
+  regions: state.map.regions,
+  targets: state.map.targets,
   fileInput: state.map.fileInput,
   fileText: state.map.fileText,
 });

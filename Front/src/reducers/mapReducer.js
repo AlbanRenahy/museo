@@ -20,6 +20,10 @@ const initialState = {
   name: '', // nom d'un monument dans le form
   address: '', // adresse d'un monument dans le form
   description: '', // description d'un monument dans le form
+  thematic: 0,
+  region: 0,
+  target: 0,
+  period: 0,
 
   // *********MANAGEMENT OF THE GEOLOCALIZATION*********/
   center: [46.7248003746672, 2.9003906250000004], // Center of the map
@@ -33,6 +37,13 @@ const initialState = {
   clickedLng: '', // gère la longitude
   fileInput: '', // Fichier converti prêt à être envoyé
   fileText: '', // Nom du fichier
+  
+  // Datas component did mount
+  thematics: [],
+  periods: [],
+  regions: [],
+  targets: [],
+
 
   // Autocomplete results
   autoCompleteResults: [],
@@ -81,7 +92,7 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         isAutocompleteOpen: true,
       };
-      
+
     case CENTER_BY_ADDRESS:
       return {
         ...state,

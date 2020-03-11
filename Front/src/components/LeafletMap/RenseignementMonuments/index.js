@@ -18,6 +18,10 @@ const RenseignementMonuments = ({
   name,
   address,
   description,
+  thematics,
+  periods,
+  regions,
+  targets,
   updateMapformField,
   closeAllModals,
   findAddress,
@@ -33,6 +37,13 @@ const RenseignementMonuments = ({
     e.preventDefault();
     console.log('submitting monument');
     submitMonument();
+  };
+
+  const handleSelectChange = (e) => {
+    updateMapformField('thematic', parseInt(e.target.value));
+    updateMapformField('period', parseInt(e.target.value));
+    updateMapformField('region', parseInt(e.target.value));
+    updateMapformField('target', parseInt(e.target.value));
   };
 
   const handleFileChange = (e) => {
@@ -114,8 +125,17 @@ const RenseignementMonuments = ({
                   id="thematic"
                   className="input select-style"
                   name="thematic"
+                  onChange={handleSelectChange}
+                  onFocus={(event) => {
+                    event.target.classList.add('open');
+                  }}
                 >
-                  <option>Thématique</option>
+                   <option value={0} defaultValue>-- Thématique --</option>
+                   {
+                    thematics.map(thematic => (
+                      <option key={thematic.id} value={thematic.id}>{thematic.name}</option>
+                    ))
+                  }
                 </select>
               </div>
               <div className="input-container">
@@ -123,8 +143,17 @@ const RenseignementMonuments = ({
                   id="period"
                   className="input select-style"
                   name="period"
+                  onChange={handleSelectChange}
+                  onFocus={(event) => {
+                    event.target.classList.add('open');
+                  }}
                 >
-                  <option>Période</option>
+                  <option value={0} defaultValue>-- Période --</option>
+                   {
+                    periods.map(period => (
+                      <option key={period.id} value={period.id}>{period.name}</option>
+                    ))
+                  }
                 </select>
               </div>
               <div className="input-container">
@@ -132,8 +161,17 @@ const RenseignementMonuments = ({
                   id="region"
                   className="input select-style"
                   name="region"
+                  onChange={handleSelectChange}
+                  onFocus={(event) => {
+                    event.target.classList.add('open');
+                  }}
                 >
-                  <option>Région</option>
+                  <option value={0} defaultValue>-- Régions --</option>
+                   {
+                    regions.map(region => (
+                      <option key={region.id} value={region.id}>{region.name}</option>
+                    ))
+                  }
                 </select>
               </div>
               <div className="input-container">
@@ -141,8 +179,17 @@ const RenseignementMonuments = ({
                   id="target"
                   className="input select-style"
                   name="target"
+                  onChange={handleSelectChange}
+                  onFocus={(event) => {
+                    event.target.classList.add('open');
+                  }}
                 >
-                  <option>Public visé</option>
+                  <option value={0} defaultValue>-- Public visé --</option>
+                   {
+                    targets.map(target => (
+                      <option key={target.id} value={target.id}>{target.name}</option>
+                    ))
+                  }
                 </select>
               </div>
             </div>
@@ -168,6 +215,10 @@ RenseignementMonuments.propTypes = {
   address: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  thematics: PropTypes.array.isRequired,
+  periods: PropTypes.array.isRequired,
+  regions: PropTypes.array.isRequired,
+  targets: PropTypes.array.isRequired,
   updateMapformField: PropTypes.func.isRequired,
   submitMonument: PropTypes.func.isRequired,
   findAddress: PropTypes.func.isRequired,
