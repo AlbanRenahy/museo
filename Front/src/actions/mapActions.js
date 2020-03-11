@@ -14,6 +14,8 @@ export const FIND_ADDRESS = 'FIND_ADDRESS';
 export const CENTER_BY_ADDRESS = 'CENTER_BY_ADDRESS';
 export const FIND_ADDRESS_SEARCH = 'FIND_ADDRESS_SEARCH';
 export const TOGGLE_MENU = 'TOGGLE_MENU';
+export const SET_THEMATICS = 'SET_THEMATICS';
+export const GET_THEMATICS = 'GET_THEMATICS';
 /**
  * Action Creators
  */
@@ -65,4 +67,12 @@ export const findAddressSearch = () => ({
 });
 export const toggleMenu = () => ({
   type: TOGGLE_MENU,
+});
+export const getThematics = () => ({
+  type: GET_THEMATICS,
+});
+
+export const setThematics = (thematics) => ({
+  type: SET_THEMATICS,
+  thematics,
 });

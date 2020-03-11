@@ -2,6 +2,8 @@ import axios from 'axios';
 
 import {
   SUBMIT_MONUMENT,
+  GET_THEMATICS,
+  setThematics,
 } from 'src/actions/mapActions';
 
 const museoApi = 'http://54.91.98.36/projet-museo/public/api';
@@ -32,7 +34,15 @@ const mapMiddleware = (store) => (next) => (action) => {
           // console.log(error.message);
         });
       break;
-    default:
+      case GET_THEMATICS:
+      axios.get(`${museoApi}/thematic`)
+        .then((response) => {
+          store.dispatch(setThematics(response.data));
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+      default:
       next(action);
   }
 };

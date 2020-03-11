@@ -50,6 +50,13 @@ class Leaflet extends React.Component {
     // shadowSize:   [50, 64], // size of the shadow
   });
 
+  componentDidMount() {
+    const { getThematics } = this.props;
+
+    getThematics();
+    closeMenu();
+  }
+
   handleRightClick = (e) => {
     const { updateMapformField, openDataForm, closeAllModals } = this.props;
     updateMapformField('clickedLat', e.latlng.lat);
@@ -148,6 +155,7 @@ Leaflet.propTypes = {
   openDisplayMonument: PropTypes.func.isRequired,
   coords: PropTypes.object,
   isGeolocationEnabled: PropTypes.bool.isRequired,
+  getThematics: PropTypes.func.isRequired,
 };
 
 Leaflet.defaultProps = {

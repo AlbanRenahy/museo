@@ -12,6 +12,7 @@ import {
   openDataForm,
   closeAllModals,
   openDisplayMonument,
+  getThematics,
 } from 'src/actions/mapActions';
 
 const mapStateToProps = (state) => ({
@@ -36,6 +37,10 @@ const mapDispatchToProps = (dispatch) => ({
   openDisplayMonument: () => {
     dispatch(openDisplayMonument());
   },
+  getThematics: () => {
+    dispatch(getThematics());
+  },
+
 });
 
 export default connect(
