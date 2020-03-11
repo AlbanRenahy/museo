@@ -10,6 +10,7 @@
 
 body{
     font-style: 16px;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--bg-white-color);
@@ -27,11 +28,96 @@ body::-webkit-scrollbar-thumb{
     background-color: var(--bg-secondary-color-scrollbar);
 }
 
+.logo{
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--bg-white-color);
+    font-size: 1rem;
+    background-color: var(--bg-secondary-color);
+    letter-spacing: 0.3ch;
+    width: 100%;
+}
+
+.logo svg{
+    transform: rotate(0deg);
+    transition: 200ms ease;
+}
+
+.sidebar:hover .logo svg{
+    transform: rotate(-180deg);
+}
+
 .sidebar{
     width: 5rem;
     height: 100vh;
     position: fixed;
     background-color: var(--bg-primary-color);
+    transition: width 200ms ease;
+}
+
+.sidebar:hover{
+    width: 16rem;
+}
+
+.sidebar:hover .link-text{
+    display: block;
+}
+
+.sidebar-nav{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.sidebar-item{
+    width: 100%;
+}
+
+.sidebar-link svg{
+    min-width: 2rem;
+    margin: 0 1.5rem;
+}
+
+.link-text{
+    display: none;
+    margin-left: 1rem;
+}
+
+.sidebar-item:last-child{
+    margin-top: auto;
+}
+
+.sidebar-link{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--bg-white-color);
+    text-decoration: none;
+    filter: grayscale(100%) opacity(0.7);
+    transition: filter 200ms ease;
+}
+
+.sidebar-link:hover{
+    filter: grayscale(0%) opacity(1);
+    background-color: var(--bg-secondary-color);
+    color: #fff;
+    transition: background-color 200ms ease;
+}
+
+/* Petit écran */
+@media only screen and (max-width: 600px) {
+
+}
+
+/* Grand écran */
+@media only screen and (min-width: 600px) {
+
 }
 
 .container{
