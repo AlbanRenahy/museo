@@ -26,7 +26,7 @@ class Monument
     {
         $this->createdAt = new \DateTime();
         $this->period = new ArrayCollection();
-        $this->options = new ArrayCollection();
+        // $this->options = new ArrayCollection();
     }
 
     /**
@@ -121,7 +121,7 @@ class Monument
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Option", inversedBy="monuments")
      */
-    private $options;
+    // private $options;
 
     public function getId(): ?int
     {
@@ -321,26 +321,26 @@ class Monument
     /**
      * @return Collection|Option[]
      */
-    public function getOptions(): Collection
-    {
-        return $this->options;
-    }
+    // public function getOptions(): Collection
+    // {
+    //     return $this->options;
+    // }
 
-    public function addOption(Option $option): self
-    {
-        if (!$this->options->contains($option)) {
-            $this->options[] = $option;
-        }
+    // public function addOption(Option $option): self
+    // {
+    //     if (!$this->options->contains($option)) {
+    //         $this->options[] = $option;
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeOption(Option $option): self
-    {
-        if ($this->options->contains($option)) {
-            $this->options->removeElement($option);
-        }
+    // public function removeOption(Option $option): self
+    // {
+    //     if ($this->options->contains($option)) {
+    //         $this->options->removeElement($option);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }
