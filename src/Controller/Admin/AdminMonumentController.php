@@ -4,14 +4,15 @@ namespace App\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+
 /**
- * @Route("/admin", name="dashboard")
+ * @Route("/admin/monument", name="dashboard.monument.")
  */
-class DashboardController extends AbstractController
+class AdminMonumentController extends AbstractController
 {
 
     /**
-     * @Route("/")
+     * @Route("/", name="index")
      */
     public function index()
     {
