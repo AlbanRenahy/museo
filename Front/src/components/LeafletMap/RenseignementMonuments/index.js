@@ -26,10 +26,11 @@ const RenseignementMonuments = ({
   closeAllModals,
   findAddress,
   fileText,
+  resetFormMonument,
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
-    console.log('Dataform closed');
+    resetFormMonument();
     closeAllModals();
   };
 
@@ -230,6 +231,7 @@ RenseignementMonuments.propTypes = {
   submitMonument: PropTypes.func.isRequired,
   findAddress: PropTypes.func.isRequired,
   fileText: PropTypes.string.isRequired,
+  resetFormMonument: PropTypes.func.isRequired,
 };
 
 export default RenseignementMonuments;

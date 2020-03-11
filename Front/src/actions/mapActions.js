@@ -22,6 +22,8 @@ export const SET_PERIODS = 'SET_PERIODS';
 export const GET_PERIODS = 'GET_PERIODS';
 export const SET_TARGETS = 'SET_TARGETS';
 export const GET_TARGETS = 'GET_TARGETS';
+export const CREATE_MARKER = 'CREATE_MARKER';
+export const RESET_FORM_MONUMENT = 'RESET_FORM_MONUMENT';
 /**
  * Action Creators
  */
@@ -101,4 +103,13 @@ export const setTargets = (targets) => ({
 });
 export const getTargets = () => ({
   type: GET_TARGETS,
+});
+export const createMarker = (latitude, longitude, datas) => ({
+  type: CREATE_MARKER,
+  latitude,
+  longitude,
+  datas,
+});
+export const resetFormMonument = () => ({
+  type: RESET_FORM_MONUMENT,
 });

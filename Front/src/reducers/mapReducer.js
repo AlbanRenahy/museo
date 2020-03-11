@@ -13,6 +13,7 @@ import {
   SET_REGIONS,
   SET_PERIODS,
   SET_TARGETS,
+  CREATE_MARKER,
 } from '../actions/mapActions';
 
 const initialState = {
@@ -24,10 +25,10 @@ const initialState = {
   name: '', // nom d'un monument dans le form
   address: '', // adresse d'un monument dans le form
   description: '', // description d'un monument dans le form
-  thematic: 0,
-  region: 0,
-  target: 0,
-  period: 0,
+  thematic: '',
+  region: '',
+  target: '',
+  period: '',
 
   // *********MANAGEMENT OF THE GEOLOCALIZATION*********/
   center: [46.7248003746672, 2.9003906250000004], // Center of the map
@@ -43,6 +44,7 @@ const initialState = {
   fileText: '', // Nom du fichier
 
   // Datas component did mount
+  monuments: [],
   thematics: [],
   periods: [],
   regions: [],
@@ -73,6 +75,18 @@ const mapReducer = (state = initialState, action = {}) => {
         isDisplayMonumentOpen: false,
         isAutocompleteOpen: false,
         // Les futurs modals à fermer
+      };
+    case CREATE_MARKER:
+      return {
+        ...state,
+        monuments: [
+          ...state.monuments,
+          {
+            id: action.datas.id,
+            latitude: action.latitude,
+            longitude: action.longitude,
+          },
+        ],
       };
     case OPEN_DISPLAY_MONUMENT:
       return {

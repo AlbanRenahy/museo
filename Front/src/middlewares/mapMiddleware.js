@@ -10,6 +10,8 @@ import {
   setPeriods,
   GET_TARGETS,
   setTargets,
+  createMarker,
+  resetFormMonument,
 } from 'src/actions/mapActions';
 
 const museoApi = 'http://54.91.98.36/projet-museo/public/api';
@@ -22,22 +24,24 @@ const mapMiddleware = (store) => (next) => (action) => {
       axios.post(`${museoApi}/monuments`, {
         latitude: store.getState().map.clickedLat,
         longitude: store.getState().map.clickedLng,
-        address: store.getState().map.address,
-        name: store.getState().map.name,
+        address: store.getState().map.address ? store.getState().map.address : null,
+        adress: store.getState().map.address ? store.getState().map.address : null,
+        name: store.getState().map.name ? store.getState().map.name : null,
         // picture: store.getState().map.fileInput ? store.getState().map.fileInput : null,
-        // categories: store.getState().map.thematic ? store.getState().map.thematic : null,
-        // regions: store.getState().map.region ? store.getState().map.region : null,
-        // periods: store.getState().map.period ? store.getState().map.period : null,
-        // targets: store.getState().map.target ? store.getState().map.target : null,
-        description: store.getState().map.description,
+        category: store.getState().map.thematic ? store.getState().map.thematic : null,
+        region: store.getState().map.region ? store.getState().map.region : null,
+        period: store.getState().map.period ? store.getState().map.period : null,
+        target: store.getState().map.target ? store.getState().map.target : null,
+        description: store.getState().map.description ? store.getState().map.description : null,
         available: true,
-        createdAt: new Date(),
+        // createdAt: new Date(),
       })
         .then((response) => {
-          // console.log(response.data);
+          store.dispatch(createMarker(store.getState().clickedLat, store.getState().clickedLng, response.data));
+          store.dispatch(resetFormMonument());
         })
         .catch((error) => {
-          // console.log(error.message);
+          console.log(error.message);
         });
       break;
     case GET_THEMATICS:
