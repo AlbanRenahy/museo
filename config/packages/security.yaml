@@ -60,12 +60,18 @@ security:
             guard:
                 authenticators:
                     - App\Security\AdminLoginAuthenticator
+
             json_login:
                 check_path: /authentication_token
                 username_path: username
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        refresh:
+            pattern:  ^/api/token/refresh
+            stateless: true
+            anonymous: true
 
         api:
             pattern: ^/api/
@@ -80,6 +86,7 @@ security:
         # API
         - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY } # Allows accessing the Swagger UI
         - { path: ^/authentication_token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         
         # User Connect and Register
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
