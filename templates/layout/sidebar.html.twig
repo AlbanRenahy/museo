@@ -6,6 +6,20 @@
                 <span class="link-text">Museo</span>
             </a>
         </li>
+        {% if app.user %}
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <img src="{{ asset('assets/img/user.png') }}" alt="" class="img-circle">
+                <span class="link-text">Bienvenue <strong>{{ app.user.username }}</strong></span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="{{ path('app_logout') }}" class="sidebar-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="link-text"><strong>Deconnexion</strong></span>
+            </a>
+        </li>
+        {% endif %}
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
                 <i class="fas fa-concierge-bell"></i>
