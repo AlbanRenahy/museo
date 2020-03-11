@@ -8,75 +8,15 @@
 
 <div class="wrapper">
     <main class="container-fluid">
+        <div class="row">
         <h3>Liste des Monuments</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut vel reprehenderit quo accusamus eveniet, vitae accusantium, ducimus, tenetur ratione maxime voluptatibus mollitia fugit odit ipsum corrupti? Fugit, nulla soluta.</p>
-        {% for monument in monuments %}
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th>Nom</th>
-                {# <th>Description</th> #}
-                <th>Adresse</th>
-                <th>Ville</th>
-                <th>Créer le</th>
-                <th>Affiché</th>
-                <th>Lat</th>
-                <th>Long</th>
-                <th>Region</th>
-                <th>Catégorie</th>
-                <th>P.V</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-                <td>{{ monument.id }}</td>
-                <td>{{ monument.name }}</td>
-                {# <td>{{ monument.description|slice(0, 50) }}</td> #}
-                <td>{{ monument.address }}</td>
-                <td>{{ monument.city }}</td>
-                <td>{{ monument.createdAt|date("d/m/Y") }}</td>
-                {% if monument.available == 1 %}
-                    <td><span class="badge badge-primary">AFFICHER</span></td>
-                {% else %}
-                    <td><span class="badge badge-primary">NON AFFICHER</span></td>
-                {% endif %}
-                {# <td>{{ monument.available }}</td> #}
-                {% if monument.latitude == null %}
-                    <td><span class="badge badge-warning">N/R.</span></td>
-                {% else %}
-                    <td>{{ monument.latitude }}</td>
-                {% endif %}
-                {% if monument.longitude == null %}
-                    <td><span class="badge badge-warning">N/R.</span></td>
-                {% else %}
-                    <td>{{ monument.longitude }}</td>
-                {% endif %}
-                {% if monument.region == null %}
-                    <td><span class="badge badge-warning">N/R.</span></td>
-                {% else %}
-                    <td>{{ monument.region }}</td>
-                {% endif %}
-                {% if monument.category == null %}
-                    <td><span class="badge badge-warning">N/R.</span></td>
-                {% else %}
-                    <td>{{ monument.category }}</td>
-                {% endif %}
-                {% if monument.target == null %}
-                    <td><span class="badge badge-warning">N/R.</span></td>
-                {% else %}
-                    <td>{{ monument.target }}</td>
-                {% endif %}
-                <td>
-                    <a href="#">Editer</a>
-                    <a href="#">Supprimer</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        {% endfor %}
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut vel reprehenderit quo accusamus eveniet, vitae accusantium, ducimus, tenetur ratione maxime voluptatibus mollitia fugit odit ipsum corrupti? Fugit, nulla soluta.
+            <a href="#" class="btn btn-success">Ajouter un monument</a>
+        </p>
+        
+        {% include 'dashboard/monument/_table.html.twig' %}
+        </div>
     </main>
 </div>
 {% endblock %}
