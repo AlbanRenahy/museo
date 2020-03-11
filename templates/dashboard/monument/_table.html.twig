@@ -1,4 +1,4 @@
-{% for monument in monuments %}
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -19,6 +19,7 @@
         </thead>
 
         <tbody>
+        {% for monument in monuments %}
         <tr>
             <td>{{ monument.id }}</td>
             <td>{{ monument.name }}</td>
@@ -62,6 +63,6 @@
                 <a href="#" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
             </td>
         </tr>
+        {% endfor %}
         </tbody>
     </table>
-{% endfor %}

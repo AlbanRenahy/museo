@@ -24,7 +24,7 @@ class AppFixtures extends Fixture
             $monument = new Monument();
             $monument->setName('Monument numéro ' . $i);
             $monument->setDescription('Et quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.');
-            $monument->setAdress($i . ' Rue des Test');
+            $monument->setAddress($i . ' Rue des Test');
             $monument->setCity('Ville numéro ' . $i);
             $monument->setCreatedAt(new \DateTime());
             $monument->setLatitude(mt_rand(1, 401) / 100);
@@ -32,35 +32,35 @@ class AppFixtures extends Fixture
             $manager->persist($monument);
         }
 
-        for ($i = 0; $i < 10; $i++) {
-            $category = new Category();
-            $category->setName('Catégorie numéro ' . $i);
-            $category->setDescription('Et quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.');
-            $category->setCreatedAt(new \DateTime());
-            $manager->persist($category);
-        }
+        // for ($i = 0; $i < 10; $i++) {
+        //     $category = new Category();
+        //     $category->setName('Catégorie numéro ' . $i);
+        //     $category->setDescription('Et quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.');
+        //     $category->setCreatedAt(new \DateTime());
+        //     $manager->persist($category);
+        // }
         
-        for ($i = 0; $i < 50; $i++) {
-            $period = new Period();
-            $period->setName('Période numéro ' . $i);
-            $period->setCreatedAt(new \DateTime());
-            $manager->persist($period);
-        }
+        // for ($i = 0; $i < 50; $i++) {
+        //     $period = new Period();
+        //     $period->setName('Période numéro ' . $i);
+        //     $period->setCreatedAt(new \DateTime());
+        //     $manager->persist($period);
+        // }
         
-        for ($i = 0; $i < 50; $i++) {
-            $region = new Region();
-            $region->setName('Région numéro ' . $i);
-            $region->setZipcode(mt_rand(1, 99999));
-            $region->setCreatedAt(new \DateTime());
-            $manager->persist($region);
-        }
+        // for ($i = 0; $i < 50; $i++) {
+        //     $region = new Region();
+        //     $region->setName('Région numéro ' . $i);
+        //     $region->setZipcode(mt_rand(1, 99999));
+        //     $region->setCreatedAt(new \DateTime());
+        //     $manager->persist($region);
+        // }
 
-        for ($i = 0; $i < 50; $i++) {
-            $target = new Target();
-            $target->setName('Publique visée ' . $i);
-            $target->setCreatedAt(new \DateTime());
-            $manager->persist($target);
-        }
+        // for ($i = 0; $i < 50; $i++) {
+        //     $target = new Target();
+        //     $target->setName('Publique visée ' . $i);
+        //     $target->setCreatedAt(new \DateTime());
+        //     $manager->persist($target);
+        // }
 
         $manager->flush();
     }
