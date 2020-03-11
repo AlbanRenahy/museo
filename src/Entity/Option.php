@@ -9,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource
- * @ORM\Entity(repositoryClass="App\Repository\TargetRepository")
- * @UniqueEntity(fields={"name"}, message="Le publique visé existe déjà")
+ * @ORM\Entity(repositoryClass="App\Repository\OptionRepository")
+ * @UniqueEntity(fields={"name"}, message="L'option existe déjà")
  */
-class Target
+class Option
 {
     /**
      * @ORM\Id()
@@ -27,17 +27,7 @@ class Target
     private $name;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $updatedAt;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="target")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Monument", mappedBy="options")
      */
     private $monuments;
 
@@ -63,30 +53,6 @@ class Target
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Monument[]
      */
@@ -99,7 +65,7 @@ class Target
     {
         if (!$this->monuments->contains($monument)) {
             $this->monuments[] = $monument;
-            $monument->setTarget($this);
+            $monument->addOption($this);
         }
 
         return $this;
@@ -109,10 +75,7 @@ class Target
     {
         if ($this->monuments->contains($monument)) {
             $this->monuments->removeElement($monument);
-            // set the owning side to null (unless already changed)
-            if ($monument->getTarget() === $this) {
-                $monument->setTarget(null);
-            }
+            $monument->removeOption($this);
         }
 
         return $this;

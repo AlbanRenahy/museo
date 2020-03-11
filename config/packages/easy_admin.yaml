@@ -6,4 +6,5 @@ easy_admin:
        - App\Entity\Period
        - App\Entity\Region
        - App\Entity\Target
+       - App\Entity\Option
     #    - App\Entity\User

@@ -11,9 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource
  * @ORM\Entity(repositoryClass="App\Repository\MonumentRepository")
+ * @UniqueEntity(fields={"name"}, message="Le monument existe déjà")
  */
 class Monument
 {
+
     public function __toString()
     {
         return $this->name;
@@ -23,6 +25,7 @@ class Monument
     {
         $this->createdAt = new \DateTime();
         $this->period = new ArrayCollection();
+        $this->options = new ArrayCollection();
     }
 
     /**
@@ -84,11 +87,13 @@ class Monument
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     * @Assert\Type(type="float")
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     * @Assert\Type(type="float")
      */
     private $longitude;
 
@@ -111,6 +116,11 @@ class Monument
      * @ORM\ManyToOne(targetEntity="App\Entity\Target", inversedBy="monuments")
      */
     private $target;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Option", inversedBy="monuments")
+     */
+    private $options;
 
     public function getId(): ?int
     {
@@ -303,6 +313,32 @@ class Monument
     public function setAddress($address)
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Option[]
+     */
+    public function getOptions(): Collection
+    {
+        return $this->options;
+    }
+
+    public function addOption(Option $option): self
+    {
+        if (!$this->options->contains($option)) {
+            $this->options[] = $option;
+        }
+
+        return $this;
+    }
+
+    public function removeOption(Option $option): self
+    {
+        if ($this->options->contains($option)) {
+            $this->options->removeElement($option);
+        }
 
         return $this;
     }
