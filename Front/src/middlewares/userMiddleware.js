@@ -58,23 +58,22 @@ const userMiddleware = (store) => (next) => (action) => {
         store.dispatch(signinErrors('mot de passe trop court'));
       }
       if (store.getState().user.signinErrors.length === 0) {
-        store.dispatch(redirectToLogin());
-        // axios
-        //   .post(`${museoApi}/users`, {
-        //     email: store.getState().user.email,
-        //     password: store.getState().user.password,
-        //     username: store.getState().user.username,
-        //     createdAt: new Date(),
-        //     isActive: true,
-        //   })
-        //   .then((response) => {
-        //     // console.log(response.data);
-        //     redirectToLogin();
-        //   })
-        //   .catch((error) => {
-        //     // console.log(error.message);
-        //     store.dispatch(signinErrors(error));
-        //   });
+        axios
+          .post(`${museoApi}/users`, {
+            email: store.getState().user.email,
+            password: store.getState().user.password,
+            username: store.getState().user.username,
+            createdAt: new Date(),
+            isActive: true,
+          })
+          .then((response) => {
+            // console.log(response.data);
+            store.dispatch(redirectToLogin());
+          })
+          .catch((error) => {
+            // console.log(error.message);
+            store.dispatch(signinErrors(error));
+          });
       }
       next(action);
       break;
