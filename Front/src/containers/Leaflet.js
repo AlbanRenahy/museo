@@ -13,6 +13,9 @@ import {
   closeAllModals,
   openDisplayMonument,
   getThematics,
+  getRegions,
+  getPeriods,
+  getTargets,
 } from 'src/actions/mapActions';
 
 const mapStateToProps = (state) => ({
@@ -39,6 +42,15 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getThematics: () => {
     dispatch(getThematics());
+  },
+  getRegions: () => {
+    dispatch(getRegions());
+  },
+  getPeriods: () => {
+    dispatch(getPeriods());
+  },
+  getTargets: () => {
+    dispatch(getTargets());
   },
 
 });
