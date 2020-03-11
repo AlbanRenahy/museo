@@ -31,6 +31,8 @@ const initialState = {
 
   clickedLat: '', // gère la lattitude
   clickedLng: '', // gère la longitude
+  fileInput: '', // Fichier converti prêt à être envoyé
+  fileText: '', // Nom du fichier
 
   // Autocomplete results
   autoCompleteResults: [],
@@ -79,6 +81,7 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         isAutocompleteOpen: true,
       };
+      
     case CENTER_BY_ADDRESS:
       return {
         ...state,

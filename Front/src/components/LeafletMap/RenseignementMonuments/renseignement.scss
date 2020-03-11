@@ -23,6 +23,13 @@
   &.open {
     left: 10px;
   }
+  
+  &_files {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 
   form {
     border-radius: 0px 0px 10px 10px;
@@ -94,8 +101,12 @@
 
   &_close {
     position: absolute;
-    top: -10px;
-    right: 10px;
+    top: 0px;
+    right: 20px;
+    padding: 7px;
+    background-color: rgb(146, 106, 163);
+    border-radius: 4px;
+    color: white;
   }
 
   &_submit {

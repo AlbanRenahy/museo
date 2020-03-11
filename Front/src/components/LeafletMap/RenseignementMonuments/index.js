@@ -2,6 +2,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  List,
+} from 'semantic-ui-react';
 
 import Input from '../../Input';
 import TextArea from '../../TextArea';
@@ -18,6 +21,7 @@ const RenseignementMonuments = ({
   updateMapformField,
   closeAllModals,
   findAddress,
+  fileText,
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
@@ -29,6 +33,25 @@ const RenseignementMonuments = ({
     e.preventDefault();
     console.log('submitting monument');
     submitMonument();
+  };
+
+  const handleFileChange = (e) => {
+    if (e.target.files[0].type !== 'image/png' && e.target.files[0].type !== 'image/jpeg') {
+      updateMapformField('fileText', 'Formats acceptés: JPG, PNG');
+    } else {
+      updateMapformField('fileText', e.target.files[0].name);
+    }
+    const readFile = () => {
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        updatemapFormField('fileInput', reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    };
+
+    if (readFile) {
+      readFile(e.target.files[0]);
+    }
   };
 
   const handleBlur = (e) => {
@@ -44,17 +67,19 @@ const RenseignementMonuments = ({
     >
       <div className="renseignement-monuments_relative">
         <a
-          href=""
+          href="#"
           className="renseignement-monuments_close"
           onClick={handleCloseDataForm}
         >
           Fermer
         </a>
-        <img
-          src={AppareilPhoto}
-          alt="Appareil"
-          className="renseignement-monuments_appareil"
-        />
+        <div className="renseignement-monuments_files">
+          <label htmlFor="picture-monument"><img src={AppareilPhoto} alt="Appareil" className="renseignement-monuments_appareil" /></label>
+          <input type="file" id="picture-monument" className="inputfile" onChange={handleFileChange} accept="image/*" />
+          <List>
+            <List.Item>{fileText}</List.Item>
+          </List>
+        </div>
         <form action="">
           <div className="renseignement-monuments_inputs">
             <Input
@@ -146,6 +171,7 @@ RenseignementMonuments.propTypes = {
   updateMapformField: PropTypes.func.isRequired,
   submitMonument: PropTypes.func.isRequired,
   findAddress: PropTypes.func.isRequired,
+  fileText: PropTypes.string.isRequired,
 };
 
 export default RenseignementMonuments;

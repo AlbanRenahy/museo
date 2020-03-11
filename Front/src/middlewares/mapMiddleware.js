@@ -15,6 +15,7 @@ const mapMiddleware = (store) => (next) => (action) => {
         latitude: store.getState().map.clickedLat,
         longitude: store.getState().map.clickedLng,
         address: store.getState().map.address,
+        picture: store.getState().map.fileInput ? store.getState().map.fileInput : null,
         name: store.getState().map.name,
         description: store.getState().map.description,
         available: true,

@@ -15,6 +15,8 @@ const mapStateToProps = (state) => ({
   name: state.map.name,
   address: state.map.address,
   description: state.map.description,
+  fileInput: state.map.fileInput,
+  fileText: state.map.fileText,
 });
 
 const mapDispatchToProps = (dispatch) => ({
