@@ -60,7 +60,7 @@
             {% endif %}
             <td>
                 <a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>
-                <a href="#" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                <a href="{{ path('dashboard.monument.delete', {id: monument.id}) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
             </td>
         </tr>
         {% endfor %}
