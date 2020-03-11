@@ -14,6 +14,7 @@ import {
   SET_PERIODS,
   SET_TARGETS,
   CREATE_MARKER,
+  RESET_FORM_MONUMENT,
 } from '../actions/mapActions';
 
 const initialState = {
@@ -110,7 +111,22 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         isAutocompleteOpen: true,
       };
-
+    case RESET_FORM_MONUMENT:
+      return {
+        ...state,
+        clickedLat: 0,
+        clickedLng: 0,
+        fileInput: '',
+        fileText: '',
+        name: '',
+        address: '',
+        description: '',
+        region: '',
+        period: '',
+        thematic: '',
+        target: '',
+        loading: false,
+      };
     case CENTER_BY_ADDRESS:
       return {
         ...state,

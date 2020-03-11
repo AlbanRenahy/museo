@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Button } from 'semantic-ui-react';
+import { Menu, Button, Icon } from 'semantic-ui-react';
 
 import './menu.scss';
 import './burger.scss';
 
 const TopMenu = ({
   searchInput, updateMapformField, closeAllModals, autoComplete, autoCompleteResults, centerByAddress, isAutocompleteOpen, findAddressSearch,
-  isMenuOpen, toggleMenu, isConnected, disconnect, redirectToLogin,
+  isMenuOpen, toggleMenu, isConnected, disconnect, redirectToLogin, openDataForm, redirect,
 }) => {
   const handleSearch = (position) => (e) => {
     updateMapformField('searchInput', e.target.textContent);
@@ -84,6 +84,42 @@ const TopMenu = ({
           </div>
         </div>
       </Menu.Menu>
+      <Button
+        id="add-button"
+        circular
+        onClick={isConnected
+          ? () => {
+            closeAllModals(); openDataForm(false);
+          }
+          : () => {
+            closeAllModals(); redirect();
+          }}
+      >
+        <Icon.Group>
+          <Icon name="map marker alternate" />
+          <Icon corner name="add" />
+        </Icon.Group>
+        <svg viewBox="0 0 200 200">
+          <g id="g-svg">
+            <path
+              id="cercle"
+              d="
+                  M 100, 100
+                  m -75, 0
+                  a 75,75 0 1,0 150,0
+                  a 75,75 0 1,0 -150,0
+                  "
+              fill="transparent"
+            />
+            <text id="circleText" fill="#000" fontSize=".9em">
+              <textPath id="circleTextPath" href="#cercle"
+                startOffset="70%">
+                 ajouter
+              </textPath>
+            </text>
+          </g>
+        </svg>
+      </Button>
 
 
       <button onClick={handleMenuClick} className={isMenuOpen ? 'hamburger hamburger--elastic is-active' : 'hamburger hamburger--elastic'} type="button">
@@ -118,6 +154,8 @@ TopMenu.propTypes = {
   isConnected: PropTypes.bool.isRequired,
   disconnect: PropTypes.func.isRequired,
   redirectToLogin: PropTypes.bool.isRequired,
+  redirect: PropTypes.func.isRequired,
+  openDataForm: PropTypes.func.isRequired,
 };
 
 export default TopMenu;
