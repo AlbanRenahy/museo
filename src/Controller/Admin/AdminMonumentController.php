@@ -26,14 +26,6 @@ class AdminMonumentController extends AbstractController
     }
 
     /**
-     * @Route("/add", name="add")
-     */
-    public function add(Request $req)
-    {
-
-    }
-
-    /**
      * @Route("/edit/{id}", name="edit")
      */
     public function edit(Monument $monument, Request $req)
