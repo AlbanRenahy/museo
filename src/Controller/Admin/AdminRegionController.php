@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Region;
+use App\Form\RegionType;
 use App\Repository\RegionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +30,7 @@ class AdminRegionController extends AbstractController
      */
     public function edit(Region $region, Request $req)
     {
-        $form = $this->createForm();
+        $form = $this->createForm(RegionType::class, $region);
         $form->handleRequest($req);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -45,6 +46,31 @@ class AdminRegionController extends AbstractController
         return $this->render('dashboard/region/edit.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/add", name="add")
+     */
+    public function add(Request $req): Response
+    {
+        $region = new Region();
+
+        $form = $this->createForm(RegionType::class, $region);
+        $form->handleRequest($req);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($region);
+            $entityManager->flush();
+            $this->addFlash('success', 'Région bien ajouté');
+
+            return $this->redirectToRoute('dashboard.region.index', ['id' => $region->getId()]);
+        }
+
+        return $this->render('dashboard/region/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+
     }
 
     /**
