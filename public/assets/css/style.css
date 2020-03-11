@@ -79,18 +79,6 @@ body::-webkit-scrollbar-thumb{
     height: 100%;
 }
 
-.sidebar-item{
-    transition: 200ms ease;
-    filter: blur(0.05em);
-    width: 100%;
-}
-
-.sidebar-item:hover{
-    transition: 200ms ease;
-    filter: blur(0);
-    width: 100%;
-}
-
 .sidebar-link svg{
     min-width: 2rem;
     margin: 0 1.5rem;
@@ -159,4 +147,32 @@ body::-webkit-scrollbar-thumb{
 .badge-warning{
   color:var(--bg-white-color);
   background-color: rgb(255, 123, 0);
+}
+
+/* ! Media Queries */
+
+@media screen and (max-width: 770px) {
+    .sidebar-item{
+        transition: 200ms ease;
+        width: 100%;
+    }
+    
+    .sidebar-item:hover{
+        transition: 200ms ease;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 770px) {
+    .sidebar-item{
+        transition: 200ms ease;
+        filter: blur(0.05em);
+        width: 100%;
+    }
+    
+    .sidebar-item:hover{
+        transition: 200ms ease;
+        filter: blur(0);
+        width: 100%;
+    }
 }
