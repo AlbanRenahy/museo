@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Map as LeafletMap, TileLayer, Marker, Popup, Circle,
+  Map as LeafletMap, TileLayer, Marker, Circle,
 } from 'react-leaflet';
 import { geolocated } from 'react-geolocated';
 import PropTypes from 'prop-types';
@@ -51,9 +51,12 @@ class Leaflet extends React.Component {
   });
 
   componentDidMount() {
-    const { getThematics } = this.props;
+    const { getThematics, getRegions, getPeriods, getTargets } = this.props;
 
     getThematics();
+    getRegions();
+    getPeriods();
+    getTargets();
   }
 
   handleRightClick = (e) => {
@@ -155,6 +158,9 @@ Leaflet.propTypes = {
   coords: PropTypes.object,
   isGeolocationEnabled: PropTypes.bool.isRequired,
   getThematics: PropTypes.func.isRequired,
+  getRegions: PropTypes.func.isRequired,
+  getPeriods: PropTypes.func.isRequired,
+  getTargets: PropTypes.func.isRequired,
 };
 
 Leaflet.defaultProps = {

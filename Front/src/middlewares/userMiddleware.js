@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CONNECT_USER, SIGNIN, SEND_MESSAGE, storeToken, connectingError, signinErrors, redirectToLogin } from 'src/actions/userActions';
+import { CONNECT_USER, SIGNIN, SEND_MESSAGE, storeToken, connectingError, signinErrors } from 'src/actions/userActions';
 
 const museoApi = 'http://54.91.98.36/projet-museo/public/api';
 
