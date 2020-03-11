@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\EventListener;
+namespace App\EventListener;
 
 use Gesdinet\JWTRefreshTokenBundle\Event\RefreshEvent;
 use Psr\Log\LoggerInterface;
