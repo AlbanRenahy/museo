@@ -1,6 +1,15 @@
 import axios from 'axios';
 
-import { CONNECT_USER, SIGNIN, SEND_MESSAGE, storeToken, connectingError, signinErrors, redirectToLogin } from 'src/actions/userActions';
+import {
+  CONNECT_USER,
+  SIGNIN,
+  SEND_MESSAGE,
+  storeToken,
+  connectingError,
+  signinErrors,
+  clearSigninErrors,
+  redirectToLogin,
+} from 'src/actions/userActions';
 
 const museoApi = 'http://54.91.98.36/projet-museo/public/api';
 
@@ -38,22 +47,32 @@ const userMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     case SIGNIN:
-      next(action);
-      axios
-        .post(`${museoApi}/users`, {
-          email: store.getState().user.email,
-          password: store.getState().user.password,
-          username: store.getState().user.username,
-          createdAt: new Date(),
-          isActive: true,
-        })
-        .then((response) => {
-          // console.log(response.data);
-          store.dispatch(signinErrors(response.data));
-        })
-        .catch((error) => {
-          // console.log(error.message);
-        });
+      store.dispatch(clearSigninErrors());
+      if (store.getState().user.password !== store.getState().user.passConfirm) {
+        store.dispatch(signinErrors('les mots de passe ne correspondent pas'));
+      }
+      if (store.getState().user.password.length < 5) {
+        store.dispatch(signinErrors('mot de passe trop court'));
+      }
+      if (store.getState().user.signinErrors.length === 0) {
+        store.dispatch(redirectToLogin());
+        // axios
+        //   .post(`${museoApi}/users`, {
+        //     email: store.getState().user.email,
+        //     password: store.getState().user.password,
+        //     username: store.getState().user.username,
+        //     createdAt: new Date(),
+        //     isActive: true,
+        //   })
+        //   .then((response) => {
+        //     // console.log(response.data);
+        //     redirectToLogin();
+        //   })
+        //   .catch((error) => {
+        //     // console.log(error.message);
+        //     store.dispatch(signinErrors(error));
+        //   });
+      }
       next(action);
       break;
     default:
