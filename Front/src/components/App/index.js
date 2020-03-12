@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 // == Import
-import Welcome from 'src/containers/Welcome';
+import Welcome from 'src/components/Welcome';
 import Signin from 'src/containers/Signin';
 import Login from 'src/containers/Login';
 import LeafletMap from 'src/containers/Leaflet';

@@ -2,8 +2,16 @@ import { connect } from 'react-redux';
 
 import Menu from 'src/components/LeafletMap/Menu';
 
-import { updateMapformField, autoComplete, closeAllModals, centerByAddress, findAddressSearch, toggleMenu, openDataFormButton } from 'src/actions/mapActions';
-import { disconnect, updateUserformField, redirectToLogin } from 'src/actions/userActions';
+import {
+  updateMapformField,
+  autoComplete,
+  closeAllModals,
+  centerByAddress,
+  findAddressSearch,
+  toggleMenu,
+  openDataFormButton,
+} from 'src/actions/mapActions';
+import { disconnect, updateUserformField } from 'src/actions/userActions';
 
 const mapStateToProps = (state) => ({
   searchInput: state.map.searchInput,
@@ -11,7 +19,6 @@ const mapStateToProps = (state) => ({
   isAutocompleteOpen: state.map.isAutocompleteOpen,
   isMenuOpen: state.map.isMenuOpen,
   isConnected: state.user.isConnected,
-  redirectToLogin: state.user.redirectToLogin,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -41,9 +48,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   toggleMenu: () => {
     dispatch(toggleMenu());
-  },
-  redirect: () => {
-    dispatch(redirectToLogin());
   },
 });
 

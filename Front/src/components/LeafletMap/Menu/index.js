@@ -1,14 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Menu, Button, Icon } from 'semantic-ui-react';
 
 import './menu.scss';
 import './burger.scss';
 
 const TopMenu = ({
-  searchInput, updateMapformField, closeAllModals, autoComplete, autoCompleteResults, centerByAddress, isAutocompleteOpen, findAddressSearch,
-  isMenuOpen, toggleMenu, isConnected, disconnect, redirectToLogin, openDataForm, redirect,
+  searchInput,
+  updateMapformField,
+  closeAllModals,
+  autoComplete,
+  autoCompleteResults,
+  centerByAddress,
+  isAutocompleteOpen,
+  findAddressSearch,
+  isMenuOpen,
+  toggleMenu,
+  isConnected,
+  disconnect,
+  openDataForm,
 }) => {
   const handleSearch = (position) => (e) => {
     updateMapformField('searchInput', e.target.textContent);
@@ -22,7 +33,6 @@ const TopMenu = ({
   };
   return (
     <div id="menu">
-      {redirectToLogin && <Redirect to="/login/" />}
       <Menu.Menu>
         <Button.Group>
           <Button
@@ -92,7 +102,7 @@ const TopMenu = ({
             closeAllModals(); openDataForm(true);
           }
           : () => {
-            closeAllModals(); redirect();
+            closeAllModals();
           }}
       >
         <Icon.Group>
@@ -112,9 +122,12 @@ const TopMenu = ({
               fill="transparent"
             />
             <text id="circleText" fill="#000" fontSize=".9em">
-              <textPath id="circleTextPath" href="#cercle"
-                startOffset="70%">
-                 ajouter
+              <textPath
+                id="circleTextPath"
+                href="#cercle"
+                startOffset="70%"
+              >
+                ajouter
               </textPath>
             </text>
           </g>
@@ -153,8 +166,6 @@ TopMenu.propTypes = {
   findAddressSearch: PropTypes.func.isRequired,
   isConnected: PropTypes.bool.isRequired,
   disconnect: PropTypes.func.isRequired,
-  redirectToLogin: PropTypes.bool.isRequired,
-  redirect: PropTypes.func.isRequired,
   openDataForm: PropTypes.func.isRequired,
 };
 

@@ -11,8 +11,7 @@ import {
   CONNECTING_ERROR,
   SIGNIN_ERRORS,
   CLEAR_SIGNIN_ERRORS,
-  REDIRECT_TO_LOGIN,
-
+  REDIRECT_TO_REGISTER,
 } from '../actions/userActions';
 
 const initialState = {
@@ -85,7 +84,7 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         signinErrors: [],
       };
-    case REDIRECT_TO_LOGIN:
+    case REDIRECT_TO_REGISTER:
       return {
         ...state,
         signinIsValid: true,

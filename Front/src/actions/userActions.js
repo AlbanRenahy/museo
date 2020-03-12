@@ -13,7 +13,7 @@ export const OPEN_CONFIRM_DELETE_USER = 'OPEN_CONFIRM_DELETE_USER';
 export const CLOSE_CONFIRM_DELETE_USER = 'CLOSE_CONFIRM_DELETE_USER';
 export const SIGNIN = 'SIGNIN';
 export const SIGNIN_ERRORS = 'SIGNIN_ERRORS';
-export const REDIRECT_TO_LOGIN = 'REDIRECT_TO_LOGIN';
+export const REDIRECT_TO_REGISTER = 'REDIRECT_TO_REGISTER';
 export const CLEAR_SIGNIN_ERRORS = 'CLEAR_SIGNIN_ERRORS';
 export const DISCONNECT_USER = 'DISCONNECT_USER';
 
@@ -83,6 +83,7 @@ export const clearSigninErrors = () => ({
   type: CLEAR_SIGNIN_ERRORS,
 });
 
-export const redirectToLogin = () => ({
-  type: REDIRECT_TO_LOGIN,
+export const redirectToRegister = () => ({
+  type: REDIRECT_TO_REGISTER,
 });
+
