@@ -26,10 +26,8 @@ class MonumentType extends AbstractType
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
             ->add('address', TextType::class)
-            ->add('city', TextType::class)
-            ->add('createdAt', DateTimeType::class, [
-                'attr' => ['class' => 'disabled'],
-            ])
+            // ->add('city', TextType::class)
+            ->add('createdAt', DateTimeType::class)
             // ->add('latitude', HiddenType::class)
             // ->add('longitude', HiddenType::class)
             // ->add('updatedAt')
@@ -41,6 +39,7 @@ class MonumentType extends AbstractType
                         ->orderBy('r.name', 'ASC');
                 },
                 'label' => 'Région',
+                'placeholder' => 'Choissez une région',
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
@@ -49,6 +48,7 @@ class MonumentType extends AbstractType
                         ->orderBy('c.name', 'ASC');
                 },
                 'label' => 'Catégorie',
+                'placeholder' => 'Choissez une catégorie',
             ])
             // ->add('period', EntityType::class, [
             //     'class' => Period::class,
@@ -65,6 +65,7 @@ class MonumentType extends AbstractType
                         ->orderBy('t.name', 'ASC');
                 },
                 'label' => 'Publique visée',
+                'placeholder' => 'Choissez un publique visée',
             ])
         ;
     }
