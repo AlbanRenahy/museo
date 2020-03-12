@@ -2,8 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Monument;
+use App\Entity\Period;
 use App\Entity\Region;
+use App\Entity\Target;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -37,10 +40,32 @@ class MonumentType extends AbstractType
                     return $er->createQueryBuilder('r')
                         ->orderBy('r.name', 'ASC');
                 },
+                'label' => 'Région',
             ])
-            //->add('category', ChoiceType::class)
-            //->add('period', ChoiceType::class)
-            //->add('target', ChoiceType::class)
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                },
+                'label' => 'Catégorie',
+            ])
+            ->add('period', EntityType::class, [
+                'class' => Period::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->orderBy('p.name', 'ASC');
+                },
+                'label' => 'Période',
+            ])
+            ->add('target', EntityType::class, [
+                'class' => Target::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('t')
+                        ->orderBy('t.name', 'ASC');
+                },
+                'label' => 'Publique visée',
+            ])
         ;
     }
 
