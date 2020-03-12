@@ -210,12 +210,12 @@ class Monument
         return $this;
     }
 
-    public function getLongitude(): ?string
+    public function getLongitude(): ?float
     {
         return $this->longitude;
     }
 
-    public function setLongitude(string $longitude): self
+    public function setLongitude(float $longitude): self
     {
         $this->longitude = $longitude;
 
@@ -283,32 +283,6 @@ class Monument
 
         return $this;
     }
-
-    /**
-     * @return Collection|Option[]
-     */
-    // public function getOptions(): Collection
-    // {
-    //     return $this->options;
-    // }
-
-    // public function addOption(Option $option): self
-    // {
-    //     if (!$this->options->contains($option)) {
-    //         $this->options[] = $option;
-    //     }
-
-    //     return $this;
-    // }
-
-    // public function removeOption(Option $option): self
-    // {
-    //     if ($this->options->contains($option)) {
-    //         $this->options->removeElement($option);
-    //     }
-
-    //     return $this;
-    // }
 
     /**
      * Get min = 2,
