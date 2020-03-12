@@ -9,7 +9,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 /**
+ * @ApiProperty(iri="http://schema.org/Region")
  * @ApiResource(
  *     collectionOperations={"get"={"method"="GET"}},
  *     itemOperations={"get"={"method"="GET"}},
@@ -66,15 +68,7 @@ class Region
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="region")
      * @Groups({Region::READ, Region::WRITE})
-     * @ApiProperty(
-     *      attributes={
-     *          "swagger_context"={
-     *              "type"="integer",
-     *              "example"="/api/monuments/1"
-     *          }
-     *      }
-     * 
-     * )
+     * @ApiProperty(iri="http://schema.org/id")
      */
     private $monuments;
 
