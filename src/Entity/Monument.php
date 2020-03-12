@@ -10,12 +10,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
-
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 /**
  * @ApiResource
  * @ORM\Entity(repositoryClass="App\Repository\MonumentRepository")
  * @UniqueEntity(fields={"name"}, message="Le monument existe déjà")
  * @ApiFilter(NumericFilter::class, properties={"latitude, longitude"})
+ * @ApiFilter(BooleanFilter::class, properties={"available"})
  */
 class Monument
 {
@@ -103,11 +104,13 @@ class Monument
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
      */
     private $region;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="monuments")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
 
@@ -118,6 +121,7 @@ class Monument
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Target", inversedBy="monuments")
+     * @ORM\JoinColumn(name="target_id", referencedColumnName="id")
      */
     private $target;
 
