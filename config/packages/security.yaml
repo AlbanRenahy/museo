@@ -60,6 +60,9 @@ security:
             guard:
                 authenticators:
                     - App\Security\AdminLoginAuthenticator
+            logout:
+                path:   /logout
+                target: /login
 
             json_login:
                 check_path: /authentication_token

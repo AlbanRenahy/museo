@@ -9,18 +9,19 @@
 <div class="wrapper">
     {% include 'layout/message.html.twig' %}
     <main class="container-fluid">
-            <h3>Liste des Monuments </h3>
+            <h3>Liste des Régions</h3>
             <p>
-                Actuellement <span class="badge badge-secondary">{{ count }}</span> monuments
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut vel reprehenderit quo accusamus eveniet, vitae accusantium, ducimus, tenetur ratione maxime voluptatibus mollitia fugit odit ipsum corrupti? Fugit, nulla soluta.
+                <a href="{{ path('dashboard.region.add') }}" class="btn btn-success">Ajouter une région</a>
             </p>
-            {% if monuments == null %}
+            {% if regions == null %}
                 <div class="alert alert-danger" role="alert">
-                    <h4>Aucun monuments en base de données</h4>
+                    <h4>Aucune régions en base de données</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa nulla ipsam sed laborum in nemo dolor nostrum voluptatum eveniet id laboriosam beatae enim iusto dolore nihil facilis, sequi reprehenderit.</p>
                 </div>
             {% else %}   
                 <div class="row">
-                    {% include 'dashboard/monument/_table.html.twig' %}  
+                    {% include 'dashboard/region/_table.html.twig' %}  
                 </div>
             {% endif %}
     </main>

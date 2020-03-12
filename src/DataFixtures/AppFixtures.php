@@ -20,17 +20,17 @@ class AppFixtures extends Fixture
         // After add 50 regions, we flush with Doctrine
         // Adding 50 Target Fixtures in DB
         
-        // for ($i = 0; $i < 25; $i++) {
-        //     $monument = new Monument();
-        //     $monument->setName('Monument numéro ' . $i);
-        //     $monument->setDescription('Et quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.');
-        //     $monument->setAddress($i . ' Rue des Test');
-        //     $monument->setCity('Ville numéro ' . $i);
-        //     $monument->setCreatedAt(new \DateTime());
-        //     $monument->setLatitude(mt_rand(1, 401) / 100);
-        //     $monument->setLongitude(mt_rand(1, 401) / 100);
-        //     $manager->persist($monument);
-        // }
+        for ($i = 0; $i < 25; $i++) {
+            $monument = new Monument();
+            $monument->setName('Monument numéro ' . $i);
+            $monument->setDescription('Et quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.');
+            $monument->setAddress($i . ' Rue des Test');
+            $monument->setCity('Ville numéro ' . $i);
+            $monument->setCreatedAt(new \DateTime());
+            $monument->setLatitude(mt_rand(1, 401) / 100);
+            $monument->setLongitude(mt_rand(1, 401) / 100);
+            $manager->persist($monument);
+        }
 
         // for ($i = 0; $i < 10; $i++) {
         //     $category = new Category();
