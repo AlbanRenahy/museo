@@ -6,7 +6,7 @@
             <th>Nom</th>
             {# <th>Description</th> #}
             <th>Adresse</th>
-            <th>Ville</th>
+            {# <th>Ville</th> #}
             <th>Créer le</th>
             <th>Affiché</th>
             <th>Lat</th>
@@ -25,7 +25,7 @@
             <td>{{ monument.name }}</td>
             {# <td>{{ monument.description|slice(0, 50) }}</td> #}
             <td>{{ monument.address }}</td>
-            <td>{{ monument.city }}</td>
+            {# <td>{{ monument.city }}</td> #}
             <td>{{ monument.createdAt|date("d/m/Y") }}</td>
             {% if monument.available == 1 %}
                 <td><span class="badge badge-primary">AFFICHER</span></td>
@@ -36,27 +36,27 @@
             {% if monument.latitude == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
             {% else %}
-                <td>{{ monument.latitude }}</td>
+                <td><span class="badge badge-warning">{{ monument.latitude }}</span></td>
             {% endif %}
             {% if monument.longitude == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
             {% else %}
-                <td>{{ monument.longitude }}</td>
+                <td><span class="badge badge-warning">{{ monument.longitude }}</span></td>
             {% endif %}
             {% if monument.region == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
             {% else %}
-                <td>{{ monument.region }}</td>
+                <td><span class="badge badge-primary">{{ monument.region }}</span></td>
             {% endif %}
             {% if monument.category == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
             {% else %}
-                <td>{{ monument.category }}</td>
+                <td><span class="badge badge-success">{{ monument.category }}</span></td>
             {% endif %}
             {% if monument.target == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
             {% else %}
-                <td>{{ monument.target }}</td>
+                <td><span class="badge badge-info">{{ monument.target }}</span></td>
             {% endif %}
             <td>
                 <a href="{{ path('dashboard.monument.edit', {id: monument.id}) }}" class="btn btn-primary"><i class="far fa-edit"></i></a>
