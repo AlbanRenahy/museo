@@ -102,7 +102,7 @@ const TopMenu = ({
             closeAllModals(); openDataForm(true);
           }
           : () => {
-            closeAllModals();
+            closeAllModals(); alert('Veuillez vous connecter pour accéder au formulaire d\'ajout de monument');
           }}
       >
         <Icon.Group>

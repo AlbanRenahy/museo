@@ -3,7 +3,6 @@ import {
   OPEN_DATA_FORM,
   SUBMIT_MONUMENT,
   CLOSE_ALL_MODALS,
-  OPEN_DATA_FORM_RESPONSE,
   OPEN_DATA_FORM_BUTTON,
   OPEN_DISPLAY_MONUMENT,
   AUTO_COMPLETE_RESULTS,
@@ -22,7 +21,7 @@ const initialState = {
   // ******* MANAGEMENT OF MODAL FORM ******/
   isDataFormOpen: false, // bool qui indique si le formulaire de renseignement de données est ouvert
   isMenuOpen: false,
-  isDisplayMonumentOpen: false, // bool qui toggle l'ouverture de displayMonument
+  isDisplayMonumentOpen: false,
   clickedAddress: '', // String contenant l'adresse d'où a cliqué l'utilisateur
   name: '', // nom d'un monument dans le form
   address: '', // adresse d'un monument dans le form
@@ -94,13 +93,6 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isDisplayMonumentOpen: true,
-      };
-    case OPEN_DATA_FORM_RESPONSE:
-      // eslint-disable-next-line camelcase
-      const { display_name } = action.data;
-      return {
-        ...state,
-        address: display_name,
       };
     case OPEN_DATA_FORM_BUTTON:
       return {

@@ -20,21 +20,19 @@ const mapMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
     case SUBMIT_MONUMENT:
-      next(action);
       axios.post(`${museoApi}/monuments`, {
         latitude: store.getState().map.clickedLat,
         longitude: store.getState().map.clickedLng,
         address: store.getState().map.address ? store.getState().map.address : null,
-        adress: store.getState().map.address ? store.getState().map.address : null,
         name: store.getState().map.name ? store.getState().map.name : null,
-        // picture: store.getState().map.fileInput ? store.getState().map.fileInput : null,
+        picture: store.getState().map.fileInput ? store.getState().map.fileInput : null,
         category: store.getState().map.thematic ? store.getState().map.thematic : null,
         region: store.getState().map.region ? store.getState().map.region : null,
         period: store.getState().map.period ? store.getState().map.period : null,
         target: store.getState().map.target ? store.getState().map.target : null,
         description: store.getState().map.description ? store.getState().map.description : null,
         available: true,
-        // createdAt: new Date(),
+        createdAt: new Date(),
       })
         .then((response) => {
           store.dispatch(createMarker(store.getState().clickedLat, store.getState().clickedLng, response.data));
@@ -43,6 +41,7 @@ const mapMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error.message);
         });
+      next(action);
       break;
     case GET_THEMATICS:
       axios.get(`${museoApi}/categories`)
