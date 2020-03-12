@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Monument;
+use App\Entity\Region;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -28,7 +31,13 @@ class MonumentType extends AbstractType
             // ->add('longitude', HiddenType::class)
             // ->add('updatedAt')
             // ->add('available', ChoiceType::class)
-            //->add('region', ChoiceType::class)
+            ->add('region', EntityType::class, [
+                'class' => Region::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('r')
+                        ->orderBy('r.name', 'ASC');
+                },
+            ])
             //->add('category', ChoiceType::class)
             //->add('period', ChoiceType::class)
             //->add('target', ChoiceType::class)

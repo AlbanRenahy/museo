@@ -17,6 +17,30 @@ class AdminMonumentController extends AbstractController
 {
 
     /**
+     * @Route("/add", name="")
+     */
+    public function add(Request $req)
+    {
+        $monument = new Monument();
+
+        $form = $this->createForm(MonumentType::class, $monument);
+        $form->handleRequest($req);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($monument);
+            $entityManager->flush();
+            $this->addFlash('success', 'Monument bien ajouté');
+
+            return $this->redirectToRoute('dashboard.monument.index', ['id' => $monument->getId()]);
+        }
+
+        return $this->render('dashboard/monument/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/", name="index")
      */
     public function index(MonumentRepository $monumentRepository)
