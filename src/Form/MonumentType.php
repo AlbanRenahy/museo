@@ -50,14 +50,14 @@ class MonumentType extends AbstractType
                 },
                 'label' => 'Catégorie',
             ])
-            ->add('period', EntityType::class, [
-                'class' => Period::class,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('p')
-                        ->orderBy('p.name', 'ASC');
-                },
-                'label' => 'Période',
-            ])
+            // ->add('period', EntityType::class, [
+            //     'class' => Period::class,
+            //     'query_builder' => function (EntityRepository $er) {
+            //         return $er->createQueryBuilder('p')
+            //             ->orderBy('p.name', 'ASC');
+            //     },
+            //     'label' => 'Période',
+            // ])
             ->add('target', EntityType::class, [
                 'class' => Target::class,
                 'query_builder' => function (EntityRepository $er) {
