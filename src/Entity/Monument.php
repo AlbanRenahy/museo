@@ -13,7 +13,9 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiProperty;
 /**
+ * @ApiResource(iri="http://schema.org/Monument")
  * @ApiResource(
  *      normalizationContext={
  *          "groups"={
@@ -127,6 +129,7 @@ class Monument
      * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      * @Groups({Monument::READ, Monument::WRITE})
+     * @ApiProperty(iri="http://schema.org/identifier")
      */
     private $region;
 
