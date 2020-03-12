@@ -87,13 +87,13 @@ class Monument
     private $available;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      * @Assert\Type(type="float")
      */
     private $latitude;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      * @Assert\Type(type="float")
      */
     private $longitude;
