@@ -97,7 +97,7 @@ const TopMenu = ({
       <Button
         id="add-button"
         circular
-        onClick={!isConnected
+        onClick={isConnected
           ? () => {
             closeAllModals(); openDataForm(true);
           }
