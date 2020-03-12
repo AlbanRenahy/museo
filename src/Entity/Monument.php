@@ -12,7 +12,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 /**
- * @ApiResource
+ * @ApiResource(
+ *      normalizationContext={"groups"={"monument:read"}, "swagger_definition_name"="Read"},
+ *      denormalizationContext={"groups"={"monument:write"}, "swagger_definition_name"="Write"},
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\MonumentRepository")
  * @UniqueEntity(fields={"name"}, message="Le monument existe déjà")
  * @ApiFilter(NumericFilter::class, properties={"latitude, longitude"})
@@ -105,6 +108,7 @@ class Monument
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"monument:read", "monument:write"})
      */
     private $region;
 
