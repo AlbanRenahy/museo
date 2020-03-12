@@ -7,11 +7,14 @@ use App\Entity\Monument;
 use App\Entity\Period;
 use App\Entity\Region;
 use App\Entity\Target;
+use Doctrine\DBAL\Types\BooleanType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+// use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType as TypeIntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,14 +33,18 @@ class MonumentType extends AbstractType
                 'disabled' => true,
                 'format' => 'dd-MM-yyyy',
             ])
-            // ->add('latitude', HiddenType::class)
-            // ->add('longitude', HiddenType::class)
+            ->add('latitude', NumberType::class, [
+                'scale' => 10,
+            ])
+            ->add('longitude', NumberType::class, [
+                'scale' => 10,
+            ])
             ->add('updatedAt', DateType::class, [
                 'disabled' => true,
                 'label' => 'Mise à jour le',
                 'format' => 'dd-MM-yyyy'
             ])
-            // ->add('available', ChoiceType::class)
+            ->add('available', TypeIntegerType::class)
             ->add('region', EntityType::class, [
                 'class' => Region::class,
                 'query_builder' => function (EntityRepository $er) {
@@ -56,10 +63,10 @@ class MonumentType extends AbstractType
                 'label' => 'Catégorie',
                 'placeholder' => 'Choissez une catégorie',
             ])
-            ->add('period', EntityType::class, [
-                'class' => Period::class,
-                'label' => 'Période',
-            ])
+            // ->add('period', EntityType::class, [
+            //     'class' => Period::class,
+            //     'label' => 'Période',
+            // ])
             ->add('target', EntityType::class, [
                 'class' => Target::class,
                 'query_builder' => function (EntityRepository $er) {

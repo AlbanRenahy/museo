@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Monument;
+use App\Entity\Period;
 use App\Form\MonumentType;
 use App\Repository\MonumentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,6 +23,7 @@ class AdminMonumentController extends AbstractController
     public function add(Request $req)
     {
         $monument = new Monument();
+        // $period = new Period();
 
         $form = $this->createForm(MonumentType::class, $monument);
         $form->handleRequest($req);
