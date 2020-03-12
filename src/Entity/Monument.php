@@ -147,17 +147,26 @@ class Monument
         return $this;
     }
 
-    public function getAdress(): ?string
+    /**
+     * Get min = 2,
+     */ 
+    public function getAddress()
     {
-        return $this->adress;
+        return $this->address;
     }
 
-    public function setAdress(string $adress): self
+    /**
+     * Set min = 2,
+     *
+     * @return  self
+     */ 
+    public function setAddress($address)
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }
+
 
     public function getCity(): ?string
     {
@@ -289,26 +298,6 @@ class Monument
     public function setTarget(?Target $target): self
     {
         $this->target = $target;
-
-        return $this;
-    }
-
-    /**
-     * Get min = 2,
-     */ 
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set min = 2,
-     *
-     * @return  self
-     */ 
-    public function setAddress($address)
-    {
-        $this->address = $address;
 
         return $this;
     }
