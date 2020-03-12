@@ -113,6 +113,8 @@ class Leaflet extends React.Component {
         >
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+            maxZoom={19}
+            minZoom={3}
           />
           <Marker
             position={[48.864716, 2.349014]}
