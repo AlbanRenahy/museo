@@ -87,7 +87,7 @@ const DisplayMonument = ({ isDisplayMonumentOpen, closeAllModals }) => {
 
 DisplayMonument.propTypes = {
   closeAllModals: PropTypes.func.isRequired,
-  isDisplayMonumentOpen: PropTypes.func.isRequired,
+  isDisplayMonumentOpen: PropTypes.bool.isRequired,
 };
 
 export default DisplayMonument;

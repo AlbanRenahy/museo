@@ -102,6 +102,7 @@ const RenseignementMonuments = ({
         <form action="">
           <div className="renseignement-monuments_inputs">
             <Input
+              className="monumentInput"
               type="text"
               id="name"
               name="name"
@@ -110,6 +111,7 @@ const RenseignementMonuments = ({
               onChangeFunction={(input) => updateMapformField('name', input)}
             />
             <Input
+              className="monumentInput"
               type="text"
               id="address"
               name="address"
@@ -119,6 +121,7 @@ const RenseignementMonuments = ({
               onChangeFunction={(input) => updateMapformField('address', input)}
             />
             <TextArea
+              className="monumentTextarea"
               type="text"
               rows="5"
               id="description"

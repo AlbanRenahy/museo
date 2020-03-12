@@ -8,8 +8,8 @@ import {
   connectingError,
   signinErrors,
   clearSigninErrors,
-  redirectToLogin,
-  updateUserformField
+  redirectToRegister,
+  updateUserformField,
 } from 'src/actions/userActions';
 
 const museoApi = 'http://54.91.98.36/projet-museo/public/api';
@@ -69,7 +69,7 @@ const userMiddleware = (store) => (next) => (action) => {
           })
           .then((response) => {
             // console.log(response.data);
-            store.dispatch(redirectToLogin());
+            store.dispatch(redirectToRegister());
           })
           .catch((error) => {
             // console.log(error.message);
