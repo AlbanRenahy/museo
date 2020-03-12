@@ -8,12 +8,21 @@ use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-// use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      normalizationContext={
+ *          "groups"={
+ *              Monument::READ,
+ *              Region::READ
+ *           }
+ *      },
+ *      denormalizationContext={"groups"={Monument::READ}}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\MonumentRepository")
  * @UniqueEntity(fields={"name"}, message="Le monument existe déjà")
  * @ApiFilter(NumericFilter::class, properties={"latitude, longitude"})
@@ -21,6 +30,9 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
  */
 class Monument
 {
+
+    const READ = 'Monument:Read';
+    const WRITE = 'Monument:Write';
 
     public function __toString()
     {
@@ -38,6 +50,7 @@ class Monument
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({Monument::READ})
      */
     private $id;
 
@@ -50,12 +63,14 @@ class Monument
      *      minMessage = "Le nom du monument doit faire au minimum {{ limit }} caractéres",
      *      maxMessage = "Le nom du monument doit faire au maximum {{ limit }} caractéres",
      * )
+     * @Groups({Monument::READ, Monument::WRITE})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Le Monument doit avoir obligatoirement un nom")
+     * @Groups({Monument::READ, Monument::WRITE})
      */
     private $description;
 
@@ -68,6 +83,7 @@ class Monument
      *      minMessage = "L'adresse du monument doit faire au minimum {{ limit }} caractéres",
      *      maxMessage = "L'adresse' du monument doit faire au maximum {{ limit }} caractéres",
      * )
+     * @Groups({Monument::READ, Monument::WRITE})
      */
     private $address;
 
@@ -78,6 +94,7 @@ class Monument
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({Monument::READ, Monument::WRITE})
      */
     private $createdAt;
 
@@ -88,26 +105,31 @@ class Monument
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({Monument::READ, Monument::WRITE})
      */
     private $available;
 
     /**
      * @ORM\Column(type="float", nullable=true)
      * @Assert\Type(type="float")
+     * @Groups({Monument::READ, Monument::WRITE})
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="float", nullable=true)
      * @Assert\Type(type="float")
+     * @Groups({Monument::READ, Monument::WRITE})
      */
     private $longitude;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({Monument::READ, Monument::WRITE})
      */
     private $region;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="monuments")

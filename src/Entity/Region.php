@@ -8,17 +8,26 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
 /**
  * @ApiResource(
  *     collectionOperations={"get"={"method"="GET"}},
  *     itemOperations={"get"={"method"="GET"}},
+ *      normalizationContext={
+ *          "groups"={
+ *              Monument::READ,
+ *              Region::READ
+ *           }
+ *      },
+ *      denormalizationContext={"groups"={Region::READ}}
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RegionRepository")
  * @UniqueEntity(fields={"name"}, message="La region existe déjà")
  */
 class Region
 {
+
+    const READ = 'Region:Read';
+    const WRITE = 'Region:Write';
 
     public function __toString()
     {
@@ -29,21 +38,25 @@ class Region
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({Region::READ})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({Region::READ, Region::WRITE})
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({Region::READ, Region::WRITE})
      */
     private $zipcode;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({Region::READ, Region::WRITE})
      */
     private $createdAt;
 
@@ -54,6 +67,16 @@ class Region
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="region")
+     * @Groups({Region::READ, Region::WRITE})
+     * @ApiProperty(
+     *      attributes={
+     *          "swagger_context"={
+     *              "type"="string",
+     *              "example"="/api/monuments/1"
+     *          }
+     *      }
+     * 
+     * )
      */
     private $monuments;
 
