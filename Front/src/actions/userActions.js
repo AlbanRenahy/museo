@@ -13,8 +13,10 @@ export const OPEN_CONFIRM_DELETE_USER = 'OPEN_CONFIRM_DELETE_USER';
 export const CLOSE_CONFIRM_DELETE_USER = 'CLOSE_CONFIRM_DELETE_USER';
 export const SIGNIN = 'SIGNIN';
 export const SIGNIN_ERRORS = 'SIGNIN_ERRORS';
-export const DISCONNECT_USER = 'DISCONNECT_USER';
 export const REDIRECT_TO_LOGIN = 'REDIRECT_TO_LOGIN';
+export const CLEAR_SIGNIN_ERRORS = 'CLEAR_SIGNIN_ERRORS';
+export const DISCONNECT_USER = 'DISCONNECT_USER';
+
 
 /**
  * Action Creators
@@ -75,6 +77,10 @@ export const connectingError = (message) => ({
 export const signinErrors = (errors) => ({
   type: SIGNIN_ERRORS,
   errors,
+});
+
+export const clearSigninErrors = () => ({
+  type: CLEAR_SIGNIN_ERRORS,
 });
 
 export const redirectToLogin = () => ({

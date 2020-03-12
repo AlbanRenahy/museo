@@ -19,6 +19,7 @@ import './signin.scss';
 /**
  * Code
  */
+
 const Signin = ({
   username,
   email,
@@ -27,8 +28,10 @@ const Signin = ({
   updateUserformField,
   signin,
   signinErrors,
+  signinIsValid,
 }) => (
   <>
+    {signinIsValid && <Redirect to="/register" />}
     <div className={signinErrors.length > 0 ? 'panel-error open' : 'panel-error'}>
       {
         signinErrors.map((error) => (
@@ -97,6 +100,7 @@ Signin.propTypes = {
   signinErrors: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,
+  signinIsValid: PropTypes.bool.isRequired,
 };
 
 /**

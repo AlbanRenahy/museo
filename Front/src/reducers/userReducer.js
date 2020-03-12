@@ -10,6 +10,7 @@ import {
   DISCONNECT_USER,
   CONNECTING_ERROR,
   SIGNIN_ERRORS,
+  CLEAR_SIGNIN_ERRORS,
   REDIRECT_TO_LOGIN,
 
 } from '../actions/userActions';
@@ -32,7 +33,7 @@ const initialState = {
 
   // ************ERRORS*******/
   signinErrors: [],
-  redirectToLogin: false,
+  signinIsValid: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -77,12 +78,17 @@ const userReducer = (state = initialState, action = {}) => {
     case SIGNIN_ERRORS:
       return {
         ...state,
-        signinErrors: action.errors,
+        signinErrors: [...state.signinErrors, action.errors],
+      };
+    case CLEAR_SIGNIN_ERRORS:
+      return {
+        ...state,
+        signinErrors: [],
       };
     case REDIRECT_TO_LOGIN:
       return {
         ...state,
-        redirectToLogin: !state.redirectToLogin,
+        signinIsValid: true,
       };
     case SEND_MESSAGE:
       return state;

@@ -92,8 +92,8 @@ const App = () => (
       exact
       path="/liste"
       render={() => (
-    <Liste />
-  )}
+        <Liste />
+      )}
     />
 
     <Route
