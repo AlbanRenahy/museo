@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -15,7 +14,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
- * @ApiProperty(iri="http://schema.org/Monument")
  * @ApiResource(
  *      normalizationContext={
  *          "groups"={
@@ -129,7 +127,6 @@ class Monument
      * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      * @Groups({Monument::READ, Monument::WRITE})
-     * @ApiProperty(iri="http://schema.org/id")
      */
     private $region;
 
