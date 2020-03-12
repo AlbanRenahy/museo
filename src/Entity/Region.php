@@ -39,25 +39,22 @@ class Region
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({Region::READ})
+     * @Groups({Region::READ, Region::WRITE})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({Region::READ, Region::WRITE})
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({Region::READ, Region::WRITE})
      */
     private $zipcode;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({Region::READ, Region::WRITE})
      */
     private $createdAt;
 
@@ -72,7 +69,7 @@ class Region
      * @ApiProperty(
      *      attributes={
      *          "swagger_context"={
-     *              "type"="string",
+     *              "type"="integer",
      *              "example"="/api/monuments/1"
      *          }
      *      }
