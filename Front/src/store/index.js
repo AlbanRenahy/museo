@@ -1,5 +1,6 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { autoRehydrate } from 'redux-phoenix';
 
 import reducer from 'src/reducers';
 import userMiddleware from 'src/middlewares/userMiddleware';
@@ -15,11 +16,14 @@ const enhancers = composeWithDevTools(
   ),
 );
 
-const store = createStore(
+const initialStore = createStore(
   // reducer
   reducer,
-  // enhancer
-  enhancers,
+  compose(
+    autoRehydrate,
+    // enhancer
+    enhancers,
+  ),
 );
 
-export default store;
+export default initialStore;
