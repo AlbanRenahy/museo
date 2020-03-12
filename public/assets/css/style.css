@@ -28,8 +28,6 @@ body::-webkit-scrollbar-thumb{
     background-color: var(--bg-secondary-color-scrollbar);
 }
 
-/* Sidebar */
-
 .logo{
     font-weight: bold;
     text-transform: uppercase;
@@ -79,6 +77,10 @@ body::-webkit-scrollbar-thumb{
     height: 100%;
 }
 
+.sidebar-item{
+    width: 100%;
+}
+
 .sidebar-link svg{
     min-width: 2rem;
     margin: 0 1.5rem;
@@ -125,8 +127,6 @@ body::-webkit-scrollbar-thumb{
     margin-left: 1.5rem;
 }
 
-/* Class for Main */
-
 .wrapper{
     margin-left: 5rem;
     padding: 1rem;
@@ -147,49 +147,4 @@ body::-webkit-scrollbar-thumb{
 .badge-warning{
   color:var(--bg-white-color);
   background-color: rgb(255, 123, 0);
-}
-
-.disabled{
-    opacity: 0.3 !important;
-}
-
-/* ? Class to bootstrap modify */
-
-.card{
-    -webkit-box-shadow: 0px 0px 59px -28px rgba(102,73,184,1);
-    -moz-box-shadow: 0px 0px 59px -28px rgba(102,73,184,1);
-    box-shadow: 0px 0px 59px -28px rgba(102,73,184,1);
-}
-
-.card.disabled{
-    transition: 200ms ease;
-    filter: blur(0.1em);
-}
-
-/* ! Media Queries */
-
-@media screen and (max-width: 770px) {
-    .sidebar-item{
-        transition: 200ms ease;
-        width: 100%;
-    }
-    
-    .sidebar-item:hover{
-        transition: 200ms ease;
-        width: 100%;
-    }
-}
-
-@media screen and (min-width: 770px) {
-    .sidebar-item{
-        transition: 200ms ease;
-        filter: blur(0.05em);
-        width: 100%;
-    }
-    
-    .sidebar-item:hover{
-        transition: 200ms ease;
-        filter: blur(0);
-        width: 100%;
-    }
 }

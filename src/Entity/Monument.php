@@ -56,7 +56,7 @@ class Monument
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Le Monument doit avoir obligatoirement une adresse")
+     * @Assert\NotBlank(message="Le Monument doit avoir obligatoirement une addresse")
      * @Assert\Length(
      *      min = 2,
      *      max = 250,
@@ -147,25 +147,7 @@ class Monument
         return $this;
     }
 
-    /**
-     * Get min = 2,
-     */ 
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set min = 2,
-     *
-     * @return  self
-     */ 
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
+   
 
 
     public function getCity(): ?string
@@ -327,4 +309,24 @@ class Monument
 
     //     return $this;
     // }
+
+    /**
+     * Get min = 2,
+     */ 
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set min = 2,
+     *
+     * @return  self
+     */ 
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
 }
