@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -27,7 +28,9 @@ class MonumentType extends AbstractType
             ->add('description', TextareaType::class)
             ->add('address', TextType::class)
             // ->add('city', TextType::class)
-            ->add('createdAt', DateTimeType::class)
+            ->add('createdAt', DateType::class, [
+                'format' => 'dd-MM-yyyy',
+            ])
             // ->add('latitude', HiddenType::class)
             // ->add('longitude', HiddenType::class)
             // ->add('updatedAt')
