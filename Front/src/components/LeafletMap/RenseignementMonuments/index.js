@@ -105,7 +105,7 @@ const RenseignementMonuments = ({
               className="monumentInput"
               type="text"
               id="name"
-              name="name"
+              name="nom"
               placeholder="Nom"
               value={name}
               onChangeFunction={(input) => updateMapformField('name', input)}
@@ -114,7 +114,7 @@ const RenseignementMonuments = ({
               className="monumentInput"
               type="text"
               id="address"
-              name="address"
+              name="adresse"
               placeholder="Adresse"
               value={address}
               onBlur={handleBlur}
@@ -135,7 +135,7 @@ const RenseignementMonuments = ({
                 <select
                   id="thematic"
                   className="input select-style"
-                  name="thematic"
+                  name="thematique"
                   onChange={handleSelectChangeThematic}
                   onFocus={(event) => {
                     event.target.classList.add('open');
@@ -153,7 +153,7 @@ const RenseignementMonuments = ({
                 <select
                   id="period"
                   className="input select-style"
-                  name="period"
+                  name="periode"
                   onChange={handleSelectChangePeriod}
                   onFocus={(event) => {
                     event.target.classList.add('open');
@@ -189,7 +189,7 @@ const RenseignementMonuments = ({
                 <select
                   id="target"
                   className="input select-style"
-                  name="target"
+                  name="cible"
                   onChange={handleSelectChangeTarget}
                   onFocus={(event) => {
                     event.target.classList.add('open');
