@@ -13,8 +13,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ApiResource(
  *     collectionOperations={"get"={"method"="GET"}},
  *     itemOperations={"get"={"method"="GET"}},
- *     normalizationContext={"groups"={"region:read"}},
- *     denormalizationContext={"groups"={"region:write"}},
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RegionRepository")
  * @UniqueEntity(fields={"name"}, message="La region existe déjà")
@@ -56,7 +54,6 @@ class Region
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="region")
-     * @Groups("region:read")
      */
     private $monuments;
 

@@ -8,15 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Serializer\Annotation\Groups;
+// use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 /**
- * @ApiResource(
- *      normalizationContext={"groups"={"monument:read"}, "swagger_definition_name"="Read"},
- *      denormalizationContext={"groups"={"monument:write"}, "swagger_definition_name"="Write"},
- * )
+ * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\MonumentRepository")
  * @UniqueEntity(fields={"name"}, message="Le monument existe déjà")
  * @ApiFilter(NumericFilter::class, properties={"latitude, longitude"})
@@ -109,7 +106,6 @@ class Monument
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"monument:read", "monument:write"})
      */
     private $region;
 
