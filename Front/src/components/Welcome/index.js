@@ -1,7 +1,7 @@
 /**
  * Import
  */
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Particles from 'react-particles-js';
 
@@ -18,18 +18,30 @@ import './welcome.scss';
 /**
  * Code
  */
-const Welcome = ({ children }) => (
-  <>
-    <MuseoBackground />
-    <BurgerNav />
-    <Logo />
-    <Particles params={Config} className="particles" />
-    { children }
-  </>
-);
+
+class Welcome extends Component {
+  componentDidMount() {
+    const { updateUserformField } = this.props;
+    updateUserformField('redirectToLogin', false);
+  }
+
+  render() {
+    const { children } = this.props;
+    return (
+      <>
+        <MuseoBackground />
+        <BurgerNav />
+        <Logo />
+        <Particles params={Config} className="particles" />
+        { children }
+      </>
+    );
+  }
+}
 
 Welcome.propTypes = {
   children: PropTypes.object.isRequired,
+  updateUserformField: PropTypes.func.isRequired,
 };
 
 /**
