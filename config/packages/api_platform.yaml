@@ -7,9 +7,26 @@ api_platform:
         versions: [3]
     
     title: 'Museo API'
+
     description: 'API Publique de MUSEO'
+
     version: '0.1'
+    
+    enable_swagger: true
+
+    # Enable Swagger ui.
+    enable_swagger_ui: true
+
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
+
     patch_formats:
         json: ['application/merge-patch+json']
+
+    doctrine:
+        # To enable or disable Doctrine ORM support.
+        enabled: true
+
+    doctrine_mongodb_odm:
+        # To enable or disable Doctrine MongoDB ODM support.
+        enabled: false

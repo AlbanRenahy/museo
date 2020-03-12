@@ -104,13 +104,11 @@ class Monument
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments")
-     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
      */
     private $region;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="monuments")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
 
@@ -121,7 +119,6 @@ class Monument
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Target", inversedBy="monuments")
-     * @ORM\JoinColumn(name="target_id", referencedColumnName="id")
      */
     private $target;
 
