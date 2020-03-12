@@ -26,10 +26,11 @@ const RenseignementMonuments = ({
   closeAllModals,
   findAddress,
   fileText,
+  resetFormMonument,
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
-    console.log('Dataform closed');
+    resetFormMonument();
     closeAllModals();
   };
 
@@ -39,17 +40,24 @@ const RenseignementMonuments = ({
     submitMonument();
   };
 
-  const handleSelectChange = (e) => {
+  const handleSelectChangeThematic = (e) => {
     updateMapformField('thematic', parseInt(e.target.value));
+  };
+  const handleSelectChangePeriod = (e) => {
     updateMapformField('period', parseInt(e.target.value));
+  };
+  const handleSelectChangeRegion = (e) => {
     updateMapformField('region', parseInt(e.target.value));
+  };
+  const handleSelectChangeTarget = (e) => {
     updateMapformField('target', parseInt(e.target.value));
   };
 
   const handleFileChange = (e) => {
     if (e.target.files[0].type !== 'image/png' && e.target.files[0].type !== 'image/jpeg') {
       updateMapformField('fileText', 'Formats acceptés: JPG, PNG');
-    } else {
+    }
+    else {
       updateMapformField('fileText', e.target.files[0].name);
     }
     const readFile = () => {
@@ -78,13 +86,13 @@ const RenseignementMonuments = ({
     >
       <div className="renseignement-monuments_relative">
         <div className="renseignement-monuments_files">
-        <a
-          href="#"
-          className="renseignement-monuments_close"
-          onClick={handleCloseDataForm}
-        >
-          Fermer
-        </a>
+          <a
+            href="#"
+            className="renseignement-monuments_close"
+            onClick={handleCloseDataForm}
+          >
+            Fermer
+          </a>
           <label htmlFor="picture-monument"><img src={AppareilPhoto} alt="Appareil" className="renseignement-monuments_appareil" /></label>
           <input type="file" id="picture-monument" className="inputfile" onChange={handleFileChange} accept="image/*" />
           <List>
@@ -125,15 +133,15 @@ const RenseignementMonuments = ({
                   id="thematic"
                   className="input select-style"
                   name="thematic"
-                  onChange={handleSelectChange}
+                  onChange={handleSelectChangeThematic}
                   onFocus={(event) => {
                     event.target.classList.add('open');
                   }}
                 >
-                   <option value={0} defaultValue>-- Thématique --</option>
-                   {
-                    thematics.map(thematic => (
-                      <option key={thematic.id} value={thematic.id}>{thematic.name}</option>
+                  <option value={0} defaultValue>-- Thématique --</option>
+                  {
+                    thematics.map((thematik) => (
+                      <option key={thematik.id} value={thematik.id}>{thematik.name}</option>
                     ))
                   }
                 </select>
@@ -143,14 +151,14 @@ const RenseignementMonuments = ({
                   id="period"
                   className="input select-style"
                   name="period"
-                  onChange={handleSelectChange}
+                  onChange={handleSelectChangePeriod}
                   onFocus={(event) => {
                     event.target.classList.add('open');
                   }}
                 >
                   <option value={0} defaultValue>-- Période --</option>
-                   {
-                    periods.map(period => (
+                  {
+                    periods.map((period) => (
                       <option key={period.id} value={period.id}>{period.name}</option>
                     ))
                   }
@@ -161,14 +169,14 @@ const RenseignementMonuments = ({
                   id="region"
                   className="input select-style"
                   name="region"
-                  onChange={handleSelectChange}
+                  onChange={handleSelectChangeRegion}
                   onFocus={(event) => {
                     event.target.classList.add('open');
                   }}
                 >
                   <option value={0} defaultValue>-- Régions --</option>
-                   {
-                    regions.map(region => (
+                  {
+                    regions.map((region) => (
                       <option key={region.id} value={region.id}>{region.name}</option>
                     ))
                   }
@@ -179,14 +187,14 @@ const RenseignementMonuments = ({
                   id="target"
                   className="input select-style"
                   name="target"
-                  onChange={handleSelectChange}
+                  onChange={handleSelectChangeTarget}
                   onFocus={(event) => {
                     event.target.classList.add('open');
                   }}
                 >
                   <option value={0} defaultValue>-- Public visé --</option>
-                   {
-                    targets.map(target => (
+                  {
+                    targets.map((target) => (
                       <option key={target.id} value={target.id}>{target.name}</option>
                     ))
                   }
@@ -223,6 +231,7 @@ RenseignementMonuments.propTypes = {
   submitMonument: PropTypes.func.isRequired,
   findAddress: PropTypes.func.isRequired,
   fileText: PropTypes.string.isRequired,
+  resetFormMonument: PropTypes.func.isRequired,
 };
 
 export default RenseignementMonuments;

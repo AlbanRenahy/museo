@@ -5,6 +5,7 @@ export const UPDATE_MAPFORM_FIELD = 'UPDATE_MAPFORM_FIELD';
 export const OPEN_DATA_FORM = 'OPEN_DATA_FORM';
 export const OPEN_DISPLAY_MONUMENT = 'OPEN_DISPLAY_MONUMENT';
 export const OPEN_DATA_FORM_RESPONSE = 'OPEN_DATA_FORM_RESPONSE';
+export const OPEN_DATA_FORM_BUTTON = 'OPEN_DATA_FORM_BUTTON';
 export const SUBMIT_MONUMENT = 'SUBMIT_MONUMENT';
 export const CLOSE_ALL_MODALS = 'CLOSE_ALL_MODALS';
 export const AUTO_COMPLETE = 'AUTO_COMPLETE';
@@ -22,6 +23,8 @@ export const SET_PERIODS = 'SET_PERIODS';
 export const GET_PERIODS = 'GET_PERIODS';
 export const SET_TARGETS = 'SET_TARGETS';
 export const GET_TARGETS = 'GET_TARGETS';
+export const CREATE_MARKER = 'CREATE_MARKER';
+export const RESET_FORM_MONUMENT = 'RESET_FORM_MONUMENT';
 /**
  * Action Creators
  */
@@ -41,6 +44,9 @@ export const openDisplayMonument = () => ({
 export const openDataFormResponse = (data) => ({
   type: OPEN_DATA_FORM_RESPONSE,
   data,
+});
+export const openDataFormButton = () => ({
+  type: OPEN_DATA_FORM_BUTTON,
 });
 export const submitMonument = () => ({
   type: SUBMIT_MONUMENT,
@@ -74,31 +80,40 @@ export const findAddressSearch = () => ({
 export const toggleMenu = () => ({
   type: TOGGLE_MENU,
 });
-export const setThematics = (Thematics) => ({
+export const setThematics = (thematics) => ({
   type: SET_THEMATICS,
-  Thematics,
+  thematics,
 });
 export const getThematics = () => ({
   type: GET_THEMATICS,
 });
-export const setRegions = (Regions) => ({
+export const setRegions = (regions) => ({
   type: SET_REGIONS,
-  Regions,
+  regions,
 });
 export const getRegions = () => ({
   type: GET_REGIONS,
 });
-export const setPeriods = (Periods) => ({
+export const setPeriods = (periods) => ({
   type: SET_PERIODS,
-  Periods,
+  periods,
 });
 export const getPeriods = () => ({
   type: GET_PERIODS,
 });
-export const setTargets = (Targets) => ({
+export const setTargets = (targets) => ({
   type: SET_TARGETS,
-  Targets,
+  targets,
 });
 export const getTargets = () => ({
   type: GET_TARGETS,
+});
+export const createMarker = (latitude, longitude, datas) => ({
+  type: CREATE_MARKER,
+  latitude,
+  longitude,
+  datas,
+});
+export const resetFormMonument = () => ({
+  type: RESET_FORM_MONUMENT,
 });

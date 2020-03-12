@@ -4,11 +4,18 @@ import {
   SUBMIT_MONUMENT,
   CLOSE_ALL_MODALS,
   OPEN_DATA_FORM_RESPONSE,
+  OPEN_DATA_FORM_BUTTON,
   OPEN_DISPLAY_MONUMENT,
   AUTO_COMPLETE_RESULTS,
   OPEN_AUTO_COMPLETE,
   CENTER_BY_ADDRESS,
   TOGGLE_MENU,
+  SET_THEMATICS,
+  SET_REGIONS,
+  SET_PERIODS,
+  SET_TARGETS,
+  CREATE_MARKER,
+  RESET_FORM_MONUMENT,
 } from '../actions/mapActions';
 
 const initialState = {
@@ -20,10 +27,10 @@ const initialState = {
   name: '', // nom d'un monument dans le form
   address: '', // adresse d'un monument dans le form
   description: '', // description d'un monument dans le form
-  thematic: 0,
-  region: 0,
-  target: 0,
-  period: 0,
+  thematic: '',
+  region: '',
+  target: '',
+  period: '',
 
   // *********MANAGEMENT OF THE GEOLOCALIZATION*********/
   center: [46.7248003746672, 2.9003906250000004], // Center of the map
@@ -37,8 +44,9 @@ const initialState = {
   clickedLng: '', // gère la longitude
   fileInput: '', // Fichier converti prêt à être envoyé
   fileText: '', // Nom du fichier
-  
+
   // Datas component did mount
+  monuments: [],
   thematics: [],
   periods: [],
   regions: [],
@@ -70,6 +78,18 @@ const mapReducer = (state = initialState, action = {}) => {
         isAutocompleteOpen: false,
         // Les futurs modals à fermer
       };
+    case CREATE_MARKER:
+      return {
+        ...state,
+        monuments: [
+          ...state.monuments,
+          {
+            id: action.datas.id,
+            latitude: action.latitude,
+            longitude: action.longitude,
+          },
+        ],
+      };
     case OPEN_DISPLAY_MONUMENT:
       return {
         ...state,
@@ -82,6 +102,12 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         address: display_name,
       };
+    case OPEN_DATA_FORM_BUTTON:
+      return {
+        ...state,
+        isDataFormOpen: true,
+        addressInput: '',
+      };
     case AUTO_COMPLETE_RESULTS:
       return {
         ...state,
@@ -92,12 +118,47 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         isAutocompleteOpen: true,
       };
-
+    case RESET_FORM_MONUMENT:
+      return {
+        ...state,
+        clickedLat: 0,
+        clickedLng: 0,
+        fileInput: '',
+        fileText: '',
+        name: '',
+        address: '',
+        description: '',
+        region: '',
+        period: '',
+        thematic: '',
+        target: '',
+        loading: false,
+      };
     case CENTER_BY_ADDRESS:
       return {
         ...state,
         center: action.position,
         zoom: 14,
+      };
+    case SET_THEMATICS:
+      return {
+        ...state,
+        thematics: action.thematics,
+      };
+    case SET_REGIONS:
+      return {
+        ...state,
+        regions: action.regions,
+      };
+    case SET_PERIODS:
+      return {
+        ...state,
+        periods: action.periods,
+      };
+    case SET_TARGETS:
+      return {
+        ...state,
+        targets: action.targets,
       };
     case TOGGLE_MENU:
       return {
