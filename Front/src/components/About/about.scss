@@ -6,6 +6,7 @@
   width: 60%;
   margin: 2rem auto;
   text-align: center;
+  font-variant:small-caps;
 
   @media screen and (max-width: 425px)
       {
@@ -20,6 +21,7 @@
     font-variant: small-caps;
     font-size: 1.5rem;
     font-weight: bold;
+    font-variant:small-caps;
   }
 
   .about-text {
@@ -47,6 +49,28 @@
     cursor: pointer;
     }
   }
+  .title-history{
+    margin-bottom:13px;
+    color:black;
+  }
+
+  .title-staff{
+    margin-bottom:20px;
+    color:black;
+  }
+
+  .image{
+      width:50px;
+      height:30px;
+  }
+
+   .staff-label {
+      background:none;
+
+      &:hover {
+       
+      }
+     
+  
+   }
 }
-
-

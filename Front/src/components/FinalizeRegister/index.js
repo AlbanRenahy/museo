@@ -9,8 +9,8 @@ const FinalizeRegister = () => (
   <Grid className="finalizeRegister" container columns={1}>
     <Grid.Column textAlign="center">
       <Message floating className="finalMessage" color="purple" size="big">
-        <Message.Header>Il ne vous reste qu'une étape :</Message.Header>
-        <p>Cliquez sur le lien que nous vous avons envoyé par Email</p>
+        <Message.Header>Il ne vous reste qu'une étape :</Message.Header><br />
+        <p>Cliquez sur le lien reçu par Email</p><br />
         <Link to="/">Retour à la page d'accueil</Link>
       </Message>
     </Grid.Column>
