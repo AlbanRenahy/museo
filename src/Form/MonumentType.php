@@ -44,7 +44,7 @@ class MonumentType extends AbstractType
                 'label' => 'Mise à jour le',
                 'format' => 'dd-MM-yyyy'
             ])
-            ->add('available', TypeIntegerType::class)
+            // ->add('available', TypeIntegerType::class)
             ->add('region', EntityType::class, [
                 'class' => Region::class,
                 'query_builder' => function (EntityRepository $er) {
