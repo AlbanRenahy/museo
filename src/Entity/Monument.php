@@ -2,17 +2,20 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 
 /**
  * @ApiResource
  * @ORM\Entity(repositoryClass="App\Repository\MonumentRepository")
  * @UniqueEntity(fields={"name"}, message="Le monument existe déjà")
+ * @ApiFilter(NumericFilter::class, properties={"latitude, longitude"})
  */
 class Monument
 {
