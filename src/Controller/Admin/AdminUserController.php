@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\User;
+use App\Form\AdminUserFormType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,24 +28,24 @@ class AdminUserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit")
      */
-    public function edit(Request $req)
+    public function edit(User $user, Request $req)
     {
-        // $form = $this->createForm(RegionType::class, $region);
-        // $form->handleRequest($req);
+        $form = $this->createForm(AdminUserFormType::class, $user);
+        $form->handleRequest($req);
 
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $entityManager = $this->getDoctrine()->getManager();
-        //     $entityManager->persist($region);
-        //     $entityManager->flush();
-        //     $this->addFlash('success', 'Vous avez modifiez la région');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            $this->addFlash('success', 'Vous avez modifiez l\'utilisateur');
 
-        //     return $this->redirectToRoute('dashboard.region.index', ['id' => $region->getId()]);
-        // }
+            return $this->redirectToRoute('dashboard.user.index', ['id' => $user->getId()]);
+        }
 
 
-        // return $this->render('dashboard/region/edit.html.twig', [
-        //     'form' => $form->createView(),
-        // ]);
+        return $this->render('dashboard/user/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -51,23 +53,23 @@ class AdminUserController extends AbstractController
      */
     public function add(Request $req): Response
     {
-        // $region = new Region();
+        $user = new User();
 
-        // $form = $this->createForm(RegionType::class, $region);
-        // $form->handleRequest($req);
+        $form = $this->createForm(AdminUserFormType::class, $user);
+        $form->handleRequest($req);
 
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $entityManager = $this->getDoctrine()->getManager();
-        //     $entityManager->persist($region);
-        //     $entityManager->flush();
-        //     $this->addFlash('success', 'Région bien ajouté');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            $this->addFlash('success', 'Utilisateur bien ajouté');
 
-        //     return $this->redirectToRoute('dashboard.region.index', ['id' => $region->getId()]);
-        // }
+            return $this->redirectToRoute('dashboard.user.index', ['id' => $user->getId()]);
+        }
 
-        // return $this->render('dashboard/region/new.html.twig', [
-        //     'form' => $form->createView(),
-        // ]);
+        return $this->render('dashboard/user/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
 
     }
 
@@ -76,11 +78,11 @@ class AdminUserController extends AbstractController
      */
     public function delete($id): Response
     {
-        // $em = $this->getDoctrine()->getManager();
-        // $obj = $em->getRepository(Region::class)->find($id);
-        // $em->remove($obj);
-        // $em->flush();
-        // $this->addFlash('danger', 'Vous avez bien supprimer la région');
-        // return $this->redirectToRoute('dashboard.region.index');
+        $em = $this->getDoctrine()->getManager();
+        $obj = $em->getRepository(User::class)->find($id);
+        $em->remove($obj);
+        $em->flush();
+        $this->addFlash('danger', 'Vous avez bien supprimer l\'utilisateur');
+        return $this->redirectToRoute('dashboard.user.index');
     }
 }
