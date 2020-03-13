@@ -20,6 +20,7 @@ import {
 } from 'src/actions/mapActions';
 
 const mapStateToProps = (state) => ({
+  monuments: state.map.monuments,
   isDataFormOpen: state.map.isDataFormOpen,
   center: state.map.center,
   zoom: state.map.zoom,
@@ -53,8 +54,8 @@ const mapDispatchToProps = (dispatch) => ({
   getTargets: () => {
     dispatch(getTargets());
   },
-  getMonuments: (bounds) => {
-    dispatch(getMonuments(bounds));
+  getMonuments: () => {
+    dispatch(getMonuments());
   },
 });
 

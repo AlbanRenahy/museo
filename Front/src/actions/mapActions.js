@@ -122,6 +122,7 @@ export const resetFormMonument = () => ({
 export const getMonuments = () => ({
   type: GET_MONUMENTS,
 });
-export const setMonuments = () => ({
+export const setMonuments = (monuments) => ({
   type: SET_MONUMENTS,
+  monuments,
 });

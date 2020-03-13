@@ -32,7 +32,7 @@ const mapMiddleware = (store) => (next) => (action) => {
         // region: store.getState().map.region ? store.getState().map.region : null,
         // period: store.getState().map.period ? store.getState().map.period : null,
         // target: store.getState().map.target ? store.getState().map.target : null,
-        // category: 'Château',
+        // category: '',
         // region: 'Monaco',
         // periode: 'Renaissance',
         // target: 'Tout public',
@@ -91,10 +91,10 @@ const mapMiddleware = (store) => (next) => (action) => {
       break;
     case GET_MONUMENTS:
       next(action);
-      axios.post(`${museoApi}/monuments`, { bounds: action.bounds })
+      axios.get(`${museoApi}/monuments`)
         .then((response) => {
-          console.log(response);
-          store.dispatch(setMonuments(response.data));
+          console.log(response.data['hydra:member']);
+          store.dispatch(setMonuments(response.data['hydra:member']));
         })
         .catch((error) => {
           console.log(error.message);

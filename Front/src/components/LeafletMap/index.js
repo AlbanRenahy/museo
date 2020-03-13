@@ -39,8 +39,13 @@ class Leaflet extends React.Component {
   map = React.createRef();
 
   componentDidMount() {
-    const { getThematics, getMonuments, getRegions, getPeriods, getTargets } = this.props;
-    // console.log(this.map.leafletElement.getBounds());
+    const {
+      getThematics,
+      getMonuments,
+      getRegions,
+      getPeriods,
+      getTargets,
+    } = this.props;
     getThematics();
     getRegions();
     getPeriods();
@@ -67,8 +72,13 @@ class Leaflet extends React.Component {
   render() {
     const { closeAllModals } = this.props;
     const {
-      coords, isGeolocationEnabled,
-      center, zoom, userLocalized, updateMapformField,
+      coords,
+      isGeolocationEnabled,
+      center,
+      zoom,
+      userLocalized,
+      updateMapformField,
+      monuments,
     } = this.props;
     const defaultCenter = coords ? [coords.latitude, coords.longitude] : [46.7248003746672, 2.9003906250000004];
     // console.log(this.props);
@@ -116,10 +126,18 @@ class Leaflet extends React.Component {
             icon={this.myPinOrange}
             onClick={this.handleClickMarker}
           />
-          <Marker
-            position={[44.8242212653786, -0.608367919921875]}
-            icon={this.myPinOrange}
-          />
+          {
+            monuments.map((monument) => (
+              <Marker
+                position={[monument.latitude, monument.longitude]}
+                key={monument.id}
+                id={monument.id}
+                icon={this.myPinOrange}
+              />
+            ))
+          }
+
+
           {coords !== null && (
             <>
               <Circle
@@ -143,6 +161,7 @@ class Leaflet extends React.Component {
 }
 
 Leaflet.propTypes = {
+  monuments: PropTypes.arrayOf(PropTypes.object).isRequired,
   getMonuments: PropTypes.func.isRequired,
   openDataForm: PropTypes.func.isRequired,
   closeAllModals: PropTypes.func.isRequired,

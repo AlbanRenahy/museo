@@ -53,7 +53,7 @@ const initialState = {
   regions: [],
   targets: [],
 
-  // ************FIELDS OF THE CARD DATA*******
+  // ************FIELDS OF THE SELECTED CARD DATA*******
   addressCard: '',
   nameCard: '',
   descriptionCard: '',
@@ -68,9 +68,9 @@ const initialState = {
   latitude: 0,
   longitude: 0,
   periodCard: '',
-  thematicsCard: '',
-  regionsCard: '',
-  targetsCard: '',
+  thematicCard: '',
+  regionCard: '',
+  targetCard: '',
   user: { usernameCard: '' },
 
 
