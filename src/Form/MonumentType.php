@@ -28,7 +28,9 @@ class MonumentType extends AbstractType
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
             ->add('address', TextType::class)
-            // ->add('city', TextType::class)
+            ->add('image', TextType::class, [
+                'disabled' => true,
+            ])
             ->add('createdAt', DateType::class, [
                 'disabled' => true,
                 'format' => 'dd-MM-yyyy',
