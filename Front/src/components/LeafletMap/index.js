@@ -12,10 +12,8 @@ import './leafletmap.scss';
 
 
 // pour utiliser des punaises
-import pins from '../../styles/images/pins.png';
-import pinsOrange from '../../styles/images/pinorange.png';
-import pinsPurple from '../../styles/images/pinpurple.png';
-import pinsPink from '../../styles/images/pinpink.png';
+import pins from '../../styles/images/Pins_brown.png';
+import pinsOrange from '../../styles/images/Pins_orange.png';
 // Création de la map avec React Leaflet
 
 class Leaflet extends React.Component {
@@ -28,25 +26,13 @@ class Leaflet extends React.Component {
 
   myPin = L.icon({
     iconUrl: `${pins}`,
-    iconSize: [40, 40], // size of the icon
+    iconSize: [40, 80], // size of the icon
     // shadowSize:   [50, 64], // size of the shadow
   });
 
   myPinOrange = L.icon({
     iconUrl: `${pinsOrange}`,
-    iconSize: [40, 40], // size of the icon
-    // shadowSize:   [50, 64], // size of the shadow
-  });
-
-  myPinPurple = L.icon({
-    iconUrl: `${pinsPurple}`,
-    iconSize: [40, 40], // size of the icon
-    // shadowSize:   [50, 64], // size of the shadow
-  });
-
-  myPinPink = L.icon({
-    iconUrl: `${pinsPink}`,
-    iconSize: [40, 40], // size of the icon
+    iconSize: [40, 80], // size of the icon
     // shadowSize:   [50, 64], // size of the shadow
   });
 
@@ -123,12 +109,12 @@ class Leaflet extends React.Component {
           />
           <Marker
             position={[48.59068837960679, -1.674041748046875]}
-            icon={this.myPinPurple}
+            icon={this.myPinOrange}
             onClick={this.handleClickMarker}
           />
           <Marker
             position={[44.8242212653786, -0.608367919921875]}
-            icon={this.myPinPink}
+            icon={this.myPinOrange}
           />
           {coords !== null && (
             <>
