@@ -16,6 +16,7 @@ import {
   getRegions,
   getPeriods,
   getTargets,
+  getMonuments,
 } from 'src/actions/mapActions';
 
 const mapStateToProps = (state) => ({
@@ -52,7 +53,9 @@ const mapDispatchToProps = (dispatch) => ({
   getTargets: () => {
     dispatch(getTargets());
   },
-
+  getMonuments: (bounds) => {
+    dispatch(getMonuments(bounds));
+  },
 });
 
 export default connect(

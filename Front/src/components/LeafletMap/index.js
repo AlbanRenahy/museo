@@ -36,13 +36,16 @@ class Leaflet extends React.Component {
     // shadowSize:   [50, 64], // size of the shadow
   });
 
-  componentDidMount() {
-    const { getThematics, getRegions, getPeriods, getTargets } = this.props;
+  map = React.createRef();
 
+  componentDidMount() {
+    const { getThematics, getMonuments, getRegions, getPeriods, getTargets } = this.props;
+    // console.log(this.map.leafletElement.getBounds());
     getThematics();
     getRegions();
     getPeriods();
     getTargets();
+    getMonuments();
   }
 
   handleRightClick = (e) => {
@@ -81,6 +84,7 @@ class Leaflet extends React.Component {
         <DisplayMonument />
         <RenseignementMonuments />
         <LeafletMap
+          ref={this.map}
           center={center}
           zoom={zoom}
           maxZoom={19}
@@ -139,6 +143,7 @@ class Leaflet extends React.Component {
 }
 
 Leaflet.propTypes = {
+  getMonuments: PropTypes.func.isRequired,
   openDataForm: PropTypes.func.isRequired,
   closeAllModals: PropTypes.func.isRequired,
   updateMapformField: PropTypes.func.isRequired,

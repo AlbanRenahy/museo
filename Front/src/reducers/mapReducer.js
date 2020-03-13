@@ -16,6 +16,7 @@ import {
   SET_TARGETS,
   CREATE_MARKER,
   RESET_FORM_MONUMENT,
+  SET_MONUMENTS,
 } from '../actions/mapActions';
 
 const initialState = {
@@ -51,6 +52,26 @@ const initialState = {
   periods: [],
   regions: [],
   targets: [],
+
+  // ************FIELDS OF THE CARD DATA*******
+  addressCard: '',
+  nameCard: '',
+  descriptionCard: '',
+  id: 0,
+  available: true,
+  images: [
+    {
+      id: 0,
+      path: '',
+    },
+  ],
+  latitude: 0,
+  longitude: 0,
+  periodCard: '',
+  thematicsCard: '',
+  regionsCard: '',
+  targetsCard: '',
+  user: { usernameCard: '' },
 
 
   // Autocomplete results
@@ -89,6 +110,11 @@ const mapReducer = (state = initialState, action = {}) => {
             longitude: action.longitude,
           },
         ],
+      };
+    case SET_MONUMENTS:
+      return {
+        ...state,
+        monuments: action.monuments,
       };
     case OPEN_DISPLAY_MONUMENT:
       return {

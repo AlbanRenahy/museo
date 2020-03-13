@@ -25,6 +25,8 @@ export const SET_TARGETS = 'SET_TARGETS';
 export const GET_TARGETS = 'GET_TARGETS';
 export const CREATE_MARKER = 'CREATE_MARKER';
 export const RESET_FORM_MONUMENT = 'RESET_FORM_MONUMENT';
+export const GET_MONUMENTS = 'GET_MONUMENTS';
+export const SET_MONUMENTS = 'SET_MONUMENTS';
 /**
  * Action Creators
  */
@@ -116,4 +118,10 @@ export const createMarker = (latitude, longitude, datas) => ({
 });
 export const resetFormMonument = () => ({
   type: RESET_FORM_MONUMENT,
+});
+export const getMonuments = () => ({
+  type: GET_MONUMENTS,
+});
+export const setMonuments = () => ({
+  type: SET_MONUMENTS,
 });
