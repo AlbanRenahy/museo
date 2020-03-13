@@ -90,11 +90,6 @@ class Monument
     private $address;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $city;
-
-    /**
      * @ORM\Column(type="datetime")
      * @Groups({Monument::READ, Monument::WRITE})
      */
@@ -174,21 +169,6 @@ class Monument
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-   
-
-
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    public function setCity(string $city): self
-    {
-        $this->city = $city;
 
         return $this;
     }
