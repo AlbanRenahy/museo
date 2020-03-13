@@ -55,25 +55,26 @@ const initialState = {
   targets: [],
 
   // ************FIELDS OF THE SELECTED CARD DATA*******
-  addressCard: '',
-  nameCard: '',
-  descriptionCard: '',
-  idCard: 0,
-  available: true,
-  images: [
-    {
-      id: 0,
-      path: '',
-    },
-  ],
-  latitudeCard: 0,
-  longitudeCard: 0,
-  periodCard: '',
-  thematicCard: '',
-  regionCard: '',
-  targetCard: '',
-  user: { usernameCard: '' },
-
+  monumentDisplayed: {
+    id: 0,
+    name: '',
+    address: '',
+    description: '',
+    available: true,
+    images: [
+      {
+        id: 0,
+        path: '',
+      },
+    ],
+    latitude: 0,
+    longitude: 0,
+    period: '',
+    thematic: '',
+    region: '',
+    target: '',
+    creatorUsername: '',
+  },
 
   // Autocomplete results
   autoCompleteResults: [],
@@ -130,7 +131,6 @@ const mapReducer = (state = initialState, action = {}) => {
     case OPEN_DATA_FORM_BUTTON:
       return {
         ...state,
-  
         isDataFormOpen: true,
         addressInput: '',
       };
@@ -194,7 +194,13 @@ const mapReducer = (state = initialState, action = {}) => {
     case SET_MONUMENT_DATAS:
       return {
         ...state,
-        nameCard: action.currentName,
+        monumentDisplayed:
+          {
+            id: action.current.idCard,
+            name: action.current.nameCard,
+            address: action.current.addressCard,
+            description: action.current.descriptionCard,
+          },
       };
     case SUBMIT_MONUMENT:
       return state;

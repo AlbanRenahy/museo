@@ -127,8 +127,7 @@ export const setMonuments = (monuments) => ({
   type: SET_MONUMENTS,
   monuments,
 });
-export const setMonumentDatas = (currentName) => ({
+export const setMonumentDatas = (current) => ({
   type: SET_MONUMENT_DATAS,
-  currentName,
-
+  current,
 });

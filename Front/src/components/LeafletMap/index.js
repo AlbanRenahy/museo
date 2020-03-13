@@ -68,21 +68,24 @@ class Leaflet extends React.Component {
 
   handleClickMarker = (e) => {
     const {
-      updateMapformField,
+      // updateMapformField,
       openDisplayMonument,
       closeAllModals,
       setMonumentDatas,
       monuments,
     } = this.props;
     // console.log(e.target.options.id);
-    const current = monuments.find((monument) => monument.id === e.target.options.id);
-    console.log(current.id);
-    console.log(current.name);
-    console.log(current.description);
-    const currentCardName = current.name;
+    const currentCard = monuments.find((monument) => monument.id === e.target.options.id);
+    const current = {
+      idCard: currentCard.id,
+      nameCard: currentCard.name,
+      addressCard: currentCard.address,
+      descriptionCard: currentCard.description,
+    };
+    console.log(current);
     closeAllModals();
-    updateMapformField('nameCard', currentCardName);
-    setMonumentDatas(current.name);
+    // updateMapformField('nameCard', current.name);
+    setMonumentDatas(current);
     openDisplayMonument();
   }
 

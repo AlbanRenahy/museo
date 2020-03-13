@@ -27,6 +27,7 @@ const mapStateToProps = (state) => ({
   zoom: state.map.zoom,
   userLocalized: state.map.userLocalized,
   isConnected: state.user.isConnected,
+  currentCard: state.map.currentCard,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -59,8 +60,8 @@ const mapDispatchToProps = (dispatch) => ({
   getMonuments: () => {
     dispatch(getMonuments());
   },
-  setMonumentDatas: () => {
-    dispatch(setMonumentDatas());
+  setMonumentDatas: (current) => {
+    dispatch(setMonumentDatas(current));
   },
 });
 
