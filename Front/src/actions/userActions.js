@@ -86,4 +86,3 @@ export const clearSigninErrors = () => ({
 export const redirectToRegister = () => ({
   type: REDIRECT_TO_REGISTER,
 });
-

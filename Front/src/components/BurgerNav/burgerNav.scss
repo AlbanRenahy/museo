@@ -40,11 +40,16 @@
         font-weight: bold;
         font-variant-caps: small-caps;
 
-        @media screen and (max-width: 425px)
-      {      
-        font-size: 0.5rem !important;
-        width: 4rem
-      }
+          @media screen and (max-width: 425px)
+        {      
+          font-size: 0.5rem !important;
+          width: 4rem
+        }
+
+        &-link:hover {
+          color: #B83B5E;
+          cursor: pointer;
+        }
       }
     }
 }

@@ -64,6 +64,7 @@ const userReducer = (state = initialState, action = {}) => {
     case DISCONNECT_USER:
       return {
         ...initialState,
+        isConnected: false,
         loginMessage: 'Vous avez bien été déconnecté(e)',
       };
     case CONNECTING_ERROR:
