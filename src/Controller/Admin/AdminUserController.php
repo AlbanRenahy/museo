@@ -3,12 +3,16 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
-use App\Form\AdminUserFormType;
+use App\Form\AdminUserType;
+use App\Form\AdminAddUserType;
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+// use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface
 
 /**
  * @Route("/admin/user", name="dashboard.user.")
@@ -30,11 +34,12 @@ class AdminUserController extends AbstractController
     }
 
     /**
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
      * @Route("/edit/{id}", name="edit")
      */
     public function edit(User $user, Request $req)
     {
-        $form = $this->createForm(AdminUserFormType::class, $user);
+        $form = $this->createForm(AdminUserType::class, $user);
         $form->handleRequest($req);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -55,14 +60,20 @@ class AdminUserController extends AbstractController
     /**
      * @Route("/add", name="add")
      */
-    public function add(Request $req): Response
+    public function add(Request $req, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
 
-        $form = $this->createForm(AdminUserFormType::class, $user);
+        $form = $this->createForm(AdminAddUserType::class, $user);
         $form->handleRequest($req);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('password')->getData()
+                )
+            );
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();

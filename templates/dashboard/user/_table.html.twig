@@ -22,18 +22,18 @@
             {% if user.firstname == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
             {% else %}
-                <td><span class="badge badge-info">{{ user.firstname }}</span></td>
+                <td><span class="badge badge-light">{{ user.firstname }}</span></td>
             {% endif %}
             {% if user.lastname == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
             {% else %}
-                <td><span class="badge badge-info">{{ user.lastname }}</span></td>
+                <td><span class="badge badge-light">{{ user.lastname }}</span></td>
             {% endif %}
             <td>{{ user.createdAt|date("d/m/Y") }}</td>
             {% if user.isActive == 1 %}
                 <td><span class="badge badge-primary">ACTIF</span></td>
             {% else %}
-                <td><span class="badge badge-primary">NON ACTIF</span></td>
+                <td><span class="badge badge-danger">NON ACTIF</span></td>
             {% endif %}
             <td>
                 <a href="{{ path('dashboard.user.edit', {id: user.id}) }}" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
