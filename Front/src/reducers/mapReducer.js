@@ -17,6 +17,7 @@ import {
   CREATE_MARKER,
   RESET_FORM_MONUMENT,
   SET_MONUMENTS,
+  SET_MONUMENT_DATAS,
 } from '../actions/mapActions';
 
 const initialState = {
@@ -54,6 +55,7 @@ const initialState = {
   targets: [],
 
   // ************FIELDS OF THE SELECTED CARD DATA*******
+  currentMonumentDatas: [],
   addressCard: '',
   nameCard: '',
   descriptionCard: '',
@@ -188,6 +190,11 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isMenuOpen: !state.isMenuOpen,
+      };
+    case SET_MONUMENT_DATAS:
+      return {
+        ...state,
+        currentMonumentDatas: action.current,
       };
     case SUBMIT_MONUMENT:
       return state;

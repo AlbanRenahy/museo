@@ -54,17 +54,30 @@ class Leaflet extends React.Component {
   }
 
   handleRightClick = (e) => {
-    const { updateMapformField, openDataForm, closeAllModals } = this.props;
+    const {
+      updateMapformField,
+      openDataForm,
+      closeAllModals,
+      isConnected
+    } = this.props;
     updateMapformField('clickedLat', e.latlng.lat);
     updateMapformField('clickedLng', e.latlng.lng);
     closeAllModals();
-    openDataForm(e.latlng);
+    isConnected && openDataForm(e.latlng, true);
   };
 
-  handleClickMarker = () => {
-    const { openDisplayMonument, closeAllModals } = this.props;
-    // console.log('marker clicked');
+  handleClickMarker = (e) => {
+    const {
+      openDisplayMonument,
+      closeAllModals,
+      setMonumentDatas,
+      monuments,
+    } = this.props;
+    // console.log(e.target.options.id);
+    const current = monuments.find((monument) => monument.id === e.target.options.id);
+    console.log(current);
     closeAllModals();
+    setMonumentDatas(current);
     openDisplayMonument();
   }
 
@@ -80,8 +93,6 @@ class Leaflet extends React.Component {
       updateMapformField,
       monuments,
     } = this.props;
-    const defaultCenter = coords ? [coords.latitude, coords.longitude] : [46.7248003746672, 2.9003906250000004];
-    // console.log(this.props);
     if (isGeolocationEnabled && coords && !userLocalized) {
       // eslint-disable-next-line no-unused-expressions
       updateMapformField('center', [coords.latitude, coords.longitude]);
@@ -116,7 +127,7 @@ class Leaflet extends React.Component {
             maxZoom={19}
             minZoom={3}
           />
-          <Marker
+          {/* <Marker
             position={[48.864716, 2.349014]}
             icon={this.myPin}
             onClick={this.handleClickMarker}
@@ -124,8 +135,8 @@ class Leaflet extends React.Component {
           <Marker
             position={[48.59068837960679, -1.674041748046875]}
             icon={this.myPinOrange}
-            onClick={this.handleClickMarker}
-          />
+            onClick={this.handleClickMarker} */}
+          {/* /> */}
           {
             monuments.map((monument) => (
               <Marker
@@ -133,10 +144,10 @@ class Leaflet extends React.Component {
                 key={monument.id}
                 id={monument.id}
                 icon={this.myPinOrange}
+                onClick={this.handleClickMarker}
               />
             ))
           }
-
 
           {coords !== null && (
             <>
@@ -173,6 +184,10 @@ Leaflet.propTypes = {
   getRegions: PropTypes.func.isRequired,
   getPeriods: PropTypes.func.isRequired,
   getTargets: PropTypes.func.isRequired,
+  center: PropTypes.arrayOf(PropTypes.number).isRequired,
+  zoom: PropTypes.number.isRequired,
+  userLocalized: PropTypes.bool.isRequired,
+  setMonumentDatas: PropTypes.func.isRequired,
 };
 
 Leaflet.defaultProps = {

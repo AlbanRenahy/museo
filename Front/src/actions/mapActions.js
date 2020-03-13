@@ -27,6 +27,7 @@ export const CREATE_MARKER = 'CREATE_MARKER';
 export const RESET_FORM_MONUMENT = 'RESET_FORM_MONUMENT';
 export const GET_MONUMENTS = 'GET_MONUMENTS';
 export const SET_MONUMENTS = 'SET_MONUMENTS';
+export const SET_MONUMENT_DATAS = 'SET_MONUMENT_DATA';
 /**
  * Action Creators
  */
@@ -125,4 +126,8 @@ export const getMonuments = () => ({
 export const setMonuments = (monuments) => ({
   type: SET_MONUMENTS,
   monuments,
+});
+export const setMonumentDatas = (current) => ({
+  type: SET_MONUMENT_DATAS,
+  current,
 });

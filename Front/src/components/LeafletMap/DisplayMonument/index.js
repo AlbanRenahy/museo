@@ -8,7 +8,12 @@ import { Icon } from 'semantic-ui-react';
 import './DisplayMonument.scss';
 import mainPicture from '../../../styles/images/louvre.jpg';
 
-const DisplayMonument = ({ isDisplayMonumentOpen, closeAllModals }) => {
+const DisplayMonument = ({
+  isDisplayMonumentOpen,
+  closeAllModals,
+  monuments,
+  id,
+}) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
     console.log('Dataform closed');
