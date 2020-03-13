@@ -26,6 +26,10 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Regex(
+     *      pattern="/^[a-z0-9_-]{3,15}$/",
+     *      message="Votre pseudo {{ value }} n'est pas correct"
+     * )
      */
     private $username;
 
