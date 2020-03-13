@@ -145,9 +145,13 @@ class Monument
     private $target;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var MediaObject|null
+     *
+     * @ORM\ManyToOne(targetEntity=MediaObject::class)
+     * @ORM\JoinColumn(nullable=true)
+     * @ApiProperty(iri="http://schema.org/image")
      */
-    private $image;
+    public $image;
 
     public function getId(): ?int
     {
