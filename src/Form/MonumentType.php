@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class MonumentType extends AbstractType
 {
@@ -28,9 +29,6 @@ class MonumentType extends AbstractType
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
             ->add('address', TextType::class)
-            ->add('image', TextType::class, [
-                'disabled' => true,
-            ])
             ->add('createdAt', DateType::class, [
                 'disabled' => true,
                 'format' => 'dd-MM-yyyy',

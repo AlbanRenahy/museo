@@ -5,15 +5,16 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Serializer\Annotation\Groups;
-use ApiPlatform\Core\Annotation\ApiProperty;
 /**
  * @ApiResource(iri="http://schema.org/Monument")
  * @ApiResource(
@@ -29,6 +30,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
  * @UniqueEntity(fields={"name"}, message="Le monument existe déjà")
  * @ApiFilter(NumericFilter::class, properties={"latitude, longitude"})
  * @ApiFilter(BooleanFilter::class, properties={"available"})
+ * @Vich\Uploadable
  */
 class Monument
 {
