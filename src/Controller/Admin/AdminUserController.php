@@ -22,7 +22,11 @@ class AdminUserController extends AbstractController
     public function index(UserRepository $userRepository)
     {
         $users = $userRepository->findAll();
-        return $this->render('dashboard/user/index.html.twig', compact('users'));
+        $count = $userRepository->countByEntry();
+        return $this->render('dashboard/user/index.html.twig', [
+            'users' => $users,
+            'count' => $count,
+        ]);
     }
 
     /**
