@@ -55,11 +55,10 @@ const initialState = {
   targets: [],
 
   // ************FIELDS OF THE SELECTED CARD DATA*******
-  currentMonumentDatas: [],
   addressCard: '',
   nameCard: '',
   descriptionCard: '',
-  id: 0,
+  idCard: 0,
   available: true,
   images: [
     {
@@ -67,8 +66,8 @@ const initialState = {
       path: '',
     },
   ],
-  latitude: 0,
-  longitude: 0,
+  latitudeCard: 0,
+  longitudeCard: 0,
   periodCard: '',
   thematicCard: '',
   regionCard: '',
@@ -131,6 +130,7 @@ const mapReducer = (state = initialState, action = {}) => {
     case OPEN_DATA_FORM_BUTTON:
       return {
         ...state,
+  
         isDataFormOpen: true,
         addressInput: '',
       };
@@ -194,7 +194,7 @@ const mapReducer = (state = initialState, action = {}) => {
     case SET_MONUMENT_DATAS:
       return {
         ...state,
-        currentMonumentDatas: action.current,
+        nameCard: action.currentName,
       };
     case SUBMIT_MONUMENT:
       return state;

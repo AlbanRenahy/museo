@@ -58,7 +58,7 @@ class Leaflet extends React.Component {
       updateMapformField,
       openDataForm,
       closeAllModals,
-      isConnected
+      isConnected,
     } = this.props;
     updateMapformField('clickedLat', e.latlng.lat);
     updateMapformField('clickedLng', e.latlng.lng);
@@ -68,6 +68,7 @@ class Leaflet extends React.Component {
 
   handleClickMarker = (e) => {
     const {
+      updateMapformField,
       openDisplayMonument,
       closeAllModals,
       setMonumentDatas,
@@ -75,9 +76,13 @@ class Leaflet extends React.Component {
     } = this.props;
     // console.log(e.target.options.id);
     const current = monuments.find((monument) => monument.id === e.target.options.id);
-    console.log(current);
+    console.log(current.id);
+    console.log(current.name);
+    console.log(current.description);
+    const currentCardName = current.name;
     closeAllModals();
-    setMonumentDatas(current);
+    updateMapformField('nameCard', currentCardName);
+    setMonumentDatas(current.name);
     openDisplayMonument();
   }
 

@@ -26,7 +26,6 @@ const mapStateToProps = (state) => ({
   center: state.map.center,
   zoom: state.map.zoom,
   userLocalized: state.map.userLocalized,
-  currentMonumentDatas: state.map.currentMonumentDatas,
   isConnected: state.user.isConnected,
 });
 
