@@ -6,15 +6,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Menu, Button } from 'semantic-ui-react';
 
- /**
+/**
  * Local import
  */
 // Composants
 // Styles et assets
 
- import './viewtoggler.scss';
+import './viewtoggler.scss';
 
- /**
+/**
  * Code
  */
 const ViewToggler = ({ toggleView, view }) => (
@@ -27,7 +27,7 @@ const ViewToggler = ({ toggleView, view }) => (
           onClick={() => toggleView('map')}
           to="/map"
         >
-        Carte
+          Carte
         </Button>
         <Button
           active={view === 'list'}
@@ -44,7 +44,7 @@ const ViewToggler = ({ toggleView, view }) => (
 );
 
 
- ViewToggler.propTypes = {
+ViewToggler.propTypes = {
   view: PropTypes.string.isRequired,
   toggleView: PropTypes.func.isRequired,
 };
