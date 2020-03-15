@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Menu, Button, Icon } from 'semantic-ui-react';
 
 import BurgerMap from 'src/containers/BurgerMap';
+import ViewToggler from 'src/containers/ViewToggler';
 import './menu.scss';
 
 const TopMenu = ({
@@ -15,7 +16,6 @@ const TopMenu = ({
   centerByAddress,
   isAutocompleteOpen,
   findAddressSearch,
-  toggleMenu,
   isConnected,
   openDataForm,
 }) => {
@@ -23,31 +23,10 @@ const TopMenu = ({
     updateMapformField('searchInput', e.target.textContent);
     centerByAddress(position);
   };
-
-  const handleMenuClick = () => {
-    console.log('clicked');
-    closeAllModals();
-    toggleMenu();
-  };
   return (
     <div id="menu">
       <Menu.Menu>
-        <Button.Group>
-          <Button
-            active
-            as={Link}
-            to="/map"
-          >
-            Carte
-          </Button>
-          <Button
-            as={Link}
-            to="/list"
-            className="no-border-left"
-          >
-            Monuments
-          </Button>
-        </Button.Group>
+        <ViewToggler />
       </Menu.Menu>
 
       <Menu.Menu position="right">

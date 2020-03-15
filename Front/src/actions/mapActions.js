@@ -30,6 +30,8 @@ export const SET_MONUMENT_DATAS = 'SET_MONUMENT_DATA';
 export const CLOSE_MENU = 'CLOSE_MENU';
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 export const TOGGLE_VIEW = 'TOGGLE_VIEW';
+export const GET_MONUMENTS_LIST_DATA = 'GET_MONUMENTS_LIST_DATA';
+export const SET_MONUMENTS_LIST_DATA = 'SET_MONUMENTS_LIST_DATA';
 /**
  * Action Creators
  */
@@ -139,4 +141,12 @@ export const toggleMenu = () => ({
 export const toggleView = (view) => ({
   type: TOGGLE_VIEW,
   view,
+});
+export const getMonumentsListData = list => ({
+  type: GET_MONUMENTS_LIST_DATA,
+  list,
+});
+export const setMonumentsListData = list => ({
+  type: SET_MONUMENTS_LIST_DATA,
+  list,
 });

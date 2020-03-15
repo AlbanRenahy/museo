@@ -199,6 +199,7 @@ Leaflet.propTypes = {
   userLocalized: PropTypes.bool.isRequired,
   setMonumentDatas: PropTypes.func.isRequired,
   closeMenu: PropTypes.func.isRequired,
+  isConnected: PropTypes.bool.isRequired,
 };
 
 Leaflet.defaultProps = {

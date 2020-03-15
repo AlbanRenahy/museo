@@ -20,6 +20,8 @@ import {
   CLOSE_MENU,
   TOGGLE_MENU,
   TOGGLE_VIEW,
+  GET_MONUMENTS_LIST_DATA,
+  SET_MONUMENTS_LIST_DATA,
 } from '../actions/mapActions';
 
 const initialState = {
@@ -57,6 +59,7 @@ const initialState = {
   periods: [],
   regions: [],
   targets: [],
+  fetchingMonuments: false,
 
   // ************FIELDS OF THE SELECTED CARD DATA*******
   monumentDisplayed: {
@@ -83,6 +86,7 @@ const initialState = {
   // Autocomplete results
   autoCompleteResults: [],
   isAutocompleteOpen: false,
+
 };
 
 const mapReducer = (state = initialState, action = {}) => {
@@ -217,6 +221,16 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         view: action.view,
+      };
+
+    case GET_MONUMENTS_LIST_DATA:
+      return {
+        ...state,
+      };
+    case SET_MONUMENTS_LIST_DATA:
+      return {
+        ...state,
+        data: action.data,
       };
     default:
       return state;

@@ -13,7 +13,7 @@ import Profil from 'src/containers/Profil';
 import LoadingScreen from 'src/components/LoadingScreen';
 import NotFound from 'src/components/NotFound';
 import FinalizeRegister from 'src/components/FinalizeRegister';
-import Liste from '../../components/LeafletMap/Liste';
+import Liste from 'src/containers/Liste';
 
 // == Composant
 const App = () => (

@@ -14,6 +14,8 @@ import {
   resetFormMonument,
   GET_MONUMENTS,
   setMonuments,
+  GET_MONUMENTS_LIST_DATA,
+  setMonumentsListData,
 } from 'src/actions/mapActions';
 
 const museoApi = 'http://54.91.98.36/projet-museo/public/api';
@@ -95,6 +97,20 @@ const mapMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data['hydra:member']);
           store.dispatch(setMonuments(response.data['hydra:member']));
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+      break;
+    case GET_MONUMENTS_LIST_DATA:
+      next(action);
+      const queries = action.list.map((item) => axios.get(`${museoApi}/monuments/${item.id}`));
+      axios.all(queries)
+        .then((results) => {
+          console.log(results);
+          const list = results.map((item) => item.data);
+          console.log('Les monuments: ', list);
+          store.dispatch(setMonumentsListData(list));
         })
         .catch((error) => {
           console.log(error.message);
