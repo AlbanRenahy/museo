@@ -90,7 +90,7 @@ const App = () => (
 
     <Route
       exact
-      path="/liste"
+      path="/list"
       render={() => (
         <Liste />
       )}

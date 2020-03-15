@@ -18,6 +18,7 @@ import {
   getTargets,
   getMonuments,
   setMonumentDatas,
+  closeMenu,
 } from 'src/actions/mapActions';
 
 const mapStateToProps = (state) => ({
@@ -62,6 +63,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setMonumentDatas: (current) => {
     dispatch(setMonumentDatas(current));
+  },
+  closeMenu: () => {
+    dispatch(closeMenu());
   },
 });
 

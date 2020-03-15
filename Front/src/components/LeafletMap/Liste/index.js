@@ -3,12 +3,17 @@ import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+import ViewToggler from 'src/containers/ViewToggler';
+import BurgerMap from 'src/containers/BurgerMap';
+
 import MainPicture from 'src/styles/images/louvre.jpg';
 
 import './liste.scss';
 
 const Liste = () => (
   <div id="liste">
+    <ViewToggler />
+    <BurgerMap />
     <Card.Group>
       <Card className="card">
         <Image src={MainPicture} wrapped ui={false} />

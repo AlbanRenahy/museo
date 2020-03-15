@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Menu, Button, Icon } from 'semantic-ui-react';
 
+import BurgerMap from 'src/containers/BurgerMap';
 import './menu.scss';
-import './burger.scss';
 
 const TopMenu = ({
   searchInput,
@@ -15,10 +15,8 @@ const TopMenu = ({
   centerByAddress,
   isAutocompleteOpen,
   findAddressSearch,
-  isMenuOpen,
   toggleMenu,
   isConnected,
-  disconnect,
   openDataForm,
 }) => {
   const handleSearch = (position) => (e) => {
@@ -44,7 +42,7 @@ const TopMenu = ({
           </Button>
           <Button
             as={Link}
-            to="/liste"
+            to="/list"
             className="no-border-left"
           >
             Monuments
@@ -133,22 +131,7 @@ const TopMenu = ({
           </g>
         </svg>
       </Button>
-
-
-      <button onClick={handleMenuClick} className={isMenuOpen ? 'hamburger hamburger--elastic is-active' : 'hamburger hamburger--elastic'} type="button">
-        <span className="hamburger-box">
-          <span className="hamburger-inner" />
-        </span>
-      </button>
-      <nav className={isMenuOpen ? 'content-menu open' : 'content-menu'}>
-        <ul>
-          {isConnected && <NavLink onClick={disconnect} to="/login">Déconnexion</NavLink>}
-          {!isConnected && <NavLink to="/login">Connexion</NavLink>}
-          {isConnected && <NavLink to="/profil">Mon compte</NavLink>}
-          <NavLink to="/about">A propos</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
-        </ul>
-      </nav>
+      <BurgerMap />
     </div>
   );
 };
@@ -160,12 +143,10 @@ TopMenu.propTypes = {
   autoCompleteResults: PropTypes.array.isRequired,
   isAutocompleteOpen: PropTypes.bool.isRequired,
   closeAllModals: PropTypes.func.isRequired,
-  isMenuOpen: PropTypes.bool.isRequired,
   toggleMenu: PropTypes.func.isRequired,
   centerByAddress: PropTypes.func.isRequired,
   findAddressSearch: PropTypes.func.isRequired,
   isConnected: PropTypes.bool.isRequired,
-  disconnect: PropTypes.func.isRequired,
   openDataForm: PropTypes.func.isRequired,
 };
 

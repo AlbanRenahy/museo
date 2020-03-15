@@ -45,12 +45,14 @@ class Leaflet extends React.Component {
       getRegions,
       getPeriods,
       getTargets,
+      closeMenu,
     } = this.props;
     getThematics();
     getRegions();
     getPeriods();
     getTargets();
     getMonuments();
+    closeMenu();
   }
 
   handleRightClick = (e) => {
@@ -196,6 +198,7 @@ Leaflet.propTypes = {
   zoom: PropTypes.number.isRequired,
   userLocalized: PropTypes.bool.isRequired,
   setMonumentDatas: PropTypes.func.isRequired,
+  closeMenu: PropTypes.func.isRequired,
 };
 
 Leaflet.defaultProps = {

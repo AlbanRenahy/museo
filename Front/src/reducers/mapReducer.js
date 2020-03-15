@@ -9,7 +9,6 @@ import {
   AUTO_COMPLETE_RESULTS,
   OPEN_AUTO_COMPLETE,
   CENTER_BY_ADDRESS,
-  TOGGLE_MENU,
   SET_THEMATICS,
   SET_REGIONS,
   SET_PERIODS,
@@ -18,6 +17,9 @@ import {
   RESET_FORM_MONUMENT,
   SET_MONUMENTS,
   SET_MONUMENT_DATAS,
+  CLOSE_MENU,
+  TOGGLE_MENU,
+  TOGGLE_VIEW,
 } from '../actions/mapActions';
 
 const initialState = {
@@ -33,6 +35,8 @@ const initialState = {
   region: '',
   target: '',
   period: '',
+
+  view: 'map', // Toggle the view (Carte = 'map' // Monuments = 'list')
 
   // *********MANAGEMENT OF THE GEOLOCALIZATION*********/
   center: [46.7248003746672, 2.9003906250000004], // Center of the map
@@ -67,8 +71,8 @@ const initialState = {
         path: '',
       },
     ],
-    latitude: 0,
-    longitude: 0,
+    latitude: '',
+    longitude: '',
     period: '',
     thematic: '',
     region: '',
@@ -186,11 +190,6 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         targets: action.targets,
       };
-    case TOGGLE_MENU:
-      return {
-        ...state,
-        isMenuOpen: !state.isMenuOpen,
-      };
     case SET_MONUMENT_DATAS:
       return {
         ...state,
@@ -204,6 +203,21 @@ const mapReducer = (state = initialState, action = {}) => {
       };
     case SUBMIT_MONUMENT:
       return state;
+    case TOGGLE_MENU:
+      return {
+        ...state,
+        isMenuOpen: !state.isMenuOpen,
+      };
+    case CLOSE_MENU:
+      return {
+        ...state,
+        isMenuOpen: false,
+      };
+    case TOGGLE_VIEW:
+      return {
+        ...state,
+        view: action.view,
+      };
     default:
       return state;
   }
