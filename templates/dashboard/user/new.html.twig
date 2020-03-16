@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title 'Ajouter un Monument' %}
+{% block title 'Ajouter un Utilisateur' %}
 
 {% block body %}
 
@@ -9,10 +9,10 @@
 <div class="wrapper">
     <main class="container-fluid">
         {{ form_start(form) }}
-        <h1>Ajout d'un Monument</h1>
+        <h1>Ajout d'un Utilisateur</h1>
             {{ form_widget(form) }}
-            <button type="submit" class="btn btn-success">Ajouter le monument</button>
-            <a href="{{ path('dashboard.monument.index') }}" class="btn btn-info">Revenir sur la liste</a>
+            <button type="submit" class="btn btn-success">Ajouter l'utilisateur</button>
+            <a href="{{ path('dashboard.user.index') }}" class="btn btn-info">Revenir sur la liste</a>
         {{ form_end(form) }}
     </main>
 </div>
