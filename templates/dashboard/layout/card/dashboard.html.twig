@@ -39,7 +39,7 @@
   </div>
 </div>
 <div class="col-12 col-md-4 mt-4">
-  <div class="card text-center disabled">
+  <div class="card text-center animated fadeIn slow">
       <div class="card-body">
         <h1 class="card-title">Actuellement</h1>
         <h1 class="display-4"><span class="badge badge-info">{{ countUsers }}</span></h1>
@@ -49,12 +49,12 @@
   </div>
 </div>
 <div class="col-12 col-md-4 mt-4">
-  <div class="card text-center disabled">
+  <div class="card text-center animated fadeIn slow">
       <div class="card-body">
         <h1 class="card-title">Actuellement</h1>
         <h1 class="display-4"><span class="badge badge-light">{{ countCategories }}</span></h1>
         <h1 class="card-title">Catégories</h1>
-        <a href="#" class="btn btn-light disabled">Acceder à la liste</a>
+        <a href="{{ path('dashboard.category.index') }}" class="btn btn-light">Acceder à la liste</a>
       </div>
   </div>
 </div>
