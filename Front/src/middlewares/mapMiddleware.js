@@ -12,6 +12,10 @@ import {
   setTargets,
   createMarker,
   resetFormMonument,
+  GET_MONUMENTS,
+  setMonuments,
+  GET_MONUMENTS_LIST_DATA,
+  setMonumentsListData,
 } from 'src/actions/mapActions';
 
 const museoApi = 'http://54.91.98.36/projet-museo/public/api';
@@ -25,15 +29,15 @@ const mapMiddleware = (store) => (next) => (action) => {
         longitude: store.getState().map.clickedLng,
         address: store.getState().map.address ? store.getState().map.address : null,
         name: store.getState().map.name ? store.getState().map.name : null,
-        // picture: store.getState().map.fileInput ? store.getState().map.fileInput : null,
+        image: store.getState().map.fileInput ? store.getState().map.fileInput : null,
         // category: store.getState().map.thematic ? store.getState().map.thematic : null,
         // region: store.getState().map.region ? store.getState().map.region : null,
         // period: store.getState().map.period ? store.getState().map.period : null,
         // target: store.getState().map.target ? store.getState().map.target : null,
-        category: 'Château',
-        region: 'Monaco',
-        periode: 'Renaissance',
-        target: 'Tout public',
+        // category: '',
+        // region: 'Monaco',
+        // periode: 'Renaissance',
+        // target: 'Tout public',
         description: store.getState().map.description ? store.getState().map.description : null,
         available: true,
         createdAt: new Date(),
@@ -82,6 +86,31 @@ const mapMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // console.log(response.data['hydra:member']);
           store.dispatch(setTargets(response.data['hydra:member']));
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+      break;
+    case GET_MONUMENTS:
+      next(action);
+      axios.get(`${museoApi}/monuments`)
+        .then((response) => {
+          console.log(response.data['hydra:member']);
+          store.dispatch(setMonuments(response.data['hydra:member']));
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+      break;
+    case GET_MONUMENTS_LIST_DATA:
+      next(action);
+      const queries = action.list.map((item) => axios.get(`${museoApi}/monuments/${item.id}`));
+      axios.all(queries)
+        .then((results) => {
+          console.log(results);
+          const list = results.map((item) => item.data);
+          console.log('Les monuments: ', list);
+          store.dispatch(setMonumentsListData(list));
         })
         .catch((error) => {
           console.log(error.message);

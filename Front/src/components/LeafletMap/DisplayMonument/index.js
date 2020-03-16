@@ -8,12 +8,32 @@ import { Icon } from 'semantic-ui-react';
 import './DisplayMonument.scss';
 import mainPicture from '../../../styles/images/louvre.jpg';
 
-const DisplayMonument = ({ isDisplayMonumentOpen, closeAllModals }) => {
+const DisplayMonument = ({
+  isDisplayMonumentOpen,
+  closeAllModals,
+  monumentDisplayed,
+}) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
     console.log('Dataform closed');
     closeAllModals();
   };
+
+  const {
+   id,
+   name,
+   address,
+   description,
+   available,
+   images,
+   latitude,
+   longitude,
+   period,
+   thematic,
+   region,
+   target,
+   creatorUsername,
+  } = monumentDisplayed;
 
 
   return (
@@ -29,14 +49,14 @@ const DisplayMonument = ({ isDisplayMonumentOpen, closeAllModals }) => {
             />
             <a href="#" className="renseignement-donnees_close" onClick={handleCloseDataForm}>Fermer</a>
             <div className="header-info">
-              <h2 className="header-info-name">Musée du Louvre</h2>
-              <h3 className="header-info-address">Rue de Rivoli, 75001 Paris</h3>
+            <h2 className="header-info-name">{name}</h2>
+            <h3 className="header-info-address">{address}</h3>
             </div>
           </header>
           <hr />
           <div className="panel-description">
             <p className="panel-description-title">Description</p>
-            <p className="panel-description-text">Musée le plus visité au monde. Il abrite notamment le célèbre tableau de la Joconde, peint par Léonard de Vinci.</p>
+            <p className="panel-description-text">{description || 'aucune description actuellement renseignée'}</p>
           </div>
           <hr />
           <div className="panel-informations">
@@ -88,6 +108,7 @@ const DisplayMonument = ({ isDisplayMonumentOpen, closeAllModals }) => {
 DisplayMonument.propTypes = {
   closeAllModals: PropTypes.func.isRequired,
   isDisplayMonumentOpen: PropTypes.bool.isRequired,
+  monumentDisplayed: PropTypes.object.isRequired,
 };
 
 export default DisplayMonument;

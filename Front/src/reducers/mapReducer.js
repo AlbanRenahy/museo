@@ -9,13 +9,19 @@ import {
   AUTO_COMPLETE_RESULTS,
   OPEN_AUTO_COMPLETE,
   CENTER_BY_ADDRESS,
-  TOGGLE_MENU,
   SET_THEMATICS,
   SET_REGIONS,
   SET_PERIODS,
   SET_TARGETS,
   CREATE_MARKER,
   RESET_FORM_MONUMENT,
+  SET_MONUMENTS,
+  SET_MONUMENT_DATAS,
+  CLOSE_MENU,
+  TOGGLE_MENU,
+  TOGGLE_VIEW,
+  GET_MONUMENTS_LIST_DATA,
+  SET_MONUMENTS_LIST_DATA,
 } from '../actions/mapActions';
 
 const initialState = {
@@ -31,6 +37,8 @@ const initialState = {
   region: '',
   target: '',
   period: '',
+
+  view: 'map', // Toggle the view (Carte = 'map' // Monuments = 'list')
 
   // *********MANAGEMENT OF THE GEOLOCALIZATION*********/
   center: [46.7248003746672, 2.9003906250000004], // Center of the map
@@ -51,11 +59,34 @@ const initialState = {
   periods: [],
   regions: [],
   targets: [],
+  fetchingMonuments: false,
 
+  // ************FIELDS OF THE SELECTED CARD DATA*******
+  monumentDisplayed: {
+    id: 0,
+    name: '',
+    address: '',
+    description: '',
+    available: true,
+    images: [
+      {
+        id: 0,
+        path: '',
+      },
+    ],
+    latitude: '',
+    longitude: '',
+    period: '',
+    thematic: '',
+    region: '',
+    target: '',
+    creatorUsername: '',
+  },
 
   // Autocomplete results
   autoCompleteResults: [],
   isAutocompleteOpen: false,
+
 };
 
 const mapReducer = (state = initialState, action = {}) => {
@@ -89,6 +120,11 @@ const mapReducer = (state = initialState, action = {}) => {
             longitude: action.longitude,
           },
         ],
+      };
+    case SET_MONUMENTS:
+      return {
+        ...state,
+        monuments: action.monuments,
       };
     case OPEN_DISPLAY_MONUMENT:
       return {
@@ -158,13 +194,44 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         targets: action.targets,
       };
+    case SET_MONUMENT_DATAS:
+      return {
+        ...state,
+        monumentDisplayed:
+          {
+            id: action.current.idCard,
+            name: action.current.nameCard,
+            address: action.current.addressCard,
+            description: action.current.descriptionCard,
+          },
+      };
+    case SUBMIT_MONUMENT:
+      return state;
     case TOGGLE_MENU:
       return {
         ...state,
         isMenuOpen: !state.isMenuOpen,
       };
-    case SUBMIT_MONUMENT:
-      return state;
+    case CLOSE_MENU:
+      return {
+        ...state,
+        isMenuOpen: false,
+      };
+    case TOGGLE_VIEW:
+      return {
+        ...state,
+        view: action.view,
+      };
+
+    case GET_MONUMENTS_LIST_DATA:
+      return {
+        ...state,
+      };
+    case SET_MONUMENTS_LIST_DATA:
+      return {
+        ...state,
+        data: action.data,
+      };
     default:
       return state;
   }

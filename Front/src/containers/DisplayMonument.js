@@ -11,6 +11,7 @@ import DisplayMonument from 'src/components/LeafletMap/DisplayMonument';
 
 const mapStateToProps = (state) => ({
   isDisplayMonumentOpen: state.map.isDisplayMonumentOpen,
+  monumentDisplayed: state.map.monumentDisplayed,
 });
 
 const mapDispatchToProps = (dispatch) => ({

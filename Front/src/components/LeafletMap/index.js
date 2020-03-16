@@ -36,27 +36,58 @@ class Leaflet extends React.Component {
     // shadowSize:   [50, 64], // size of the shadow
   });
 
-  componentDidMount() {
-    const { getThematics, getRegions, getPeriods, getTargets } = this.props;
+  map = React.createRef();
 
+  componentDidMount() {
+    const {
+      getThematics,
+      getMonuments,
+      getRegions,
+      getPeriods,
+      getTargets,
+      closeMenu,
+    } = this.props;
     getThematics();
     getRegions();
     getPeriods();
     getTargets();
+    getMonuments();
+    closeMenu();
   }
 
   handleRightClick = (e) => {
-    const { updateMapformField, openDataForm, closeAllModals } = this.props;
+    const {
+      updateMapformField,
+      openDataForm,
+      closeAllModals,
+      isConnected,
+    } = this.props;
     updateMapformField('clickedLat', e.latlng.lat);
     updateMapformField('clickedLng', e.latlng.lng);
     closeAllModals();
-    openDataForm(e.latlng);
+    isConnected && openDataForm(e.latlng, true);
   };
 
-  handleClickMarker = () => {
-    const { openDisplayMonument, closeAllModals } = this.props;
-    // console.log('marker clicked');
+  handleClickMarker = (e) => {
+    const {
+      // updateMapformField,
+      openDisplayMonument,
+      closeAllModals,
+      setMonumentDatas,
+      monuments,
+    } = this.props;
+    // console.log(e.target.options.id);
+    const currentCard = monuments.find((monument) => monument.id === e.target.options.id);
+    const current = {
+      idCard: currentCard.id,
+      nameCard: currentCard.name,
+      addressCard: currentCard.address,
+      descriptionCard: currentCard.description,
+    };
+    console.log(current);
     closeAllModals();
+    // updateMapformField('nameCard', current.name);
+    setMonumentDatas(current);
     openDisplayMonument();
   }
 
@@ -64,11 +95,14 @@ class Leaflet extends React.Component {
   render() {
     const { closeAllModals } = this.props;
     const {
-      coords, isGeolocationEnabled,
-      center, zoom, userLocalized, updateMapformField,
+      coords,
+      isGeolocationEnabled,
+      center,
+      zoom,
+      userLocalized,
+      updateMapformField,
+      monuments,
     } = this.props;
-    const defaultCenter = coords ? [coords.latitude, coords.longitude] : [46.7248003746672, 2.9003906250000004];
-    // console.log(this.props);
     if (isGeolocationEnabled && coords && !userLocalized) {
       // eslint-disable-next-line no-unused-expressions
       updateMapformField('center', [coords.latitude, coords.longitude]);
@@ -81,6 +115,7 @@ class Leaflet extends React.Component {
         <DisplayMonument />
         <RenseignementMonuments />
         <LeafletMap
+          ref={this.map}
           center={center}
           zoom={zoom}
           maxZoom={19}
@@ -102,7 +137,7 @@ class Leaflet extends React.Component {
             maxZoom={19}
             minZoom={3}
           />
-          <Marker
+          {/* <Marker
             position={[48.864716, 2.349014]}
             icon={this.myPin}
             onClick={this.handleClickMarker}
@@ -110,12 +145,20 @@ class Leaflet extends React.Component {
           <Marker
             position={[48.59068837960679, -1.674041748046875]}
             icon={this.myPinOrange}
-            onClick={this.handleClickMarker}
-          />
-          <Marker
-            position={[44.8242212653786, -0.608367919921875]}
-            icon={this.myPinOrange}
-          />
+            onClick={this.handleClickMarker} */}
+          {/* /> */}
+          {
+            monuments.map((monument) => (
+              <Marker
+                position={[monument.latitude, monument.longitude]}
+                key={monument.id}
+                id={monument.id}
+                icon={this.myPinOrange}
+                onClick={this.handleClickMarker}
+              />
+            ))
+          }
+
           {coords !== null && (
             <>
               <Circle
@@ -139,6 +182,8 @@ class Leaflet extends React.Component {
 }
 
 Leaflet.propTypes = {
+  monuments: PropTypes.arrayOf(PropTypes.object).isRequired,
+  getMonuments: PropTypes.func.isRequired,
   openDataForm: PropTypes.func.isRequired,
   closeAllModals: PropTypes.func.isRequired,
   updateMapformField: PropTypes.func.isRequired,
@@ -149,6 +194,12 @@ Leaflet.propTypes = {
   getRegions: PropTypes.func.isRequired,
   getPeriods: PropTypes.func.isRequired,
   getTargets: PropTypes.func.isRequired,
+  center: PropTypes.arrayOf(PropTypes.number).isRequired,
+  zoom: PropTypes.number.isRequired,
+  userLocalized: PropTypes.bool.isRequired,
+  setMonumentDatas: PropTypes.func.isRequired,
+  closeMenu: PropTypes.func.isRequired,
+  isConnected: PropTypes.bool.isRequired,
 };
 
 Leaflet.defaultProps = {

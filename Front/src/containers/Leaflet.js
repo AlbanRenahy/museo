@@ -16,13 +16,19 @@ import {
   getRegions,
   getPeriods,
   getTargets,
+  getMonuments,
+  setMonumentDatas,
+  closeMenu,
 } from 'src/actions/mapActions';
 
 const mapStateToProps = (state) => ({
+  monuments: state.map.monuments,
   isDataFormOpen: state.map.isDataFormOpen,
   center: state.map.center,
   zoom: state.map.zoom,
   userLocalized: state.map.userLocalized,
+  isConnected: state.user.isConnected,
+  currentCard: state.map.currentCard,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -52,7 +58,15 @@ const mapDispatchToProps = (dispatch) => ({
   getTargets: () => {
     dispatch(getTargets());
   },
-
+  getMonuments: () => {
+    dispatch(getMonuments());
+  },
+  setMonumentDatas: (current) => {
+    dispatch(setMonumentDatas(current));
+  },
+  closeMenu: () => {
+    dispatch(closeMenu());
+  },
 });
 
 export default connect(
