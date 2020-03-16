@@ -29,7 +29,6 @@ const initialState = {
   isConnected: false,
   loginMessage: '',
   loginStatus: 'init',
-  loadingWithLoader: false, // If loader should be displayed
   loading: false,
 
   // ************ERRORS*******/

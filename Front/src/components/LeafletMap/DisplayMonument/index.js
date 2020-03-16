@@ -3,7 +3,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dimmer, Loader, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 
 import './DisplayMonument.scss';
 import mainPicture from '../../../styles/images/louvre.jpg';
@@ -12,7 +12,6 @@ const DisplayMonument = ({
   isDisplayMonumentOpen,
   closeAllModals,
   monumentDisplayed,
-  loading,
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
@@ -27,8 +26,6 @@ const DisplayMonument = ({
     description,
     available,
     images,
-    latitude,
-    longitude,
     period,
     thematic,
     region,
@@ -40,9 +37,6 @@ const DisplayMonument = ({
   return (
     <div id="DisplayMonument">
       <div className={isDisplayMonumentOpen ? 'display-donnees open' : 'display-donnees'}>
-        <Dimmer active={loading} inverted>
-          <Loader inverted />
-        </Dimmer>
         <div className="dysplay-donnees_relative">
           <header>
             <div

@@ -31,7 +31,7 @@ const userMiddleware = (store) => (next) => (action) => {
           store.dispatch(updateUserformField('isConnected', true));
           store.dispatch(updateUserformField('loginMessage', 'Vous êtes connecté(e)'));
           store.dispatch(updateUserformField('loginStatus', 'connected'));
-          store.dispatch(updateUserformField('loadingWithLoader', true));
+          store.dispatch(updateUserformField('loading', true));
         })
         .catch((error) => {
           // console.log('erreur :', error.response.data.code);

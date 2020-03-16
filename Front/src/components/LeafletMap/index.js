@@ -67,12 +67,12 @@ class Leaflet extends React.Component {
     updateMapformField('clickedLat', e.latlng.lat);
     updateMapformField('clickedLng', e.latlng.lng);
     closeAllModals();
-    isConnected && openDataForm(e.latlng, true);
+    isConnected && openDataForm(e.latlng);
   };
 
   handleMapReady = () => {
     const { updateMapformField } = this.props;
-    setTimeout(() => updateMapformField('loadingWithLoader', false), 3000);
+    setTimeout(() => updateMapformField('loading', false), 3000);
   }
 
   handleClickMarker = (e) => {
@@ -91,7 +91,7 @@ class Leaflet extends React.Component {
       addressCard: currentCard.address,
       descriptionCard: currentCard.description,
     };
-    console.log(current);
+    // console.log(current);
     closeAllModals();
     // updateMapformField('nameCard', current.name);
     setMonumentDatas(current);
@@ -109,7 +109,7 @@ class Leaflet extends React.Component {
       userLocalized,
       updateMapformField,
       monuments,
-      loadingWithLoader,
+      loading,
     } = this.props;
     if (isGeolocationEnabled && coords && !userLocalized) {
       // eslint-disable-next-line no-unused-expressions
@@ -119,9 +119,9 @@ class Leaflet extends React.Component {
     }
     return (
       <>
-        {loadingWithLoader && <Loading />}
-        {!loadingWithLoader && <RenseignementMonuments />}
-        {!loadingWithLoader && <DisplayMonument />}
+        {loading && <Loading />}
+        {!loading && <RenseignementMonuments />}
+        {!loading && <DisplayMonument />}
         <Menu />
         <DisplayMonument />
         <RenseignementMonuments />
@@ -160,15 +160,17 @@ class Leaflet extends React.Component {
           {/* /> */}
           <MarkerClusterGroup>
             {
-            monuments.map((monument) => (
-              <Marker
-                position={[monument.latitude, monument.longitude]}
-                key={monument.id}
-                id={monument.id}
-                icon={this.myPinOrange}
-                onClick={this.handleClickMarker}
-              />
-            ))
+              monuments.map(({
+                latitude, longitude, id,
+              }) => (
+                <Marker
+                  position={[latitude, longitude]}
+                  key={id}
+                  id={id}
+                  icon={this.myPinOrange}
+                  onClick={this.handleClickMarker}
+                />
+              ))
           }
           </MarkerClusterGroup>
           {coords !== null && (
@@ -212,7 +214,7 @@ Leaflet.propTypes = {
   setMonumentDatas: PropTypes.func.isRequired,
   closeMenu: PropTypes.func.isRequired,
   isConnected: PropTypes.bool.isRequired,
-  loadingWithLoader: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 Leaflet.defaultProps = {
