@@ -7,6 +7,7 @@ export const CONNECTING_ERROR = 'CONNECTING_ERROR';
 export const STORE_TOKEN = 'STORE_TOKEN';
 export const STORE_REFRESH_TOKEN = 'STORE_REFRESH_TOKEN';
 export const UPDATE_USER = 'UPDATE_USER';
+export const UPDATE_MESSAGES = 'UPDATE_MESSAGES';
 export const DELETE_USER = 'DELETE_USER';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const OPEN_CONFIRM_DELETE_USER = 'OPEN_CONFIRM_DELETE_USER';
@@ -33,6 +34,11 @@ export const connectUser = () => ({
 
 export const updateUser = () => ({
   type: UPDATE_USER,
+});
+
+export const updateMessages = (message) => ({
+  type: UPDATE_MESSAGES,
+  message,
 });
 
 export const deleteUser = () => ({

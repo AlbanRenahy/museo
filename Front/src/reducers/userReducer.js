@@ -1,6 +1,7 @@
 import {
   UPDATE_USERFORM_FIELD,
   CONNECT_USER,
+  UPDATE_USER,
   SIGNIN,
   STORE_TOKEN,
   STORE_REFRESH_TOKEN,
@@ -29,6 +30,7 @@ const initialState = {
   isConnected: false,
   loginMessage: '',
   loginStatus: 'not-connected',
+  updateMessage: '',
 
   // ************ERRORS*******/
   signinErrors: [],
@@ -47,6 +49,11 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         loginMessage: 'Connexion en cours...',
         loginStatus: 'connecting',
+      };
+    case UPDATE_USER:
+      return {
+        ...state,
+        updateMessage: action.message,
       };
     case STORE_TOKEN:
       return {
