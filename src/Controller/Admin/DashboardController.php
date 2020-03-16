@@ -41,4 +41,12 @@ class DashboardController extends AbstractController
             
         ]);
     }
+
+    /**
+     * @Route("/website/settings", name="settings")
+     */
+    public function settings()
+    {
+        return $this->render('dashboard/settings/index.html.twig');
+    }
 }
