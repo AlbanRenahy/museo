@@ -11,6 +11,7 @@ use Doctrine\DBAL\Types\BooleanType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 // use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType as TypeIntegerType;
@@ -44,7 +45,8 @@ class MonumentType extends AbstractType
                 'label' => 'Mise à jour le',
                 'format' => 'dd-MM-yyyy'
             ])
-            // ->add('available', TypeIntegerType::class)
+            ->add('available')
+            ->add('isActive')
             ->add('region', EntityType::class, [
                 'class' => Region::class,
                 'query_builder' => function (EntityRepository $er) {
