@@ -2,3 +2,21 @@
     height: 100vh;
     width: 100vw;
   } 
+
+  // Cluster marker
+  .marker-cluster {
+    background-image: url(../../styles/images/Pins_orange.png);
+    display: flex;
+  
+     & > div {
+      font-size: 1.5em;
+      border-radius: 100px;
+      margin: auto;
+
+  
+       & > span {
+        font-weight: bold;
+        color: #415d79;
+      }
+    }
+  }

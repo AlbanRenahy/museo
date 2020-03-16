@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Map as LeafletMap, TileLayer, Marker, Circle,
 } from 'react-leaflet';
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 import { geolocated } from 'react-geolocated';
 import PropTypes from 'prop-types';
 import L from 'leaflet';
@@ -147,7 +148,8 @@ class Leaflet extends React.Component {
             icon={this.myPinOrange}
             onClick={this.handleClickMarker} */}
           {/* /> */}
-          {
+          <MarkerClusterGroup>
+            {
             monuments.map((monument) => (
               <Marker
                 position={[monument.latitude, monument.longitude]}
@@ -158,7 +160,7 @@ class Leaflet extends React.Component {
               />
             ))
           }
-
+          </MarkerClusterGroup>
           {coords !== null && (
             <>
               <Circle
