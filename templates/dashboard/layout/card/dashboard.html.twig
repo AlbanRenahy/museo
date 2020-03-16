@@ -29,12 +29,12 @@
   </div>
 </div>
 <div class="col-12 col-md-4 mt-4">
-  <div class="card text-center disabled">
+  <div class="card text-center animated fadeIn slow">
       <div class="card-body">
         <h1 class="card-title">Actuellement</h1>
         <h1 class="display-4"><span class="badge badge-warning">{{ countTargets }}</span></h1>
         <h1 class="card-title">Publique visées</h1>
-        <a href="#" class="btn btn-warning disabled">Acceder à la liste</a>
+        <a href="{{ path('dashboard.target.index') }}" class="btn btn-warning ">Acceder à la liste</a>
       </div>
   </div>
 </div>
