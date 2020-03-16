@@ -6,7 +6,6 @@
   width: 60%;
   margin: 2rem auto;
   text-align: center;
-  font-variant:small-caps;
 
   @media screen and (max-width: 425px)
       {
@@ -64,13 +63,19 @@
       height:30px;
   }
 
-   .staff-label {
+  .staff-label {
       background:none;
+  }
 
-      &:hover {
-       
-      }
-     
-  
-   }
+  .link {
+    padding: 10px;
+   
+  &:after {
+    background: black;
+    padding: 8px;
+    color:teal; 
+    font-weight: bolder;
+    border-color: teal;
+    }
+  }
 }
