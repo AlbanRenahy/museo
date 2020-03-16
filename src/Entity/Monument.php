@@ -130,7 +130,6 @@ class Monument
      */
     private $region;
 
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="monuments")
      */
@@ -154,6 +153,11 @@ class Monument
      * @ApiProperty(iri="http://schema.org/image")
      */
     public $image;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isActive;
 
     public function getId(): ?int
     {
@@ -334,6 +338,18 @@ class Monument
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(?bool $isActive): self
+    {
+        $this->isActive = $isActive;
 
         return $this;
     }
