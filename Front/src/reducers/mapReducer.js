@@ -38,15 +38,17 @@ const initialState = {
   target: '',
   period: '',
 
+  // ************MANAGEMENT OF THE MENU********/
+  searchInput: '', // string
   view: 'map', // Toggle the view (Carte = 'map' // Monuments = 'list')
+  loadingWithLoader: false, // If loader should be displayed
+  loading: true,
 
   // *********MANAGEMENT OF THE GEOLOCALIZATION*********/
   center: [46.7248003746672, 2.9003906250000004], // Center of the map
   zoom: 6, // level of zoom
   userLocalized: false,
 
-  // ************MANAGEMENT OF THE MENU********/
-  searchInput: '', // string
 
   clickedLat: 0, // gère la lattitude
   clickedLng: 0, // gère la longitude
@@ -100,6 +102,7 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isDataFormOpen: true,
+        loading: true,
       };
     case CLOSE_ALL_MODALS:
       return {
@@ -130,6 +133,7 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isDisplayMonumentOpen: true,
+        loading: true,
       };
     case OPEN_DATA_FORM_RESPONSE:
       return {
@@ -197,6 +201,7 @@ const mapReducer = (state = initialState, action = {}) => {
     case SET_MONUMENT_DATAS:
       return {
         ...state,
+        loading: true,
         monumentDisplayed:
           {
             id: action.current.idCard,
@@ -226,11 +231,13 @@ const mapReducer = (state = initialState, action = {}) => {
     case GET_MONUMENTS_LIST_DATA:
       return {
         ...state,
+        loading: true,
       };
     case SET_MONUMENTS_LIST_DATA:
       return {
         ...state,
         data: action.data,
+        loading: true,
       };
     default:
       return state;

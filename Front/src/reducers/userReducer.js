@@ -28,7 +28,9 @@ const initialState = {
   refreshToken: '',
   isConnected: false,
   loginMessage: '',
-  loginStatus: 'not-connected',
+  loginStatus: 'init',
+  loadingWithLoader: false, // If loader should be displayed
+  loading: false,
 
   // ************ERRORS*******/
   signinErrors: [],

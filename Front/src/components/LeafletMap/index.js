@@ -10,6 +10,7 @@ import Menu from '../../containers/Menu';
 import RenseignementMonuments from '../../containers/RenseignementMonuments';
 import DisplayMonument from '../../containers/DisplayMonument';
 import './leafletmap.scss';
+import Loading from '../LoadingScreen';
 
 
 // pour utiliser des punaises
@@ -69,6 +70,11 @@ class Leaflet extends React.Component {
     isConnected && openDataForm(e.latlng, true);
   };
 
+  handleMapReady = () => {
+    const { updateMapformField } = this.props;
+    setTimeout(() => updateMapformField('loadingWithLoader', false), 3000);
+  }
+
   handleClickMarker = (e) => {
     const {
       // updateMapformField,
@@ -103,6 +109,7 @@ class Leaflet extends React.Component {
       userLocalized,
       updateMapformField,
       monuments,
+      loadingWithLoader,
     } = this.props;
     if (isGeolocationEnabled && coords && !userLocalized) {
       // eslint-disable-next-line no-unused-expressions
@@ -112,6 +119,9 @@ class Leaflet extends React.Component {
     }
     return (
       <>
+        {loadingWithLoader && <Loading />}
+        {!loadingWithLoader && <RenseignementMonuments />}
+        {!loadingWithLoader && <DisplayMonument />}
         <Menu />
         <DisplayMonument />
         <RenseignementMonuments />
@@ -202,6 +212,7 @@ Leaflet.propTypes = {
   setMonumentDatas: PropTypes.func.isRequired,
   closeMenu: PropTypes.func.isRequired,
   isConnected: PropTypes.bool.isRequired,
+  loadingWithLoader: PropTypes.bool.isRequired,
 };
 
 Leaflet.defaultProps = {

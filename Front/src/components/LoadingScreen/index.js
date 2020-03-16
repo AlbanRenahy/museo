@@ -1,7 +1,5 @@
 import React from 'react';
 
-import LoadingGif from 'src/styles/images/loading1.gif';
-
 import './loadingScreen.scss';
 
 const LoadingScreen = () => (

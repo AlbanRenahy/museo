@@ -3,7 +3,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'semantic-ui-react';
+import { Dimmer, Loader, Icon } from 'semantic-ui-react';
 
 import './DisplayMonument.scss';
 import mainPicture from '../../../styles/images/louvre.jpg';
@@ -12,6 +12,7 @@ const DisplayMonument = ({
   isDisplayMonumentOpen,
   closeAllModals,
   monumentDisplayed,
+  loading,
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
@@ -20,25 +21,28 @@ const DisplayMonument = ({
   };
 
   const {
-   id,
-   name,
-   address,
-   description,
-   available,
-   images,
-   latitude,
-   longitude,
-   period,
-   thematic,
-   region,
-   target,
-   creatorUsername,
+    id,
+    name,
+    address,
+    description,
+    available,
+    images,
+    latitude,
+    longitude,
+    period,
+    thematic,
+    region,
+    target,
+    creatorUsername,
   } = monumentDisplayed;
 
 
   return (
     <div id="DisplayMonument">
       <div className={isDisplayMonumentOpen ? 'display-donnees open' : 'display-donnees'}>
+        <Dimmer active={loading} inverted>
+          <Loader inverted />
+        </Dimmer>
         <div className="dysplay-donnees_relative">
           <header>
             <div
@@ -49,8 +53,8 @@ const DisplayMonument = ({
             />
             <a href="#" className="renseignement-donnees_close" onClick={handleCloseDataForm}>Fermer</a>
             <div className="header-info">
-            <h2 className="header-info-name">{name}</h2>
-            <h3 className="header-info-address">{address}</h3>
+              <h2 className="header-info-name">{name}</h2>
+              <h3 className="header-info-address">{address}</h3>
             </div>
           </header>
           <hr />
@@ -109,6 +113,7 @@ DisplayMonument.propTypes = {
   closeAllModals: PropTypes.func.isRequired,
   isDisplayMonumentOpen: PropTypes.bool.isRequired,
   monumentDisplayed: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default DisplayMonument;
