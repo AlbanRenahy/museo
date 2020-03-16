@@ -1,0 +1,26 @@
+<div class="col-12 md-12">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th>Nom</th>
+            <th>Créer le</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for target in targets %}
+        <tr>
+            <td>{{ target.id }}</td>
+            <td>{{ target.name }}</td>
+            <td>{{ target.createdAt|date("d/m/Y") }}</td>
+            <td>
+                <a href="{{ path('dashboard.target.edit', {id: target.id}) }}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                {# <a href="{{ path('dashboard.target.delete', {id: target.id}) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a> #}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
