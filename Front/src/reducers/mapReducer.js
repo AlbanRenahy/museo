@@ -48,8 +48,8 @@ const initialState = {
   // ************MANAGEMENT OF THE MENU********/
   searchInput: '', // string
 
-  clickedLat: '', // gère la lattitude
-  clickedLng: '', // gère la longitude
+  clickedLat: 0, // gère la lattitude
+  clickedLng: 0, // gère la longitude
   fileInput: '', // Fichier converti prêt à être envoyé
   fileText: '', // Nom du fichier
 
@@ -74,8 +74,8 @@ const initialState = {
         path: '',
       },
     ],
-    latitude: '',
-    longitude: '',
+    latitude: 0,
+    longitude: 0,
     period: '',
     thematic: '',
     region: '',
