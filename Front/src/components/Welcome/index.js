@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Particles from 'react-particles-js';
 
 // Composants
-import BurgerNav from 'src/components/BurgerNav';
+import BurgerNav from 'src/containers/BurgerNav';
 import Logo from 'src/components/Logo';
 import MuseoBackground from './MuseoBackground';
 
