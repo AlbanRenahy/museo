@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title 'Ajouter une région' %}
+
+{% block body %}
+
+{% include 'layout/sidebar.html.twig' %}
+
+<div class="wrapper">
+    <main class="container-fluid">
+        {{ form_start(form) }}
+        <h1>Ajout d'une Période</h1>
+            {{ form_widget(form) }}
+            <button type="submit" class="btn btn-success">Editer la période</button>
+            <a href="{{ path('dashboard.region.index') }}" class="btn btn-info">Revenir sur la liste</a>
+        {{ form_end(form) }}
+    </main>
+</div>
+
+{% endblock %}

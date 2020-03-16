@@ -18,7 +18,7 @@ class AdminMonumentController extends AbstractController
 {
 
     /**
-     * @Route("/add", name="")
+     * @Route("/add", name="add")
      */
     public function add(Request $req)
     {
