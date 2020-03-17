@@ -2,16 +2,18 @@
 
 namespace App\Controller\Admin;
 
-use App\Repository\CategoryRepository;
-use App\Repository\MonumentRepository;
+use App\Repository\UserRepository;
 use App\Repository\PeriodRepository;
 use App\Repository\RegionRepository;
 use App\Repository\TargetRepository;
-use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\CategoryRepository;
+use App\Repository\MonumentRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 /**
  * @Route("/admin", name="dashboard.")
+ * @IsGranted("ROLE_MUSEO_ADMIN")
  */
 class DashboardController extends AbstractController
 {

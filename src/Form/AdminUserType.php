@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class AdminUserType extends AbstractType
 {
@@ -19,6 +20,11 @@ class AdminUserType extends AbstractType
         $builder
             ->add('username', TextType::class)
             ->add('roles', ChoiceType::class, [
+                'constraints' => [  
+                    new NotBlank([
+                        'message' => 'Vous êtes obligez d\'attribuer au moin un role.'
+                    ])
+                ],
                 'choices' => [
                     'Administrateur' => 'ROLE_ADMIN_MUSEO',
                     'Modérateur' => 'ROLE_MODERATOR_MUSEO',
