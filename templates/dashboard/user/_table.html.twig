@@ -1,4 +1,7 @@
 <div class="col-12 md-12">
+    <pre>
+        {{ dump(app.user) }}
+    </pre>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -49,7 +52,7 @@
             </td>
             <td>
                 <a href="{{ path('dashboard.user.edit', {id: user.id}) }}" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
-                <a href="{{ path('dashboard.user.delete', {id: user.id}) }}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                <a href="{{ path('dashboard.user.delete', {id: user.id}) }}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>                
             </td>
         </tr>
         {% endfor %}
