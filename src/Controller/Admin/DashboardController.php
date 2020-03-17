@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 /**
  * @Route("/admin", name="dashboard.")
- * @IsGranted("ROLE_MUSEO_ADMIN")
+ * @IsGranted("ROLE_ADMIN_MUSEO")
  */
 class DashboardController extends AbstractController
 {

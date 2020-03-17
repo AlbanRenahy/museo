@@ -42,8 +42,7 @@ class AdminPeriodController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN_MUSEO")
-     * @Route("/delete/{id}", name="delete")
+     * @Route("/", name="index")
      */
     public function index(PeriodRepository $periodRepository)
     {
@@ -79,6 +78,7 @@ class AdminPeriodController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN_MUSEO")
      * @Route("/delete/{id}", name="delete")
      */
     public function delete($id): Response
