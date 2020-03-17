@@ -34,7 +34,7 @@ class RegistrationController extends AbstractController
             );
             $user->setCreatedAt(new \DateTime());
             $user->setIsActive(0);
-            $user->setRoles(['ROLE_USER']);
+            $user->setRoles(['ROLE_USER_MUSEO']);
 
             // Generation du token
             $user->setActivationToken(md5(uniqid()));

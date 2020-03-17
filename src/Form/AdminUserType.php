@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -17,7 +18,15 @@ class AdminUserType extends AbstractType
     {
         $builder
             ->add('username', TextType::class)
-            // ->add('roles')
+            ->add('roles', ChoiceType::class, [
+                'choices' => [
+                    'Administrateur' => 'ROLE_ADMIN_MUSEO',
+                    'Modérateur' => 'ROLE_MODERATOR_MUSEO',
+                    'Utilisateur' => 'ROLE_USER_MUSEO',
+                ],
+                'expanded' => true,
+                'multiple' => true,
+            ])
             ->add('password', HiddenType::class)
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom',

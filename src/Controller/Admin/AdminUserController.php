@@ -34,7 +34,6 @@ class AdminUserController extends AbstractController
     }
 
     /**
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
      * @Route("/edit/{id}", name="edit")
      */
     public function edit(User $user, Request $req)
