@@ -23,7 +23,7 @@ const Login = ({
   username, password, updateUserformField, connectUser, isConnected, loginMessage, loginStatus,
 }) => (
   <Form onSubmit={connectUser} className="login-form">
-    {isConnected && <Redirect to="/map" />}
+    {isConnected && (updateUserformField('loading', true), <Redirect to="/map" />)}
     <p className={`identification-message ${loginStatus}`}>{loginMessage}</p>
     <Input
       className="email-input"
@@ -48,7 +48,7 @@ const Login = ({
     </p>
     <button type="submit" className="form-button">ME CONNECTER</button>
     <Link className="signin-link" to="/signin">Je souhaite m'inscrire</Link>
-    <Link className="map-link" to="/map">Entrer sur la carte en visiteur</Link>
+    <Link className="map-link" onClick={() => updateUserformField('loading', true)} to="/map">Entrer sur la carte en visiteur</Link>
   </Form>
 );
 

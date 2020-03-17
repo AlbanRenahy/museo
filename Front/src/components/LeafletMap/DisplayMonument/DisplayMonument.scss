@@ -132,4 +132,106 @@
        font-size:0.8em;   
    }
 }
+
+    // Petits écrans
+    @media screen and (max-width: 430px) { 
+
+        .invisible-mobile {
+            display:none;
+        }
+        .invisible-desktop {
+            display:inline-block;
+        }
+
+        hr {
+        margin-top:0;
+        padding-top:0;
+        margin-bottom: 0;
+        padding-bottom:0;
+        }
+
+        .display-donnees {
+            max-width: 300px;
+            background-color: white;  
+            }
+        .header-picture {
+            width: 300px;
+            height: 100px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 10px 10px 0 0;
+        } 
+        .header-info {
+            padding:10px 15px 8px;
+    
+            &-name {
+                font-size:0.9em;
+                line-height: 1.2em;
+                margin-bottom:5px;
+            }
+            &-address {
+                font-weight:700;
+                font-size: 1em;
+                margin-bottom:0;
+                line-height: 1.2em;
+            } 
+            &-bottom--panel {
+                display:flex;
+                justify-content: space-between;
+                align-items: baseline;
+            }
+        }
+    
+        .panel-description {
+            padding: 5px 15px 8px;
+            margin-top:-5px;
+            p {
+                text-align:left;
+            }
+            &-title {
+                font-size:0.7em;
+            }
+            &-text {
+                padding-top:2px;
+            }
+        }
+    
+        footer {
+    
+            .panel-vote {
+                display: flex;
+                align-items:baseline;
+                border-right: 1px solid #f0f0f0;
+                padding:8px 8px 8px;
+    
+                .upvote a {
+                    padding-left:15px;
+                    padding-right:5px;
+                }
+    
+                .downvote a {
+                    color: purple;
+                    padding-right:5px;
+                }
+    
+                .downvote a:hover {
+                    color: purple;
+                }
+            }
+        }
+    
+        .panel-modify.hidden {
+            display:none;
+            padding: 15px;
+            font-size:0.8em; 
+            transition: 0.7s;
+            transform: translateY(-100px);
+        }
+        .panel-modify.visible p {
+            display: block;
+            padding: 15px;
+            font-size:0.8em;   
+        } 
+    }
 }

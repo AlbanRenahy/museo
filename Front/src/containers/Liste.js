@@ -11,6 +11,7 @@ import { getMonumentsListData } from 'src/actions/mapActions';
 const mapStateToProps = state => ({
   monuments: state.map.monuments,
   listData: state.map.listData,
+  loading: state.user.loading,
 });
 
 const mapDispatchToProps = dispatch => ({

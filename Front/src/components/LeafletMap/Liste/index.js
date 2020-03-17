@@ -23,7 +23,7 @@ class Liste extends Component {
   }
 
   render() {
-    const { monuments } = this.props;
+    const { monuments, loading } = this.props;
     return (
       <div id="liste">
         <ViewToggler />
@@ -43,10 +43,12 @@ class Liste extends Component {
         )}
         {(monuments.length === 0) && (
           <Message compact>
-            <Message.Header>Aucun musée ou monument trouvé</Message.Header>
+            <Message.Header>{loading ? 'Chargement...' : 'Aucun musée ou monument trouvé'}</Message.Header>
+            {!loading && (
             <p>
               Il n'y a pas de musée ou monument enregistré dans la zone observée.
             </p>
+            )}
           </Message>
         )}
         <div className="back-to-map">
@@ -66,6 +68,7 @@ class Liste extends Component {
 Liste.propTypes = {
   monuments: PropTypes.array.isRequired,
   getMonumentsListData: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Liste;
