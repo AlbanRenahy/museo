@@ -9,11 +9,11 @@ class HomeController extends AbstractController
 {
 
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      */
     public function index()
     {
-        return $this->redirectToRoute('app_login');
+        return $this->render('layout/home.html.twig');
     }
 
 }

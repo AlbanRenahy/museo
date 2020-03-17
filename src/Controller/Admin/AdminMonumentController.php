@@ -2,14 +2,15 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Monument;
 use App\Entity\Period;
+use App\Entity\Monument;
 use App\Form\MonumentType;
 use App\Repository\MonumentRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/admin/monument", name="dashboard.monument.")
@@ -79,6 +80,7 @@ class AdminMonumentController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN_MUSEO")
      * @Route("/delete/{id}", name="delete")
      */
     public function delete($id): Response

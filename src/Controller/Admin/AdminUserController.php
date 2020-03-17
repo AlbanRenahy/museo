@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -34,7 +35,6 @@ class AdminUserController extends AbstractController
     }
 
     /**
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
      * @Route("/edit/{id}", name="edit")
      */
     public function edit(User $user, Request $req)
@@ -89,6 +89,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN_MUSEO")
      * @Route("/delete/{id}", name="delete")
      */
     public function delete($id): Response
