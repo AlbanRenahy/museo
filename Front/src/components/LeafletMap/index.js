@@ -38,6 +38,10 @@ class Leaflet extends React.Component {
     // shadowSize:   [50, 64], // size of the shadow
   });
 
+  zoomControl = L.control.zoom({
+    position: 'bottomright',
+  });
+
   map = React.createRef();
 
   componentDidMount() {
@@ -67,7 +71,7 @@ class Leaflet extends React.Component {
     updateMapformField('clickedLat', e.latlng.lat);
     updateMapformField('clickedLng', e.latlng.lng);
     closeAllModals();
-    isConnected && openDataForm(e.latlng);
+    isConnected && openDataForm(e.latlng, true);
   };
 
   handleMapReady = () => {
@@ -129,35 +133,32 @@ class Leaflet extends React.Component {
           ref={this.map}
           center={center}
           zoom={zoom}
-          maxZoom={19}
-          minZoom={3}
-          setView
+          zoomSnap={1}
+          markerZoomAnimation={false}
+          flyTo
           attributionControl
-          zoomControl={false}
+          zoomControl
           doubleClickZoom
           scrollWheelZoom
+          worldCopyJump
           dragging
           animate
           infinite
-          easeLinearity={0.35}
+          inertia
+          wheelDebounceTime={200}
+          wheelPxPerZoomLevel={100}
+          zoomAnimationThreshold={4}
+          fadeAnimation
+          easeLinearity={0.2}
           onContextmenu={this.handleRightClick}
           onClick={closeAllModals}
+          whenReady={this.handleMapReady}
         >
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-            maxZoom={19}
+            maxZoom={21}
             minZoom={3}
           />
-          {/* <Marker
-            position={[48.864716, 2.349014]}
-            icon={this.myPin}
-            onClick={this.handleClickMarker}
-          />
-          <Marker
-            position={[48.59068837960679, -1.674041748046875]}
-            icon={this.myPinOrange}
-            onClick={this.handleClickMarker} */}
-          {/* /> */}
           <MarkerClusterGroup>
             {
               monuments.map(({

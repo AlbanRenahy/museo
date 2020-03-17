@@ -38,6 +38,7 @@ const initialState = {
   target: '',
   period: '',
 
+
   // ************MANAGEMENT OF THE MENU********/
   searchInput: '', // string
   view: 'map', // Toggle the view (Carte = 'map' // Monuments = 'list')
