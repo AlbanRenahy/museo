@@ -11,7 +11,7 @@
         {% if app.user %}
             <span>Vous êtes connecter avec <strong>{{ app.user.username }}</strong>,  <a href="{{ path('app_logout') }}" class="btn btn-danger">Deconnexion</a> </span>
             {% if is_granted('ROLE_ADMIN_MUSEO') %}
-                <a href="{{ path('app_logout') }}" class="btn btn-success">Backoffice</a> 
+                <a href="{{ path('dashboard.index') }}" class="btn btn-success">Backoffice</a> 
             {% endif %}
         {% else %}
             <a href="{{ path('app_login') }}">Connexion</a>
