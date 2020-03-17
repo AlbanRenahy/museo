@@ -20,7 +20,7 @@ class AdminUserType extends AbstractType
         $builder
             ->add('username', TextType::class)
             ->add('roles', ChoiceType::class, [
-                'label' => 'Choissez un ou plusieurs roles',
+                // 'label' => 'Choissez un ou plusieurs roles',
                 'constraints' => [  
                     new NotBlank([
                         'message' => 'Vous êtes obligez d\'attribuer au moin un role.'
@@ -31,7 +31,7 @@ class AdminUserType extends AbstractType
                     'Modérateur' => 'ROLE_MODERATOR_MUSEO',
                     'Utilisateur' => 'ROLE_USER_MUSEO',
                 ],
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => true,
             ])
             ->add('password', HiddenType::class)
