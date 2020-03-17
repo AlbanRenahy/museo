@@ -6,10 +6,13 @@ export const CONNECT_USER = 'CONNECT_USER'; // Api connection with username && p
 export const CONNECTING_ERROR = 'CONNECTING_ERROR';
 export const STORE_TOKEN = 'STORE_TOKEN';
 export const STORE_REFRESH_TOKEN = 'STORE_REFRESH_TOKEN';
+export const SEND_RECOVERY = 'SEND_RECOVERY';
+export const RECOVERY_MESSAGE = 'RECOVERY_MESSAGE';
 export const UPDATE_USER = 'UPDATE_USER';
 export const UPDATE_MESSAGES = 'UPDATE_MESSAGES';
 export const DELETE_USER = 'DELETE_USER';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
+export const CONTACT_MESSAGE = 'CONTACT_MESSAGE';
 export const OPEN_CONFIRM_DELETE_USER = 'OPEN_CONFIRM_DELETE_USER';
 export const CLOSE_CONFIRM_DELETE_USER = 'CLOSE_CONFIRM_DELETE_USER';
 export const SIGNIN = 'SIGNIN';
@@ -55,12 +58,26 @@ export const storeRefreshToken = (refreshToken) => ({
   refreshToken,
 });
 
+export const sendRecovery = () => ({
+  type: SEND_RECOVERY,
+});
+
+export const recoveryMessage = (message) => ({
+  type: RECOVERY_MESSAGE,
+  message,
+});
+
 export const signin = () => ({
   type: SIGNIN,
 });
 
 export const sendMessage = () => ({
   type: SEND_MESSAGE,
+});
+
+export const contactMessage = (message) => ({
+  type: CONTACT_MESSAGE,
+  message,
 });
 
 export const OpenConfirmDeleteUser = () => ({

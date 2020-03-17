@@ -13,6 +13,7 @@ import Profil from 'src/containers/Profil';
 import LoadingScreen from 'src/components/LoadingScreen';
 import NotFound from 'src/components/NotFound';
 import FinalizeRegister from 'src/components/FinalizeRegister';
+import Recovery from 'src/containers/Recovery';
 import Liste from 'src/containers/Liste';
 
 // == Composant
@@ -110,6 +111,15 @@ const App = () => (
       render={() => (
         <Welcome>
           <FinalizeRegister />
+        </Welcome>
+      )}
+    />
+
+    <Route
+      path="/recovery"
+      render={() => (
+        <Welcome>
+          <Recovery />
         </Welcome>
       )}
     />

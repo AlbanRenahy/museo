@@ -3,27 +3,25 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import Contact from 'src/components/Contact';
+import Recovery from 'src/components/Recovery';
 
-// Action Creators
-import { updateUserformField, sendMessage } from 'src/actions/userActions';
+import { updateUserformField, sendRecovery } from 'src/actions/userActions';
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
-  message: state.user.message,
-  contactMessage: state.user.contactMessage,
+  recoveryMessage: state.user.recoveryMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateUserformField: (fieldName, input) => {
     dispatch(updateUserformField(fieldName, input));
   },
-  sendMessage: () => {
-    dispatch(sendMessage());
+  sendRecovery: () => {
+    dispatch(sendRecovery());
   },
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Contact);
+)(Recovery);

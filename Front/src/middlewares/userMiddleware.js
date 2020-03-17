@@ -5,10 +5,13 @@ import {
   UPDATE_USER,
   SIGNIN,
   SEND_MESSAGE,
+  SEND_RECOVERY,
   storeToken,
   storeRefreshToken,
   connectingError,
   signinErrors,
+  contactMessage,
+  recoveryMessage,
   clearSigninErrors,
   redirectToRegister,
   updateUserformField,
@@ -49,22 +52,24 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .then((response) => {
           // console.log('message envoyé : ', response);
-          store.dispatch(updateMessage('Modifications enregistrées.'));
+          store.dispatch(contactMessage('Modifications enregistrées.'));
         })
         .catch((error) => {
           // console.log('erreur :', error.response);
-          store.dispatch(updateMessage('Une erreur est survenue, veuillez essayer à nouveau.'));
+          store.dispatch(contactMessage('Une erreur est survenue, veuillez essayer à nouveau.'));
         });
       next(action);
       break;
     case SEND_MESSAGE:
-      axios.get(`${museoApi}/api/users/`, {
+      axios.post(`${museoApi}/api/users/`, {
       })
         .then((response) => {
           // console.log('message envoyé : ', response);
+          store.dispatch(contactMessage('Votre message a bien été envoyé.'));
         })
         .catch((error) => {
           // console.log('erreur :', error.response);
+          store.dispatch(contactMessage('Une erreur est survenue, veuillez essayer à nouveau.'));
         });
       next(action);
       break;
@@ -94,6 +99,19 @@ const userMiddleware = (store) => (next) => (action) => {
             store.dispatch(signinErrors(error.message));
           });
       }
+      next(action);
+      break;
+    case SEND_RECOVERY:
+      axios.post(`${museoApi}/api/users/`, {
+      })
+        .then((response) => {
+          // console.log('message envoyé : ', response);
+          store.dispatch(recoveryMessage('L\'email a bien été envoyé.'));
+        })
+        .catch((error) => {
+          // console.log('erreur :', error.response);
+          store.dispatch(recoveryMessage('Une erreur est survenue, veuillez essayer à nouveau.'));
+        });
       next(action);
       break;
     default:

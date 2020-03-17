@@ -43,9 +43,7 @@ const Login = ({
       value={password}
       onChangeFunction={(input) => updateUserformField('password', input)}
     />
-    <p className="lost-password">
-      <a className="lost-password" onClick={() => alert('pas de chance !')}>J'ai perdu mon mot de passe</a>
-    </p>
+    <Link className="recovery-link" to="/recovery">J'ai perdu mon mot de passe</Link>
     <button type="submit" className="form-button">ME CONNECTER</button>
     <Link className="signin-link" to="/signin">Je souhaite m'inscrire</Link>
     <Link className="map-link" to="/map">Entrer sur la carte en visiteur</Link>

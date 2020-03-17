@@ -5,7 +5,10 @@ import {
   SIGNIN,
   STORE_TOKEN,
   STORE_REFRESH_TOKEN,
+  SEND_RECOVERY,
+  RECOVERY_MESSAGE,
   SEND_MESSAGE,
+  CONTACT_MESSAGE,
   OPEN_CONFIRM_DELETE_USER,
   CLOSE_CONFIRM_DELETE_USER,
   DISCONNECT_USER,
@@ -23,7 +26,9 @@ const initialState = {
   email: '', // correspond aux input pour l'email
   userFirstname: null,
   userLastname: null,
+  recoveryMessage: '', // display a message with error or success on submit recovery form
   message: '', // correspond au message dans contact
+  contactMessage: '', // display a message with error or success on submit contact form
   displayConfirmDeleteUser: false,
   token: '', // string,
   refreshToken: '',
@@ -68,6 +73,13 @@ const userReducer = (state = initialState, action = {}) => {
         refreshToken: action.refreshToken,
         isConnected: true,
       };
+    case SEND_RECOVERY:
+      return state;
+    case RECOVERY_MESSAGE:
+      return {
+        ...state,
+        recoveryMessage: action.message,
+      };
     case DISCONNECT_USER:
       return {
         ...initialState,
@@ -99,6 +111,11 @@ const userReducer = (state = initialState, action = {}) => {
       };
     case SEND_MESSAGE:
       return state;
+    case CONTACT_MESSAGE:
+      return {
+        ...state,
+        contactMessage: action.message,
+      };
     case OPEN_CONFIRM_DELETE_USER:
       return {
         ...state,
