@@ -25,11 +25,12 @@
             <td>{{ monument.name }}</td>
             {# <td>{{ monument.description|slice(0, 50) }}</td> #}
             <td>{{ monument.address }}</td>
-            {% if monument.image == null %}
+            {% if monument.imageName == null %}
                 <td><span class="badge badge-danger">Aucune image</span></td>
             {% else %}
                 <td>
-                    <img src="{{ monument.image }}" alt="" height="50px">
+                    {#<img src="{{ asset('images/monuments/' ~ monument.imageName ~ '') }}" alt="" height="50px">#}
+                    <img src="{{ vich_uploader_asset(monument) }}" alt="{{ monument.name }}" height="40px" class="rounded mx-auto d-block"/>
                 </td>
             {% endif %}
             <td>{{ monument.createdAt|date("d/m/Y") }}</td>
