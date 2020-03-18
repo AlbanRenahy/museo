@@ -5,10 +5,11 @@ namespace App\Controller\Admin;
 use App\Entity\Period;
 use App\Form\PeriodType;
 use App\Repository\PeriodRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/admin/period", name="dashboard.period.")
@@ -77,6 +78,7 @@ class AdminPeriodController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN_MUSEO")
      * @Route("/delete/{id}", name="delete")
      */
     public function delete($id): Response

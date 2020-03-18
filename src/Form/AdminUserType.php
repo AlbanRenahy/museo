@@ -4,12 +4,14 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class AdminUserType extends AbstractType
 {
@@ -17,7 +19,21 @@ class AdminUserType extends AbstractType
     {
         $builder
             ->add('username', TextType::class)
-            // ->add('roles')
+            ->add('roles', ChoiceType::class, [
+                // 'label' => 'Choissez un ou plusieurs roles',
+                'constraints' => [  
+                    new NotBlank([
+                        'message' => 'Vous êtes obligez d\'attribuer au moin un role.'
+                    ])
+                ],
+                'choices' => [
+                    'Administrateur' => 'ROLE_ADMIN_MUSEO',
+                    'Modérateur' => 'ROLE_MODERATOR_MUSEO',
+                    'Utilisateur' => 'ROLE_USER_MUSEO',
+                ],
+                'expanded' => false,
+                'multiple' => true,
+            ])
             ->add('password', HiddenType::class)
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom',

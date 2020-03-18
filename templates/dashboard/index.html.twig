@@ -9,9 +9,11 @@
     <main class="container-fluid">
         {% include 'layout/message.html.twig' %}
         <h3>Bienvenue <strong>{{ app.user.username }}</strong>, sur le backoffice Museo</h3>
+        {#
         <div class="alert alert-primary" role="alert">
             <i class="far fa-question-circle"></i> Si vous voyez des éléments grisés, pas de panique ! c'est que les fonctionnalités ne sont pas prêtes...
         </div>
+        #}
         <div class="row">
             {% include 'dashboard/layout/card/dashboard.html.twig' %}
         </div>

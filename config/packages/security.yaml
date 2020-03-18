@@ -62,6 +62,12 @@ security:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # ADMIN
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_ADMIN_MUSEO }
+        - { path: ^/, roles: ROLE_USER_MUSEO }
+
+    role_hierarchy:
+        ROLE_USER_MUSEO: ROLE_USER
+        ROLE_MODERATOR_MUSEO: ROLE_MODERATOR
+        ROLE_ADMIN_MUSEO: ROLE_ADMIN
 
 

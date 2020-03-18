@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    
+    <div class="container mt-4">
+        <h1 class="font-weight-bold">
+            Accueil Museo Temporaire
+        </h1>
+        {% if app.user %}
+            <span>Vous êtes connecter avec <strong>{{ app.user.username }}</strong>,  <a href="{{ path('app_logout') }}" class="btn btn-danger">Deconnexion</a> </span>
+            {% if is_granted('ROLE_ADMIN_MUSEO') %}
+                <a href="{{ path('dashboard.index') }}" class="btn btn-success">Backoffice</a> 
+            {% endif %}
+        {% else %}
+            <a href="{{ path('app_login') }}">Connexion</a>
+        {% endif %}
+    </div>
+
+{% endblock %}
