@@ -8,6 +8,7 @@
             <th>Prénom</th>
             <th>Nom de famille</th>
             <th>Créer le</th>
+            <th>MAJ le</th>
             <th>Compte actif</th>
             <th>Rôles</th>
             <th>Actions</th>
@@ -31,6 +32,9 @@
                 <td><span class="badge badge-light">{{ user.lastname }}</span></td>
             {% endif %}
             <td>{{ user.createdAt|date("d/m/Y") }}</td>
+            <pre>
+                {{ dump(user) }}
+            </pre>
             {% if user.isActive == 1 %}
                 <td><span class="badge badge-primary">Compte activé</span></td>
             {% else %}
