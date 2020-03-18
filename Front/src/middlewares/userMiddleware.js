@@ -1,8 +1,10 @@
 import axios from 'axios';
+import jwt from 'jwt-decode';
 
 import {
   CONNECT_USER,
   UPDATE_USER,
+  DELETE_USER,
   SIGNIN,
   SEND_MESSAGE,
   SEND_RECOVERY,
@@ -30,9 +32,11 @@ const userMiddleware = (store) => (next) => (action) => {
           password: store.getState().user.password,
         })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           store.dispatch(storeToken(response.data.token));
           store.dispatch(storeRefreshToken(response.data.refreshToken));
+          store.dispatch(updateUserformField('userId', jwt(response.data.token).userId));
+          store.dispatch(updateUserformField('email', jwt(response.data.token).userEmail));
           store.dispatch(updateUserformField('isConnected', true));
           store.dispatch(updateUserformField('loginMessage', 'Vous êtes connecté(e).'));
           store.dispatch(updateUserformField('loginStatus', 'connected'));
@@ -45,17 +49,35 @@ const userMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     case UPDATE_USER:
+      console.log(store.getState().user.userId);
       axios
-        .patch(`${museoApi}/api/users/{id}`, {
+        .patch(`${museoApi}/api/users/${store.getState().user.userId}`, {
           username: store.getState().user.username,
+          email: store.getState().user.email,
           password: store.getState().user.password,
+          updatedAt: new Date(),
+          isActive: true,
         })
         .then((response) => {
-          // console.log('message envoyé : ', response);
+          console.log('message envoyé : ', response);
           store.dispatch(contactMessage('Modifications enregistrées.'));
         })
         .catch((error) => {
-          // console.log('erreur :', error.response);
+          console.log('erreur :', error.response);
+          store.dispatch(contactMessage('Une erreur est survenue, veuillez essayer à nouveau.'));
+        });
+      next(action);
+      break;
+    case DELETE_USER:
+      axios
+        .delete(`${museoApi}/api/users/${store.getState().user.userId}`, {
+        })
+        .then((response) => {
+          console.log('message envoyé : ', response);
+          store.dispatch(contactMessage('Modifications enregistrées.'));
+        })
+        .catch((error) => {
+          console.log('erreur :', error.response);
           store.dispatch(contactMessage('Une erreur est survenue, veuillez essayer à nouveau.'));
         });
       next(action);

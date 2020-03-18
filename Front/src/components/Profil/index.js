@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 
@@ -17,6 +17,8 @@ const Profil = ({
   password,
   updateUserformField,
   updateUser,
+  deleteUser,
+  isConnected,
   displayConfirmDeleteUser,
   OpenConfirmDeleteUser,
   CloseConfirmDeleteUser,
@@ -64,7 +66,8 @@ const Profil = ({
       <button type="button" className="delete-profil" onClick={OpenConfirmDeleteUser}>Supprimer mon compte</button>
       <Link to="/" className="login-link">Retour à la page d'accueil</Link>
     </Form>
-    {displayConfirmDeleteUser && <ConfirmModale closeModale={CloseConfirmDeleteUser} />}
+    {displayConfirmDeleteUser && <ConfirmModale closeModale={CloseConfirmDeleteUser} deleteUser={deleteUser} isConnected={isConnected} />}
+    {!isConnected && <Redirect to="/" />}
   </>
 );
 
@@ -74,6 +77,8 @@ Profil.propTypes = {
   password: PropTypes.string.isRequired,
   updateUserformField: PropTypes.func.isRequired,
   updateUser: PropTypes.func.isRequired,
+  deleteUser: PropTypes.func.isRequired,
+  isConnected: PropTypes.bool.isRequired,
   displayConfirmDeleteUser: PropTypes.bool.isRequired,
   OpenConfirmDeleteUser: PropTypes.func.isRequired,
   CloseConfirmDeleteUser: PropTypes.func.isRequired,

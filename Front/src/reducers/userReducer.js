@@ -2,6 +2,7 @@ import {
   UPDATE_USERFORM_FIELD,
   CONNECT_USER,
   UPDATE_USER,
+  DELETE_USER,
   SIGNIN,
   STORE_TOKEN,
   STORE_REFRESH_TOKEN,
@@ -22,6 +23,7 @@ const initialState = {
   // ******* LOGIN FIELDS / SIGNIN FORM******/
   password: '', // correspond au password dans login et signin
   passConfirm: '', // correspond à la confirmation de mot de passe dans signin
+  userId: null,
   username: '', // correspond au pseudo dans signin
   email: '', // correspond aux input pour l'email
   userFirstname: null,
@@ -58,6 +60,11 @@ const userReducer = (state = initialState, action = {}) => {
     case UPDATE_USER:
       return {
         ...state,
+        updateMessage: action.message,
+      };
+    case DELETE_USER:
+      return {
+        ...initialState,
         updateMessage: action.message,
       };
     case STORE_TOKEN:
