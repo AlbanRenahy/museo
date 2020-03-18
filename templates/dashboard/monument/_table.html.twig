@@ -30,7 +30,8 @@
             {% else %}
                 <td>
                     {#<img src="{{ asset('images/monuments/' ~ monument.imageName ~ '') }}" alt="" height="50px">#}
-                    <img src="{{ vich_uploader_asset(monument) }}" alt="{{ monument.name }}" height="40px" class="rounded mx-auto d-block"/>
+                    {#<img src="{{ vich_uploader_asset(monument) }}" alt="{{ monument.name }}" height="40px" class="rounded mx-auto d-block"/>#}
+                    <img src="{{ absolute_url(asset('assets/img/upload/monuments/' ~ monument.imageName)) }}" height="40px" class="rounded mx-auto d-block" alt="{{ monument.name }}">
                 </td>
             {% endif %}
             <td>{{ monument.createdAt|date("d/m/Y") }}</td>
