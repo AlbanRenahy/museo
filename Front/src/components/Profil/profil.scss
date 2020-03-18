@@ -13,6 +13,18 @@
         margin: 1rem auto;
       }
 
+  .update-message {
+    font-style: italic;
+    color: #B83B5E;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+
+    @media screen and (max-width: 425px)
+      {
+        font-size: 0.6rem;
+      }
+  }
+
   .profil-title {
     padding-top: 0;
     font-variant: small-caps;

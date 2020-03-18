@@ -1,10 +1,17 @@
 import {
+  CLEAR_MESSAGES,
   UPDATE_USERFORM_FIELD,
   CONNECT_USER,
+  UPDATE_USER,
+  UPDATE_MESSAGES,
+  DELETE_USER,
   SIGNIN,
   STORE_TOKEN,
   STORE_REFRESH_TOKEN,
+  SEND_RECOVERY,
+  RECOVERY_MESSAGE,
   SEND_MESSAGE,
+  CONTACT_MESSAGE,
   OPEN_CONFIRM_DELETE_USER,
   CLOSE_CONFIRM_DELETE_USER,
   DISCONNECT_USER,
@@ -18,16 +25,20 @@ const initialState = {
   // ******* LOGIN FIELDS / SIGNIN FORM******/
   password: '', // correspond au password dans login et signin
   passConfirm: '', // correspond à la confirmation de mot de passe dans signin
+  userId: null,
   username: '', // correspond au pseudo dans signin
   email: '', // correspond aux input pour l'email
   userFirstname: null,
   userLastname: null,
+  recoveryMessage: '', // display a message with error or success on submit recovery form
   message: '', // correspond au message dans contact
+  contactMessage: '', // display a message with error or success on submit contact form
   displayConfirmDeleteUser: false,
   token: '', // string,
   refreshToken: '',
   isConnected: false,
   loginMessage: '',
+  updateMessage: '',
   loginStatus: 'init',
   loading: false,
 
@@ -38,6 +49,12 @@ const initialState = {
 
 const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case CLEAR_MESSAGES:
+      return {
+        ...state,
+        loginMessage: '',
+        updateMessage: '',
+      };
     case UPDATE_USERFORM_FIELD:
       return {
         ...state,
@@ -48,6 +65,19 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         loginMessage: 'Connexion en cours...',
         loginStatus: 'connecting',
+      };
+    case UPDATE_USER:
+      return {
+        ...state,
+      };
+    case UPDATE_MESSAGES:
+      return {
+        ...state,
+        updateMessage: action.message,
+      };
+    case DELETE_USER:
+      return {
+        ...initialState,
       };
     case STORE_TOKEN:
       return {
@@ -61,6 +91,13 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         refreshToken: action.refreshToken,
         isConnected: true,
+      };
+    case SEND_RECOVERY:
+      return state;
+    case RECOVERY_MESSAGE:
+      return {
+        ...state,
+        recoveryMessage: action.message,
       };
     case DISCONNECT_USER:
       return {
@@ -93,6 +130,11 @@ const userReducer = (state = initialState, action = {}) => {
       };
     case SEND_MESSAGE:
       return state;
+    case CONTACT_MESSAGE:
+      return {
+        ...state,
+        contactMessage: action.message,
+      };
     case OPEN_CONFIRM_DELETE_USER:
       return {
         ...state,

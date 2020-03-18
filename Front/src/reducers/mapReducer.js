@@ -24,6 +24,7 @@ import {
   GET_MONUMENTS_LIST_DATA,
   SET_MONUMENTS_LIST_DATA,
 } from '../actions/mapActions';
+import { DISCONNECT_USER, CLEAR_MESSAGES } from '../actions/userActions';
 
 const initialState = {
   // ******* MANAGEMENT OF MODAL FORM ******/
@@ -96,6 +97,15 @@ const initialState = {
 
 const mapReducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case CLEAR_MESSAGES:
+      return {
+        ...state,
+        loginMessage: '',
+      };
+    case DISCONNECT_USER:
+      return {
+        ...initialState,
+      };
     case UPDATE_MAPFORM_FIELD:
       return {
         ...state,

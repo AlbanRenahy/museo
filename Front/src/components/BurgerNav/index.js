@@ -18,7 +18,7 @@ const BurgerNav = ({ isConnected, disconnect }) => (
         {isConnected && <li><NavLink to="/profil" className="navigation-link">Mon compte</NavLink></li>}
         <li><NavLink to="/contact" className="navigation-link">Contact</NavLink></li>
         <li><NavLink to="/about" className="navigation-link">A propos</NavLink></li>
-        {isConnected && <li><NavLink onClick={disconnect} to="/profil" className="navigation-link">Déconnexion</NavLink></li>}
+        {isConnected && <li><NavLink onClick={disconnect} to="/login" className="navigation-link">Déconnexion</NavLink></li>}
       </ul>
     </Popup>
   </div>

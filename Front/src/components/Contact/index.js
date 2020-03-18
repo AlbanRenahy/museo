@@ -18,9 +18,10 @@ import './contact.scss';
  * Code
  */
 const Contact = ({
-  email, message, updateUserformField, sendMessage,
+  email, message, updateUserformField, sendMessage, contactMessage,
 }) => (
   <Form onSubmit={sendMessage} className="contact-form">
+    <p className="contact-message">{contactMessage}</p>
     <h1 className="contact-title">Contactez nous !</h1>
     <Input
       className="email-input"
@@ -50,6 +51,7 @@ Contact.propTypes = {
   message: PropTypes.string.isRequired,
   updateUserformField: PropTypes.func.isRequired,
   sendMessage: PropTypes.func.isRequired,
+  contactMessage: PropTypes.string.isRequired,
 };
 
 
