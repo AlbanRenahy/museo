@@ -6,7 +6,7 @@
             <th>Nom</th>
             {# <th>Description</th> #}
             <th>Adresse</th>
-            <th>Image</th>
+            <!-- <th>Image</th> -->
             <th>Créer le</th>
             <th>Affiché</th>
             <th>Lat</th>
@@ -25,13 +25,13 @@
             <td>{{ monument.name }}</td>
             {# <td>{{ monument.description|slice(0, 50) }}</td> #}
             <td>{{ monument.address }}</td>
-            {% if monument.image == null %}
+            {#% if monument.image == null %}
                 <td><span class="badge badge-danger">Aucune image</span></td>
             {% else %}
                 <td>
                     <img src="{{ monument.image }}" alt="" height="50px">
                 </td>
-            {% endif %}
+            {% endif %#}
             <td>{{ monument.createdAt|date("d/m/Y") }}</td>
             {% if monument.available == 1 %}
                 <td><span class="badge badge-primary">AFFICHER</span></td>
