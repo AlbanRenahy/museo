@@ -79,6 +79,7 @@ class MonumentType extends AbstractType
                 'label' => 'Publique visée',
                 'placeholder' => 'Choissez un publique visée',
             ])
+            ->add('imageFile', VichImageType::class)
         ;
     }
 
