@@ -176,14 +176,14 @@ class Monument
     private $isActive;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Period", inversedBy="monuments")
-     */
-    private $period;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="monuments")
      */
     private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Period", inversedBy="monuments")
+     */
+    private $period;
 
     public function getId(): ?int
     {
@@ -375,18 +375,6 @@ class Monument
         return $this->imageSize;
     }
 
-    public function getPeriod(): ?Period
-    {
-        return $this->period;
-    }
-
-    public function setPeriod(?Period $period): self
-    {
-        $this->period = $period;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Category[]
      */
@@ -409,6 +397,18 @@ class Monument
         if ($this->category->contains($category)) {
             $this->category->removeElement($category);
         }
+
+        return $this;
+    }
+
+    public function getPeriod(): ?Period
+    {
+        return $this->period;
+    }
+
+    public function setPeriod(?Period $period): self
+    {
+        $this->period = $period;
 
         return $this;
     }

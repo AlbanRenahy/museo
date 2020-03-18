@@ -51,7 +51,7 @@ class Period
      */
     private $monuments;
 
-
+    
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -111,7 +111,7 @@ class Period
     {
         if (!$this->monuments->contains($monument)) {
             $this->monuments[] = $monument;
-            $monument->addPeriod($this);
+            $monument->setPeriod($this);
         }
 
         return $this;
@@ -121,7 +121,10 @@ class Period
     {
         if ($this->monuments->contains($monument)) {
             $this->monuments->removeElement($monument);
-            $monument->removePeriod($this);
+            // set the owning side to null (unless already changed)
+            if ($monument->getPeriod() === $this) {
+                $monument->setPeriod(null);
+            }
         }
 
         return $this;
