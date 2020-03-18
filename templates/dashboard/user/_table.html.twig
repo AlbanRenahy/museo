@@ -35,7 +35,7 @@
             {% if user.updatedAt == null %}
                 <td><span class="badge badge-info">Aucune MAJ</span></td>
             {% else %}
-                <td>{{ user.updatedAt|date("d/m/Y") }}</td>
+                <td class="text-success">{{ user.updatedAt|date("d/m/Y") }}</td>
             {% endif %}
             {% if user.isActive == 1 %}
                 <td><span class="badge badge-primary">Compte activé</span></td>
