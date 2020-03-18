@@ -20,7 +20,15 @@ class UploadImageApi extends AbstractController
      */
     public function jsonImage(Request $request): JsonResponse
     {
-        $data= $request->get("data");
+        $user = $this->getUser();
+        $data = $request->files->get('image');
+        $fileName = $user.'.'.$data->guessExtension();
+        // moves the file to the directory where usuarios are stored
+        $data->move(
+            $this->getParameter('upload_directory'),
+            $fileName
+        );
+        echo $data; exit;
         return $this->json($data);
     }
 
