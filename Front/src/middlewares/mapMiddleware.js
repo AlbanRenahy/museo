@@ -14,7 +14,6 @@ import {
   resetFormMonument,
   getMonuments,
   GET_MONUMENTS,
-  getMonuments,
   setMonuments,
   SUBMIT_PICTURE,
   GET_MONUMENTS_LIST_DATA,
