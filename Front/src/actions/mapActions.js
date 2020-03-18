@@ -121,8 +121,9 @@ export const createMarker = (latitude, longitude, datas) => ({
 export const resetFormMonument = () => ({
   type: RESET_FORM_MONUMENT,
 });
-export const getMonuments = () => ({
+export const getMonuments = (bounds) => ({
   type: GET_MONUMENTS,
+  bounds,
 });
 export const setMonuments = (monuments) => ({
   type: SET_MONUMENTS,

@@ -102,6 +102,15 @@ class Leaflet extends React.Component {
     openDisplayMonument();
   }
 
+  handleMove = () => {
+    const { updateMapformField, getMonuments, fetchingMonuments } = this.props;
+    const actualBounds = this.map.current.leafletElement.getBounds();
+    updateMapformField('actualBounds', actualBounds);
+    // eslint-disable-next-line no-unused-expressions
+    fetchingMonuments || getMonuments(actualBounds);
+    updateMapformField('fetchingMonuments', true);
+  }
+
 
   render() {
     const { closeAllModals } = this.props;
@@ -153,6 +162,8 @@ class Leaflet extends React.Component {
           onContextmenu={this.handleRightClick}
           onClick={closeAllModals}
           whenReady={this.handleMapReady}
+          onZoomEnd={this.handleMove}
+          onMoveEnd={this.handleMove}
         >
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
