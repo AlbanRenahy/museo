@@ -50,6 +50,7 @@ class Monument
     public function __construct()
     {
         $this->createdAt = new \DateTime();
+        $this->category = new ArrayCollection();
         // $this->options = new ArrayCollection();
     }
 
@@ -165,12 +166,6 @@ class Monument
     private $region;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="monuments")
-     */
-    private $category;
-
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Target", inversedBy="monuments")
      */
     private $target;
@@ -184,6 +179,11 @@ class Monument
      * @ORM\ManyToOne(targetEntity="App\Entity\Period", inversedBy="monuments")
      */
     private $period;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="monuments")
+     */
+    private $category;
 
     public function getId(): ?int
     {
@@ -286,18 +286,6 @@ class Monument
         return $this;
     }
 
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
     public function getTarget(): ?Target
     {
         return $this->target;
@@ -395,6 +383,32 @@ class Monument
     public function setPeriod(?Period $period): self
     {
         $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        if ($this->category->contains($category)) {
+            $this->category->removeElement($category);
+        }
 
         return $this;
     }
