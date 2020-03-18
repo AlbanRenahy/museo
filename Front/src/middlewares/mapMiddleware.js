@@ -12,25 +12,30 @@ import {
   setTargets,
   createMarker,
   resetFormMonument,
+  getMonuments,
   GET_MONUMENTS,
   setMonuments,
+  SUBMIT_PICTURE,
   GET_MONUMENTS_LIST_DATA,
   setMonumentsListData,
 } from 'src/actions/mapActions';
 
 const museoApi = 'http://54.91.98.36/projet-museo/public/api';
 
+const fd = new FormData();
+
 const mapMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
     case SUBMIT_MONUMENT:
-      // console.log('avt axios');
       axios.post(`${museoApi}/monuments`, {
         latitude: store.getState().map.clickedLat,
         longitude: store.getState().map.clickedLng,
         address: store.getState().map.address ? store.getState().map.address : null,
         name: store.getState().map.name ? store.getState().map.name : null,
-        image: store.getState().map.fileInput ? store.getState().map.fileInput : null,
+        // imageFile: store.getState().map.fileInput ? store.getState().map.fileInput : null,
+        // imageName: store.getState().map.fileText ? store.getState().map.fileText : null,
+        // imageSize: store.getState().map.fileSize ? store.getState().map.fileSize : null,
         // category: store.getState().map.thematic ? store.getState().map.thematic : null,
         // region: store.getState().map.region ? store.getState().map.region : null,
         // period: store.getState().map.period ? store.getState().map.period : null,
@@ -44,11 +49,24 @@ const mapMiddleware = (store) => (next) => (action) => {
         createdAt: new Date(),
       })
         .then((response) => {
-          store.dispatch(createMarker(store.getState().clickedLat, store.getState().clickedLng, response.data));
+          console.log(response);
+          // store.dispatch(createMarker(store.getState().clickedLat, store.getState().clickedLng, response.data));
+          store.dispatch(getMonuments());
           store.dispatch(resetFormMonument());
         })
         .catch((error) => {
           console.log(error.message);
+        });
+      next(action);
+      break;
+    case SUBMIT_PICTURE:
+      fd.append('file', store.getState().map.fileInput, store.getState().map.fileText, store.getState().map.fileSize);
+      axios.post('http://54.91.98.36/projet-museo/public/upload/image', fd)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log('FAILURE!!');
         });
       next(action);
       break;

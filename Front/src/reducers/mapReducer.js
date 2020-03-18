@@ -59,6 +59,7 @@ const initialState = {
   clickedLng: 0, // gère la longitude
   fileInput: '', // Fichier converti prêt à être envoyé
   fileText: '', // Nom du fichier
+  fileSize: 0,
 
   // Datas component did mount
   monuments: [],
@@ -75,12 +76,9 @@ const initialState = {
     address: '',
     description: '',
     available: true,
-    images: [
-      {
-        id: 0,
-        path: '',
-      },
-    ],
+    imageFile: {
+      path: '',
+    },
     latitude: 0,
     longitude: 0,
     period: '',
@@ -166,6 +164,7 @@ const mapReducer = (state = initialState, action = {}) => {
         clickedLng: 0,
         fileInput: '',
         fileText: '',
+        fileSize: 0,
         name: '',
         address: '',
         description: '',
