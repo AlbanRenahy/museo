@@ -81,6 +81,7 @@ class MonumentType extends AbstractType
             ])
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
+                'label' => 'Image',
                 'storage_resolve_method' => VichImageType::STORAGE_RESOLVE_PATH_ABSOLUTE
             ])
         ;

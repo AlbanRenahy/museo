@@ -64,7 +64,10 @@ class Monument
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * 
+     * @Assert\File(
+     *      mimeTypes = {"image/jpg", "image/png"},
+     *      mimeTypesMessage = "Merci d'uploader une image valide"
+     * )
      * @Vich\UploadableField(mapping="monument_image", fileNameProperty="imageName", size="imageSize")
      * 
      * @var File|null
