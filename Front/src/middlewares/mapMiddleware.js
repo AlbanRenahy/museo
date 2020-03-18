@@ -13,6 +13,7 @@ import {
   createMarker,
   resetFormMonument,
   GET_MONUMENTS,
+  getMonuments,
   setMonuments,
   GET_MONUMENTS_LIST_DATA,
   setMonumentsListData,
@@ -44,7 +45,8 @@ const mapMiddleware = (store) => (next) => (action) => {
         createdAt: new Date(),
       })
         .then((response) => {
-          store.dispatch(createMarker(store.getState().clickedLat, store.getState().clickedLng, response.data));
+          // store.dispatch(createMarker(store.getState().clickedLat, store.getState().clickedLng, response.data));
+          store.dispatch(getMonuments());
           store.dispatch(resetFormMonument());
         })
         .catch((error) => {

@@ -118,8 +118,8 @@ const mapReducer = (state = initialState, action = {}) => {
           ...state.monuments,
           {
             id: action.datas.id,
-            latitude: action.latitude,
-            longitude: action.longitude,
+            latitude: action.datas.latitude,
+            longitude: action.datas.longitude,
           },
         ],
       };

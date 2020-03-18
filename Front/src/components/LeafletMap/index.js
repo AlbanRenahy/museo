@@ -44,6 +44,7 @@ class Leaflet extends React.Component {
 
   map = React.createRef();
 
+
   componentDidMount() {
     const {
       getThematics,
@@ -163,15 +164,19 @@ class Leaflet extends React.Component {
             {
               monuments.map(({
                 latitude, longitude, id,
-              }) => (
-                <Marker
-                  position={[latitude, longitude]}
-                  key={id}
-                  id={id}
-                  icon={this.myPinOrange}
-                  onClick={this.handleClickMarker}
-                />
-              ))
+              }) => {
+                console.log(latitude);
+                return (
+
+                  <Marker
+                    position={[latitude, longitude]}
+                    key={id}
+                    id={id}
+                    icon={this.myPinOrange}
+                    onClick={this.handleClickMarker}
+                  />
+                );
+              })
           }
           </MarkerClusterGroup>
           {coords !== null && (

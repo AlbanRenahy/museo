@@ -59,8 +59,8 @@ const mapDispatchToProps = (dispatch) => ({
   getTargets: () => {
     dispatch(getTargets());
   },
-  getMonuments: () => {
-    dispatch(getMonuments());
+  getMonuments: (bounds) => {
+    dispatch(getMonuments(bounds));
   },
   setMonumentDatas: (current) => {
     dispatch(setMonumentDatas(current));
