@@ -32,9 +32,11 @@
                 <td><span class="badge badge-light">{{ user.lastname }}</span></td>
             {% endif %}
             <td>{{ user.createdAt|date("d/m/Y") }}</td>
-            <pre>
-                {{ dump(user) }}
-            </pre>
+            {% if user.updatedAt == null %}
+                <td><span class="badge badge-info">Aucune MAJ</span></td>
+            {% else %}
+                <td>{{ user.updatedAt|date("d/m/Y") }}</td>
+            {% endif %}
             {% if user.isActive == 1 %}
                 <td><span class="badge badge-primary">Compte activé</span></td>
             {% else %}
