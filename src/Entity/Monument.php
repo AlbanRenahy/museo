@@ -9,7 +9,6 @@ use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use ApiPlatform\Core\Api\FilterInterface;
 // use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -32,7 +31,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(fields={"name"}, message="Le monument existe déjà")
  * @ApiFilter(NumericFilter::class, properties={"latitude, longitude"})
  * @ApiFilter(BooleanFilter::class, properties={"available"})
- * @Vich\Uploadable
  */
 class Monument
 {
@@ -147,15 +145,6 @@ class Monument
      * @ORM\ManyToOne(targetEntity="App\Entity\Target", inversedBy="monuments")
      */
     private $target;
-
-    /**
-     * @var MediaObject|null
-     *
-     * @ORM\ManyToOne(targetEntity=MediaObject::class)
-     * @ORM\JoinColumn(nullable=true)
-     * @ApiProperty(iri="http://schema.org/image")
-     */
-    public $image;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -329,18 +318,6 @@ class Monument
     public function setAddress($address)
     {
         $this->address = $address;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
 
         return $this;
     }
