@@ -28,6 +28,7 @@ const About = () => (
       <div className="staff"><br />
         <h2 className="title-staff">L'équipe</h2>
         <Label className="staff-label">
+        <a className="link" target="_blank" draggable="false" data-tooltip="Product Owner">
           <a
             className="ui purple image big label"
           >
@@ -37,9 +38,11 @@ const About = () => (
               alt="img-Alban"
             />
             Alban
+            </a>
           </a>
         </Label>
         <Label className="staff-label">
+        <a className="link" target="_blank" draggable="false" data-tooltip="Lead Dev (Front)">
           <a
             className="ui orange image big label"
           >
@@ -49,9 +52,11 @@ const About = () => (
               alt="img-Corale"
             />
             Coralie
+            </a>
           </a>
         </Label>
         <Label className="staff-label">
+        <a className="link" target="_blank" draggable="false" data-tooltip="Git Master et Lead Dev (Back)">
           <a
             className="ui blue image big label"
           >
@@ -62,33 +67,36 @@ const About = () => (
             />
             Julien
           </a>
+        </a>
         </Label>
         <Label className="staff-label">
-          <a
-            className="ui yellow image big label"
-          >
-            <img
-              className="image"
-              src={Avatar4}
-              alt="img-Anthony"
-            />
-            Anthony
+          <a className="link" target="_blank" draggable="false" data-tooltip="Scrum Master">
+            <a
+              className="ui yellow image big label"
+            >
+              <img
+                className="image"
+                src={Avatar4}
+                alt="img-Anthony"
+              />
+              Anthony
+            </a>
           </a>
         </Label>
         <Label className="staff-label">
-          <a
-            className="ui teal image big label"
-          >
-            <img
-              className="image"
-              src={Avatar5}
-              alt="img-Cécile"
-            />
-            Cécile
+          <a className="link" target="_blank" draggable="false" data-tooltip="Git Master (Front)">
+            <a
+              className="ui teal image big label"
+            >
+              <img
+                className="image"
+                src={Avatar5}
+                alt="img-Cécile"
+              />
+              Cécile
+            </a>
           </a>
         </Label>
-
-
       </div>
       <p className="login-link"><Link to="/">Retour à la page d'accueil</Link></p>
     </div>
