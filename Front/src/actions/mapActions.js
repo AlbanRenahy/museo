@@ -32,6 +32,7 @@ export const TOGGLE_MENU = 'TOGGLE_MENU';
 export const TOGGLE_VIEW = 'TOGGLE_VIEW';
 export const GET_MONUMENTS_LIST_DATA = 'GET_MONUMENTS_LIST_DATA';
 export const SET_MONUMENTS_LIST_DATA = 'SET_MONUMENTS_LIST_DATA';
+export const SUBMIT_PICTURE = 'SUBMIT_PICTURE';
 /**
  * Action Creators
  */
@@ -121,8 +122,9 @@ export const createMarker = (latitude, longitude, datas) => ({
 export const resetFormMonument = () => ({
   type: RESET_FORM_MONUMENT,
 });
-export const getMonuments = () => ({
+export const getMonuments = (bounds) => ({
   type: GET_MONUMENTS,
+  bounds,
 });
 export const setMonuments = (monuments) => ({
   type: SET_MONUMENTS,
@@ -149,4 +151,7 @@ export const getMonumentsListData = list => ({
 export const setMonumentsListData = list => ({
   type: SET_MONUMENTS_LIST_DATA,
   list,
+});
+export const submitPicture = list => ({
+  type: SUBMIT_PICTURE,
 });

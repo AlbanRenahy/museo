@@ -19,6 +19,7 @@ import {
   SET_MONUMENT_DATAS,
   CLOSE_MENU,
   TOGGLE_MENU,
+  GET_MONUMENTS,
   TOGGLE_VIEW,
   GET_MONUMENTS_LIST_DATA,
   SET_MONUMENTS_LIST_DATA,
@@ -48,12 +49,17 @@ const initialState = {
   center: [46.7248003746672, 2.9003906250000004], // Center of the map
   zoom: 6, // level of zoom
   userLocalized: false,
+  actualBounds: {
+    northEast: '',
+    southWest: '',
+  },
 
 
   clickedLat: 0, // gère la lattitude
   clickedLng: 0, // gère la longitude
   fileInput: '', // Fichier converti prêt à être envoyé
   fileText: '', // Nom du fichier
+  fileSize: 0,
 
   // Datas component did mount
   monuments: [],
@@ -70,12 +76,9 @@ const initialState = {
     address: '',
     description: '',
     available: true,
-    images: [
-      {
-        id: 0,
-        path: '',
-      },
-    ],
+    imageFile: {
+      path: '',
+    },
     latitude: 0,
     longitude: 0,
     period: '',
@@ -161,6 +164,7 @@ const mapReducer = (state = initialState, action = {}) => {
         clickedLng: 0,
         fileInput: '',
         fileText: '',
+        fileSize: 0,
         name: '',
         address: '',
         description: '',
@@ -224,7 +228,11 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         view: action.view,
       };
-
+    case GET_MONUMENTS:
+      return {
+        ...state,
+        fetchingMonuments: false,
+      };
     case GET_MONUMENTS_LIST_DATA:
       return {
         ...state,
