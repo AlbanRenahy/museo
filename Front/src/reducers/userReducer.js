@@ -38,8 +38,9 @@ const initialState = {
   refreshToken: '',
   isConnected: false,
   loginMessage: '',
-  loginStatus: 'not-connected',
   updateMessage: '',
+  loginStatus: 'init',
+  loading: false,
 
   // ************ERRORS*******/
   signinErrors: [],

@@ -27,6 +27,7 @@ const RenseignementMonuments = ({
   findAddress,
   fileText,
   resetFormMonument,
+  submitPicture
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
@@ -38,6 +39,7 @@ const RenseignementMonuments = ({
     e.preventDefault();
     console.log('submitting monument');
     submitMonument();
+    submitPicture();
   };
 
   const handleSelectChangeThematic = (e) => {
@@ -54,11 +56,12 @@ const RenseignementMonuments = ({
   };
 
   const handleFileChange = (e) => {
+    console.log(e.target.files[0]);
     if (e.target.files[0].type !== 'image/png' && e.target.files[0].type !== 'image/jpeg') {
       updateMapformField('fileText', 'Formats acceptés: JPG, PNG');
-    }
-    else {
+    } else {
       updateMapformField('fileText', e.target.files[0].name);
+      updateMapformField('fileSize', e.target.files[0].size);
     }
     const readFile = () => {
       const reader = new FileReader();
@@ -232,6 +235,7 @@ RenseignementMonuments.propTypes = {
   targets: PropTypes.array.isRequired,
   updateMapformField: PropTypes.func.isRequired,
   submitMonument: PropTypes.func.isRequired,
+  submitPicture: PropTypes.func.isRequired,
   findAddress: PropTypes.func.isRequired,
   fileText: PropTypes.string.isRequired,
   resetFormMonument: PropTypes.func.isRequired,

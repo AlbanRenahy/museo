@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { updateMapformField, closeAllModals, submitMonument, findAddress, resetFormMonument } from 'src/actions/mapActions';
+import { updateMapformField, closeAllModals, submitMonument, findAddress, resetFormMonument, submitPicture } from 'src/actions/mapActions';
 
 /**
  * Local import
@@ -21,6 +21,7 @@ const mapStateToProps = (state) => ({
   targets: state.map.targets,
   fileInput: state.map.fileInput,
   fileText: state.map.fileText,
+  fileSize: state.map.fileSize,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -32,6 +33,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   submitMonument: () => {
     dispatch(submitMonument());
+  },
+  submitPicture: () => {
+    dispatch(submitPicture());
   },
   findAddress: () => {
     dispatch(findAddress());

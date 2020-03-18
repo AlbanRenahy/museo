@@ -1,6 +1,7 @@
 // == Import npm
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // == Import
 import Welcome from 'src/components/Welcome';
@@ -17,27 +18,14 @@ import Recovery from 'src/containers/Recovery';
 import Liste from 'src/containers/Liste';
 
 // == Composant
-const App = () => (
-  // <div className="app">
-  //   {loading && <div>Chargement en cours</div>}
-  //   {!loading && (
-  //     <>
-  //       <Nav />
-  //       <Page />
-  //     </>
-  //   )}
-  // </div>
+const App = ({ loading }) => (
   <Switch>
-    {/* Route loading à enlever par la suite */}
-    <Route
-      exact
-      path="/loading"
-      render={() => (
-        <Welcome>
-          <LoadingScreen />
-        </Welcome>
-      )}
-    />
+    {loading === 'false' && (
+    <Welcome>
+      <LoadingScreen />
+    </Welcome>
+    )}
+
     <Route
       exact
       path="/"
@@ -127,6 +115,10 @@ const App = () => (
     <Route component={NotFound} />
   </Switch>
 );
+
+App.propTypes = {
+  loading: PropTypes.bool.isRequired,
+};
 
 // == Export
 export default App;

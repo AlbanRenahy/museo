@@ -2,3 +2,62 @@
     height: 100vh;
     width: 100vw;
   } 
+  svg path.leaflet-interactive {
+    pointer-events: unset !important;
+  
+  }
+  
+  .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+    margin-top: 0;
+    color: purple !important;
+  };
+  
+  .leaflet-control-zoom-out {
+    border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+  }
+  
+  .leaflet-control-zoom-in {
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+  }
+  
+  .leaflet-bar a:hover {
+    border-bottom: none !important;
+  }
+  
+  .leaflet-control-zoom {
+    border: 1px solid purple !important;
+    border-radius: 10px !important;
+  }
+  
+  .leaflet-bar a {
+    border-bottom: none;
+  }
+  
+  .leaflet-top, .leaflet-left {
+    bottom: 0 !important;
+    right: 0 !important;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    left: auto;
+    top: auto;
+  }
+
+  // Cluster marker
+  .marker-cluster {
+    background-image: url(../../styles/images/Pins_orange.png);
+    display: flex;
+  
+     & > div {
+      font-size: 1.5em;
+      border-radius: 100px;
+      margin: auto;
+
+  
+       & > span {
+        font-weight: bold;
+        color: #415d79;
+      }
+    }
+  }

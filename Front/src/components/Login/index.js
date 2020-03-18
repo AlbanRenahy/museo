@@ -59,7 +59,6 @@ const Login = ({
 );
 
 Login.propTypes = {
-  clearMessages: PropTypes.func.isRequired,
   username: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

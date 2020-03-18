@@ -19,6 +19,7 @@ import {
   SET_MONUMENT_DATAS,
   CLOSE_MENU,
   TOGGLE_MENU,
+  GET_MONUMENTS,
   TOGGLE_VIEW,
   GET_MONUMENTS_LIST_DATA,
   SET_MONUMENTS_LIST_DATA,
@@ -39,20 +40,27 @@ const initialState = {
   target: '',
   period: '',
 
+
+  // ************MANAGEMENT OF THE MENU********/
+  searchInput: '', // string
   view: 'map', // Toggle the view (Carte = 'map' // Monuments = 'list')
+  loading: false,
 
   // *********MANAGEMENT OF THE GEOLOCALIZATION*********/
   center: [46.7248003746672, 2.9003906250000004], // Center of the map
   zoom: 6, // level of zoom
   userLocalized: false,
+  actualBounds: {
+    northEast: '',
+    southWest: '',
+  },
 
-  // ************MANAGEMENT OF THE MENU********/
-  searchInput: '', // string
 
-  clickedLat: '', // gère la lattitude
-  clickedLng: '', // gère la longitude
+  clickedLat: 0, // gère la lattitude
+  clickedLng: 0, // gère la longitude
   fileInput: '', // Fichier converti prêt à être envoyé
   fileText: '', // Nom du fichier
+  fileSize: 0,
 
   // Datas component did mount
   monuments: [],
@@ -69,14 +77,11 @@ const initialState = {
     address: '',
     description: '',
     available: true,
-    images: [
-      {
-        id: 0,
-        path: '',
-      },
-    ],
-    latitude: '',
-    longitude: '',
+    imageFile: {
+      path: '',
+    },
+    latitude: 0,
+    longitude: 0,
     period: '',
     thematic: '',
     region: '',
@@ -126,8 +131,8 @@ const mapReducer = (state = initialState, action = {}) => {
           ...state.monuments,
           {
             id: action.datas.id,
-            latitude: action.latitude,
-            longitude: action.longitude,
+            latitude: action.datas.latitude,
+            longitude: action.datas.longitude,
           },
         ],
       };
@@ -169,6 +174,7 @@ const mapReducer = (state = initialState, action = {}) => {
         clickedLng: 0,
         fileInput: '',
         fileText: '',
+        fileSize: 0,
         name: '',
         address: '',
         description: '',
@@ -232,7 +238,11 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         view: action.view,
       };
-
+    case GET_MONUMENTS:
+      return {
+        ...state,
+        fetchingMonuments: false,
+      };
     case GET_MONUMENTS_LIST_DATA:
       return {
         ...state,

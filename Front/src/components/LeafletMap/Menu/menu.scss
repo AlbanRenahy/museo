@@ -48,33 +48,6 @@
         }
 
     }
-    svg:hover {
-        // transform-origin: 400px 300px;
-        animation-name: rotator;
-        animation-duration: .5s;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-        animation-timing-function: ease-in-out;
-      }
-      
-      @keyframes rotator {
-        0% {
-          transform: rotate(0deg);
-          transform: scale(1);
-          opacity: 0;
-        }
-      
-        // 55% {
-        //   transform: rotate(-151deg);
-        //   opacity: .5;
-        // }
-      
-        100% {
-          transform: rotate(-151deg);
-          transform: scale (1.3);
-          opacity: 1;
-        }
-      }
 }
 
   .result {
@@ -126,4 +99,67 @@
           z-index: 1500000;
       }
   }
+  @media screen and (max-width: 430px) { 
+    // For mobile view, the search field is displayed as a button, that becomes an input when focused
+    z-index: 401;
+      .ui.button { // Buttons carte / bâtiments
+          display: none;
+      }
+      i.search.link.icon { // Icon magnifying glass
+          pointer-events: none;
+          position: fixed;
+          height: inherit;
+          top: 31px;
+          right: 20px;
+
+      }
+      .ui.search > div > div > input { // the search input
+          width: 3em;
+          &::placeholder {
+              opacity: 0;
+
+          }
+          & + label { // its label "recherche"
+              opacity: 0
+          }
+          &:focus { // When input is focused, it movez to the center
+              width: inherit;
+              transform: translateX(calc(-40vw + 50%));
+
+              &::placeholder { 
+                // placheholder appears only when field opened in moble
+                  opacity: inherit;
+              }
+
+              & + label { // Label while field is focused
+                  transform: translate(calc(-40vw + 175%), -13px);
+                  opacity: 1;
+              }
+          }
+      }
+      // input search when has value (centered)
+      .ui.search > div.not-empty > div > input {
+        width: inherit;
+        transform: translateX(calc(-40vw + 50%));
+        & + label { // label stays
+          transform: translate(calc(-40vw + 150%), -13px);
+          opacity: 1;
+        }
+      }
+      // Icon not displayed when input not empty :
+      .ui.search > div.not-empty > i.search.link.icon {
+        display: none;
+
+      }
+      button#add-button { // But add button is
+          position: fixed;
+          display: block;
+          top: 80%;
+          height: 60px;
+          width: 60px;
+      }
+
+    }
 }
+
+

@@ -20,19 +20,17 @@ const DisplayMonument = ({
   };
 
   const {
-   id,
-   name,
-   address,
-   description,
-   available,
-   images,
-   latitude,
-   longitude,
-   period,
-   thematic,
-   region,
-   target,
-   creatorUsername,
+    id,
+    name,
+    address,
+    description,
+    available,
+    images,
+    period,
+    thematic,
+    region,
+    target,
+    creatorUsername,
   } = monumentDisplayed;
 
 
@@ -49,8 +47,8 @@ const DisplayMonument = ({
             />
             <a href="#" className="renseignement-donnees_close" onClick={handleCloseDataForm}>Fermer</a>
             <div className="header-info">
-            <h2 className="header-info-name">{name}</h2>
-            <h3 className="header-info-address">{address}</h3>
+              <h2 className="header-info-name">{name}</h2>
+              <h3 className="header-info-address">{address}</h3>
             </div>
           </header>
           <hr />
@@ -109,6 +107,7 @@ DisplayMonument.propTypes = {
   closeAllModals: PropTypes.func.isRequired,
   isDisplayMonumentOpen: PropTypes.bool.isRequired,
   monumentDisplayed: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default DisplayMonument;
