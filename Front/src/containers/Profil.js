@@ -7,6 +7,7 @@ import Profil from 'src/components/Profil';
 
 // Action Creators
 import {
+  clearMessages,
   updateUserformField,
   updateUser,
   deleteUser,
@@ -15,6 +16,7 @@ import {
 } from '../actions/userActions';
 
 const mapStateToProps = (state) => ({
+  updateMessage: state.user.updateMessage,
   username: state.user.username,
   email: state.user.email,
   password: state.user.password,
@@ -38,6 +40,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   CloseConfirmDeleteUser: () => {
     dispatch(CloseConfirmDeleteUser());
+  },
+  clearMessages: () => {
+    dispatch(clearMessages());
   },
 });
 

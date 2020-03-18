@@ -12,6 +12,7 @@ import './profil.scss';
 
 
 const Profil = ({
+  updateMessage,
   username,
   email,
   password,
@@ -25,6 +26,7 @@ const Profil = ({
 }) => (
   <>
     <Form onSubmit={updateUser} className="profil-form">
+      <p className="update-message">{updateMessage}</p>
       <h1 className="profil-title">Bienvenue sur votre profil</h1>
       <div className="profil-field">
         <Input
@@ -72,6 +74,8 @@ const Profil = ({
 );
 
 Profil.propTypes = {
+  clearMessages: PropTypes.func.isRequired,
+  updateMessage: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,

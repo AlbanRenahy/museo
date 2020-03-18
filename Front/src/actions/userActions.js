@@ -1,6 +1,7 @@
 /**
  * Action Types
  */
+export const CLEAR_MESSAGES = 'CLEAR_MESSAGES';
 export const UPDATE_USERFORM_FIELD = 'UPDATE_USERFORM_FIELD';
 export const CONNECT_USER = 'CONNECT_USER'; // Api connection with username && password
 export const CONNECTING_ERROR = 'CONNECTING_ERROR';
@@ -25,6 +26,10 @@ export const DISCONNECT_USER = 'DISCONNECT_USER';
 /**
  * Action Creators
  */
+export const clearMessages = () => ({
+  type: CLEAR_MESSAGES,
+});
+
 export const updateUserformField = (fieldName, input) => ({
   type: UPDATE_USERFORM_FIELD,
   fieldName,

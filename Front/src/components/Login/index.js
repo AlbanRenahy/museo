@@ -20,37 +20,46 @@ import './login.scss';
  * Code
  */
 const Login = ({
-  username, password, updateUserformField, connectUser, isConnected, loginMessage, loginStatus,
+  username,
+  password,
+  updateUserformField,
+  connectUser,
+  isConnected,
+  loginMessage,
+  loginStatus,
 }) => (
-  <Form onSubmit={connectUser} className="login-form">
-    {isConnected && <Redirect to="/map" />}
-    <p className={`identification-message ${loginStatus}`}>{loginMessage}</p>
-    <Input
-      className="email-input"
-      type="text"
-      id="email"
-      name="Nom d'utilisateur"
-      placeholder="Nom d'utilisateur*"
-      value={username}
-      onChangeFunction={(input) => updateUserformField('username', input)}
-    />
-    <Input
-      className="password-input"
-      type="password"
-      id="password"
-      name="mot de passe"
-      placeholder="Mot de passe*"
-      value={password}
-      onChangeFunction={(input) => updateUserformField('password', input)}
-    />
-    <Link className="recovery-link" to="/recovery">J'ai perdu mon mot de passe</Link>
-    <button type="submit" className="form-button">ME CONNECTER</button>
-    <Link className="signin-link" to="/signin">Je souhaite m'inscrire</Link>
-    <Link className="map-link" to="/map">Entrer sur la carte en visiteur</Link>
-  </Form>
+  <>
+    <Form onSubmit={connectUser} className="login-form">
+      {isConnected && <Redirect to="/map" />}
+      <p className={`identification-message ${loginStatus}`}>{loginMessage}</p>
+      <Input
+        className="email-input"
+        type="text"
+        id="email"
+        name="Nom d'utilisateur"
+        placeholder="Nom d'utilisateur*"
+        value={username}
+        onChangeFunction={(input) => updateUserformField('username', input)}
+      />
+      <Input
+        className="password-input"
+        type="password"
+        id="password"
+        name="mot de passe"
+        placeholder="Mot de passe*"
+        value={password}
+        onChangeFunction={(input) => updateUserformField('password', input)}
+      />
+      <Link className="recovery-link" to="/recovery">J'ai perdu mon mot de passe</Link>
+      <button type="submit" className="form-button">ME CONNECTER</button>
+      <Link className="signin-link" to="/signin">Je souhaite m'inscrire</Link>
+      <Link className="map-link" to="/map">Entrer sur la carte en visiteur</Link>
+    </Form>
+  </>
 );
 
 Login.propTypes = {
+  clearMessages: PropTypes.func.isRequired,
   username: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

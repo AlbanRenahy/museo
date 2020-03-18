@@ -13,6 +13,8 @@ import {
   connectingError,
   signinErrors,
   contactMessage,
+  updateMessages,
+  clearMessages,
   recoveryMessage,
   clearSigninErrors,
   redirectToRegister,
@@ -45,13 +47,17 @@ const userMiddleware = (store) => (next) => (action) => {
           // console.log('erreur :', error.response.data.code);
           const message = (error.response.data.code === 401 ? 'Identifiant ou mot de passe invalide.' : 'Une erreur est survenue, veuillez essayer à nouveau.');
           store.dispatch(connectingError(message));
+        })
+        .finally(() => {
+          setTimeout(() => {
+            store.dispatch(clearMessages());
+          }, 3000);
         });
       next(action);
       break;
     case UPDATE_USER:
-      console.log(store.getState().user.userId);
       axios
-        .patch(`${museoApi}/api/users/${store.getState().user.userId}`, {
+        .put(`${museoApi}/api/users/${store.getState().user.userId}`, {
           username: store.getState().user.username,
           email: store.getState().user.email,
           password: store.getState().user.password,
@@ -59,12 +65,17 @@ const userMiddleware = (store) => (next) => (action) => {
           isActive: true,
         })
         .then((response) => {
-          console.log('message envoyé : ', response);
-          store.dispatch(contactMessage('Modifications enregistrées.'));
+          // console.log('message envoyé : ', response);
+          store.dispatch(updateMessages('Modifications enregistrées.'));
         })
         .catch((error) => {
-          console.log('erreur :', error.response);
-          store.dispatch(contactMessage('Une erreur est survenue, veuillez essayer à nouveau.'));
+          // console.log('erreur :', error.response);
+          store.dispatch(updateMessages('Une erreur est survenue, veuillez essayer à nouveau.'));
+        })
+        .finally(() => {
+          setTimeout(() => {
+            store.dispatch(clearMessages());
+          }, 3000);
         });
       next(action);
       break;
@@ -73,12 +84,17 @@ const userMiddleware = (store) => (next) => (action) => {
         .delete(`${museoApi}/api/users/${store.getState().user.userId}`, {
         })
         .then((response) => {
-          console.log('message envoyé : ', response);
-          store.dispatch(contactMessage('Modifications enregistrées.'));
+          // console.log('message envoyé : ', response);
+          store.dispatch(updateUserformField('loginMessage', 'Votre compte a bien été supprimé.'));
         })
         .catch((error) => {
-          console.log('erreur :', error.response);
-          store.dispatch(contactMessage('Une erreur est survenue, veuillez essayer à nouveau.'));
+          // console.log('erreur :', error.response);
+          store.dispatch(updateUserformField('loginMessage', 'Une erreur est survenue, veuillez essayer à nouveau.'));
+        })
+        .finally(() => {
+          setTimeout(() => {
+            store.dispatch(clearMessages());
+          }, 3000);
         });
       next(action);
       break;
@@ -113,7 +129,7 @@ const userMiddleware = (store) => (next) => (action) => {
             isActive: true,
           })
           .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             store.dispatch(redirectToRegister());
           })
           .catch((error) => {

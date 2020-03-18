@@ -1,7 +1,9 @@
 import {
+  CLEAR_MESSAGES,
   UPDATE_USERFORM_FIELD,
   CONNECT_USER,
   UPDATE_USER,
+  UPDATE_MESSAGES,
   DELETE_USER,
   SIGNIN,
   STORE_TOKEN,
@@ -46,6 +48,12 @@ const initialState = {
 
 const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case CLEAR_MESSAGES:
+      return {
+        ...state,
+        loginMessage: '',
+        updateMessage: '',
+      };
     case UPDATE_USERFORM_FIELD:
       return {
         ...state,
@@ -60,12 +68,15 @@ const userReducer = (state = initialState, action = {}) => {
     case UPDATE_USER:
       return {
         ...state,
+      };
+    case UPDATE_MESSAGES:
+      return {
+        ...state,
         updateMessage: action.message,
       };
     case DELETE_USER:
       return {
         ...initialState,
-        updateMessage: action.message,
       };
     case STORE_TOKEN:
       return {

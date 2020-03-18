@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Login from 'src/components/Login';
 
 // Action Creators
-import { updateUserformField, connectUser } from 'src/actions/userActions';
+import { updateUserformField, connectUser, clearMessages } from 'src/actions/userActions';
 
 const mapStateToProps = (state) => ({
   username: state.user.username,
@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   connectUser: () => {
     dispatch(connectUser());
+  },
+  clearMessages: () => {
+    dispatch(clearMessages());
   },
 });
 
