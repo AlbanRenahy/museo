@@ -76,6 +76,10 @@ class Monument
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\File(
+     *      mimeTypes = {"image/jpg", "image/png"},
+     *      mimeTypesMessage = "Merci d'uploader une image valide"
+     * )
      *
      * @var string|null
      */
