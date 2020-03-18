@@ -50,7 +50,6 @@ class Monument
     public function __construct()
     {
         $this->createdAt = new \DateTime();
-        $this->period = new ArrayCollection();
         // $this->options = new ArrayCollection();
     }
 
@@ -170,10 +169,6 @@ class Monument
      */
     private $category;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Period", inversedBy="monuments")
-     */
-    private $period;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Target", inversedBy="monuments")
@@ -184,6 +179,11 @@ class Monument
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isActive;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Period", inversedBy="monuments")
+     */
+    private $period;
 
     public function getId(): ?int
     {
@@ -298,32 +298,6 @@ class Monument
         return $this;
     }
 
-    /**
-     * @return Collection|Period[]
-     */
-    public function getPeriod(): Collection
-    {
-        return $this->period;
-    }
-
-    public function addPeriod(Period $period): self
-    {
-        if (!$this->period->contains($period)) {
-            $this->period[] = $period;
-        }
-
-        return $this;
-    }
-
-    public function removePeriod(Period $period): self
-    {
-        if ($this->period->contains($period)) {
-            $this->period->removeElement($period);
-        }
-
-        return $this;
-    }
-
     public function getTarget(): ?Target
     {
         return $this->target;
@@ -411,6 +385,18 @@ class Monument
     public function getImageSize(): ?int
     {
         return $this->imageSize;
+    }
+
+    public function getPeriod(): ?Period
+    {
+        return $this->period;
+    }
+
+    public function setPeriod(?Period $period): self
+    {
+        $this->period = $period;
+
+        return $this;
     }
 
 }

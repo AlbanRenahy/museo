@@ -47,9 +47,10 @@ class Period
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Monument", mappedBy="period")
+     * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="period")
      */
     private $monuments;
+
 
     public function __construct()
     {
