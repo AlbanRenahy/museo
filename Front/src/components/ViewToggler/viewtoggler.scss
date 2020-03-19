@@ -27,4 +27,11 @@
     align-items: center;
     padding: 0 1em;
     padding-top: 15px;
-};
+
+    @media screen and (max-width: 430px) { 
+        // For mobile view, the search field is displayed as a button, that becomes an input when focused
+        z-index: 401;
+        align-items: top;
+        padding: 0;
+    }
+}
