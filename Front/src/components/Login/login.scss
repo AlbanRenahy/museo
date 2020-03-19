@@ -28,7 +28,7 @@
       margin-bottom: 10px;
     }
 
-  .lost-password {
+  .recovery-link {
     font-size: 0.9rem;
     text-align: center;
     padding-top: .2rem;
@@ -39,7 +39,7 @@
     color: rgb(100, 43, 124);
 
     &:hover {
-      color: #B83B5E;
+      color: #B83B5E !important;
       cursor: pointer;
       }
 
@@ -63,7 +63,7 @@
       }
 
     &:hover {
-    color: #B83B5E;
+    color: #B83B5E !important;
     cursor: pointer;
     }
   }

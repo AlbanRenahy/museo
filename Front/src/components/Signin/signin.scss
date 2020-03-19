@@ -13,6 +13,17 @@
         margin: 1rem auto;
       }
 
+  .current-error {
+    font-style: italic;
+    color: #B83B5E;
+    font-size: 0.9rem;
+
+    @media screen and (max-width: 425px)
+      {
+        font-size: 0.6rem;
+      }
+  }
+
   .login-link {
     font-size: 1.1rem;
     font-variant: small-caps;
@@ -27,7 +38,7 @@
       }
 
     &:hover {
-    color: #B83B5E;
+    color: #B83B5E !important;
     cursor: pointer;
     }
   }

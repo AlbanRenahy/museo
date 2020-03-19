@@ -30,6 +30,7 @@ const mapStateToProps = (state) => ({
   isConnected: state.user.isConnected,
   currentCard: state.map.currentCard,
   loading: state.map.loading,
+  fetchingMonuments: state.map.fetchingMonuments,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -59,8 +60,8 @@ const mapDispatchToProps = (dispatch) => ({
   getTargets: () => {
     dispatch(getTargets());
   },
-  getMonuments: () => {
-    dispatch(getMonuments());
+  getMonuments: (bounds) => {
+    dispatch(getMonuments(bounds));
   },
   setMonumentDatas: (current) => {
     dispatch(setMonumentDatas(current));

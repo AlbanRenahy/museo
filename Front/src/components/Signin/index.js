@@ -32,14 +32,12 @@ const Signin = ({
 }) => (
   <>
     {signinIsValid && <Redirect to="/register" />}
-    <div className={signinErrors.length > 0 ? 'panel-error open' : 'panel-error'}>
+    <Form onSubmit={signin} className="signin-form">
       {
         signinErrors.map((error) => (
           <p className="current-error" key={error}>{error}</p>
         ))
       }
-    </div>
-    <Form onSubmit={signin} className="signin-form">
       <Input
         className="email-input"
         type="email"
@@ -83,7 +81,7 @@ const Signin = ({
 
       <button type="submit" className="form-button">M'INSCRIRE</button>
 
-      <p className="login-link"><Link to="/login">J'ai déjà mes identifiants</Link></p>
+      <Link to="/login" className="login-link">J'ai déjà mes identifiants</Link>
     </Form>
   </>
 );

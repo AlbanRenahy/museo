@@ -43,6 +43,9 @@ class Liste extends Component {
                 <div className="Thematique">Thématique :</div>
                 <div className="Periode">Période :</div>
                 <div className="Public">Public visé :</div>
+                <Card.Header>{item.name}</Card.Header>
+                <Card.Description>{item.address}</Card.Description>
+                <Card.Description>{item.description}</Card.Description>
               </Card.Content>
             </Card>
           ))}

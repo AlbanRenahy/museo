@@ -44,6 +44,7 @@ class Leaflet extends React.Component {
 
   map = React.createRef();
 
+
   componentDidMount() {
     const {
       getThematics,
@@ -71,7 +72,7 @@ class Leaflet extends React.Component {
     updateMapformField('clickedLat', e.latlng.lat);
     updateMapformField('clickedLng', e.latlng.lng);
     closeAllModals();
-    isConnected && openDataForm(e.latlng, true);
+    isConnected && openDataForm(e.latlng);
   };
 
   handleMapReady = () => {
@@ -100,6 +101,15 @@ class Leaflet extends React.Component {
     // updateMapformField('nameCard', current.name);
     setMonumentDatas(current);
     openDisplayMonument();
+  }
+
+  handleMove = () => {
+    const { updateMapformField, getMonuments, fetchingMonuments } = this.props;
+    const actualBounds = this.map.current.leafletElement.getBounds();
+    updateMapformField('actualBounds', actualBounds);
+    // eslint-disable-next-line no-unused-expressions
+    fetchingMonuments || getMonuments(actualBounds);
+    updateMapformField('fetchingMonuments', true);
   }
 
 
@@ -153,6 +163,8 @@ class Leaflet extends React.Component {
           onContextmenu={this.handleRightClick}
           onClick={closeAllModals}
           whenReady={this.handleMapReady}
+          onZoomEnd={this.handleMove}
+          onMoveEnd={this.handleMove}
         >
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -163,15 +175,19 @@ class Leaflet extends React.Component {
             {
               monuments.map(({
                 latitude, longitude, id,
-              }) => (
-                <Marker
-                  position={[latitude, longitude]}
-                  key={id}
-                  id={id}
-                  icon={this.myPinOrange}
-                  onClick={this.handleClickMarker}
-                />
-              ))
+              }) => {
+                console.log(latitude);
+                return (
+
+                  <Marker
+                    position={[latitude, longitude]}
+                    key={id}
+                    id={id}
+                    icon={this.myPinOrange}
+                    onClick={this.handleClickMarker}
+                  />
+                );
+              })
           }
           </MarkerClusterGroup>
           {coords !== null && (
