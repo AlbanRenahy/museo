@@ -75,7 +75,7 @@ class Monument
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      * @Assert\File(
      *      mimeTypes = {"image/jpg", "image/png"},
      *      mimeTypesMessage = "Merci d'uploader une image valide"
@@ -86,7 +86,7 @@ class Monument
     private $imageName;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      *
      * @var int|null
      */
