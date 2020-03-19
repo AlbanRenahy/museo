@@ -50,7 +50,7 @@ class Monument
     public function __construct()
     {
         $this->createdAt = new \DateTime();
-        $this->period = new ArrayCollection();
+        $this->category = new ArrayCollection();
         // $this->options = new ArrayCollection();
     }
 
@@ -166,16 +166,6 @@ class Monument
     private $region;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="monuments")
-     */
-    private $category;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Period", inversedBy="monuments")
-     */
-    private $period;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Target", inversedBy="monuments")
      */
     private $target;
@@ -184,6 +174,16 @@ class Monument
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isActive;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="monuments")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Period", inversedBy="monuments")
+     */
+    private $period;
 
     public function getId(): ?int
     {
@@ -286,44 +286,6 @@ class Monument
         return $this;
     }
 
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Period[]
-     */
-    public function getPeriod(): Collection
-    {
-        return $this->period;
-    }
-
-    public function addPeriod(Period $period): self
-    {
-        if (!$this->period->contains($period)) {
-            $this->period[] = $period;
-        }
-
-        return $this;
-    }
-
-    public function removePeriod(Period $period): self
-    {
-        if ($this->period->contains($period)) {
-            $this->period->removeElement($period);
-        }
-
-        return $this;
-    }
-
     public function getTarget(): ?Target
     {
         return $this->target;
@@ -411,6 +373,44 @@ class Monument
     public function getImageSize(): ?int
     {
         return $this->imageSize;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        if ($this->category->contains($category)) {
+            $this->category->removeElement($category);
+        }
+
+        return $this;
+    }
+
+    public function getPeriod(): ?Period
+    {
+        return $this->period;
+    }
+
+    public function setPeriod(?Period $period): self
+    {
+        $this->period = $period;
+
+        return $this;
     }
 
 }

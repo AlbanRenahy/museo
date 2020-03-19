@@ -58,10 +58,9 @@ class Category
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="category")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Monument", mappedBy="category")
      */
     private $monuments;
-
 
     public function getId(): ?int
     {
@@ -128,7 +127,7 @@ class Category
     {
         if (!$this->monuments->contains($monument)) {
             $this->monuments[] = $monument;
-            $monument->setCategory($this);
+            $monument->addCategory($this);
         }
 
         return $this;
@@ -138,10 +137,7 @@ class Category
     {
         if ($this->monuments->contains($monument)) {
             $this->monuments->removeElement($monument);
-            // set the owning side to null (unless already changed)
-            if ($monument->getCategory() === $this) {
-                $monument->setCategory(null);
-            }
+            $monument->removeCategory($this);
         }
 
         return $this;
