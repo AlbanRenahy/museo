@@ -6,17 +6,20 @@ import { connect } from 'react-redux';
 import Liste from 'src/components/LeafletMap/Liste';
 
 // Action Creators
-import { getMonumentsListData } from 'src/actions/mapActions';
+import { getMonumentsListData, toggleView } from 'src/actions/mapActions';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   monuments: state.map.monuments,
   listData: state.map.listData,
   loading: state.user.loading,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   getMonumentsListData: (list) => {
     dispatch(getMonumentsListData(list));
+  },
+  toggleView: (view) => {
+    dispatch(toggleView(view));
   },
   // connectUser: () => {
   //   dispatch(connectUser());

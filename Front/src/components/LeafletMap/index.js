@@ -53,6 +53,7 @@ class Leaflet extends React.Component {
       getPeriods,
       getTargets,
       closeMenu,
+      getPictures,
     } = this.props;
     getThematics();
     getRegions();
@@ -60,6 +61,7 @@ class Leaflet extends React.Component {
     getTargets();
     getMonuments();
     closeMenu();
+    getPictures();
   }
 
   handleRightClick = (e) => {
@@ -176,7 +178,6 @@ class Leaflet extends React.Component {
               monuments.map(({
                 latitude, longitude, id,
               }) => {
-                console.log(latitude);
                 return (
 
                   <Marker
@@ -215,6 +216,7 @@ class Leaflet extends React.Component {
 Leaflet.propTypes = {
   monuments: PropTypes.arrayOf(PropTypes.object).isRequired,
   getMonuments: PropTypes.func.isRequired,
+  getPictures: PropTypes.func.isRequired,
   openDataForm: PropTypes.func.isRequired,
   closeAllModals: PropTypes.func.isRequired,
   updateMapformField: PropTypes.func.isRequired,

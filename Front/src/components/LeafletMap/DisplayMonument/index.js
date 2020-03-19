@@ -33,7 +33,6 @@ const DisplayMonument = ({
     creatorUsername,
   } = monumentDisplayed;
 
-
   return (
     <div id="DisplayMonument">
       <div className={isDisplayMonumentOpen ? 'display-donnees open' : 'display-donnees'}>

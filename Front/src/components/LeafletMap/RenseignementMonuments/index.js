@@ -27,7 +27,7 @@ const RenseignementMonuments = ({
   findAddress,
   fileText,
   resetFormMonument,
-  submitPicture
+  submitPicture,
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
@@ -59,7 +59,8 @@ const RenseignementMonuments = ({
     console.log(e.target.files[0]);
     if (e.target.files[0].type !== 'image/png' && e.target.files[0].type !== 'image/jpeg') {
       updateMapformField('fileText', 'Formats acceptés: JPG, PNG');
-    } else {
+    }
+    else {
       updateMapformField('fileText', e.target.files[0].name);
       updateMapformField('fileSize', e.target.files[0].size);
     }
@@ -102,7 +103,7 @@ const RenseignementMonuments = ({
             <List.Item>{fileText}</List.Item>
           </List>
         </div>
-        <form action="">
+        <form action="" encType="multipart/form-data">
           <div className="renseignement-monuments_inputs">
             <Input
               className="monumentInput"
@@ -135,7 +136,7 @@ const RenseignementMonuments = ({
             />
             <div className="renseignement-monuments_secondary-infos">
               <div className="input-container">
-                <select
+                {/* <select
                   id="thematic"
                   className="input select-style"
                   name="thematique"
@@ -204,7 +205,7 @@ const RenseignementMonuments = ({
                       <option key={target.id} value={target.id}>{target.name}</option>
                     ))
                   }
-                </select>
+                </select> */}
               </div>
             </div>
           </div>

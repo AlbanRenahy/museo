@@ -77,9 +77,12 @@ const initialState = {
     address: '',
     description: '',
     available: true,
-    imageFile: {
-      path: '',
-    },
+    images: [
+      {
+        id: 0,
+        path: '',
+      },
+    ],
     latitude: 0,
     longitude: 0,
     period: '',
