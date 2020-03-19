@@ -48,6 +48,7 @@ class AdminLoginAuthenticator extends AbstractFormLoginAuthenticator implements 
         $credentials = [
             'username' => $request->request->get('username'),
             'password' => $request->request->get('password'),
+            'activation_token' => $request->request->get('activation_token'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
         $request->getSession()->set(
@@ -66,13 +67,21 @@ class AdminLoginAuthenticator extends AbstractFormLoginAuthenticator implements 
         }
 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['username' => $credentials['username']]);
+        // $userToken = $this->entityManager->getRepository(User::class)->findOneBy(['activation_token' => $credentials['activation_token']]);
+        
+        if ($user->getActivationToken() === null) {
+            return $user;
+        } else {
+            // dump($userToken);
+            throw new CustomUserMessageAuthenticationException('Compte non activer.');
+        }
 
         if (!$user) {
             // fail authentication with a custom error
             throw new CustomUserMessageAuthenticationException('Utilisateur introuvable.');
         }
 
-        return $user;
+//        return $user;
     }
 
     public function checkCredentials($credentials, UserInterface $user)
