@@ -102,9 +102,13 @@
   @media screen and (max-width: 430px) { 
     // For mobile view, the search field is displayed as a button, that becomes an input when focused
     z-index: 401;
+    align-items: top;
+    padding: 0;
+   
       .ui.button { // Buttons carte / bâtiments
-          display: none;
+        padding: 0.2rem 0.5rem;
       }
+      
       i.search.link.icon { // Icon magnifying glass
           pointer-events: none;
           position: fixed;
@@ -154,9 +158,9 @@
       button#add-button { // But add button is
           position: fixed;
           display: block;
-          top: 80%;
-          height: 60px;
-          width: 60px;
+          top: 90vh;
+          height: 4rem;
+          width: 4rem;
       }
 
     }

@@ -30,7 +30,7 @@ const TopMenu = ({
       </Menu.Menu>
 
       <Menu.Menu position="right">
-        <div className="ui right aligned category search item">
+        <div className="research ui right aligned category search item">
           <div className={`ui transparent icon input ${searchInput && 'not-empty'}`}>
             <div className="input-container">
               <input
