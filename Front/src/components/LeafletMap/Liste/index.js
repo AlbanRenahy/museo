@@ -23,7 +23,7 @@ class Liste extends Component {
   }
 
   render() {
-    const { monuments, loading } = this.props;
+    const { monuments, loading, toggleView } = this.props;
     return (
       <div id="liste">
         <ViewToggler />
@@ -53,7 +53,7 @@ class Liste extends Component {
           </Message>
         )}
         <div className="back-to-map">
-          <Link className="back-to-map-btn" to="/map">
+          <Link className="back-to-map-btn" to="/map" onClick={() => toggleView('map')}>
             <Icon.Group>
               <Icon name="map outline" />
               <Icon corner name="reply" />
@@ -70,6 +70,7 @@ Liste.propTypes = {
   monuments: PropTypes.array.isRequired,
   getMonumentsListData: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  toggleView: PropTypes.func.isRequired,
 };
 
 export default Liste;

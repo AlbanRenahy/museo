@@ -33,6 +33,8 @@ export const TOGGLE_VIEW = 'TOGGLE_VIEW';
 export const GET_MONUMENTS_LIST_DATA = 'GET_MONUMENTS_LIST_DATA';
 export const SET_MONUMENTS_LIST_DATA = 'SET_MONUMENTS_LIST_DATA';
 export const SUBMIT_PICTURE = 'SUBMIT_PICTURE';
+export const GET_PICTURES = 'GET_PICTURES';
+export const SET_PICTURES = 'SET_PICTURES';
 /**
  * Action Creators
  */
@@ -112,6 +114,13 @@ export const setTargets = (targets) => ({
 });
 export const getTargets = () => ({
   type: GET_TARGETS,
+});
+export const getPictures = () => ({
+  type: GET_PICTURES,
+});
+export const setPictures = (pictures) => ({
+  type: SET_PICTURES,
+  pictures,
 });
 export const createMarker = (latitude, longitude, datas) => ({
   type: CREATE_MARKER,
