@@ -38,14 +38,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Monument
 {
-
-    const READ = 'Monument:Read';
-    const WRITE = 'Monument:Write';
-
     public function __toString()
     {
         return $this->name;
     }
+
+    const READ = 'Monument:Read';
+    const WRITE = 'Monument:Write';
+
 
     public function __construct()
     {
@@ -61,36 +61,6 @@ class Monument
      * @Groups({Monument::READ})
      */
     private $id;
-
-    /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * @Assert\File(
-     *      mimeTypes = {"image/jpg", "image/png"},
-     *      mimeTypesMessage = "Merci d'uploader une image valide"
-     * )
-     * @Vich\UploadableField(mapping="monument_image", fileNameProperty="imageName", size="imageSize")
-     * 
-     * @var File|null
-     */
-    private $imageFile;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\File(
-     *      mimeTypes = {"image/jpg", "image/png"},
-     *      mimeTypesMessage = "Merci d'uploader une image valide"
-     * )
-     *
-     * @var string|null
-     */
-    private $imageName;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     *
-     * @var int|null
-     */
-    private $imageSize;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -175,6 +145,36 @@ class Monument
      */
     private $isActive;
 
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * @Assert\File(
+     *      mimeTypes = {"image/jpg", "image/png"},
+     *      mimeTypesMessage = "Merci d'uploader une image valide"
+     * )
+     * @Vich\UploadableField(mapping="monument_image", fileNameProperty="imageName", size="imageSize")
+     * 
+     * @var File|null
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(
+     *      mimeTypes = {"image/jpg", "image/png"},
+     *      mimeTypesMessage = "Merci d'uploader une image valide"
+     * )
+     *
+     * @var string|null
+     */
+    private $imageName;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @var int|null
+     */
+    private $imageSize;
+    
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="monuments")
      */
