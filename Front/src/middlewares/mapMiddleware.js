@@ -84,7 +84,7 @@ const mapMiddleware = (store) => (next) => (action) => {
     case GET_THEMATICS:
       axios.get(`${museoApi}/categories`)
         .then((response) => {
-          console.log(response.data['hydra:member']);
+          console.log('Categories', response.data['hydra:member']);
           store.dispatch(setThematics(response.data['hydra:member']));
         })
         .catch((error) => {
@@ -94,7 +94,7 @@ const mapMiddleware = (store) => (next) => (action) => {
     case GET_REGIONS:
       axios.get(`${museoApi}/regions`)
         .then((response) => {
-          // console.log(response.data['hydra:member']);
+          console.log('régions : ', response.data['hydra:member']);
           store.dispatch(setRegions(response.data['hydra:member']));
         })
         .catch((error) => {
@@ -104,7 +104,7 @@ const mapMiddleware = (store) => (next) => (action) => {
     case GET_PERIODS:
       axios.get(`${museoApi}/periods`)
         .then((response) => {
-          // console.log(response.data['hydra:member']);
+          console.log('periods : ', response.data['hydra:member']);
           store.dispatch(setPeriods(response.data['hydra:member']));
         })
         .catch((error) => {
@@ -114,7 +114,7 @@ const mapMiddleware = (store) => (next) => (action) => {
     case GET_TARGETS:
       axios.get(`${museoApi}/targets`)
         .then((response) => {
-          // console.log(response.data['hydra:member']);
+          console.log('targets', response.data['hydra:member']);
           store.dispatch(setTargets(response.data['hydra:member']));
         })
         .catch((error) => {
@@ -125,7 +125,7 @@ const mapMiddleware = (store) => (next) => (action) => {
       next(action);
       axios.get(`${museoApi}/monuments`)
         .then((response) => {
-          console.log(response.data['hydra:member']);
+          console.log('monuments : ', response.data['hydra:member']);
           store.dispatch(setMonuments(response.data['hydra:member']));
         })
         .catch((error) => {
@@ -139,7 +139,7 @@ const mapMiddleware = (store) => (next) => (action) => {
         .then((results) => {
           console.log(results);
           const list = results.map((item) => item.data);
-          console.log('Les monuments: ', list);
+          console.log('Les monuments en list : ', list);
           store.dispatch(setMonumentsListData(list));
         })
         .catch((error) => {

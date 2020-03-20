@@ -33,6 +33,12 @@ const DisplayMonument = ({
     creatorUsername,
   } = monumentDisplayed;
 
+  // const { 
+  //   thematic : {
+  //     0 : { name } 
+  //   } 
+  // } = thematic;
+
   return (
     <div id="DisplayMonument">
       <div className={isDisplayMonumentOpen ? 'display-donnees open' : 'display-donnees'}>
@@ -60,19 +66,19 @@ const DisplayMonument = ({
             <ul>
               <li>
                 <p className="information">Thématique</p>
-                <p>Art</p>
+                <p>{thematic ? `${thematic}` : 'Non défini'}</p>
               </li>
               <li>
                 <p className="information">Période</p>
-                <p>XVIIIeme siècle</p>
+                <p>{period ? `${period}` : 'Non défini'}</p>
               </li>
               <li>
                 <p className="information">Région</p>
-                <p>Île de France</p>
+                <p>{region ? `${region}` : 'Non défini'}</p>
               </li>
               <li>
                 <p className="information">Public visé</p>
-                <p>Toute la famille</p>
+                <p>{target ? `${target}` : 'Non défini'}</p>
               </li>
             </ul>
           </div>
