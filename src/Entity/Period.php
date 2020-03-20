@@ -35,6 +35,7 @@ class Period
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read"})
      */
     private $name;
 
@@ -50,7 +51,6 @@ class Period
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="period")
-     * @Groups({"write", "read"})
      */
     private $monuments;
 

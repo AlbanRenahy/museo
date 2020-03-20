@@ -35,6 +35,7 @@ class Region
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read"})
      */
     private $name;
 
@@ -55,7 +56,6 @@ class Region
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="region")
-     * @Groups({"write", "read"})
      */
     private $monuments;
 

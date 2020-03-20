@@ -12,15 +12,14 @@ class ContactController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(Request $request)
+    public function index(Request $request, \Swift_Mailer $mailer)
     {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
             $contact = $form->getData();
-
-            dd($contact);
+            // dd($contact);
         }
 
         return $this->render('contact/index.html.twig', [

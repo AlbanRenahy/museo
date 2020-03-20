@@ -41,6 +41,7 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read"})
      */
     private $name;
 
@@ -61,7 +62,6 @@ class Category
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Monument", mappedBy="category")
-     * @Groups({"write", "read"})
      */
     private $monuments;
 

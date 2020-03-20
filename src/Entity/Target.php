@@ -35,6 +35,7 @@ class Target
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read"})
      */
     private $name;
 
@@ -50,7 +51,6 @@ class Target
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="target")
-     * @Groups({"write", "read"})
      */
     private $monuments;
 
