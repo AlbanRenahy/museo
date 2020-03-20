@@ -11,7 +11,7 @@
             <th>Lat</th>
             <th>Long</th>
             <th>Region</th>
-            {# <th>Catégorie</th> #}
+            <th>Catégorie</th>
             <th>P.V</th>
             <th>Période</th>
             <th>Actions</th>
@@ -61,16 +61,13 @@
                 <td><span class="badge badge-primary">{{ monument.region }}</span></td>
             {% endif %}
 
-            {# {% for category in monument.category %}
-                <pre>
-                    {{ dump(monument.category) }}
-                </pre>
-                {% if category is not defined %}
-                    <td><span class="badge badge-warning">N/R.</span></td>
-                {% else %}
-                    <td><span class="badge badge-success">{{ category }}</span></td>
-                {% endif %}
-            {% endfor %} #}
+            {% if monument.category == null %}
+                <td><span class="badge badge-warning">N/R.</span></td>
+            {% else %}
+                <td><span class="badge badge-primary">{{ monument.category }}</span></td>
+            {% endif %}
+
+            
 
             {% if monument.target == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>

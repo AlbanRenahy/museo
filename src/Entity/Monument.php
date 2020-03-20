@@ -42,7 +42,7 @@ class Monument
     public function __construct()
     {
         $this->createdAt = new \DateTime();
-        $this->category = new ArrayCollection();
+        // $this->category = new ArrayCollection();
         // $this->options = new ArrayCollection();
     }
 
@@ -375,31 +375,31 @@ class Monument
         return $this->imageSize;
     }
 
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategory(): Collection
-    {
-        return $this->category;
-    }
+    // /**
+    //  * @return Collection|Category[]
+    //  */
+    // public function getCategory(): Collection
+    // {
+    //     return $this->category;
+    // }
 
-    public function addCategory(Category $category): self
-    {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-        }
+    // public function addCategory(Category $category): self
+    // {
+    //     if (!$this->category->contains($category)) {
+    //         $this->category[] = $category;
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeCategory(Category $category): self
-    {
-        if ($this->category->contains($category)) {
-            $this->category->removeElement($category);
-        }
+    // public function removeCategory(Category $category): self
+    // {
+    //     if ($this->category->contains($category)) {
+    //         $this->category->removeElement($category);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getPeriod(): ?Period
     {
@@ -413,4 +413,24 @@ class Monument
         return $this;
     }
 
+
+    /**
+     * Get the value of category
+     */ 
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set the value of category
+     *
+     * @return  self
+     */ 
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
 }
