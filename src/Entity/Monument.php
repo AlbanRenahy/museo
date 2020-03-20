@@ -140,7 +140,7 @@ class Monument
     private $isActive;
     
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="monuments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="monuments")
      * @Groups({"write", "read"})
      * @MaxDepth(1)
      * @ApiProperty(attributes={"fetchEager": true})

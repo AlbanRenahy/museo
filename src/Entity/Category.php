@@ -61,7 +61,7 @@ class Category
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Monument", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="category")
      */
     private $monuments;
 
