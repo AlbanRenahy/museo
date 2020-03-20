@@ -94,35 +94,4 @@ dump($monuments);
         return $this->redirectToRoute('dashboard.monument.index');
     }
 
-    /**
-     * @Route("/accept/{id}", name="accept")
-     */
-    // public function accept(Monument $monument, Request $req, int $id): Response
-    // {
-    //     if($monument->getId() == $id){
-    //         $em = $this->getDoctrine()->getManager();
-    //         $monument->setIsActive(1);
-    //         $em->persist($monument);
-    //         $em->flush();
-    //         $this->addFlash('success', 'Monument bien accepter');
-    //         return $this->redirectToRoute('dashboard.monument.index');
-    //     } else {
-    //         return $this->addFlash('danger', 'Impossible d\'accepter un monument');
-    //     }
-
-         // return $this->render('dashboard/monument/accept.html.twig');
-    // }
-
-    /**
-     * @Route("/decline/{id}", name="decline")
-     */
-    // public function decline(Monument $monument, Request $req, int $id): Response
-    // {
-    //     $em = $this->getDoctrine()->getManager();
-    //     $obj = $em->getRepository(Monument::class)->find($id);
-    //     $em->remove($obj);
-    //     $em->flush();
-    //     $this->addFlash('danger', 'Vous avez refuser le monument');
-    //     return $this->redirectToRoute('dashboard.monument.index');
-    // }
 }
