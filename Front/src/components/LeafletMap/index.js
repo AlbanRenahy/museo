@@ -92,11 +92,16 @@ class Leaflet extends React.Component {
     } = this.props;
     // console.log(e.target.options.id);
     const currentCard = monuments.find((monument) => monument.id === e.target.options.id);
+    // console.log(currentCard);
     const current = {
       idCard: currentCard.id,
       nameCard: currentCard.name,
       addressCard: currentCard.address,
       descriptionCard: currentCard.description,
+      periodCard: currentCard.period ? currentCard.period.name : '',
+      thematicCard: currentCard.category ? currentCard.category.name : '',
+      regionCard: currentCard.region ? currentCard.region.name : '',
+      targetCard: currentCard.target ? currentCard.target.name : '',
     };
     // console.log(current);
     closeAllModals();

@@ -35,10 +35,10 @@ const initialState = {
   name: '', // nom d'un monument dans le form
   address: '', // adresse d'un monument dans le form
   description: '', // description d'un monument dans le form
-  thematic: '',
-  region: '',
-  target: '',
-  period: '',
+  thematic: { id: 0 },
+  region: { id: 0 },
+  target: { id: 0 },
+  period: { id: 0 },
 
 
   // ************MANAGEMENT OF THE MENU********/
@@ -85,10 +85,10 @@ const initialState = {
     ],
     latitude: 0,
     longitude: 0,
-    period: '',
-    thematic: '',
-    region: '',
-    target: '',
+    period: { id: 0, name: '' },
+    thematic: { id: 0, name: '' },
+    region: { id: 0, name: '' },
+    target: { id: 0, name: '' },
     creatorUsername: '',
   },
 
@@ -222,6 +222,10 @@ const mapReducer = (state = initialState, action = {}) => {
             name: action.current.nameCard,
             address: action.current.addressCard,
             description: action.current.descriptionCard,
+            period: action.current.periodCard,
+            thematic: action.current.thematicCard,
+            region: action.current.regionCard,
+            target: action.current.targetCard,
           },
       };
     case SUBMIT_MONUMENT:

@@ -43,16 +43,16 @@ const RenseignementMonuments = ({
   };
 
   const handleSelectChangeThematic = (e) => {
-    updateMapformField('thematic', parseInt(e.target.value));
+    updateMapformField('thematic', { id: parseInt(e.target.value) });
   };
   const handleSelectChangePeriod = (e) => {
-    updateMapformField('period', parseInt(e.target.value));
+    updateMapformField('period', { id: parseInt(e.target.value) });
   };
   const handleSelectChangeRegion = (e) => {
-    updateMapformField('region', parseInt(e.target.value));
+    updateMapformField('region', { id: parseInt(e.target.value) });
   };
   const handleSelectChangeTarget = (e) => {
-    updateMapformField('target', parseInt(e.target.value));
+    updateMapformField('target', { id: parseInt(e.target.value) });
   };
 
   const handleFileChange = (e) => {
