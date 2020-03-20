@@ -10,26 +10,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Annotation\ApiProperty;
 /**
- * @ApiResource(iri="http://schema.org/Region")
  * @ApiResource(
- *     collectionOperations={"get"={"method"="GET"}},
- *     itemOperations={"get"={"method"="GET"}},
- *      normalizationContext={
- *          "groups"={
- *              Monument::READ,
- *              Region::READ
- *           }
- *      },
- *      denormalizationContext={"groups"={Region::READ}}
+ *      normalizationContext={"groups"={"read"}},
+ *      denormalizationContext={"groups"={"write"}}
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RegionRepository")
  * @UniqueEntity(fields={"name"}, message="La region existe déjà")
  */
 class Region
 {
-
-    const READ = 'Region:Read';
-    const WRITE = 'Region:Write';
 
     public function __toString()
     {
@@ -40,7 +29,7 @@ class Region
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({Region::READ, Region::WRITE})
+     * @Groups({"write"})
      */
     private $id;
 
@@ -66,8 +55,7 @@ class Region
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Monument", mappedBy="region")
-     * @Groups({Region::READ, Region::WRITE})
-     * @ApiProperty(iri="http://schema.org/identifier")
+     * @Groups({"write", "read"})
      */
     private $monuments;
 

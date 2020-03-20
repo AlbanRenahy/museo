@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
@@ -20,21 +21,16 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\NumericFilter;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
- * @ApiResource(iri="http://schema.org/Monument")
  * @ApiResource(
- *      normalizationContext={
- *          "groups"={
- *              Monument::READ,
- *              Region::READ
- *           }
- *      },
- *      denormalizationContext={"groups"={Monument::READ}}
+ *      normalizationContext={"groups"={"read"}},
+ *      denormalizationContext={"groups"={"write"}}
  * )
  * @ORM\Entity(repositoryClass="App\Repository\MonumentRepository")
  * @UniqueEntity(fields={"name"}, message="Le monument existe déjà")
  * @ApiFilter(NumericFilter::class, properties={"latitude, longitude"})
  * @ApiFilter(BooleanFilter::class, properties={"available"})
  * @Vich\Uploadable
+ * @ORM\Table(name="monument")
  */
 class Monument
 {
@@ -42,10 +38,6 @@ class Monument
     {
         return $this->name;
     }
-
-    const READ = 'Monument:Read';
-    const WRITE = 'Monument:Write';
-
 
     public function __construct()
     {
@@ -58,7 +50,7 @@ class Monument
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({Monument::READ})
+     * @Groups({"read", "write"})
      */
     private $id;
 
@@ -71,14 +63,14 @@ class Monument
      *      minMessage = "Le nom du monument doit faire au minimum {{ limit }} caractéres",
      *      maxMessage = "Le nom du monument doit faire au maximum {{ limit }} caractéres",
      * )
-     * @Groups({Monument::READ, Monument::WRITE})
+     * @Groups({"read", "write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Le Monument doit avoir obligatoirement un nom")
-     * @Groups({Monument::READ, Monument::WRITE})
+     * @Groups({"read", "write"})
      */
     private $description;
 
@@ -91,13 +83,13 @@ class Monument
      *      minMessage = "L'adresse du monument doit faire au minimum {{ limit }} caractéres",
      *      maxMessage = "L'adresse' du monument doit faire au maximum {{ limit }} caractéres",
      * )
-     * @Groups({Monument::READ, Monument::WRITE})
+     * @Groups({"read", "write"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({Monument::READ, Monument::WRITE})
+     * @Groups({"read", "write"})
      */
     private $createdAt;
 
@@ -108,35 +100,37 @@ class Monument
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
-     * @Groups({Monument::READ, Monument::WRITE})
+     * @Groups({"read", "write"})
      */
     private $available;
 
     /**
      * @ORM\Column(type="float", nullable=true)
      * @Assert\Type(type="float")
-     * @Groups({Monument::READ, Monument::WRITE})
+     * @Groups({"read", "write"})
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="float", nullable=true)
      * @Assert\Type(type="float")
-     * @Groups({Monument::READ, Monument::WRITE})
+     * @Groups({"read", "write"})
      */
     private $longitude;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Region", inversedBy="monuments", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     * 
-     * @Groups({Monument::READ, Monument::WRITE})
-     * @ApiProperty(iri="http://schema.org/identifier")
+     * @Groups({"write", "read"})
+     * @MaxDepth(1)
+     * @ApiProperty(attributes={"fetchEager": true})
      */
     private $region;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Target", inversedBy="monuments")
+     * @Groups({"write", "read"})
+     * @MaxDepth(1)
+     * @ApiProperty(attributes={"fetchEager": true})
      */
     private $target;
 
@@ -144,6 +138,22 @@ class Monument
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isActive;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="monuments")
+     * @Groups({"write", "read"})
+     * @MaxDepth(1)
+     * @ApiProperty(attributes={"fetchEager": true})
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Period", inversedBy="monuments")
+     * @Groups({"write", "read"})
+     * @MaxDepth(1)
+     * @ApiProperty(attributes={"fetchEager": true})
+     */
+    private $period;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -174,16 +184,6 @@ class Monument
      * @var int|null
      */
     private $imageSize;
-    
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="monuments")
-     */
-    private $category;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Period", inversedBy="monuments")
-     */
-    private $period;
 
     public function getId(): ?int
     {
