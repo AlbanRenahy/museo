@@ -1,5 +1,15 @@
 swiftmailer:
-    url: '%env(MAILER_URL)%'
-    spool: { type: 'memory' }
+    mailers:
+        test:
+            transport:            smtp
+            command:              '/usr/sbin/sendmail -bs'
+            username:             museodev@gmail.com
+            password:             Ereul8Aeng
+            host:                 smtp.gmail.com
+            port:                 587
+            timeout:              30
+
+    # url: '%env(MAILER_URL)%'
+    # spool: { type: 'memory' }
 
     # delivery_addresses: ['museodev@gmail.com']
