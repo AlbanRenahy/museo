@@ -25,21 +25,21 @@
             <td>{{ monument.name }}</td>
             {# <td>{{ monument.description|slice(0, 50) }}</td> #}
             <td>{{ monument.address }}</td>
-            {#{% if monument.imageName == null %}
+            {% if monument.imageName == null %}
                 <td><span class="badge badge-danger">Aucune image</span></td>
             {% else %}
                 <td>
                     {#<img src="{{ asset('images/monuments/' ~ monument.imageName ~ '') }}" alt="" height="50px">#}
                     {#<img src="{{ vich_uploader_asset(monument) }}" alt="{{ monument.name }}" height="40px" class="rounded mx-auto d-block"/>#}
-                    {# <img src="{{ absolute_url(asset('assets/img/upload/monuments/' ~ monument.imageName)) }}" height="40px" class="rounded mx-auto d-block" alt="{{ monument.name }}">
+                    <img src="{{ absolute_url(asset('assets/img/upload/monuments/' ~ monument.imageName)) }}" height="40px" class="rounded mx-auto d-block" alt="{{ monument.name }}">
                 </td>
             {% endif %}
             <td>{{ monument.createdAt|date("d/m/Y") }}</td>
             {% if monument.available == 1 %}
                 <td><span class="badge badge-primary">AFFICHER</span></td>
             {% else %}
-                <td><span class="badge badge-primary">NON AFFICHER</span></td> #}
-            {#% endif %#}
+                <td><span class="badge badge-primary">NON AFFICHER</span></td>
+            {% endif %}
             {# <td>{{ monument.available }}</td> #}
             {% if monument.latitude == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
