@@ -54,11 +54,13 @@ class MonumentType extends AbstractType
                     return $er->createQueryBuilder('r')
                         ->orderBy('r.name', 'ASC');
                 },
+                'required' => false,
                 'label' => 'Région',
                 'placeholder' => 'Choissez une région',
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
+                'required' => false,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('c')
                         ->orderBy('c.name', 'ASC');
@@ -72,6 +74,7 @@ class MonumentType extends AbstractType
             // ])
             ->add('target', EntityType::class, [
                 'class' => Target::class,
+                'required' => false,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('t')
                         ->orderBy('t.name', 'ASC');
