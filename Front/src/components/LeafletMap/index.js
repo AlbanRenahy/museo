@@ -15,7 +15,7 @@ import Loading from '../LoadingScreen';
 
 // pour utiliser des punaises
 import pins from '../../styles/images/Pins_brown.png';
-import pinsOrange from '../../styles/images/Pins_orange.png';
+import pinsOrange from '../../styles/images/PinsPurl.png';
 // Création de la map avec React Leaflet
 
 class Leaflet extends React.Component {

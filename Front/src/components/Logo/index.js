@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MuseoLogo from 'src/styles/images/logo_museo_couleur.png';
+import MuseoLogo from 'src/styles/images/new_logo_museo_couleur.png';
 
 // Styles et assets
 import './logo.scss';

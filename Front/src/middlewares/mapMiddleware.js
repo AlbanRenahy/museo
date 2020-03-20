@@ -54,17 +54,14 @@ const mapMiddleware = (store) => (next) => (action) => {
         // imageFile: {"path", store.getState().map.fileInput ? store.getState().map.fileInput : null},
         // imageName: store.getState().map.fileText ? store.getState().map.fileText : null,
         // imageSize: store.getState().map.fileSize ? store.getState().map.fileSize : null,
-        // category: store.getState().map.thematic ? store.getState().map.thematic : null,
-        // region: store.getState().map.region ? store.getState().map.region : null,
-        // period: store.getState().map.period ? store.getState().map.period : null,
-        // target: store.getState().map.target ? store.getState().map.target : null,
+        category: store.getState().map.thematic ? store.getState().map.thematic : null,
+        region: store.getState().map.region ? store.getState().map.region : null,
+        period: store.getState().map.period ? store.getState().map.period : null,
+        target: store.getState().map.target ? store.getState().map.target : null,
       })
         .then((response) => {
-
           // console.log(response);
-
-
-          // store.dispatch(createMarker(store.getState().clickedLat, store.getState().clickedLng, response.data));
+          store.dispatch(createMarker(store.getState().clickedLat, store.getState().clickedLng, response.data));
           store.dispatch(getMonuments());
           store.dispatch(resetFormMonument());
         })

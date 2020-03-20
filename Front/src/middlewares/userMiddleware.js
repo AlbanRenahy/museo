@@ -21,7 +21,7 @@ import {
   updateUserformField,
 } from 'src/actions/userActions';
 
-const museoApi = 'http://54.91.98.36/projet-museo/public';
+const museoApi = 'http://54.91.98.36';
 
 const userMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);

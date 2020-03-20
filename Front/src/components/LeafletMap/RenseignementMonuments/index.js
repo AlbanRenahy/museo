@@ -39,7 +39,7 @@ const RenseignementMonuments = ({
     e.preventDefault();
     console.log('submitting monument');
     submitMonument();
-    submitPicture();
+    // submitPicture();
   };
 
   const handleSelectChangeThematic = (e) => {
@@ -136,7 +136,7 @@ const RenseignementMonuments = ({
             />
             <div className="renseignement-monuments_secondary-infos">
               <div className="input-container">
-                {/* <select
+                <select
                   id="thematic"
                   className="input select-style"
                   name="thematique"
@@ -205,7 +205,7 @@ const RenseignementMonuments = ({
                       <option key={target.id} value={target.id}>{target.name}</option>
                     ))
                   }
-                </select> */}
+                </select>
               </div>
             </div>
           </div>
