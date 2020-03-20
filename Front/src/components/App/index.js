@@ -27,6 +27,15 @@ const App = ({ loading }) => (
     )}
 
     <Route
+      path="/loading"
+      render={() => (
+        <Welcome>
+          <LoadingScreen />
+        </Welcome>
+      )}
+    />
+
+    <Route
       exact
       path="/"
       render={() => (

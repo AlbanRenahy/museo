@@ -8,8 +8,6 @@ import React from 'react';
  */
 // Composants
 
-import Background from 'src/styles/images/BG-Login-Signin.png';
-
 // Styles et assets
 import './liste.scss';
 
@@ -17,9 +15,9 @@ import './liste.scss';
  * Code
  */
 const ListeBackground = () => (
-	<div className="containerCards">
-		<div className="bird-container bird-container--one">
-			<div className="bird bird--one"></div>
+  <div className="containerCards">
+    <div className="bird-container bird-container--one">
+	  <div className="bird bird--one"></div>
 		</div>
 
 		<div className="bird-container bird-container--two">
