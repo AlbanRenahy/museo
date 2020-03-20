@@ -10,9 +10,9 @@
     {% include 'layout/message.html.twig' %}
     <main class="container-fluid">
             <h3>Liste des Monuments </h3>
-            {# <p>
+            <p>
                 Actuellement <span class="badge badge-secondary">{{ count }}</span> monuments
-            </p> #}
+            </p>
             {% if monuments is defined %}
                 <div class="alert alert-danger" role="alert">
                     <h4>Aucun monuments en base de données</h4>
