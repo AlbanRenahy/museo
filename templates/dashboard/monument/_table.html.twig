@@ -4,7 +4,6 @@
         <tr>
             <th scope="col">#</th>
             <th>Nom</th>
-            {# <th>Description</th> #}
             <th>Adresse</th>
             <th>Image</th>
             <th>Créer le</th>
@@ -12,8 +11,9 @@
             <th>Lat</th>
             <th>Long</th>
             <th>Region</th>
-            <th>Catégorie</th>
+            {# <th>Catégorie</th> #}
             <th>P.V</th>
+            <th>Période</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -23,48 +23,65 @@
         <tr>
             <td>{{ monument.id }}</td>
             <td>{{ monument.name }}</td>
-            {# <td>{{ monument.description|slice(0, 50) }}</td> #}
             <td>{{ monument.address }}</td>
-            {#{% if monument.imageName == null %}
+
+            {% if monument.imageName == null %}
                 <td><span class="badge badge-danger">Aucune image</span></td>
             {% else %}
                 <td>
-                    {#<img src="{{ asset('images/monuments/' ~ monument.imageName ~ '') }}" alt="" height="50px">#}
-                    {#<img src="{{ vich_uploader_asset(monument) }}" alt="{{ monument.name }}" height="40px" class="rounded mx-auto d-block"/>#}
-                    {# <img src="{{ absolute_url(asset('assets/img/upload/monuments/' ~ monument.imageName)) }}" height="40px" class="rounded mx-auto d-block" alt="{{ monument.name }}">
+                    <img src="{{ asset('images/monuments/' ~ monument.imageName ~ '') }}" alt="" height="50px">#}
+                    <img src="{{ vich_uploader_asset(monument) }}" alt="{{ monument.name }}" height="40px" class="rounded mx-auto d-block"/>
+                    <img src="{{ absolute_url(asset('assets/img/upload/monuments/' ~ monument.imageName)) }}" height="40px" class="rounded mx-auto d-block" alt="{{ monument.name }}">
                 </td>
             {% endif %}
+
             <td>{{ monument.createdAt|date("d/m/Y") }}</td>
+
             {% if monument.available == 1 %}
                 <td><span class="badge badge-primary">AFFICHER</span></td>
             {% else %}
                 <td><span class="badge badge-primary">NON AFFICHER</span></td> #}
-            {#% endif %#}
-            {# <td>{{ monument.available }}</td> #}
+            {% endif %}
+
             {% if monument.latitude == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
             {% else %}
                 <td><span class="badge badge-warning">{{ monument.latitude }}</span></td>
             {% endif %}
+
             {% if monument.longitude == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
             {% else %}
                 <td><span class="badge badge-warning">{{ monument.longitude }}</span></td>
             {% endif %}
+
             {% if monument.region == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
             {% else %}
                 <td><span class="badge badge-primary">{{ monument.region }}</span></td>
             {% endif %}
-            {% if monument.category == null %}
-                <td><span class="badge badge-warning">N/R.</span></td>
-            {% else %}
-                <td><span class="badge badge-success">{{ monument.category }}</span></td>
-            {% endif %}
+
+            {# {% for category in monument.category %}
+                <pre>
+                    {{ dump(monument.category) }}
+                </pre>
+                {% if category is not defined %}
+                    <td><span class="badge badge-warning">N/R.</span></td>
+                {% else %}
+                    <td><span class="badge badge-success">{{ category }}</span></td>
+                {% endif %}
+            {% endfor %} #}
+
             {% if monument.target == null %}
                 <td><span class="badge badge-warning">N/R.</span></td>
             {% else %}
                 <td><span class="badge badge-info">{{ monument.target }}</span></td>
+            {% endif %}
+
+            {% if monument.period == null %}
+                <td><span class="badge badge-warning">N/R.</span></td>
+            {% else %}
+                <td><span class="badge badge-info">{{ monument.period }}</span></td>
             {% endif %}
             <td>
                 <a href="{{ path('dashboard.monument.edit', {id: monument.id}) }}" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>

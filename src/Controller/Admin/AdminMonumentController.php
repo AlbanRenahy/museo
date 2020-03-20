@@ -50,7 +50,7 @@ class AdminMonumentController extends AbstractController
     {   
         $monuments = $monumentRepository->findAll();
         $countMonuments = $monumentRepository->countByEntry();
-
+dump($monuments);
         return $this->render('dashboard/monument/index.html.twig', [
             'monuments' => $monuments,
             'count' => $countMonuments,

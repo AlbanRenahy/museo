@@ -19,19 +19,10 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa nulla ipsam sed laborum in nemo dolor nostrum voluptatum eveniet id laboriosam beatae enim iusto dolore nihil facilis, sequi reprehenderit.</p>
                 </div>
             {% else %}   
-            <div class="row">
-                <h1>Monument actifs</h1>
-                {% include 'dashboard/monument/_table.test.html.twig' %}  
-            </div>
-                {#% for monument in monuments %}   
-                    {#% if monument.isActive == false %}
-                    <div class="row">
-                        <h1>Monument en attente</h1>
-                        {% include 'dashboard/monument/_table.accept.html.twig' %}  
-                    </div>
-                    {% endif %}
-                    {% else %}
-                {% endfor %#}
+                <div class="row">
+                    <h1>Monument actifs</h1>
+                    {% include 'dashboard/monument/_table.html.twig' %}  
+                </div>
             {% endif %}
     </main>
 </div>
