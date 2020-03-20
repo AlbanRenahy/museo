@@ -39,12 +39,12 @@
     font-size:15px;
 }
 
-.Header {
-    margin-bottom:10px;
+.ui.message {
+    display: block;
     font-size:1.1em;
     text-align:center;
     font-weight: bolder;
-    color:rgba(102, 1, 233, 0.836);
+    color:rgba(102, 1, 233, 0.836) !important;
     font-variant:small-caps
 }
 

@@ -52,7 +52,7 @@ class Liste extends Component {
         </Card.Group>
         )}
         {(monuments.length === 0) && (
-          <Message compact>
+          <Message compact className="list-message">
             <Message.Header>{loading ? 'Chargement...' : 'Aucun musée ou monument trouvé'}</Message.Header>
             {!loading && (
             <p>
