@@ -6,11 +6,10 @@ import './loadingScreen.scss';
 const LoadingScreen = () => (
   <div className="container">
     <div className="loadingCamera">
-      <p className="letter2">Chargement en cours<br/>
-      <p className="letter1"></p>
+      <p className="letter2">Chargement en cours<br />
+        <p className="letter1"> </p>
       </p>
-     
-      </div>
+    </div>
     <div className="bird-cont">
       <div className="bird" />
     </div>
