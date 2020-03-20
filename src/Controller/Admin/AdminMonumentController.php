@@ -49,19 +49,12 @@ class AdminMonumentController extends AbstractController
     public function index(MonumentRepository $monumentRepository): Response
     {   
         $monuments = $monumentRepository->findAll();
-     
-         $countMonuments = $monumentRepository->countByEntry();
-         //dump($countMonuments);
-         //dd($monuments);
+        $countMonuments = $monumentRepository->countByEntry();
 
-         return $this->render('dashboard/monument/toto.html.twig', [
+        return $this->render('dashboard/monument/index.html.twig', [
             'monuments' => $monuments,
             'count' => $countMonuments,
         ]);
-        /*return $this->render('dashboard/monument/index.html.twig', [
-            'monuments' => $monuments,
-            'count' => $countMonuments,
-        ]);*/
     }
 
     /**
