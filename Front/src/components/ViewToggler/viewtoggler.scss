@@ -1,3 +1,15 @@
+.buttons {
+    position: fixed;
+    top: 1rem;
+    z-index: 1000;
+    margin: 1rem auto auto 1rem !important;
+
+    @media screen and (max-width: 430px) { 
+      margin: 1.1rem auto auto 0.5rem !important;
+      top: 0rem;
+    }
+}
+
 .ui.button {
     top: 20px;
     left: 20px;

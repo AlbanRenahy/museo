@@ -37,15 +37,13 @@ class Liste extends Component {
               <Image src={MainPicture} wrapped ui={false} />
               <Card.Content>
                 <h1 className="Header">{item.name}</h1>
-                <div className="Description">{item.address}</div>
+                <div className="Address">{item.address}</div>
+                <div className="Description">{item.description}</div>
                 <div className="Region">Région :</div>
                 <div className="Categorie">Catégorie :</div>
                 <div className="Thematique">Thématique :</div>
                 <div className="Periode">Période :</div>
                 <div className="Public">Public visé :</div>
-                <Card.Header>{item.name}</Card.Header>
-                <Card.Description>{item.address}</Card.Description>
-                <Card.Description>{item.description}</Card.Description>
               </Card.Content>
             </Card>
           ))}

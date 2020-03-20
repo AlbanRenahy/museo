@@ -29,7 +29,7 @@ const TopMenu = ({
         <ViewToggler />
       </Menu.Menu>
 
-      <Menu.Menu position="right">
+      <Menu.Menu className="search-menu" position="right">
         <div className="research ui right aligned category search item">
           <div className={`ui transparent icon input ${searchInput && 'not-empty'}`}>
             <div className="input-container">

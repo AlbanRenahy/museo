@@ -11,7 +11,7 @@
   padding-top: 15px;
   
 
- button#add-button {
+  button#add-button {
     bottom: 2em;
     left: 50vw;
     transform: translateX(-50%);
@@ -56,7 +56,7 @@
         font-weight: bold;
     }
 }
- 
+
   .ui.button {
       background-color: #ffffff;
       color: purple;
@@ -99,23 +99,47 @@
           z-index: 1500000;
       }
   }
-  @media screen and (max-width: 430px) { 
-    // For mobile view, the search field is displayed as a button, that becomes an input when focused
-    z-index: 401;
-    align-items: top;
-    padding: 0;
-   
+
+    @media screen and (max-width: 430px) { 
+      // For mobile view, the search field is displayed as a button, that becomes an input when focused
+      z-index: 401;
+      align-items: top;
+      padding: 0;
+
+      .visible {
+        left: -3rem;
+      }
+      #burgernav {
+        z-index: 401 !important;
+      }
+      .hamburger {
+        padding: 0.3rem 0;
+        &-inner {
+          width: 2rem;
+          &::before {
+            width: 2rem;
+          }
+          &::after {
+            width: 2rem;
+          }
+        }
+      }
+      .menu {
+        top: -1rem;
+        z-index: 40 !important;
+      }
+      .search-menu {
+        top: 2rem;
+      }
+
       .ui.button { // Buttons carte / bâtiments
         padding: 0.2rem 0.5rem;
       }
       
       i.search.link.icon { // Icon magnifying glass
           pointer-events: none;
-          position: fixed;
           height: inherit;
-          top: 31px;
-          right: 20px;
-
+          top: 2rem;
       }
       .ui.search > div > div > input { // the search input
           width: 3em;
