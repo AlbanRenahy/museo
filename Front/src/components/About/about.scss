@@ -64,6 +64,26 @@
       height:30px;
   }
 
+  .cadre-passion{
+    background-color: brown;
+    color:bisque;
+    padding: 5px 15px 7px;
+    margin-bottom: 20px;
+}
+
+.credits {
+  padding: 50px 0 25px;
+  &-title {
+      text-align: left;
+      text-decoration: underline;
+  }
+  &-liste p {
+      text-align: left;
+      padding-bottom:0;
+      padding-top:0;
+  }
+}
+
   .staff {
     margin-bottom: 1rem;
     
@@ -71,6 +91,22 @@
       background:none;
     }
   }
+
+  .description-techno {
+    padding-top:80px;
+    ul {
+        padding-top:40px;
+        text-align: left;
+    }
+    li {
+        display:flex;
+        justify-content: space-between;
+        .col-1, .col-2, .col-3 {
+            width:33%;
+        }
+       
+    }
+}
   
 
   .link {
