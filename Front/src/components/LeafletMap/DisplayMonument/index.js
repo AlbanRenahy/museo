@@ -12,6 +12,7 @@ const DisplayMonument = ({
   isDisplayMonumentOpen,
   closeAllModals,
   monumentDisplayed,
+  isConnected,
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
@@ -33,10 +34,10 @@ const DisplayMonument = ({
     creatorUsername,
   } = monumentDisplayed;
 
-  // const { 
+  // const {
   //   thematic : {
-  //     0 : { name } 
-  //   } 
+  //     0 : { name }
+  //   }
   // } = thematic;
 
   return (
@@ -83,25 +84,29 @@ const DisplayMonument = ({
             </ul>
           </div>
           <hr />
-          <footer>
-            <div className="panel-vote">
-              <p>VOTER POUR CETTE FICHE</p>
-              <span className="upvote">
-                <a href="">
-                  <Icon name="arrow up" />
-                </a>
-              </span>
-              <span className="downvote">
-                <a>
-                  <Icon name="arrow down" />
-                </a>
-              </span>
+          {isConnected && (
+            <footer>
+              <div className="panel-vote">
+                <p>VOTER POUR CETTE FICHE</p>
+                <span className="upvote">
+                  <a href="">
+                    <Icon name="arrow up" />
+                  </a>
+                </span>
+                <span className="downvote">
+                  <a>
+                    <Icon name="arrow down" />
+                  </a>
+                </span>
+              </div>
+            </footer>
+          )}
+          {isConnected && (
+            <div className="panel-modify visible">
+              <hr />
+              <a href=""><p>Modifier des informations sur cette fiche</p></a>
             </div>
-          </footer>
-          <div className="panel-modify visible">
-            <hr />
-            <a href=""><p>Modifier des informations sur cette fiche</p></a>
-          </div>
+          )}
         </div>
       </div>
     </div>
@@ -113,6 +118,7 @@ DisplayMonument.propTypes = {
   isDisplayMonumentOpen: PropTypes.bool.isRequired,
   monumentDisplayed: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
+  isConnected: PropTypes.bool.isRequired,
 };
 
 export default DisplayMonument;

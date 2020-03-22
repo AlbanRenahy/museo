@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
   isDisplayMonumentOpen: state.map.isDisplayMonumentOpen,
   monumentDisplayed: state.map.monumentDisplayed,
   loading: state.user.loading,
+  isConnected: state.user.isConnected,
 });
 
 const mapDispatchToProps = (dispatch) => ({
