@@ -37,7 +37,7 @@ const RenseignementMonuments = ({
 
   const handleSubmitMonument = (e) => {
     e.preventDefault();
-    console.log('submitting monument');
+    // console.log('submitting monument');
     submitMonument();
     // submitPicture();
   };
@@ -56,7 +56,7 @@ const RenseignementMonuments = ({
   };
 
   const handleFileChange = (e) => {
-    console.log(e.target.files[0]);
+    // // console.log(e.target.files[0]);
     if (e.target.files[0].type !== 'image/png' && e.target.files[0].type !== 'image/jpeg') {
       updateMapformField('fileText', 'Formats acceptés: JPG, PNG');
     }

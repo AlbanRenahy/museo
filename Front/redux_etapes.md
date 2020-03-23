@@ -217,7 +217,7 @@ Form.propTypes = {
 
 ```
 const leMiddleware = (store) => (next) => (action) => {
-   console.log('on a intercepté une action dans le middleware: ', action);
+   <!-- console.log('on a intercepté une action dans le middleware: ', action); -->
 
   switch (action.type) {
     default:
@@ -265,7 +265,7 @@ import { LOG_IN } from 'src/actions/chat';
 [...]
 switch (action.type) {
   case LOG_IN:
-    console.log('on va faire l\'appel Axios');
+    <!-- console.log('on va faire l\'appel Axios'); -->
     // je ne bloque pas l'action, je la passe au voisin
     next(action);
     break;
@@ -284,7 +284,7 @@ Par exemple, j'ai envoyé une requête vers une API avec Axios, dans 'then' je v
 
 ```
   .then((response) => {
-    console.log('on a reçu la réponse : ', response);
+    <!-- console.log('on a reçu la réponse : ', response); -->
     store.dispatch(nomActionCreator(response.xxxxxxx.yyyyyy));
   })
 ```

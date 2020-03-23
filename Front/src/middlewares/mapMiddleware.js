@@ -66,7 +66,7 @@ const mapMiddleware = (store) => (next) => (action) => {
           store.dispatch(resetFormMonument());
         })
         .catch((error) => {
-          console.log(error.message);
+          // console.log(error.message);
         });
       next(action);
       break;
@@ -84,52 +84,52 @@ const mapMiddleware = (store) => (next) => (action) => {
     case GET_THEMATICS:
       axios.get(`${museoApi}/categories`)
         .then((response) => {
-          console.log('Categories', response.data['hydra:member']);
+          // console.log('Categories', response.data['hydra:member']);
           store.dispatch(setThematics(response.data['hydra:member']));
         })
         .catch((error) => {
-          console.log(error.message);
+          // console.log(error.message);
         });
       break;
     case GET_REGIONS:
       axios.get(`${museoApi}/regions`)
         .then((response) => {
-          console.log('régions : ', response.data['hydra:member']);
+          // console.log('régions : ', response.data['hydra:member']);
           store.dispatch(setRegions(response.data['hydra:member']));
         })
         .catch((error) => {
-          console.log(error.message);
+          // console.log(error.message);
         });
       break;
     case GET_PERIODS:
       axios.get(`${museoApi}/periods`)
         .then((response) => {
-          console.log('periods : ', response.data['hydra:member']);
+          // console.log('periods : ', response.data['hydra:member']);
           store.dispatch(setPeriods(response.data['hydra:member']));
         })
         .catch((error) => {
-          console.log(error.message);
+          // console.log(error.message);
         });
       break;
     case GET_TARGETS:
       axios.get(`${museoApi}/targets`)
         .then((response) => {
-          console.log('targets', response.data['hydra:member']);
+          // console.log('targets', response.data['hydra:member']);
           store.dispatch(setTargets(response.data['hydra:member']));
         })
         .catch((error) => {
-          console.log(error.message);
+          // console.log(error.message);
         });
       break;
     case GET_MONUMENTS:
       next(action);
       axios.get(`${museoApi}/monuments`)
         .then((response) => {
-          console.log('monuments : ', response.data['hydra:member']);
+          // console.log('monuments : ', response.data['hydra:member']);
           store.dispatch(setMonuments(response.data['hydra:member']));
         })
         .catch((error) => {
-          console.log(error.message);
+          // console.log(error.message);
         });
       break;
     case GET_MONUMENTS_LIST_DATA:
@@ -137,13 +137,13 @@ const mapMiddleware = (store) => (next) => (action) => {
       const queries = action.list.map((item) => axios.get(`${museoApi}/monuments/${item.id}`));
       axios.all(queries)
         .then((results) => {
-          console.log(results);
+          // console.log(results);
           const list = results.map((item) => item.data);
-          console.log('Les monuments en list : ', list);
+          // console.log('Les monuments en list : ', list);
           store.dispatch(setMonumentsListData(list));
         })
         .catch((error) => {
-          console.log(error.message);
+          // console.log(error.message);
         });
       break;
     default:

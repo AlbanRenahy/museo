@@ -16,7 +16,7 @@ const DisplayMonument = ({
 }) => {
   const handleCloseDataForm = (e) => {
     e.preventDefault();
-    console.log('Dataform closed');
+    // console.log('Dataform closed');
     closeAllModals();
   };
 
