@@ -66,7 +66,7 @@ const Profil = ({
 
       <button type="submit" className="profil-update inverted-colors form-button">ENREGISTRER</button>
       <button type="button" className="delete-profil" onClick={OpenConfirmDeleteUser}>Supprimer mon compte</button>
-      <Link to="/" className="login-link">Retour à la page d'accueil</Link>
+      <Link to="/" className="login-link">Retour à la carte</Link>
     </Form>
     {displayConfirmDeleteUser && <ConfirmModale closeModale={CloseConfirmDeleteUser} deleteUser={deleteUser} isConnected={isConnected} />}
     {!isConnected && <Redirect to="/" />}

@@ -19,6 +19,7 @@ import './login.scss';
 /*
  * Code
  */
+
 const Login = ({
   username,
   password,
@@ -27,11 +28,13 @@ const Login = ({
   isConnected,
   loginMessage,
   loginStatus,
+  clearMessages,
 }) => (
   <>
     <Form onSubmit={connectUser} className="login-form">
       {isConnected && <Redirect to="/map" />}
       <p className={`identification-message ${loginStatus}`}>{loginMessage}</p>
+      <p className="clear-messages">{setTimeout(() => clearMessages(), 3000)}</p>
       <Input
         className="email-input"
         type="text"
@@ -72,6 +75,7 @@ Login.propTypes = {
   isConnected: PropTypes.bool.isRequired,
   loginMessage: PropTypes.string.isRequired,
   loginStatus: PropTypes.string.isRequired,
+  clearMessages: PropTypes.func.isRequired,
 };
 
 

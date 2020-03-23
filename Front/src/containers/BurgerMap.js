@@ -16,12 +16,12 @@ import BurgerMap from 'src/components/BurgerMap';
 // closeAllModals,
 // toggleMenu,
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isConnected: state.user.isConnected,
   isMenuOpen: state.map.isMenuOpen,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   closeAllModals: () => {
     dispatch(closeAllModals());
   },

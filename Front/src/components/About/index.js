@@ -5,6 +5,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { Label } from 'semantic-ui-react';
+import { PropTypes } from 'prop-types';
 
 
 // Styles et assets
@@ -17,7 +18,9 @@ import Avatar5 from 'src/styles/images/cecile.svg';
 /*
  * Code
  */
-const About = () => (
+
+
+const About = ({ isConnected }) => (
   <>
     <div className="about-container">
 
@@ -27,8 +30,8 @@ const About = () => (
       <p className="about-text">Pour les amateurs d'art et patrimoine, quand on est en voyage ou déplacement, on a pas toujours connaissance des multiples lieux fascinants à explorer autour, tout particulièrement en campagne. Museo est une application cartographique qui permet aux utilisateurs de renseigner leurs monuments et musées favoris, et ainsi inspirer à la communauté des visites incontournables ou insolites de notre patrimoine.</p>
       <div className="staff">
         <h2 className="title-staff">L'équipe</h2>
-        <span className="cadre-passion">Museo est codé avec passion par :</span>
-        <br/>
+        <h3 className="cadre-passion">Museo est codé avec passion par :</h3>
+        <br />
         <Label className="staff-label">
           <a className="link" target="_blank" draggable="false" data-tooltip="Product Owner">
             <p
@@ -51,7 +54,7 @@ const About = () => (
               <img
                 className="image"
                 src={Avatar2}
-                alt="img-Corale"
+                alt="img-Coralie"
               />
               Coralie
             </p>
@@ -101,28 +104,38 @@ const About = () => (
         </Label>
       </div>
       <div className="description-techno">
-      <h2 className="title-staff">Les outils et technologies</h2>
-            <span className="cadre-passion">Museo nous a permis de nous améliorer en :</span>
-            <ul>
-              <li><span className="col-1">HTML/SCSS</span>  <span className="col-2">JS</span>  <span className="col-3">REACT</span></li>
-              <li><span className="col-1">PHP</span>  <span className="col-2">SYMFONY</span>  <span className="col-3">REACT-REDUX</span></li>
-              <li><span className="col-1">SEMANTIC-UI</span>  <span className="col-2">API-PLATFORM</span>  <span className="col-3">GITHUB</span></li>
-              <li><span className="col-1">OPENSTREETMAP</span>  <span className="col-2">LEAFLET</span>  <span className="col-3">SLACK</span></li>
-              <li><span className="col-1">SCRUM</span>  <span className="col-2">SQL</span>  <span className="col-3">UX</span></li>
-            </ul>
-          </div>
-          <div className="credits">
-          <h3 className="credits-title">Crédits</h3>
-          <div className="credits-liste">
-            <p>Map: OpenStreetMap, API du gouvernement & Leaflet-react</p> 
-            <p>Photos: Wikipedia</p>
-            <p>Formation: Oclock</p>         
-          </div>
+        <h2 className="title-staff">Les outils et technologies</h2>
+        <h3 className="cadre-passion">Museo nous a permis de nous améliorer en :</h3>
+        <ul>
+          <li><span className="col-1">HTML/SCSS</span>  <span className="col-2">JS</span>  <span className="col-3">REACT</span></li>
+          <li><span className="col-1">PHP</span>  <span className="col-2">SYMFONY</span>  <span className="col-3">REACT-REDUX</span></li>
+          <li><span className="col-1">SEMANTIC-UI</span>  <span className="col-2">API-PLATFORM</span>  <span className="col-3">GITHUB</span></li>
+          <li><span className="col-1">OPENSTREETMAP</span>  <span className="col-2">LEAFLET</span>  <span className="col-3">SLACK</span></li>
+          <li><span className="col-1">SCRUM</span>  <span className="col-2">SQL</span>  <span className="col-3">UX</span></li>
+        </ul>
+      </div>
+      <div className="credits">
+        <h3 className="credits-title">Crédits</h3>
+        <div className="credits-liste">
+          <p>Map: OpenStreetMap, API du gouvernement & Leaflet-react</p>
+          <p>Photos: Wikipedia</p>
+          <p>Formation: Oclock</p>
         </div>
-      <Link to="/" className="login-link">Retour à la page d'accueil</Link>
+      </div>
+      {/* {isConnected && (
+        <Link to="/" className="login-link">Retour à la carte</Link>
+      )}
+      {!isConnected && (
+        <Link to="/" className="login-link">Retour à la page d'accueil</Link>
+      )} */}
+      <Link to="/" className="login-link">{isConnected ? 'Retour à la carte' : 'Retour à la page d\'accueil'}</Link>
     </div>
   </>
 );
+
+About.propTypes = {
+  isConnected: PropTypes.bool.isRequired,
+};
 
 /**
  * Export

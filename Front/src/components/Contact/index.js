@@ -18,7 +18,7 @@ import './contact.scss';
  * Code
  */
 const Contact = ({
-  email, message, updateUserformField, sendMessage, contactMessage,
+  email, message, updateUserformField, sendMessage, contactMessage, isConnected
 }) => (
   <Form onSubmit={sendMessage} className="contact-form">
     <p className="contact-message">{contactMessage}</p>
@@ -42,7 +42,7 @@ const Contact = ({
       onChangeFunction={(input) => updateUserformField('message', input)}
     />
     <button type="submit" className="inverted-colors form-button">ENVOYER MON MESSAGE</button>
-    <Link className="login-link" to="/">Retour à la page d'accueil</Link>
+    <Link to="/" className="login-link">{isConnected ? 'Retour à la carte' : 'Retour à la page d\'accueil'}</Link>
   </Form>
 );
 
@@ -52,6 +52,7 @@ Contact.propTypes = {
   updateUserformField: PropTypes.func.isRequired,
   sendMessage: PropTypes.func.isRequired,
   contactMessage: PropTypes.string.isRequired,
+  isConnected: PropTypes.bool.isRequired,
 };
 
 
