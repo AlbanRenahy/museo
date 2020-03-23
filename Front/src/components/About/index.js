@@ -30,7 +30,7 @@ const About = ({ isConnected }) => (
       <p className="about-text">Pour les amateurs d'art et patrimoine, quand on est en voyage ou déplacement, on a pas toujours connaissance des multiples lieux fascinants à explorer autour, tout particulièrement en campagne. Museo est une application cartographique qui permet aux utilisateurs de renseigner leurs monuments et musées favoris, et ainsi inspirer à la communauté des visites incontournables ou insolites de notre patrimoine.</p>
       <div className="staff">
         <h2 className="title-staff">L'équipe</h2>
-        <span className="cadre-passion">Museo est codé avec passion par :</span>
+        <h3 className="cadre-passion">Museo est codé avec passion par :</h3>
         <br />
         <Label className="staff-label">
           <a className="link" target="_blank" draggable="false" data-tooltip="Product Owner">
@@ -54,7 +54,7 @@ const About = ({ isConnected }) => (
               <img
                 className="image"
                 src={Avatar2}
-                alt="img-Corale"
+                alt="img-Coralie"
               />
               Coralie
             </p>
@@ -105,7 +105,7 @@ const About = ({ isConnected }) => (
       </div>
       <div className="description-techno">
         <h2 className="title-staff">Les outils et technologies</h2>
-        <span className="cadre-passion">Museo nous a permis de nous améliorer en :</span>
+        <h3 className="cadre-passion">Museo nous a permis de nous améliorer en :</h3>
         <ul>
           <li><span className="col-1">HTML/SCSS</span>  <span className="col-2">JS</span>  <span className="col-3">REACT</span></li>
           <li><span className="col-1">PHP</span>  <span className="col-2">SYMFONY</span>  <span className="col-3">REACT-REDUX</span></li>

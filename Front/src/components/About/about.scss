@@ -27,7 +27,7 @@
   .about-text {
     text-indent: 5%;
     text-align: justify;
-    margin: 0.5rem auto;
+    margin: 0.5rem auto 2rem;
     color: rgb(59, 25, 73);
   }
 
@@ -66,19 +66,20 @@
 
   .cadre-passion{
     background-color: brown;
+    display: inline-block;
     color:bisque;
     padding: 5px 15px 7px;
-    margin-bottom: 20px;
+    margin-bottom: 3rem;
 }
 
 .credits {
   padding: 50px 0 25px;
   &-title {
-      text-align: left;
+      text-align: center;
       text-decoration: underline;
   }
   &-liste p {
-      text-align: left;
+      text-align: center;
       padding-bottom:0;
       padding-top:0;
   }
@@ -93,13 +94,14 @@
   }
 
   .description-techno {
-    padding-top:80px;
+    padding-top: 2rem;
+    text-align: center;
     ul {
-        padding-top:40px;
         text-align: left;
     }
     li {
         display:flex;
+        text-align: center;
         justify-content: space-between;
         .col-1, .col-2, .col-3 {
             width:33%;
