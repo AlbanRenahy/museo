@@ -4,7 +4,7 @@ const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const { BundleStatsWebpackPlugin } = require('bundle-stats');
+const { BundleStatsWebpackPlugin } = require('bundle-stats-webpack-plugin');
 
 module.exports = merge.smart(common, {
   mode: 'production',
@@ -47,6 +47,14 @@ module.exports = merge.smart(common, {
     ],
   },
 
+  stats: {
+    assets: true,
+    entrypoints: true,
+    chunks: true,
+    modules: true,
+    builtAt: true,
+    hash: true,
+  },
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     runtimeChunk: 'single',
