@@ -22,7 +22,7 @@ const Contact = ({
 }) => (
   <Form onSubmit={sendMessage} className="contact-form">
     <p className="contact-message">{contactMessage}</p>
-    <h1 className="contact-title">Contactez nous !</h1>
+    <h1 className="contact-title">Contactez nous!</h1>
     <Input
       className="email-input"
       type="email"
