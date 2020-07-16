@@ -1,0 +1,222 @@
+#root {
+  position: relative;
+}
+
+.renseignement-monuments {
+  z-index: 10000;
+  position: absolute;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  top: 50%; /* poussé de la moitié de hauteur du référent */
+  left: -600px;
+  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
+  transition: 0.4s;
+
+  &_relative {
+    position: relative;
+  }
+  &_close:hover {
+    color: #B83B5E;
+  }
+  &.open {
+    left: 10px;
+  }
+  
+  &_files {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  form {
+    border-radius: 0px 0px 10px 10px;
+    border-top: 1px solid rgba(191, 191, 191, 0.5);
+    background-color: rgba(251, 225, 146);
+  }
+
+  button {
+    background-color: rgb(100, 43, 124);
+  }
+
+  select {
+    margin-bottom: 30px;
+    padding: 7px;
+    border-radius: 4px;
+    border: 2px solid rgba(191, 191, 191, 0.5);
+    font-size: 1.1em;
+    transition: 0.2s;
+    width: 100%;
+  }
+
+   select.select-style {
+    background-color:white;
+    padding-top:6px;
+    padding-bottom:6.5px;
+  }
+
+  &_inputs {
+    padding: 20px 20px 0 20px;
+    input {
+      padding: 7px;
+      ::placeholder{
+        font-size: .9em;
+      }
+    }
+  }
+
+  &_appareil {
+    width: 50px;
+    margin: 20px auto;
+    display: block;
+  }
+
+  &_primary-infos {
+    display: flex;
+    justify-content: space-between;
+    input {
+      width: 100% !important;
+    }
+    :nth-child(1) {
+      width: 70%;
+    }
+
+    :nth-child(2) {
+      width: 25%;
+    }
+  }
+
+  &_share, &_close {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: .7em;
+    color: black;
+    margin: 0 auto;
+    display: block;
+    margin: 10px 0;
+    transition: 0.2s;
+  }
+
+  &_close {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    padding: 7px;
+    background-color: rgb(146, 106, 163);
+    border-radius: 4px;
+    color: white;
+  }
+
+  &_submit {
+    padding: 20px 0;
+    border-top: 1px solid rgba(191, 191, 191, 0.5);
+    border-bottom: 1px solid rgba(191, 191, 191, 0.5);
+    button {
+      width: 90%;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+// Petits écrans
+@media screen and (max-width: 1400px) { 
+
+  .invisible-mobile {
+    display:none;
+  }
+  .invisible-desktop {
+    display:inline-block;
+  }
+
+  select.select-style {
+    background-color:white;
+    padding-top:6px;
+    padding-bottom:5px;
+  }
+
+  .renseignement-donnees {
+    opacity: 0.95;
+    max-width: 300px;
+
+    input {
+      font-size:0.8em;
+      margin-bottom:15px;
+    }
+  
+    .ui.loader:after, .ui.loader:before {
+      top:2px;
+    }
+    
+    &_address-container {
+      margin-bottom:8px;
+    }
+  
+    &_appareil {
+      margin: 10px auto;
+    }
+  
+    &_primary-infos {
+      display: flex;
+      justify-content: space-between;
+      input {
+        width: 100% !important;
+      }
+      :nth-child(1) {
+        width: 47%;
+      } 
+      :nth-child(2) {
+        width: 47%;
+      }
+    }
+  
+    &_share, &_close {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: .7em;
+      color: black;
+      margin: 0 auto;
+      margin: 10px 0;
+      transition: 0.2s;
+    }
+  
+    &_close {
+      position: absolute;
+      top: -5px;
+      right: 20px;
+      display: block;
+    }
+
+    .footer-mobile {
+      display:flex;
+      justify-content: space-around;
+      align-items:center;
+      margin-top:-5px;
+    }
+
+    .btn-submit-mobile {
+      padding: 10px 30px;
+      text-transform: uppercase;
+      font-size:0.7em;
+      font-weight:bold;
+      background-color: rgb(146, 106, 163);
+      border-radius:5px;
+      color: white;
+      margin-top: 0;
+      margin-bottom: 10px;
+      transition: 0.4s;
+    }
+
+    .btn-submit-mobile:hover {
+      background-color: orange;
+    }
+
+    &_share {
+      // padding:10px 10px 10px 20px;
+      display: inline-block;
+    }
+  }
+}
+}

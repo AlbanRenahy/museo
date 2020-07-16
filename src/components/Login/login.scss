@@ -1,0 +1,73 @@
+.login-form {
+  width: 30%;
+  margin: 2rem auto;
+
+  @media screen and (max-width: 1024px)
+      {
+        width: 40%;
+        margin: 1rem auto;
+      }
+  @media screen and (max-width: 425px)
+      {
+        width: 80%;
+        margin: 1rem auto;
+      }
+
+  .clear-messages {
+    display:none;
+  }
+  .identification-message {
+    font-style: italic;
+    color: #B83B5E;
+    font-size: 0.9rem;
+
+    @media screen and (max-width: 425px)
+      {
+        font-size: 0.6rem;
+      }
+  }
+
+  .password-input {
+      margin-bottom: 10px;
+    }
+
+  .recovery-link {
+    font-size: 0.9rem;
+    text-align: center;
+    padding-top: .2rem;
+    padding-bottom: .5rem;
+    font-variant: small-caps;
+    font-weight: bold;
+    text-align: left;
+    color: rgb(100, 43, 124);
+
+    &:hover {
+      color: #B83B5E !important;
+      cursor: pointer;
+      }
+
+    @media screen and (max-width: 1023px)
+      {
+        font-size: 0.7rem;
+      }
+  }
+
+  .signin-link, .map-link {
+    font-size: 1.1rem;
+    font-variant: small-caps;
+    color: rgb(100, 43, 124);
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+
+    @media screen and (max-width: 1023px)
+      {
+        font-size: 0.9rem;
+      }
+
+    &:hover {
+    color: #B83B5E !important;
+    cursor: pointer;
+    }
+  }
+}

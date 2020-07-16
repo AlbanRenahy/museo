@@ -1,0 +1,44 @@
+.finalMessage {
+    display: inline-block;
+    opacity: 0.7;
+    text-align: center;
+    padding: 2rem;
+    font-variant: small-caps;
+  
+    @media screen and (max-width: 1023px)
+    {
+      font-size: 0.9rem !important;
+    }
+
+  &-text {
+    font-variant: none;
+  }
+
+  @media screen and (max-width: 1024px)
+      {
+        font-size: 0.9rem;
+      }
+  @media screen and (max-width: 425px)
+      {
+        font-size: 0.5rem;
+      }
+}
+
+.login-link {
+  font-size: 1.1rem;
+  font-variant: small-caps;
+  color: rgb(100, 43, 124);
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+
+  @media screen and (max-width: 1023px)
+    {
+      font-size: 0.9rem;
+    }
+
+  &:hover {
+  color: #B83B5E;
+  cursor: pointer;
+  }
+}

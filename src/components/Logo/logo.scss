@@ -1,0 +1,35 @@
+.museo-logo {
+  padding: 2rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  &_image {
+    width: 25%;
+    margin: auto;
+    @media screen and (max-width: 767px)
+      {
+        width: 45%;
+      }
+  }
+
+  &_subtitle {
+    margin: auto;
+    font-variant: small-caps;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(100, 43, 124);
+
+      @media screen and (max-width: 1023px)
+      {
+        width: 50%;
+        font-size: 0.9rem;
+      }
+      @media screen and (max-width: 567px)
+      {
+        width: 70%;
+        font-size: 0.7rem;
+      }
+  }
+}
