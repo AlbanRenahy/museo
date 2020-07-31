@@ -22,7 +22,7 @@ import {
   setPictures,
 } from 'src/actions/mapActions';
 
-const museoApi = 'http://54.91.98.36/api';
+const museoApi = 'http://back.museo-map.com/api';
 
 const mapMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);
