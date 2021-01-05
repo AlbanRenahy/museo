@@ -54,7 +54,7 @@ class RegistrationController extends AbstractController
                     'text/html'
                 )
             ;
-            $mailer->send($msg);
+            // $mailer->send($msg); not sending email as mailer is not configured
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
                 $request,
